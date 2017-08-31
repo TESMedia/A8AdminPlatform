@@ -50,6 +50,8 @@ namespace CaptivePortal.API.Models.CustomIdentity
 
         public int? SiteId { get; set; }
 
+        public int? GroupId { get; set; }
+
         public bool? promotional_email { get; set; }
 
         public bool? ThirdPartyOptIn { get; set; }
@@ -88,6 +90,8 @@ namespace CaptivePortal.API.Models.CustomIdentity
         [ForeignKey("GenderId")]
 
         public virtual Gender Genders { get; set; }
+        [ForeignKey("GroupId")]
+        public virtual Group Group { get; set; }
 
         public virtual Site Sites { get; set; }
 

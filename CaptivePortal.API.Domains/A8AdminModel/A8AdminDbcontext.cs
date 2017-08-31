@@ -33,6 +33,8 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public DbSet<ApiAccessUserSession> UserSession { get; set; }
         public DbSet<AdminSiteAccess> AdminSiteAccess { get; set; }
         public DbSet<ManagePromotion> ManagePromotion { get; set; }
+        public DbSet<Group> Group { get; set; }
+
 
         public static A8AdminDbContext Create()
         {

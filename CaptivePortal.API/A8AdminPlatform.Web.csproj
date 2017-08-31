@@ -256,6 +256,7 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\A8AdminPortal\AccountController.cs" />
     <Compile Include="Controllers\A8AdminPortal\AdminController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\GroupController.cs" />
     <Compile Include="Controllers\A8AdminPortal\HomeController.cs" />
     <Compile Include="Controllers\RTLS\DatatableController.cs" />
     <Compile Include="Controllers\RTLS\RTLSAdminController.cs" />
@@ -4589,6 +4590,7 @@
     <Content Include="Views\RTLS\RTLSDataAsDevice.cshtml" />
     <Content Include="Views\RTLS\RTLSRegisteredData.cshtml" />
     <Content Include="Views\RTLS\ViewMonitorDevices.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

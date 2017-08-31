@@ -70,6 +70,7 @@
     <Compile Include="A8AdminModel\Age.cs" />
     <Compile Include="A8AdminModel\Company.cs" />
     <Compile Include="A8AdminModel\Gender.cs" />
+    <Compile Include="A8AdminModel\Group.cs" />
     <Compile Include="A8AdminModel\Organisation.cs" />
     <Compile Include="A8AdminModel\Site.cs" />
     <Compile Include="A8AdminModel\UsersAddress.cs" />
@@ -121,6 +122,7 @@
     <Compile Include="ViewModels\CPAdmin\FormData.cs" />
     <Compile Include="ViewModels\CPAdmin\FormViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\GeneratingHtmlViewModel.cs" />
+    <Compile Include="ViewModels\CPAdmin\GroupViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\LoginViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\LoginWIthNewMacAddressModel.cs" />
     <Compile Include="ViewModels\CPAdmin\MacAddesses.cs" />
