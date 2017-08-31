@@ -1,0 +1,633 @@
+﻿@model CaptivePortal.API.Models.FormViewModel
+@{
+
+    Layout = null;
+    var ControlTypeList = new[]{
+                          new SelectListItem() { Text = "text", Value = "text" },
+                          new SelectListItem() { Text = "password", Value = "password"},
+                          new SelectListItem() { Text = "radio", Value = "radio"},
+                          new SelectListItem() { Text = "checkbox", Value = "checkbox"},
+                          new SelectListItem() { Text = "date", Value="date"},
+                          new SelectListItem() { Text="tel",Value="tel"},
+                          new SelectListItem() { Text = "time", Value="time"},
+                          new SelectListItem() { Text="tel",Value="tel"}
+                            };
+
+    var lableNames = new[]{
+
+                          new SelectListItem() { Text = "Username ", Value = "Username " },
+                          new SelectListItem() { Text = "FirstName", Value = "FirstName"},
+                          new SelectListItem() { Text = "LastName", Value = "LastName"},
+                          new SelectListItem() { Text = "Age", Value = "Age"},
+                            new SelectListItem() { Text = "Gender", Value = "Gender"},
+                          new SelectListItem() { Text = "Mobilenumber", Value="Mobilenumber"},
+                          new SelectListItem() { Text="Email",Value="Email"},
+                          new SelectListItem() { Text = "UserOfDataOptIn", Value="UserOfDataOptIn"},
+                          new SelectListItem() { Text="promotional_email",Value="promotional_email"},
+
+                          new SelectListItem() { Text = "ThirdPartyOptIn ", Value = "ThirdPartyOptIn " },
+                          new SelectListItem() { Text = "Address1", Value = "Address1"},
+                          new SelectListItem() { Text="Address2",Value="Address2"},
+                          new SelectListItem() { Text = "PostTown", Value="PostTown"},
+                          new SelectListItem() { Text = "Postcode", Value="Postcode"},
+                          new SelectListItem() { Text = "County", Value = "County"},
+                          new SelectListItem() { Text = "Country", Value = "Country"},
+                          new SelectListItem() { Text="Birthdate",Value="Birthdate"},
+
+                          new SelectListItem() { Text = "Custom1 ", Value = "Custom1 " },
+                          new SelectListItem() { Text = "Custom2", Value = "Custom2"},
+                          new SelectListItem() { Text = "Custom3", Value = "Custom3"},
+                          new SelectListItem() { Text = "Custom4", Value = "Custom4"},
+                          new SelectListItem() { Text = "Custom5", Value="Custom5"},
+                          new SelectListItem() { Text="Custom6",Value="Custom6"}
+                          
+                            };
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CaptivePortal </title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/RequiredField.css" rel="stylesheet" />
+</head>
+<body class="nav-md" onload="onload()">
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <br />
+                                    <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                        @using (Html.BeginForm("UpdateSiteAndLoginRegisterConf", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            <div class="form-group" style="display:none;">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Site Id:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.HiddenFor(model => model.SiteId, new { htmlAttributes = new { @class = "form-control", @name = "SiteId" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="display:none;">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Form Id:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.FormId, new { htmlAttributes = new { @class = "form-control", @name = "FormId" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Site Name:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.SiteName, new { htmlAttributes = new { @class = "form-control", @name = "sitename", @required = "required", @onchange = "doesSiteNameExist()", @id = "site-name" } })<label class="message" id="message" style="color:red" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="company-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Company Name:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="company-name" class="form-control col-md-7 col-xs-12" type="text" name="CompanyName" style="display:none">
+                                                    @Html.DropDownList("CompanyDdl", ViewBag.companies as IEnumerable<SelectListItem>, "--Select the Company--", new { @class = "form-control", @id = "CompanyDdl", @name = "CompanyDdl" })
+
+                                                </div>
+                                                <div style="margin-top:-15px;">
+                                                    Create New Company
+                                                </div>
+                                                <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxCompany" onclick="showCompanyTextBox()" name="CreateNewCompany" style="width:30px;float: right;margin-right: 15%;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="organisation-name" class="control-label col-md-3 col-sm-3 col-xs-12">Organisation Name:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="organisation-name" class="form-control col-md-7 col-xs-12" type="text" name="OrganisationName" style="display:none">
+                                                    <select id="organisationDdl" class="form-control" name="organisationDdl">
+                                                        <option value="0">--Select the organisations--</option>
+                                                    </select>
+
+                                                </div>
+                                                <div style="margin-top:-15px;">
+                                                    Create New Organisation
+                                                </div>
+                                                <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxOrganisation" onclick="showOrganistationTextBox()" name="CreateNewOrganisation" style="width:30px;float: right;margin-right: 15%;">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="controller-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Controller IP address:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.ControllerIpAddress, new { htmlAttributes = new { @class = "form-control", @name = "ControllerIpAddress" } })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="radius-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Radius IP address:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.MySqlIpAddress, new { htmlAttributes = new { @class = "form-control", @name = "MySqlIpAddress" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="DashboardUrl" class="control-label col-md-3 col-sm-3 col-xs-12">Dashboard URL:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.DashboardUrl, new { htmlAttributes = new { @class = "form-control", @name = "DashboardUrl" } })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="RtlsUrl" class="control-label col-md-3 col-sm-3 col-xs-12">RTLS URL:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.RtlsUrl, new { htmlAttributes = new { @class = "form-control", @name = "RtlsUrl" } })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="auto-login" class="control-label col-md-3 col-sm-3 col-xs-12">Auto-login users:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="al" name="AutoLogin"  value="True" checked="@Model.AutoLogin" style="width:30px;">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="term-condition" class="control-label col-md-3 col-sm-3 col-xs-12">Terms & Conditions:</label>
+                                                <div class="col-md-1">
+                                                    @Html.EditorFor(model => model.Term_conditions, new { htmlAttributes = new { @class = "form-control", @name = "Term_conditions" } })
+                                                </div>
+                                                <div class="col-md-3">
+                                                    @Html.EditorFor(model => model.TermsAndCondDoc, new { htmlAttributes = new { @class = "form-control", @name = "TermsAndCondDoc", @readonly = "readonly", @id = "filename" } })
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="browse" type="file" name="Term_conditions" style="display:none" onChange="Handlechange();">
+                                                    <input type="button" class="btn btn-success" value="Browse" id="TermsAndCondDoc" name="Term_conditions" onclick="HandleBrowseClick();" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name">Login and Registration Page configuration:</label>
+                                            </div>
+                                            @*<div class="form-group">
+                                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Banner Icon:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input type="file" name="BannerIcon"  accept="image/*" id="imgLogo" >
+                                                        <button onclick="UploadFile()"> UploadFile</button>
+                                                        <img src="" alt="Image" style="height:50px;width:50px;" id="imgLogo" />
+                                                    </div>
+                                                </div>*@
+                                            <div class="form-group">
+                                                <label for="banner-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Banner Icon:</label>
+                                                @*<div class="col-md-6">
+                                                    <input type="file" name="BannerIcon" id="banner-icon" accept="image/*">
+                                                </div>*@
+                                                <div class="col-md-3">
+                                                    @Html.EditorFor(model => model.BannerIcon, new { htmlAttributes = new { @class = "form-control", @name = "BannerIcon", @readonly = "readonly", @id = "bannerIconPath" } })
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="BannerIcon" type="file" name="BannerIcon" style="display:none" onChange="HandlePicchange();">
+                                                    <input type="button" class="btn btn-success" value="Browse" id="BannerIcon" name="BannerIcon" onclick="HandlePicBrowseClick();" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="" alt="Image" style="height:50px;width:50px;" id="imgLogo" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Background colour:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="bgColor" class="form-control col-md-7 col-xs-12" type="color" name="BackGroundColor" style="width:70px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Login window colour:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="loginColor" class="form-control col-md-7 col-xs-12" type="color" name="LoginWindowColor" style="width:70px;">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="require-password" class="control-label col-md-3 col-sm-3 col-xs-12">Require Password:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="cbPwd" name="IsPasswordRequire" style="width:30px;" value="true" checked="@Model.IsPasswordRequire">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Login Page Title:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.LoginPageTitle, new { htmlAttributes = new { @class = "form-control", @name = "txtLoginPageTitle" } })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Registration Page Title:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    @Html.EditorFor(model => model.RegistrationPageTitle, new { htmlAttributes = new { @class = "form-control", @name = "txtRegistrationPageTitle" } })
+                                                </div>
+                                            </div>
+                                            foreach (var item in Model.FormControls)
+                                            {
+                                                <div class="control-group" id="fields">
+                                                    <label for="field-label" class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+                                                    <div class="controls">
+                                                        <div role="form" autocomplete="off">
+                                                            <div class="row">
+                                                                <div class="voca">
+                                                                    @*<div class="col-md-1">
+                                                                            @Html.HiddenFor(model=>item.FormControlId)
+                                                                        </div>*@
+                                                                    <div class="col-md-3">
+                                                                        @*<input class="form-control" placeholder="Add Field" name="fieldLabel" type="text">*@
+                                                                        @Html.EditorFor(model => item.LabelName, new { htmlAttributes = new { @class = "form-control", @name = "fieldLabel" } })
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <input class="form-control" name="LabelNameToDisplay" type="text" id="labelNameToDisplay" value="@item.LabelNameToDisplay">
+                                                                        @*@Html.DropDownListFor(Model => item.ControlType, new SelectList(ControlTypeList as IEnumerable<SelectListItem>, "Value", "Text", item.ControlType)
+                                                                            , "Select Control Type", new { @style = "width:180px", @class = "form-control", @name = "controlType" })*@
+                                                                    </div>
+                                                                    @*<div class="col-md-1">
+                                                                            <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkbox1" name="chkOptOrMand" style="width:30px;">
+                                                                        </div>*@
+                                                                    @*<button type="button" class="btn btn-danger" id="btnDelete">
+                                                                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Delete Field
+                                                                        </button>*@
+                                                                    <a href="@Url.Action("DeleteFormControl","Admin",new { Id=item.FormControlId })" class="btn btn-danger">Delete Field</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="form-group pull-right">
+                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Add Field</button>
+                                            </div>
+                                            <div class="modal fade" id="myModal" role="dialog">
+                                                <div class="modal-dialog" style="width:60%">
+
+                                                    <!-- Modal content-->
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            <h4 class="modal-title">Modal Header</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="control-group" id="fields">
+                                                                <label for="field-label" class="control-label col-md-3 col-sm-3 col-xs-12">Field Name/Type</label>
+                                                                <div class="controls">
+                                                                    <div role="form" autocomplete="off">
+                                                                        <div class="row">
+                                                                            <div class="voca">
+                                                                                <div class="col-md-3">
+                                                                                   @* @Html.DropDownListFor(x => x.fieldlabel, new SelectList(Model.fieldlabel), "Select Filed Name", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "fieldlabel" })*@
+
+                                                                                    @Html.DropDownListFor(x => x.fieldlabel, new SelectList(lableNames as IEnumerable<SelectListItem>, "Value", "Text")
+                                                                            , "Select Control Type", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "fieldlabel"})
+                                                                                </div>
+                                                                                <div class="col-md-2">
+                                                                                    <input id="LabelName" class="form-control col-md-7 col-xs-12" type="text" name="LabelNameToDisplay">
+                                                                                    @*<select class="form-control" name="controlType" id="controlType">
+                                                                                            <option value=0>Select Control Type</option>
+                                                                                            <option value=text>text</option>
+                                                                                            <option value=password>password</option>
+                                                                                            <option value=date>date</option>
+                                                                                            <option value=tel>tel</option>
+                                                                                            <option value=radio>time</option>
+                                                                                            <option value=checkbox>checkbox</option>
+                                                                                            <option value=dropdown>dropdown</option>
+                                                                                            <option value=radio>radio</option>
+                                                                                        </select>*@
+                                                                                </div>
+                                                                                <div class="col-md-1">
+                                                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="chkOptOrMand" name="IsMandetory" value="required" style="width:30px;">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <button type="button" class="btn btn-success btn-add" id="btnSave">
+                                                                                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Save
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            @*</div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>*@
+
+
+
+                                                            @*<div class="ln_solid"></div>*@
+                                                            <div class="form-group" id="optionBlock" style="display:none">
+                                                                <label for="login-title" class="control-label col-md-3 col-sm-3 col-xs-12">Add Option Value</label>
+                                                                <div class="col-md-9 col-sm-9 col-xs-9" id="txtDiv">
+                                                                    <div class="col-md-2 col-sm-2 col-lg-2">
+                                                                        <input type="text" name="optionval" id="optionval" class="form-control col-md-2" />
+                                                                    </div>
+                                                                    <div class="col-md-2 col-lg-2 col-xs-2 pull-right">
+                                                                        <input type="button" class="btn btn-success" name="plus" id="plus" value="+"> <input type="button" class="btn btn-danger" name="minus" id="minus" value="-">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="../vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="../vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function HandleBrowseClick() {
+        var fileinput = document.getElementById("browse");
+        fileinput.click();
+    }
+
+    function Handlechange() {
+        var fileinput = document.getElementById("browse");
+        var textinput = document.getElementById("filename");
+        textinput.value = fileinput.value;
+    }
+
+    function HandlePicBrowseClick() {
+        var fileinput = document.getElementById("BannerIcon");
+        fileinput.click();
+    }
+
+    function HandlePicchange() {
+        var fileinput = document.getElementById("BannerIcon");
+        var textinput = document.getElementById("bannerIconPath");
+        textinput.value = fileinput.value;
+    }
+
+
+    $('#checkbox-value').text($('#cbPwd').val());
+    $("#cbPwd").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+
+    });
+
+    $('#checkbox-value').text($('#al').val());
+    $("#al").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+
+    });
+
+    function showCompanyTextBox() {
+        if ($('#checkboxCompany').is(':checked')) {
+            $('#CompanyDdl').hide();
+            $('#company-name').show();
+            $('#company-name').prop('required',true);
+        } else {
+            $('#CompanyDdl').show();
+            $('#company-name').hide();
+        }
+    }
+
+    function onload()
+    {
+        if ($('#checkboxCompany').is(':checked')) {
+            $('#CompanyDdl').hide();
+            $('#company-name').show();
+        } else {
+            $('#CompanyDdl').show();
+            $('#company-name').hide();
+            $('#CompanyDdl').prop('required', true);
+        }
+    }
+
+    function showOrganistationTextBox() {
+        if ($('#checkboxOrganisation').is(':checked')) {
+            $('#organisationDdl').hide();
+            $('#organisation-name').show();
+        } else {
+            $('#organisationDdl').show();
+            $('#organisation-name').hide();
+        }
+    }
+
+    $(function () {
+
+        $("#fieldlabel").change(function () {
+            //var selectedText = $(this).find("option:selected").text();
+            var selectedValue = $(this).val();
+            //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+            if (selectedValue == "Custom3" || selectedValue == "Custom4" )
+            {
+                $("#optionBlock").show();
+            }
+            else
+            {
+                $("#optionBlock").hide();
+            }
+
+        });
+
+        document.getElementById("bgColor").value = "@Model.BackGroundColor";
+        document.getElementById("loginColor").value="@Model.LoginWindowColor";
+        $("#CompanyDdl").val(@Model.CompanyDdl);
+        $("#imgLogo").attr('src','@Model.BannerIcon')
+        $('#organisationDdl').val('');
+
+        $.getJSON("/Admin/GetOrganisations?companyId=" + @Model.CompanyDdl, function (data) {
+            var items = [];
+            $.each(data, function (key, value) {
+                items.push("<option value=" + this.value + ">" + this.text + "</option>");
+            });
+            $("#organisationDdl").html(items.join(' '));
+        })
+    });
+
+    //$(document).on('click', '.btn-add', function (e) {
+    //    e.preventDefault();
+
+    //    var controlForm = $('.controls'),
+    //        currentEntry = $(this).parents('.voca:first'),
+    //        newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+    //    newEntry.find('input').val('');
+    //    controlForm.find('.btn-add:not(:last)')
+    //        .removeClass('btn-default').addClass('btn-danger')
+    //        .removeClass('btn-add').addClass('btn-remove')
+
+    //        .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
+    //}).on('click', '.btn-remove', function (e) {
+    //    $(this).parents('.voca:first').remove();
+
+    //    e.preventDefault();
+    //    return false;
+    //});
+
+    //$("#plus").on("click", function () {
+    //    $("#fieldsDiv").append('<div name="blockAppend"><label for="field-label" class="control-label col-md-3 col-sm-3 col-xs-12"></label><div class="controls"><div role="form" autocomplete="off"><div class="row"><div class="voca"><div class="col-md-3"><input class="form-control" placeholder="Add Field" name="fieldLabel" type="text"></div><div class="col-md-2"><select class="form-control" name="dataType"><option value=0>Select Data Type</option><option value=string>VARCHAR </option><option value=int>int</option><option value=date>date</option></select></div> <div class="col-md-2"> <select class="form-control" name="controlType"><option value=0>Select Control Type</option> <option value=text>text</option><option value=password>password</option><option value=radio>radio</option></select> </div>  <button type="button" class="btn btn-success btn-add" id="minus"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove Field </button></div></div></div><br></div></div>')
+    //});
+    //$("#minus").on("click", function () {
+
+    //    if ($("input[name='blockAppend']").length > 1) {
+    //        $("input[name='blockAppend']:eq(" + (length - 1) + ")").remove();
+    //    }
+    //});
+
+
+    $("#btnSave").on("click", function () {
+        //var checkedValue = document.querySelector('.form-control:checked').value;
+        if(document.getElementById("chkOptOrMand").checked) {
+            var checkedValue=true;
+        }
+        else
+        {
+            var checkedValue=false;
+        }
+
+        var arrData = [];
+        $.each($("input[name='optionval']"), function () {
+            arrData.push($(this).val());
+        });
+        var data= {arrayValue:arrData,FormId:$("#FormId").val(),LabelNameToDisplay:$("#LabelName").val(),fieldlabel:$("#fieldlabel").val(),chkOptOrMand:checkedValue,IsMandetory:checkedValue}
+        $.post("/Admin/SaveFormControls/",data, function (e) {
+            location.reload();
+        });
+    });
+    $("#plus").on("click", function () {
+        $("#txtDiv").append('<div class="col-md-2 col-sm-2 col-lg-2"> <input class="form-control text-box single-line" id="optionval" name="optionval" type="text"><span class="field-validation-valid text-danger" data-valmsg-for="optionval" data-valmsg-replace="true"></span></div>');
+    });
+    $("#minus").on("click", function () {
+        if ($("input[name='optionval']").length > 1) {
+            $("input[name='optionval']:eq(" + (length - 1) + ")").remove();
+        }
+    });
+
+
+    function doesSiteNameExist() {
+        var siteName = document.getElementById('site-name').value;
+        var uri = '@Html.Raw(Url.Action("doesSiteNameExist", "Admin"))';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            traditional: true,
+            dataType: "HTML",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ 'SiteName': siteName }),
+            success: function (result) {
+                if (result == "true") {
+                    document.getElementById('message').style.display = "block";
+                    document.getElementById('message').innerHTML = "Site Name already taken";
+                }
+                else {
+                    document.getElementById('message').style.display = "none";
+                }
+            },
+            error: function (objAjaxRequest, strError) {
+                var respText = objAjaxRequest.responseText;
+                console.log(respText);
+            }
+        });
+    }
+
+</script>

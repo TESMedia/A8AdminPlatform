@@ -1,0 +1,474 @@
+﻿
+@using CaptivePortal.API.Models
+
+@model AdminlistViewModel
+@{
+
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Captive Portal Admin | </title>
+
+    <!-- Bootstrap -->
+    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <!-- Font Awesome -->
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!--manual css-->
+    <link href="~/Content/Index.css" rel="stylesheet" />
+    <!-- bootstrap-progressbar -->
+    <link href="~/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="~/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
+    <!-- bootstrap-daterangepicker -->
+    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/DropDown.css" rel="stylesheet" />
+    <link href="~/build/css/custom.css" rel="stylesheet" />
+    @*<script src="~/build/js/index.js"></script>*@
+    <style>
+        td {
+            border: 1px #DDD solid;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .selectedindex {
+            background-color: brown;
+            color: white;
+        }
+    </style>
+    <style>
+        .highlight {
+            background-color: red;
+        }
+    </style>
+    <style>
+        /*    */
+        .cellContainer {
+            width: 25%;
+            float: left;
+        }
+    </style>
+</head>
+
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <ul class="nav navbar-nav navbar-right">
+
+
+                            <li role="presentation" class="dropdown">
+
+                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a>
+                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
+                                            <span>
+                                                <span>John Smith</span>
+                                                <span class="time">3 mins ago</span>
+                                            </span>
+                                            <span class="message">
+                                                Film festivals used to be do-or-die moments for movie makers. They were where...
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <div class="text-center">
+                                            <a>
+                                                <strong>See All Alerts</strong>
+                                                <i class="fa fa-angle-right"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @if (TempData["SiteIdCheck"] != null)
+                {
+                    <p class="alert alert-success" id="successMessage">@TempData["SiteIdCheck"]</p>
+                }
+                <h1>Overall Estate</h1>
+                @if (ViewBag.roleOfUser == "GlobalAdmin")
+                {
+                    <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='CreateNewSite'">Create New Site</button>
+                }
+                <div class="row container-fluid">
+
+                    <div style="top:35px;width:1000px; height:250px; overflow:auto;">
+                        <table class="table table-hover table-responsive" id="table">
+                            <thead>
+                                <tr>
+
+
+                                    <th style="display:none;">
+                                        SiteId
+                                    </th>
+                                    <th>
+                                        Site
+                                    </th>
+                                    <th>
+                                        Org
+                                    </th>
+                                    <th>
+                                        Company
+                                    </th>
+
+                                    <th>
+                                        CPT
+                                    </th>
+                                    <th>
+                                        LocationDashBoard
+                                    </th>
+                                    <th>
+                                        RTLS
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="pointer" style="width:320px; height:60px; overflow:auto;">
+                                @foreach (var item in Model.AdminViewlist)
+                                {
+                                    <tr>
+
+                                        <td style="display:none;" id="SiteId">
+                                            @Html.DisplayFor(modelItem => item.SiteId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SiteName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OrganisationName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CompanyName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MySqlIpAddress)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DashboardUrl)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.RtlsUrl)
+                                        </td>
+
+
+                                    </tr>
+                                }
+                            </tbody>
+
+
+
+                        </table>
+
+
+                    </div>
+                    <br /><br /><br /><br />
+                    <div>
+                       <h4>Site:<label id="site_name"></label></h4> 
+                    </div>
+                    <div style="width:100%; height: 200px;">
+                        <form class="form-horizontal">
+                            <div class="cellContainer">
+                                <div style="margin: 5px; background-color: white;">
+                                    <center><h3><u>Site Status</u></h3></center>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="Controller">Controller:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="Controller" name="Controller" readonly="readonly" value="NotDeployed">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="Radius">Radius:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="Radius"  name="Radius" readonly="readonly"  value="NotDeployed">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="RTLSAPI">RTLS-API:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="RTLSAPI"  name="RTLSAPI" readonly="readonly"  value="NotDeployed">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="WiFiAPI">Wi-Fi API:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="WiFiAPI"  name="WiFiAPI" readonly="readonly"  value="NotDeployed">
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+
+                            <div class="cellContainer">
+                                <div style="margin: 5px; background-color: white;">
+                                    <center><h3><u>Site Status(last hour)</u></h3></center>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="Sessions">Sessions:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="Sessions" name="Sessions" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="SiteUsers">Site Users:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="SiteUsers" name="SiteUsers" readonly="readonly">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="Loggederrors">Logged errors:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="Loggederrors" name="Loggederrors" readonly="readonly">
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="cellContainer">
+                                <div style="margin: 5px;"></div>
+                            </div>
+
+                            <div class="cellContainer">
+                                <input id="debugStatus" class="form-control col-xs-1" type="text" readonly value="On">
+                                <br />
+                                <br />
+                                <br />
+                                <input type="button" id="debuggingAndTracing" class="btn btn-success" value="Turn debug on/off" />
+                                <br />
+                                <br />
+                                <br />
+
+                                <input type="button" id="debuggingAndTracing" class="btn btn-success" value="View log" onclick="location.href='@Url.Action("LogsDownload", "Admin")'" />
+
+                            </div>
+                        </form>
+                    </div>
+
+                    
+
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+
+
+
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer></footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../vendors/Flot/jquery.flot.js"></script>
+    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+
+
+</body>
+</html>
+<script type="text/javascript">
+
+    $("#table tr").click(function () {
+
+        $(this).addClass('selectedindex').siblings().removeClass('selectedindex');
+        var SiteId_Value = $(this).find('td:first').html();
+        var Site_name = $(this).closest('tr').find('td:eq(1)').text();
+        document.getElementById('site_name').innerHTML = Site_name;
+        //localStorage.setItem("SiteId", SiteId_Value);
+        var SiteId = localStorage.getItem("SiteId");
+        localStorage.setItem("SiteId", SiteId_Value);
+        localStorage.setItem("SiteName", Site_name);
+
+        // SiteId = document.getElementById("SiteDdl").value;
+        //localStorage.setItem("SiteId", SiteId)
+        if (SiteId != localStorage.getItem("SiteId")) {
+            SiteId = SiteId_Value;
+            localStorage.setItem("SiteId", SiteId)
+            window.localStorage.setItem("SiteId", SiteId);
+
+
+
+        }
+
+        
+        var sitedata = { SiteId : SiteId };
+            $.ajax(
+          {
+             type: "POST",
+             data: sitedata,
+             url: "/api/a8Captiveportal/V1/SiteOperationalStatus",
+            
+             success: function (data)
+             {
+                 var controllerdata = data[0];
+                 var Radiusdata = data[1];
+                 var RtlsApidata = data[2];
+                 var wifiApidata = data[3];
+                 if (data[0] == "TimedOut")
+                 {
+                     $('#Controller').css('background-color', 'Red');
+                     $('#Controller').val('Failed');
+                 }
+                 if (data[0] == "Success")
+                 {
+                     $('#Controller').css('background-color', 'Green');
+                     $('#Controller').val('Operational');
+                 }
+                 if (data[1] == "TimedOut")
+                 {
+                     $('#Radius').css('background-color', 'Red');
+                     $('#Radius').val('Failed');
+                 }
+                 if (data[1] == "Success")
+                 {
+                     $('#Radius').css('background-color', 'Green');
+                     $('#Radius').val('Operational');
+                 }
+                 if (data[2] == "TimedOut")
+                 {
+                     $('#RTLSAPI').css('background-color', 'Red');
+                     $('#RTLSAPI').val('Failed');
+                 }
+                 if (data[2] == "Success")
+                 {
+                     $('#RTLSAPI').css('background-color', 'Green');
+                     $('#RTLSAPI').val('Operational');
+                 }
+                 if (data[3] == "TimedOut")
+                 {
+                     $('#WIFIAPI').css('background-color', 'Red');
+                     $('#WIFIAPI').val('Failed');
+                 }
+                 if (data[3] == "Success")
+                 {
+                     $('#WIFIAPI').css('background-color', 'Green');
+                     $('#WIFIAPI').val('Operational');
+                 }
+                
+             },
+             failure: function (response)
+             {
+                 alert(response);
+             },
+             error: function (xhr, textStatus, errorThrown)
+             {
+                 alert(textStatus);
+             }
+         })
+    });
+
+
+
+</script>

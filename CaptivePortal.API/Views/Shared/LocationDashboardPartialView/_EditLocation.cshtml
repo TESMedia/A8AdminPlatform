@@ -1,0 +1,200 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="a8DashboardModule">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+
+<body class="nav-md" ng-controller="LocationIndicatorController">
+    
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main" ng-init="editDetails()">
+
+
+                @*@using (Html.BeginForm())
+                    {*@
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
+                    <div class="form-group">
+                        <label class = "control-label col-md-2">Name</label>
+                        <div class="col-md-10">
+                            <input class="form-control" type="text" name="Name" id="Name" ng-model="editInfo.Name" />
+                            @* @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @*@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
+                            <input type="text" ng-model="editInfo.LoctionIndicator" hidden />
+                            <input type="text" ng-model="editInfo.NeighBourName" hidden />
+                            @*@Html.HiddenFor(model => model.LoctionIndicator)
+                                @Html.HiddenFor(model => model.NeighBourName)*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class = "control-label col-md-2">LoctionIndicator</label>
+                        <div class="col-md-10" id="txtDiv">
+                            <div ng-if="editInfo.lstMapLocations.length > 0">
+
+
+                                <div ng-repeat="item in editInfo.lstMapLocations">
+                                    <input type="text" ng-model="item.AreaOfInterestId" hidden />
+                                    <input type="text" ng-model="item.LoctionIndicatorId" hidden />
+                                    <input class="form-control" type="text" ng-model="item.LoctionIndicator" name="LoctionIndicator" />
+                                    <input type="button" ng-show="item.LoctionIndicatorId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteLocationIndicator(item.AreaOfInterestId,item.LoctionIndicatorId)" />
+                                </div>
+
+                            </div>
+
+                            <div ng-if="editInfo.lstMapLocations.length===0">
+                                <input class="form-control" type="text" value="{{item.LoctionIndicator}}" />
+                                <input type="text" value="{{item.LoctionIndicator}}" hidden />
+
+                            </div>
+
+                            @*@if (Model.lstMapLocations.Count > 0)
+                                {
+                                    for (var i = 0; i < Model.lstMapLocations.Count; i++)
+                                    {
+                                        @Html.HiddenFor(model => Model.lstMapLocations[i].AreaOfInterestId)
+                                        @Html.HiddenFor(model => Model.lstMapLocations[i].LoctionIndicatorId)
+                                        @Html.TextBoxFor(model => Model.lstMapLocations[i].LoctionIndicator, new { @class = "form-control" })
+
+                                        <form action="/LocationIndicators/DeleteLocationIndicator" method="post">
+                                            <input type="hidden" value="@Model.lstMapLocations[i].LoctionIndicatorId" name="LoctionIndicatorId" />
+                                            <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
+                                            <input type="submit" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" />
+                                        </form>
+                                        @Html.ValidationMessageFor(model => Model.lstMapLocations[i].LoctionIndicator, "", new { @class = "text-danger" })
+                                    }
+                                }
+                                else
+                                {
+                                    @Html.EditorFor(model => model.LoctionIndicator, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.LoctionIndicator, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.LoctionIndicator)
+                                }*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 pull-right">
+                            <input type="button" class="btn btn-success" name="plus" id="plus" value="+" ng-click="addLocationIndicator()"> <input type="button" class="btn btn-danger" name="minus" id="minus" value="-" ng-click="removeLocationIndicator()">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class ="control-label col-md-2">NeighBourName</label>
+                        <div class="col-md-10" id="txtDiv1">
+
+                            <div ng-if="editInfo.lstNeighBourMaps.length > 0">
+
+
+                                <div ng-repeat="item in editInfo.lstNeighBourMaps">
+                                    <input type="text" ng-model="item.AreaOfInterestId" hidden />
+                                    <input type="text" ng-model="item.NeighBourId" hidden />
+                                    <input class="form-control" type="text" ng-model="item.NeighBourName" name="NeighBourName" />
+                                    <input type="button" ng-show="item.NeighBourId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteNeighBourArea(item.AreaOfInterestId,item.NeighBourId)" />
+                                </div>
+
+                            </div>
+
+                            <div ng-if="editInfo.lstNeighBourMaps.length===0">
+                                <input class="form-control" name="NeighBourName" type="text" ng-model="item.NeighBourName" />
+                                <input type="text" ng-model="item.NeighBourName" name="NeighBourName" hidden />
+
+
+                            </div>
+                            @*@if (Model.lstNeighBourMaps.Count > 0)
+                                {
+                                    for (var i = 0; i < Model.lstNeighBourMaps.Count; i++)
+                                    {
+                                                        @Html.HiddenFor(model => Model.lstNeighBourMaps[i].AreaOfInterestId)
+                                                        @Html.HiddenFor(model => Model.lstNeighBourMaps[i].NeighBourId)
+                                                        @Html.TextBoxFor(model => Model.lstNeighBourMaps[i].NeighBourName, new { @class = "form-control", @name = "NeighBourName" })
+
+                                                        <form action="/LocationIndicators/DeleteNeighBourArea" method="post">
+                                                            @Html.AntiForgeryToken()
+                                                            <input type="hidden" value="@Model.lstNeighBourMaps[i].NeighBourId" name="NeighBourId" />
+                                                            <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
+                                                            <input type="submit" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" />
+                                                        </form>
+                                                        @Html.ValidationMessageFor(model => Model.lstNeighBourMaps[i].NeighBourName, "", new { @class = "text-danger" })
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    @Html.EditorFor(model => model.NeighBourName, new { htmlAttributes = new { @class = "form-control" } })
+                                                    @Html.ValidationMessageFor(model => model.NeighBourName, "", new { @class = "text-danger" })
+                                                    @Html.HiddenFor(model => model.NeighBourName)
+                                                }*@
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-sm-10 pull-right">
+                            <input type="button" class="btn btn-success" name="plus1" id="plus1" value="+" ng-click="addNeighBourName()"> <input type="button" class="btn btn-danger" name="minus1" id="minus1" value="-" ng-click="removeNeighBourName()">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="button" value="Save" class="btn btn-success" id="btnsubmit" ng-click="editPost()" />
+                            <a href="Locations" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
+                            @*<input type="button" value="Back" class="btn btn-default" onclick="location.href='@Url.Action("Index", "LocationIndicators")'" />*@
+                        </div>
+                    </div>
+                </div>
+                @*}*@
+
+
+
+
+
+            </div>
+
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer></footer>
+            <!-- /footer content -->
+     
+
+    <script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
+    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
+    <script src="~/Scripts/Spin.js"></script>
+    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
+    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
+    <link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
+    <script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
+    <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
+    <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
+    <!-- Custom Theme Scripts -->
+    <!-- Google Analytics -->
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

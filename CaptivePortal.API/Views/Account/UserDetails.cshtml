@@ -1,0 +1,368 @@
+﻿@using CaptivePortal.API.ViewModels.CPAdmin
+@model WifiUserlistViewModel
+
+@{
+    Layout = null;
+    ViewBag.PageRange = 20;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>CaptivePortal </title>
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <br />
+                                    <form></form>
+                                    <br />
+                                    @*<div class="row">
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="row">
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    site
+                                                       <div class="dropdown">
+                                                            @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = ViewBag.SiteName })
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-12 text-center">
+                                        <input type="button" class="btn btn-success" onclick="tableToExcel('cpTable')" value="Export Data" style="width:15%">
+                                    </div>
+                                    <div class="container">
+                                        <br />
+                                        <form class="form-inline" id="searchForm">
+                                            <input type="button" id="btnSearch" class="btn btn-success" value="Filter" style="width:10%" />
+                                            <div class="form-group">
+                                                <label for="userName">Username:</label>
+                                                <input type="text" class="form-control" autofocus="autofocus" id="txtUserName" name="UserName" value="@ViewBag.userName" placeholder="Enter user name" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="foreName">Forename:</label>
+                                                <input type="text" class="form-control" autofocus="autofocus" id="txtForeName" name="FirstName" value="@ViewBag.foreName" placeholder="Enter forename" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="surName">Surname:</label>
+                                                <input type="text" class="form-control" autofocus="autofocus" id="txtSurName" name="LastName" value="@ViewBag.surName" placeholder="Enter surname" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="text">Show:</label>
+                                                <select class="form-control" style="float:right" name="NumberOfLines" id="NumberOfLines" onchange="showNumberOfLines()">
+                                                    <option value=@ViewBag.selectedNumber>@ViewBag.selectedNumber</option>
+                                                    <option value="3">3</option>
+                                                    <option value="5">5</option>
+                                                    <option value="7">7</option>
+                                                    <option value="50">50</option>
+                                                    <option value="100">100</option>
+                                                </select>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <hr />
+                                    <div class="row container-fluid">
+
+                                        <div style="top:35px;">
+                                            <table class="table table-hover table-striped table-responsive" id="cpTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="display:none;">
+                                                            UserId
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+                                                            Username
+                                                        </th>
+                                                        <th>
+                                                            Forename
+                                                        </th>
+                                                        <th>
+                                                            Surname
+                                                        </th>
+
+                                                        <th>
+                                                            CreatedDate
+                                                        </th>
+                                                        <th>
+                                                            LastLogin
+                                                        </th>
+
+                                                        <th>
+                                                            Mac Address
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                @*@if (TempData["Success"] != null)
+                                                {
+                                                    <p class="alert alert-success" id="successMessage">@TempData["Success"]</p>
+                                                }*@
+
+                                                @if (Model.WifiUserViewlist != null)
+                                                {
+                                                    <tbody class="pointer" id="UserDetails">
+                                                        @foreach (var item in Model.WifiUserViewlist)
+                                                        {
+                                                            <tr>
+                                                                <td style="display:none;" id="UserId">
+                                                                    @Html.DisplayFor(modelItem => item.UserId)
+                                                                </td>
+                                                                <td>
+                                                                    @*<input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkbox1" name="chkOptOrMand" style="width:30px;">*@
+                                                                    @*<a href="@Url.Action("UserWithProfile","Admin",new { UserId= item.UserId})" type="checkbox">Edit</a>*@
+                                                                    @*<input type="checkbox" onclick="location.href='@Url.Action("UserDetails","Admin",new { userId=item.UserId})'" />*@
+                                                                    <input type="checkbox" id="chkPassport" onclick="ShowHideDiv(this);UserWithProfile(@item.UserId,@item.SiteId)" value="@item.UserId" />
+
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.UserName)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.FirstName)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.LastName)
+                                                                </td>
+                                                                
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.CreationDate)
+                                                                </td>
+                                                                <td>
+                                                                    
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.MacAddress)
+                                                                </td>
+
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                }
+                                                <tfoot>
+                                                    <tr>
+                                                        <td>
+                                                            <ul class="pagination" id="div1">
+                                                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                                                {
+                                                                    if (i >= ViewBag.CurrentPage - ViewBag.PageRange && i <= ViewBag.CurrentPage + ViewBag.PageRange)
+                                                                    {
+                                                                        if (ViewBag.CurrentPage == i)
+                                                                        {
+                                                                            <li class="active"><a id="pageLink" href="#">@i</a></li>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <li><a id="pageLink" href="#" )">@i</a></li>
+                                                                        }
+                                                                    }
+                                                                }
+                                                            </ul>
+                                                    </tr>
+                                                </tfoot>
+                                            </table>
+
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        @*@Html.Partial("~/Views/Shared/_UserWithProfile.cshtml")*@
+                                        @*<ul class="nav nav-tabs nav-justified">
+                                                <li class="active"><a href="#">User Details</a></li>
+                                                <li><a href="#">Password</a></li>
+                                                <li><a href="#">Devices</a></li>
+
+                                            </ul>*@
+                                        @if (Model.WifiUserView != null)
+                                        {
+
+                                            <div role="tabpanel" id="dvPassport" style="display:none">
+                                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                                    <li role="presentation" class="active"><a href="#UserProfile" aria-controls="UserProfile" role="tab" data-toggle="tab">User Details</a></li>
+                                                    <li role="presentation"><a href="#UserPassword" aria-controls="UserPassword" role="tab" data-toggle="tab">Password</a></li>
+                                                    <li role="presentation"><a href="#Device" aria-controls="Devices" role="tab" data-toggle="tab">Devices</a></li>
+                                                    <li role="presentation"><a href="#Custom" aria-controls="Custom" role="tab" data-toggle="tab">Custom</a></li>
+                                                </ul>
+
+                                                <div class="tab-content" id="UserView">
+                                                    @Html.Partial("~/Views/Shared/_UserDetails.cshtml", Model.WifiUserView)
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="../vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="../vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    var siteId = localStorage.getItem("SiteId");
+    var siteName = localStorage.getItem("SiteName");
+    document.getElementsByTagName('form')[0].innerHTML = siteName;
+
+    //page link click
+    $("#div1 a").click(function () {
+        var lineNumber = document.getElementById("NumberOfLines").value;
+        $(location).attr('href', '/Account/UserDetails?siteId=' + siteId + '&page=' + $(this).text() + '&userName=' + $("#txtUserName").val() + '&foreName=' + $("#txtForeName").val() + '&surName=' + $("#txtSurName").val() + '&NumberOfLines=' + lineNumber);
+    });
+    //dropdown click to show number of lines 
+    function showNumberOfLines() {
+        var lineNumber = document.getElementById("NumberOfLines").value;
+        $(location).attr('href', '/Account/UserDetails?siteId=' + siteId + '&page=' + $(this).text() + '&userName=' + $("#txtUserName").val() + '&NumberOfLines=' + lineNumber);
+    };
+
+
+    $("#btnSearch").on("click", function () {
+        $(location).attr('href', '/Account/UserDetails?siteId=' + siteId + '&userName=' + $("#txtUserName").val() + '&foreName=' + $("#txtForeName").val() + '&surName=' + $("#txtSurName").val());
+    });
+
+    //on checkmark show the selected user details, on uncheck mark show nothing.
+    function ShowHideDiv(chkPassport) {
+        var dvPassport = document.getElementById("dvPassport");
+        dvPassport.style.display = chkPassport.checked ? "block" : "none";
+    }
+
+
+    //Viewdata for partial view of User details, password,devices, custom
+    function UserWithProfile(id, siteId) {
+        debugger;
+        var uri = '@Html.Raw(Url.Action("UserWithProfile", "Account"))';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            traditional: true,
+            dataType: "HTML",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ 'UserId': id, 'SiteId': siteId }),
+            success: function (result) {
+                debugger;
+                $("#UserView").html(result);
+            },
+            error: function (objAjaxRequest, strError) {
+                debugger;
+                var respText = objAjaxRequest.responseText;
+                console.log(respText);
+            }
+        });
+    }
+
+
+ 
+
+    var tableToExcel = (function () {
+        var uri = 'data:application/vnd.ms-excel;base64,'
+          , template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>'
+          , base64 = function (s) { return window.btoa(unescape(encodeURIComponent(s))) }
+          , format = function (s, c) { return s.replace(/{(\w+)}/g, function (m, p) { return c[p]; }) }
+        return function (table, name) {
+            if (!table.nodeType) table = document.getElementById(table)
+            var ctx = { worksheet: name || 'Worksheet', table: table.innerHTML }
+            window.location.href = uri + base64(format(template, ctx))
+        }
+    })()
+</script>

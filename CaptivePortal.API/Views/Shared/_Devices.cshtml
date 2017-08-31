@@ -1,0 +1,134 @@
+﻿@model CaptivePortal.API.Models.WifiUserViewModel
+<br />
+<br />
+@using (Html.BeginForm("AddMacAddress", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="form-horizontal" style="margin-right: 40%;">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <input id="macAddress" class="form-control col-md-2" type="text" name="MacAddress">
+                    @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @Id = "userIdHidden", @name = "UserId", @style = "display:none" } })
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" id="addMacAddress" class="btn btn-success" value="Add Mac Address" />
+                </div>
+
+                @*<div class="col-md-4">
+                        <input type="button" id="deleteMacAddress" class="btn btn-danger pull-right" value="Delete Mac Address"  onclick="deleteMacValue()"/>
+                    </div>*@
+            </div>
+        </div>
+    </div>
+}
+<br />
+<br />
+<div>
+    <div class="row container-fluid">
+
+        <div style="top:35px;">
+            <table class="table table-hover table-striped table-responsive" id="cpTable">
+                <thead>
+                    <tr>
+                        <th style="display:none;">
+                            MacId
+                        </th>
+                        @*<th>
+
+                            </th>*@
+                        <th>
+                            Mac Address
+
+                        </th>
+                        <th>
+                            Device Type
+                        </th>
+                        <th>
+                            Last Login
+                        </th>
+                        <th>
+                            Session Length
+                        </th>
+                        <th>
+                            Data used
+                        </th>
+                        <th style="display:none;">
+                            Delete
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody class="pointer" id="DeviceDetails">
+                    @foreach (var item in Model.MacAddressList)
+                    {
+                        <tr>
+                            <td style="display:none;" id="MacId">
+                                @Html.DisplayFor(modelItem => item.MacId)
+                            </td>
+
+                            @*<td>
+                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="cbMacAddress" name="MacAddress" style="width:30px;">
+                                </td>*@
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MacAddressValue)
+                            </td>
+
+                            <td></td>
+
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Delete Mac Address" class="btn btn-danger" onclick="deleteMac(@item.MacId)" />
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+    $("#cbMacAddress").on('change', function () {
+        alert("cbValue");
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+
+    });
+
+    });
+
+
+    function deleteMac(macId) {
+        var id = macId;
+        alert(macId);
+
+        var uri = '@Html.Raw(Url.Action("DeleteMacAddress", "Admin"))';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            traditional: true,
+            dataType: "HTML",
+            contentType: "application/json; charset=utf-8",
+           data: JSON.stringify({ 'MacId': id }),
+            success: function (result) {
+                $("#UserView").html(result);
+                location.reload();
+            },
+            error: function (objAjaxRequest, strError) {
+                var respText = objAjaxRequest.responseText;
+                console.log(respText);
+            }
+        });
+}
+</script>

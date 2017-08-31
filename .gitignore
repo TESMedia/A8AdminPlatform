@@ -3,3 +3,13 @@
 ################################################################################
 
 /packages
+/CaptivePortal.API/bin
+/CaptivePortal.API/obj/Debug
+/CaptivePortal.API.DataAccess/bin/Debug
+/CaptivePortal.API.DataAccess/obj/Debug
+/CaptivePortal.API.Domains/bin/Debug
+/CaptivePortal.API.Domains/obj/Debug
+/CaptivePortal.API.Services/bin/Debug
+/CaptivePortal.API.Services/obj/Debug
+/CaptivePortal.API.Services/bin/Debug
+/.vs

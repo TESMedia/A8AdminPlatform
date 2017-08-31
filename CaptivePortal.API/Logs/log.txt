@@ -1,0 +1,128 @@
+INFO 2017-08-11 13:21:23,631 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 13:27:35,786 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 13:30:10,329 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 13:45:41,802 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 13:48:40,540 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 13:49:12,847 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 14:01:21,396 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 15:52:44,065 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 16:04:05,796 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 16:04:16,149 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-08-11 16:04:40,569 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-08-11 16:04:42,804 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-08-11 16:05:07,200 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-08-11 16:12:44,233 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 16:16:33,793 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 16:20:13,110 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-11 17:45:12,543 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 15:39:00,070 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 15:55:44,221 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 16:16:06,585 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 16:19:22,485 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 16:25:58,907 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 16:36:52,889 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-15 16:42:22,224 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+INFO 2017-08-15 16:48:06,191 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-15 16:51:05,966 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+ERROR 2017-08-15 16:52:49,057 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+INFO 2017-08-15 17:25:41,865 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-15 17:28:07,155 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+INFO 2017-08-15 17:53:12,502 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 18:38:46,228 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-15 21:47:31,933 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+INFO 2017-08-15 21:52:54,515 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-15 22:18:53,689 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-15 22:20:34,717 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+ERROR 2017-08-15 22:22:17,445 System.Web.Http.ApiController - Value cannot be null.
+Parameter name: context
+INFO 2017-08-16 06:19:39,602 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 06:27:24,025 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-16 06:45:54,368 System.Web.Http.ApiController - C:\Users\Dell\AppData\Local\Temp\Temporary ASP.NET Files\root\f2ecb29a\74518ddb\App_Web_login.cshtml.925dc4ed.kvvyd-ts.0.cs(37): error CS0246: The type or namespace name 'ApplicationUser' could not be found (are you missing a using directive or an assembly reference?)
+INFO 2017-08-16 07:26:12,671 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 09:56:35,562 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 10:20:40,963 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:20:41,000 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 10:20:55,522 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+INFO 2017-08-16 10:21:25,562 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:21:25,599 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 10:22:52,166 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+INFO 2017-08-16 10:23:08,126 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:23:08,167 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 10:24:16,252 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+INFO 2017-08-16 10:24:19,680 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:24:19,729 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:24:55,375 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:24:55,413 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:27:43,306 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:27:43,346 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 10:29:26,764 CaptivePortal.API.Repository.CaptivePortal.UserRepository - An error occurred while updating the entries. See the inner exception for details.
+INFO 2017-08-16 10:29:30,069 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 10:29:30,095 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:04:05,498 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 11:04:43,778 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:04:43,791 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 11:05:30,760 CaptivePortal.API.Repository.CaptivePortal.UserRepository - An error occurred while updating the entries. See the inner exception for details.
+INFO 2017-08-16 11:05:33,507 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:05:33,518 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 11:06:14,858 CaptivePortal.API.Repository.CaptivePortal.UserRepository - An error occurred while updating the entries. See the inner exception for details.
+INFO 2017-08-16 11:06:18,591 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:06:18,611 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 11:11:44,465 CaptivePortal.API.Repository.CaptivePortal.UserRepository - An error occurred while updating the entries. See the inner exception for details.
+INFO 2017-08-16 11:11:50,904 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:11:50,920 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:13:57,607 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 11:31:08,074 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:31:08,084 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:32:46,546 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 11:33:16,253 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:33:16,290 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:39:55,410 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:39:55,433 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+ERROR 2017-08-16 11:40:30,364 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+INFO 2017-08-16 11:40:42,445 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 11:40:42,464 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 12:34:47,888 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 13:02:13,445 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 13:03:07,301 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 13:03:07,349 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 17:22:43,896 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-16 17:25:27,510 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 17:25:27,563 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 17:30:59,303 CaptivePortal.API.Repository.CaptivePortal.RegisterDB - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-16 17:30:59,346 CaptivePortal.API.Repository.CaptivePortal.UpdateDb - Server=122.166.202.201; Port = 3306; Database = radius; Uid=root;Pwd=p1s4Bmn
+INFO 2017-08-18 06:55:13,429 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-18 06:55:59,896 System.Web.Http.ApiController - The view 'Login' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Admin/Login.aspx
+~/Views/Admin/Login.ascx
+~/Views/Shared/Login.aspx
+~/Views/Shared/Login.ascx
+~/Views/Admin/Login.cshtml
+~/Views/Admin/Login.vbhtml
+~/Views/Shared/Login.cshtml
+~/Views/Shared/Login.vbhtml
+INFO 2017-08-18 07:02:31,481 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-18 07:02:38,911 System.Web.Http.ApiController - The view 'Login' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Admin/Login.aspx
+~/Views/Admin/Login.ascx
+~/Views/Shared/Login.aspx
+~/Views/Shared/Login.ascx
+~/Views/Admin/Login.cshtml
+~/Views/Admin/Login.vbhtml
+~/Views/Shared/Login.cshtml
+~/Views/Shared/Login.vbhtml
+INFO 2017-08-18 07:52:05,555 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-18 08:15:54,057 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-18 08:18:19,056 System.Web.Http.ApiController - The controller for path '/Home/Index' was not found or does not implement IController.
+INFO 2017-08-18 08:34:56,680 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-18 11:05:41,654 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-18 19:00:03,273 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-26 21:54:39,237 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-08-26 21:59:14,618 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+INFO 2017-08-27 13:55:12,831 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-08-31 12:16:12,924 System.Web.Http.ApiController - Application started successfully.

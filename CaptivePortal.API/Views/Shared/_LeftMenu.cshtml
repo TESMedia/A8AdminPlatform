@@ -1,0 +1,126 @@
+﻿<div class="col-md-3 left_col">
+    <div class="left_col scroll-view">
+
+
+        <div class="clearfix"></div>
+
+        <!-- menu profile quick info -->
+        <div class="profile clearfix">
+            <div class="profile_pic">
+                <img src="~/Images/images.png" alt="..." class="img-circle profile_img">
+            </div>
+            <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>Admin</h2>
+            </div>
+        </div>
+        <!-- /menu profile quick info -->
+
+        <br />
+
+        <!-- sidebar menu -->
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                    <li>
+                        <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("Index","Admin")">WiFi Summary</a></li>
+                            <li><a href="@Url.Action("LocationDashBoard","Admin")">Location dashboard</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("ConfigureSite","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
+                            <li><a href="@Url.Action("ManageUser","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
+                            <li><a href="@Url.Action("CreatePromotionalMaterial","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a><i class="fa fa-users"></i> Manage Wi-fi User <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="@Url.Action("UserDetails","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">View Wi-fi users</a></li>
+                            <li><a href="@Url.Action("Register","Account")">Register Wi-fi user</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="UploadFile" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Upload File</a></li>
+                            <li><a href="Locations" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Location Mapping</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a><img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="TestSetUpRtls" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Test Set-up</a></li>
+                            <li><a href="ViewRtlsData" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">View RTLS data</a></li>
+                            <li><a href="ViewErrorLogRtls" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">View Error log</a></li>
+                        </ul>
+                    </li>
+
+                    <li><a onclick="logOut()"><span class="glyphicon glyphicon-off"></span>   Logout</a></li>
+
+                </ul>
+            </div>
+            <div class="menu_section">
+
+                <ul class="nav side-menu"></ul>
+            </div>
+
+        </div>
+        <!-- /sidebar menu -->
+        <!-- /menu footer buttons -->
+        <!-- /menu footer buttons -->
+    </div>
+</div>
+<script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
+<script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@*<link href="~/Bootstrap 3.3.7/bootstrap.min.css" rel="stylesheet" />*@
+<script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
+<script src="~/Scripts/Spin.js"></script>
+<script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
+<script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
+<link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
+<script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
+<script>
+    //var siteId = localStorage.getItem("SiteId");
+    //function configureSite() {
+    //    var siteId = localStorage.getItem("SiteId");
+    //    window.location.href = "/Admin/ConfigureSite?SiteId=" + siteId
+    //}
+    //function manageUser() {
+    //    var siteId = localStorage.getItem("SiteId");
+    //    window.location.href = "/Admin/ManageUser?SiteId=" + siteId
+    //}
+
+    //function viewUser()
+    //{
+    //    var siteId = localStorage.getItem("SiteId");
+    //    window.location.href = "/Admin/UserDetails?SiteId=" + siteId
+    //}
+
+    function uploadFile() {
+        window.location.href = "/Admin/UploadFile"
+    }
+
+    function ViewLocations()
+    {
+        window.location.href = "/Admin/Locations"
+    }
+
+    function logOut()
+    {
+        window.location.href = "/Account/LogOff"
+    }
+
+
+</script>
