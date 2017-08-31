@@ -273,6 +273,17 @@
   <ItemGroup>
     <Content Include="a8Dashboard_Angular\A8DashBoardApp.js" />
     <Content Include="a8Dashboard_Angular\Controllers\LocationController.js" />
+    <Content Include="a8Dashboard_Angular\Controllers\LocationIndicatorController.js" />
+    <Content Include="a8Dashboard_Angular\Controllers\UploadFileController.js" />
+    <Content Include="a8Dashboard_Angular\Scripts\angular.js" />
+    <Content Include="a8Dashboard_Angular\Scripts\angular.min.js" />
+    <Content Include="a8Dashboard_Angular\Scripts\Angular_Notification\angular-ui-notification.css" />
+    <Content Include="a8Dashboard_Angular\Scripts\Angular_Notification\angular-ui-notification.js" />
+    <Content Include="a8Dashboard_Angular\Scripts\Spinner\angular-loading-spinner.js" />
+    <Content Include="a8Dashboard_Angular\Scripts\Spinner\angular-spinner.min.js" />
+    <Content Include="a8Dashboard_Angular\Services\LocationIndicatorService.js" />
+    <Content Include="a8Dashboard_Angular\Services\LocationService.js" />
+    <Content Include="a8Dashboard_Angular\Services\UploadFileService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="build\css\custom.css" />
     <Content Include="build\css\custom.min.css" />
@@ -4580,8 +4591,6 @@
     <Content Include="Views\RTLS\ViewMonitorDevices.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="a8Dashboard_Angular\Scripts\" />
-    <Folder Include="a8Dashboard_Angular\Services\" />
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\LocationDashboard\" />
     <Folder Include="DbContext\" />
