@@ -4,32 +4,21 @@ using CaptivePortal.API.Models.CustomIdentity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Common;
-using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
-using System.Text.RegularExpressions;
-using System.Data.Entity;
 using System.Data;
 using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.parser;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Net.Mime;
 using System.Net;
 using log4net;
-using System.Net.Mail;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using System.Threading.Tasks;
 using CaptivePortal.API.Repository;
-using CaptivePortal.API.Models;
 using CaptivePortal.API.Repository.CaptivePortal;
-using CaptivePortal.API.ViewModels;
 using CaptivePortal.API.ViewModels.CPAdmin;
 
 namespace CaptivePortal.API.Controllers.CPAdmin
@@ -319,7 +308,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     {
                         log.Info(retStr);
                     }
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
                 {
