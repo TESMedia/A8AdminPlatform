@@ -11,10 +11,10 @@ using CaptivePortal.API.Enums.RTLSEnums;
 
 namespace RTLS.Controllers
 {
-    public class RTLSAdminController : Controller
+    public class RTLSController : Controller
     {
         private static log4net.ILog Log { get; set; }
-        ILog log = log4net.LogManager.GetLogger(typeof(RTLSAdminController));
+        ILog log = log4net.LogManager.GetLogger(typeof(RTLSController));
 
         /// <summary>
         /// 

@@ -1,5 +1,5 @@
 ﻿
-@using CaptivePortal.API.Models
+@using CaptivePortal.API.ViewModels.CPAdmin
 
 @model AdminlistViewModel
 @{
@@ -10,37 +10,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+   
     <title>Captive Portal Admin | </title>
-
-    <!-- Bootstrap -->
-    <link href="~/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <!-- Font Awesome -->
-    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="~/vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="~/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!--manual css-->
-    <link href="~/Content/Index.css" rel="stylesheet" />
-    <!-- bootstrap-progressbar -->
-    <link href="~/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- JQVMap -->
-    <link href="~/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
-    <!-- bootstrap-daterangepicker -->
-    <link href="~/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <!-- Custom Theme Style -->
-    <link href="~/build/css/custom.min.css" rel="stylesheet">
-    <link href="~/Style/DropDown.css" rel="stylesheet" />
-    <link href="~/build/css/custom.css" rel="stylesheet" />
-    @*<script src="~/build/js/index.js"></script>*@
     <style>
         td {
             border: 1px #DDD solid;
@@ -71,84 +42,10 @@
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
+            <!--Left side menu and toggle menu -->
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
+            <!--Left side menu and toggle menu -->
 
-                        <ul class="nav navbar-nav navbar-right">
-
-
-                            <li role="presentation" class="dropdown">
-
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
                 @if (TempData["SiteIdCheck"] != null)
@@ -156,18 +53,15 @@
                     <p class="alert alert-success" id="successMessage">@TempData["SiteIdCheck"]</p>
                 }
                 <h1>Overall Estate</h1>
-                @if (ViewBag.roleOfUser == "GlobalAdmin")
-                {
-                    <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='CreateNewSite'">Create New Site</button>
-                }
+                @*@if (ViewBag.roleOfUser == "GlobalAdmin")
+                {*@
+                    <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='@Url.Action("CreateNewSite", "Admin")'">Create New Site</button>
+                @*}*@
                 <div class="row container-fluid">
-
                     <div style="top:35px;width:1000px; height:250px; overflow:auto;">
                         <table class="table table-hover table-responsive" id="table">
                             <thead>
                                 <tr>
-
-
                                     <th style="display:none;">
                                         SiteId
                                     </th>
@@ -196,7 +90,6 @@
                                 @foreach (var item in Model.AdminViewlist)
                                 {
                                     <tr>
-
                                         <td style="display:none;" id="SiteId">
                                             @Html.DisplayFor(modelItem => item.SiteId)
                                         </td>
@@ -219,17 +112,10 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.RtlsUrl)
                                         </td>
-
-
                                     </tr>
                                 }
                             </tbody>
-
-
-
                         </table>
-
-
                     </div>
                     <br /><br /><br /><br />
                     <div>
@@ -263,8 +149,7 @@
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" id="WiFiAPI"  name="WiFiAPI" readonly="readonly"  value="NotDeployed">
                                         </div>
-                                    </div>
-                                  
+                                    </div>              
                                 </div>
                             </div>
 
@@ -289,15 +174,11 @@
                                             <input type="text" class="form-control" id="Loggederrors" name="Loggederrors" readonly="readonly">
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
-
                             <div class="cellContainer">
                                 <div style="margin: 5px;"></div>
                             </div>
-
                             <div class="cellContainer">
                                 <input id="debugStatus" class="form-control col-xs-1" type="text" readonly value="On">
                                 <br />
@@ -307,24 +188,14 @@
                                 <br />
                                 <br />
                                 <br />
-
                                 <input type="button" id="debuggingAndTracing" class="btn btn-success" value="View log" onclick="location.href='@Url.Action("LogsDownload", "Admin")'" />
-
                             </div>
                         </form>
                     </div>
-
-                    
-
                 </div>
-
                 <br />
                 <br />
                 <br />
-
-
-
-
             </div>
             <!-- /page content -->
             <!-- footer content -->
