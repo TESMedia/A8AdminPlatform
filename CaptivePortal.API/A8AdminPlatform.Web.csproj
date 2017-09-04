@@ -256,8 +256,13 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\A8AdminPortal\AccountController.cs" />
     <Compile Include="Controllers\A8AdminPortal\AdminController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\FormController.cs" />
     <Compile Include="Controllers\A8AdminPortal\GroupController.cs" />
     <Compile Include="Controllers\A8AdminPortal\HomeController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\LogsController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\MacAddressSetByAdminController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\PromotionalController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\UploadFileController.cs" />
     <Compile Include="Controllers\LocationDashboard\LocationIndicatorsController.cs" />
     <Compile Include="Controllers\RTLS\DatatableController.cs" />
     <Compile Include="Controllers\RTLS\RTLSController.cs" />
@@ -4590,6 +4595,7 @@
     <Content Include="Views\ExternalLogin\login.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Promotional\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4597,6 +4603,10 @@
     <Folder Include="Logs\" />
     <Folder Include="Upload\" />
     <Folder Include="Vendors\google-code-prettify\bin\" />
+    <Folder Include="Views\Form\" />
+    <Folder Include="Views\Logs\" />
+    <Folder Include="Views\MacAddressSetByAdmin\" />
+    <Folder Include="Views\UploadFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

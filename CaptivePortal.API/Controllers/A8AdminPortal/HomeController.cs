@@ -1,9 +1,7 @@
-﻿using CaptivePortal.API.Models;
-using CaptivePortal.API.Models.A8AdminModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
 using CaptivePortal.API.Models.CustomIdentity;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using log4net;
-using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;

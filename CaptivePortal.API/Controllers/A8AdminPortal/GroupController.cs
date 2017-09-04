@@ -1,13 +1,9 @@
-﻿using CaptivePortal.API.Models;
+﻿using CaptivePortal.API.DataAccess.Repository.CaptivePortal;
 using CaptivePortal.API.Models.A8AdminModel;
-using CaptivePortal.API.Models.CustomIdentity;
-using CaptivePortal.API.ViewModels;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace CaptivePortal.API.Controllers.CPAdmin
@@ -15,7 +11,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
     public class GroupController : Controller
     {
         Group objGroup = new Group();
+        GroupRepository groupRepo = new GroupRepository();
         A8AdminDbContext db = new A8AdminDbContext();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
         // GET: Group
         public ActionResult Index(string SiteId)
         {
@@ -42,45 +44,43 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             list.GroupViewlist.AddRange(groupDetails);
             return View(list);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ActionResult CreateGroup(Group model)
         {
-            objGroup.GroupName = model.GroupName;
-            objGroup.Rule = model.Rule;
-            db.Group.Add(objGroup);
-            db.SaveChanges();
+            groupRepo.Create(model);
             return RedirectToAction("Index", "Group");
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="GroupId"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult DeleteGroup(int GroupId)
         {
-            var group = db.Group.Find(GroupId);
-            db.Group.Remove(group);
-            db.SaveChanges();
+            groupRepo.Delete(GroupId);
             return RedirectToAction("Index", "Group");
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="groupModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult UpdateUserGroup(UserGroup groupModel)
         {
             try
             {
-
-
-                ApplicationUser user = new ApplicationUser();
-                for (int i = 0; i < groupModel.UserIdList.Count; i++)
-                {
-                    user = db.Users.Find(groupModel.UserIdList[i].UserId);
-                    user.GroupId = groupModel.GroupId;
-                }
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
+                groupRepo.Update(groupModel);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
             return RedirectToAction("Index", "Group",new { SiteId=2});
         }
     }

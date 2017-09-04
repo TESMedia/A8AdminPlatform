@@ -84,9 +84,11 @@
     <Compile Include="Repository\CaptivePortal\FormControlRepository.cs" />
     <Compile Include="Repository\CaptivePortal\FormRepository.cs" />
     <Compile Include="Repository\CaptivePortal\GenerateUniqueSessionId.cs" />
+    <Compile Include="Repository\CaptivePortal\GroupRepository.cs" />
     <Compile Include="Repository\CaptivePortal\MacAddressRepository.cs" />
     <Compile Include="Repository\CaptivePortal\ManagePromotionRepository.cs" />
     <Compile Include="Repository\CaptivePortal\OrganisationRepository.cs" />
+    <Compile Include="Repository\CaptivePortal\PromotionalRepository.cs" />
     <Compile Include="Repository\CaptivePortal\RegisterDB.cs" />
     <Compile Include="Repository\CaptivePortal\SiteRepository.cs" />
     <Compile Include="Repository\CaptivePortal\UpdateDb.cs" />

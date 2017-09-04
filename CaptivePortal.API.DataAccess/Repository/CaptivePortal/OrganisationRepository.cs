@@ -34,6 +34,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                     db.Organisation.Add(objOrganisation);
                     db.SaveChanges();
                     orgId = Convert.ToInt32(objOrganisation.OrganisationId);
+                    inputData.OrganisationId = orgId;
                 }
             }
             catch(Exception ex)

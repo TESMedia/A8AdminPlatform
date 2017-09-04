@@ -27,13 +27,43 @@ namespace CaptivePortal.API.Repository.CaptivePortal
             {
                 Company objCompany = new Company();
                 objCompany.CompanyName = model.CompanyName;
-                objCompany.OrganisationId = orgId == 0 ? null : (int?)Convert.ToInt32(orgId);
+                objCompany.OrganisationId = model.OrganisationId;
                 db.Company.Add(objCompany);
                 db.SaveChanges();
-                compId = objCompany.CompanyId;
+                model.CompanyId = objCompany.CompanyId;
             }
-            
-           
+            else
+            {
+                model.CompanyId = Convert.ToInt32(model.CompanyDdl);
+            }
+        }
+
+        public void UpdateCompany(FormViewModel model)
+        {
+            try
+            {
+                if(model.CompanyId!=0 && model.OrganisationId!=0)
+                {
+                    compId = model.CompanyId;
+                    orgId = model.OrganisationId;
+                }
+                else
+                {
+                    compId = Convert.ToInt32(model.CompanyDdl);
+                    orgId = Convert.ToInt32(model.organisationDdl);
+                }
+                var objCompany = db.Company.Find(compId);
+                objCompany.CompanyName = db.Company.FirstOrDefault(m => m.CompanyId == compId).CompanyName;
+                objCompany.CompanyIcon = model.CompanyIcon;
+                objCompany.OrganisationId = orgId;
+                db.Entry(objCompany).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }

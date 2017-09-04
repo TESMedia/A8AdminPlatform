@@ -18,5 +18,6 @@ namespace CaptivePortal.API.Models.A8AdminModel
 
         [ForeignKey("OrganisationId")]
         public virtual Organisation Organisation { get; set; }
+        public string CompanyIcon { get; set; }
     }
 }

@@ -17,6 +17,8 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public int FormId { get; set; }
         public string SiteName { get; set; }
         public string CompanyName { get; set; }
+        public int OrganisationId { get; set; }
+        public int CompanyId { get; set; }
         public string OrganisationName { get; set; }
         public int organisationDdl { get; set; }
         public string CompanyDdl { get; set; }
@@ -35,6 +37,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string RtlsUrl { get; set; }
         public string DashboardUrl { get; set; }
 
+        public string CompanyIcon { get; set; }
         public string[] dataType { get; }
         public string[] controlType { get; }
         public List<string> fieldlabel { get; set; }

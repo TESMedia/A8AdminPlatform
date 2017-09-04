@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using CaptivePortal.API.Models.A8AdminModel;
-using CaptivePortal.API.Models;
 using System.Data.Entity;
 using log4net;
 using CaptivePortal.API.Models.CaptivePortalModel;
-using CaptivePortal.API.ViewModels;
 using CaptivePortal.API.ViewModels.CPAdmin;
 
 namespace CaptivePortal.API.Repository.CaptivePortal
@@ -102,6 +98,30 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         public string [] GetListMacAddress(string UserUniqueId,int SiteId)
         {
             return db.MacAddress.Where(m => m.Users.UniqueUserId == UserUniqueId && m.Users.SiteId==SiteId).Select(m => m.MacAddressValue).ToArray();
+        }
+
+
+        public void AddMacAddressForWiFiUser(int userId,string MacAddress)
+        {
+           
+            var objUser = db.Users.Find(userId);
+            {
+                MacAddress mac = new MacAddress();
+                mac.MacAddressValue = MacAddress;
+                mac.UserId = userId;
+                db.MacAddress.Add(mac);
+                //db.Entry(objUser).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
+
+        public void DleteMacAddressOfWiFiUser(int MacId)
+        {
+            MacAddress objMac = db.MacAddress.Find(MacId);
+            {
+                db.MacAddress.Remove(objMac);
+                db.SaveChanges();
+            }
         }
 
     }

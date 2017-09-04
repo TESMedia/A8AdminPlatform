@@ -61,7 +61,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 {
                     SiteName = inputData.SiteName,
                     SiteId = inputData.SiteId,
-                    CompanyId = compId == null ? null : (int?)Convert.ToInt32(compId),
+                    CompanyId =Convert.ToInt32(inputData.CompanyDdl),
                     AutoLogin = inputData.AutoLogin,
                     ControllerIpAddress = inputData.ControllerIpAddress,
                     MySqlIpAddress = inputData.MySqlIpAddress,
