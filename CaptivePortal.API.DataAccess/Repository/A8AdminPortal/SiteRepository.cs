@@ -91,5 +91,28 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             return db.Site.Any(m => m.SiteId == SiteId);
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public List<Site> GetListOfSiteGroupPerSiteId(int SiteId)
+        {
+            return db.Site.Where(m => m.CompanyId == db.Site.Where(n => n.SiteId == SiteId).FirstOrDefault().CompanyId).ToList();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public List<Site> GetListOfSiteGroupPerSiteName(string SiteName)
+        {
+            return db.Site.Where(m => m.CompanyId == db.Site.Where(n => n.SiteName == SiteName).FirstOrDefault().CompanyId).ToList();
+        }
+
     }
 }

@@ -24,6 +24,9 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public string TermsAndCondDoc { get; set; }
         public string RtlsUrl { get; set; }
         public string DashboardUrl { get; set; }
+        public bool? IsRtls { get; set; }
+        public bool? IsLocationDashboard { get; set; }
+        public bool? IsCaptivePortal { get; set; }
 
         //[ForeignKey("UserId")]
         //public virtual Users Users { get; set; }

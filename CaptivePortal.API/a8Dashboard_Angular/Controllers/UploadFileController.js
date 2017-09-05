@@ -1,20 +1,12 @@
 ﻿a8DashboardModule.controller('UploadFileController', ['$scope', 'UploadFileService', '$rootScope', 'Notification', function ($scope, UploadFileService, $rootScope, Notification) {
 
     function GetSiteNameFromQueryString() {
-        var key = null;
-        var value = null;
-        var retStr = "Discovery1";
         var queries = {};
         queries = document.location.search.substr(1).split('&');
-        if (queries.toString().search("=") === 8) {
-            var i = queries.toString().split('=');
-            key = i[0].toString();
-            value = i[1].toString();
-        }
-        if (key == "SiteName" && (value == "Discovery1" || value == "Discovery2")) {
-            retStr = value;
-        }
-        return retStr;
+        var i = queries.toString().split('=');
+        key = i[0].toString();
+        value = i[1].toString();
+        return value;
     }
 
     $scope.getFileUpload = function () {
@@ -65,7 +57,7 @@
         UploadFileService.ImportSftpFile(selected).success(function (d) {
             window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString()
         }, function (error) { });
-    }    
+    }
 
     $scope.Clear = function (id) {
         var selected = new Array();

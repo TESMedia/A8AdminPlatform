@@ -23,7 +23,7 @@ namespace CaptivePortal.API
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            //createRolesandUsers();
+            createRolesandUsers();
         }
 
 
@@ -52,6 +52,7 @@ namespace CaptivePortal.API
                     var user = new ApplicationUser();
                     user.UserName = "admin@airloc8.com";
                     user.Email = "admin@airloc8.com";
+                    user.BirthDate = DateTime.Now;
                     user.CreationDate = DateTime.Now;
                     user.UpdateDate = DateTime.Now;
                     user.EmailConfirmed = true;

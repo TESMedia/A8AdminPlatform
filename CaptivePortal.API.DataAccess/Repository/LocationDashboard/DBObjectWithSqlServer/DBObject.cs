@@ -31,7 +31,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
             return 1;
         }
 
-        public int ExecuteReaderWithHeaderStoredProc(string storedProcName,string connectionName)
+        public int ExecuteReaderWithHeaderStoredProc(string storedProcName, string connectionName)
         {
             ErrorString = "";
             SqlConnection myConn = null;
@@ -39,7 +39,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
 
             try
             {
-                string myDBConnectionString = WebConfigurationManager.AppSettings[connectionName].ToString();
+                string myDBConnectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                 myConn = new SqlConnection(myDBConnectionString);
 
                 SqlCommand myCmd = new SqlCommand(storedProcName, myConn);
@@ -84,7 +84,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
             return retCode;
         }
 
-        public int ExecuteReaderStoredProc(string storedProcName,string connectionName)
+        public int ExecuteReaderStoredProc(string storedProcName, string connectionName)
         {
             ErrorString = "";
             SqlConnection myConn = null;
@@ -92,7 +92,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
 
             try
             {
-                string myDBConnectionString = WebConfigurationManager.AppSettings[connectionName].ToString();
+                string myDBConnectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                 myConn = new SqlConnection(myDBConnectionString);
 
                 SqlCommand myCmd = new SqlCommand(storedProcName, myConn);
@@ -139,7 +139,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
 
             try
             {
-                string myDBConnectionString = WebConfigurationManager.AppSettings[connectionName].ToString();
+                string myDBConnectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                 myConn = new SqlConnection(myDBConnectionString);
 
                 SqlCommand myCmd = new SqlCommand(storedProcName, myConn);
@@ -214,7 +214,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
             return retCode;
         }
 
-        public int ExecuteNonQueryStoredProc(string storedProcName,string connectionName)
+        public int ExecuteNonQueryStoredProc(string storedProcName, string connectionName)
         {
             ErrorString = "";
             int retCode = 1;
@@ -222,7 +222,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
 
             try
             {
-                string myDBConnectionString = WebConfigurationManager.AppSettings[connectionName].ToString();
+                string myDBConnectionString = ConfigurationManager.ConnectionStrings[connectionName].ConnectionString;
                 myConn = new SqlConnection(myDBConnectionString);
                 myConn.Open();
 

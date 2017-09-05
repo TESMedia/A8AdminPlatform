@@ -263,6 +263,7 @@
     <Compile Include="Controllers\A8AdminPortal\MacAddressSetByAdminController.cs" />
     <Compile Include="Controllers\A8AdminPortal\PromotionalController.cs" />
     <Compile Include="Controllers\A8AdminPortal\UploadFileController.cs" />
+    <Compile Include="Controllers\LocationDashboard\LocationDashBoardController.cs" />
     <Compile Include="Controllers\LocationDashboard\LocationIndicatorsController.cs" />
     <Compile Include="Controllers\RTLS\DatatableController.cs" />
     <Compile Include="Controllers\RTLS\RTLSController.cs" />
@@ -335,6 +336,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Style\sb-admin-2.css" />
     <Content Include="WinSCP.exe" />
     <None Include="Properties\PublishProfiles\CP-api-PB.pubxml" />
     <None Include="Properties\PublishProfiles\Cp-API-Test2.pubxml" />
@@ -4596,6 +4598,12 @@
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Promotional\Create.cshtml" />
+    <Content Include="Views\LocationDashBoard\CreateLocation.cshtml" />
+    <Content Include="Views\LocationDashBoard\EditLocation.cshtml" />
+    <Content Include="Views\LocationDashBoard\Index.cshtml" />
+    <Content Include="Views\LocationDashBoard\LocationsMapping.cshtml" />
+    <Content Include="Views\LocationDashBoard\UploadFile.cshtml" />
+    <Content Include="Views\Admin\UploadLocationDashBoardFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

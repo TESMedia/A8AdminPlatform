@@ -1,27 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Configuration;
-using System.Text.RegularExpressions;
-using System.Globalization;
-using System.Web.Script.Serialization;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 using System.Web.Http.Cors;
 using CaptivePortal.API.ViewModels.LocationDashBoard;
 using CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer;
+using CaptivePortal.API.Models.A8AdminModel;
+using System.Collections.Generic;
+using System.Collections;
+using CaptivePortal.API.Repository.CaptivePortal;
+using System.Linq;
+using Newtonsoft.Json;
 
 namespace a8Dashboard.Controllers
 {
     /// <summary>
     /// 
     /// </summary>
-    /// 
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("DashBoard/api")]
     public class DashboardApiController : ApiController
@@ -146,6 +140,33 @@ namespace a8Dashboard.Controllers
                                     "\"Content\":" + contentString +
                                 "}]";
             return JSONString;
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetListOfSiteWithLocationDashBoard")]
+        public HttpResponseMessage GetListOfSiteWithLocationDashBoard(int SiteId)
+        {
+            string returnString = "";
+            try
+            {
+                SiteRepository objSiteRepository = new SiteRepository();
+                returnString = JsonConvert.SerializeObject(objSiteRepository.GetListOfSiteGroupPerSiteId(SiteId).Select(m => new { SiteName = m.SiteName, SiteId = m.SiteId }));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(returnString, System.Text.Encoding.UTF8, "application/json")
+            };
+
         }
     }
 }

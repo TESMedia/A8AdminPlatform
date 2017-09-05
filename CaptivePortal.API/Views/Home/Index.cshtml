@@ -6,12 +6,14 @@
 
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
-    <title>Captive Portal Admin | </title>
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/DropDown.css" rel="stylesheet" />
+    <link href="~/build/css/custom.css" rel="stylesheet" />
+    @*<script src="~/build/js/index.js"></script>*@
     <style>
         td {
             border: 1px #DDD solid;
@@ -37,15 +39,11 @@
         }
     </style>
 </head>
-
-
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
-            <!--Left side menu and toggle menu -->
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!--Left side menu and toggle menu -->
-
+            <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
                 @if (TempData["SiteIdCheck"] != null)
@@ -55,13 +53,16 @@
                 <h1>Overall Estate</h1>
                 @*@if (ViewBag.roleOfUser == "GlobalAdmin")
                 {*@
-                    <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='@Url.Action("CreateNewSite", "Admin")'">Create New Site</button>
+                    <a style="float:right" class="btn btn-success" href="/Admin/CreateNewSite">Create New Site</a>
                 @*}*@
                 <div class="row container-fluid">
+
                     <div style="top:35px;width:1000px; height:250px; overflow:auto;">
                         <table class="table table-hover table-responsive" id="table">
                             <thead>
                                 <tr>
+
+
                                     <th style="display:none;">
                                         SiteId
                                     </th>
@@ -90,6 +91,7 @@
                                 @foreach (var item in Model.AdminViewlist)
                                 {
                                     <tr>
+
                                         <td style="display:none;" id="SiteId">
                                             @Html.DisplayFor(modelItem => item.SiteId)
                                         </td>
@@ -112,14 +114,21 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.RtlsUrl)
                                         </td>
+
+
                                     </tr>
                                 }
                             </tbody>
+
+
+
                         </table>
+
+
                     </div>
                     <br /><br /><br /><br />
                     <div>
-                       <h4>Site:<label id="site_name"></label></h4> 
+                        <h4>Site:<label id="site_name"></label></h4>
                     </div>
                     <div style="width:100%; height: 200px;">
                         <form class="form-horizontal">
@@ -135,21 +144,22 @@
                                     <div class="form-group">
                                         <label class="control-label col-sm-5" for="Radius">Radius:</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="Radius"  name="Radius" readonly="readonly"  value="NotDeployed">
+                                            <input type="text" class="form-control" id="Radius" name="Radius" readonly="readonly" value="NotDeployed">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-5" for="RTLSAPI">RTLS-API:</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="RTLSAPI"  name="RTLSAPI" readonly="readonly"  value="NotDeployed">
+                                            <input type="text" class="form-control" id="RTLSAPI" name="RTLSAPI" readonly="readonly" value="NotDeployed">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-sm-5" for="WiFiAPI">Wi-Fi API:</label>
                                         <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="WiFiAPI"  name="WiFiAPI" readonly="readonly"  value="NotDeployed">
+                                            <input type="text" class="form-control" id="WiFiAPI" name="WiFiAPI" readonly="readonly" value="NotDeployed">
                                         </div>
-                                    </div>              
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -174,11 +184,15 @@
                                             <input type="text" class="form-control" id="Loggederrors" name="Loggederrors" readonly="readonly">
                                         </div>
                                     </div>
+
+
                                 </div>
                             </div>
+
                             <div class="cellContainer">
                                 <div style="margin: 5px;"></div>
                             </div>
+
                             <div class="cellContainer">
                                 <input id="debugStatus" class="form-control col-xs-1" type="text" readonly value="On">
                                 <br />
@@ -188,14 +202,24 @@
                                 <br />
                                 <br />
                                 <br />
+
                                 <input type="button" id="debuggingAndTracing" class="btn btn-success" value="View log" onclick="location.href='@Url.Action("LogsDownload", "Admin")'" />
+
                             </div>
                         </form>
                     </div>
+
+
+
                 </div>
+
                 <br />
                 <br />
                 <br />
+
+
+
+
             </div>
             <!-- /page content -->
             <!-- footer content -->
@@ -273,14 +297,14 @@
 
         }
 
-        
+
         var sitedata = { SiteId : SiteId };
             $.ajax(
           {
              type: "POST",
              data: sitedata,
              url: "/api/a8Captiveportal/V1/SiteOperationalStatus",
-            
+
              success: function (data)
              {
                  var controllerdata = data[0];
@@ -327,7 +351,7 @@
                      $('#WIFIAPI').css('background-color', 'Green');
                      $('#WIFIAPI').val('Operational');
                  }
-                
+
              },
              failure: function (response)
              {

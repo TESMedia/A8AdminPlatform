@@ -14,9 +14,11 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public int AdminSiteAccessId { get; set; }
         public int UserId { get; set; }
         public int SiteId { get; set; }
-        public string SiteName { get; set; }
 
         [ForeignKey("UserId")]
         public virtual ApplicationUser User { get; set; }
+
+        [ForeignKey("SiteId")]
+        public virtual Site Site { get; set; }
     }
 }

@@ -517,6 +517,24 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             return View();
         }
 
+        public ActionResult Locationdashboard()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult UploadLocationDashBoardFile(string SiteName)
+        {
+            if (!String.IsNullOrEmpty(SiteName))
+            {
+                return View();
+            }
+            else
+            {
+                TempData["SiteIdCheck"] = "Please select any of the site and then upload";
+                return RedirectToAction("Home", "Admin");
+            }
+        }
 
     }
 }

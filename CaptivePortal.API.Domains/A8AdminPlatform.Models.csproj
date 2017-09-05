@@ -80,10 +80,7 @@
     <Compile Include="CaptivePortalModel\FormControl.cs" />
     <Compile Include="CaptivePortalModel\MacAddress.cs" />
     <Compile Include="CaptivePortalModel\ManagePromotion.cs" />
-    <Compile Include="CaptivePortalModel\Nas.cs" />
     <Compile Include="CaptivePortalModel\OperatingSystem.cs" />
-    <Compile Include="CaptivePortalModel\Radacct.cs" />
-    <Compile Include="CaptivePortalModel\RadGroupCheck.cs" />
     <Compile Include="CustomIdentity\ApplicationRole.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleManager.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleStore.cs" />
@@ -104,8 +101,26 @@
     <Compile Include="LocationDashBoardModel\NeighBourArea.cs" />
     <Compile Include="LocationDashBoardModel\Parameter.cs" />
     <Compile Include="LocationDashBoardModel\LocationDashBoardDbContext.cs" />
+    <Compile Include="Migrations\201709050457262_Initial.cs" />
+    <Compile Include="Migrations\201709050457262_Initial.Designer.cs">
+      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050511142_New_Changes.cs" />
+    <Compile Include="Migrations\201709050511142_New_Changes.Designer.cs">
+      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.cs" />
+    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.Designer.cs">
+      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.cs" />
+    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.Designer.cs">
+      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTLSModel\AppLog.cs" />
+    <Compile Include="RTLSModel\Enums\Enumes\CutomEnum.cs" />
     <Compile Include="RTLSModel\jQueryDataTableParamModel.cs" />
     <Compile Include="RTLSModel\LocationData.cs" />
     <Compile Include="RTLSModel\MacAddress.cs" />
@@ -155,6 +170,20 @@
     <Compile Include="ViewModels\RTLS\RequestLocationDataVM.cs" />
     <Compile Include="ViewModels\RTLS\Result.cs" />
     <Compile Include="ViewModels\RTLS\StatusReturn.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201709050457262_Initial.resx">
+      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050511142_New_Changes.resx">
+      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050542266_New_Changes_As_Per.resx">
+      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.resx">
+      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

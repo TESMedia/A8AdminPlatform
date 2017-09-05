@@ -20,11 +20,8 @@ namespace CaptivePortal.API.Models.A8AdminModel
 
         public DbSet<UsersAddress> UsersAddress { get; set; }
         public DbSet<Company> Company { get; set; }
-        public DbSet<Nas> Nas { get; set; }
         public DbSet<Organisation> Organisation { get; set; }
         public DbSet<Site> Site { get; set; }
-        public DbSet<RadGroupCheck> RadGroupCheck { get; set; }
-        public DbSet<Radacct> Radacct { get; set; }
         public DbSet<Form> Form { get; set; }
         public DbSet<FormControl> FormControl { get; set; }
         public DbSet<Age> Age { get; set; }
