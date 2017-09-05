@@ -23,18 +23,26 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         }
         public void CreateCompany(FormViewModel model)
         {
-            if (model.CompanyName != null)
+            try
             {
-                Company objCompany = new Company();
-                objCompany.CompanyName = model.CompanyName;
-                objCompany.OrganisationId = model.OrganisationId;
-                db.Company.Add(objCompany);
-                db.SaveChanges();
-                model.CompanyId = objCompany.CompanyId;
+                
+                if (model.CompanyName != null)
+                {
+                    Company objCompany = new Company();
+                    objCompany.CompanyName = model.CompanyName;
+                    objCompany.OrganisationId = model.OrganisationId==0  ? null : (int?)Convert.ToInt32(model.OrganisationId);
+                    db.Company.Add(objCompany);
+                    db.SaveChanges();
+                    model.CompanyId = objCompany.CompanyId;
+                }
+                else
+                {
+                    model.CompanyId = Convert.ToInt32(model.CompanyDdl);
+                }
             }
-            else
+            catch(Exception ex)
             {
-                model.CompanyId = Convert.ToInt32(model.CompanyDdl);
+                throw ex;
             }
         }
 

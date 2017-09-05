@@ -234,6 +234,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     Email = model.Email,
                     CreationDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
+                    BirthDate=DateTime.Now,
                     SiteId = model.SiteDdl,
                     Status = Status.Active.ToString(),
                     PhoneNumber = defaultSiteName//Store the SiteName As default Site in Identity Column named PhoneNumber
@@ -247,12 +248,12 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     await UserManager.SendEmailAsync(user.Id, "Welcome to the Captive portal Dashboard", "You are receiving this email as you have been set up as a user of the captive portal Dashboard. To complete the registration process please click <a href=\"" + callbackUrl + "\">here</a>" + " " + "to reset your password and login.If you have any issues with the login process, or were not expecting this email, please email support@airloc8.com.");
                     TempData["Success"] = "An Email has sent to your Inbox.";
 
-                    AdminSiteAccess objAdminSite1 = new AdminSiteAccess();
-                    objAdminSite1.UserId = user.Id;
-                    objAdminSite1.SiteId = model.SiteDdl;
-                    objAdminSite1.Site.SiteName = db.Site.FirstOrDefault(m => m.SiteId == model.SiteDdl).SiteName;
-                    db.AdminSiteAccess.Add(objAdminSite1);
-                    db.SaveChanges();
+                    //AdminSiteAccess objAdminSite1 = new AdminSiteAccess();
+                    //objAdminSite1.UserId = user.Id;
+                    //objAdminSite1.SiteId = model.SiteDdl;
+                    //objAdminSite1.Site.SiteName = db.Site.FirstOrDefault(m => m.SiteId == model.SiteDdl).SiteName;
+                    //db.AdminSiteAccess.Add(objAdminSite1);
+                    //db.SaveChanges();
                 }
                 else
                 {
@@ -263,7 +264,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 throw ex;
             }
-            return RedirectToAction("CreateUser", "Admin", new { SiteId = model.SiteDdl });
+            return RedirectToAction("CreateUser", "Account", new { SiteId = model.SiteDdl });
         }
 
 
@@ -488,7 +489,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Index", "Home");
 
                 }
             }

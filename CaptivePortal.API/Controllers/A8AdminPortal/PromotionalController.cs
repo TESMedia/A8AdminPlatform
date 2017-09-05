@@ -1,5 +1,6 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
 using CaptivePortal.API.Models.CaptivePortalModel;
+using CaptivePortal.API.Repository.CaptivePortal;
 using System.IO;
 using System.Linq;
 using System.Web.Hosting;
@@ -10,6 +11,7 @@ namespace CaptivePortal.API.Controllers.A8AdminPortal
     public class PromotionalController : Controller
     {
         A8AdminDbContext db = new A8AdminDbContext();
+        ManagePromotionRepository managePromotionRepo = new ManagePromotionRepository();
         /// <summary>
         /// 
         /// </summary>
@@ -46,8 +48,8 @@ namespace CaptivePortal.API.Controllers.A8AdminPortal
                 var pro = db.ManagePromotion.Where(m => m.SiteId == model.SiteId).FirstOrDefault();
                 if (pro != null)
                 {
-                    db.ManagePromotion.Remove(pro);
-                    db.SaveChanges();
+                    managePromotionRepo.Delete(model.SiteId);
+
                 }
                 //image path
                 if (Request.Files["OptionalPicture"].ContentLength > 0)
@@ -64,14 +66,11 @@ namespace CaptivePortal.API.Controllers.A8AdminPortal
                     httpPostedFile.SaveAs(completePath);
                     string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
                     OptionalPictureForSuccessPage = baseUrl + optionalPicturePath;
+                    model.OptionalPictureForSuccessPage = OptionalPictureForSuccessPage;
                 }
 
-                objManagePromotion.SiteId = model.SiteId;
-                objManagePromotion.SuccessPageOption = model.SuccessPageOption;
-                objManagePromotion.WebPageURL = model.WebPageURL;
-                objManagePromotion.OptionalPictureForSuccessPage = OptionalPictureForSuccessPage;
-                db.ManagePromotion.Add(objManagePromotion);
-                db.SaveChanges();
+                managePromotionRepo.Create(model);
+
             }
             else
             {
@@ -89,15 +88,13 @@ namespace CaptivePortal.API.Controllers.A8AdminPortal
                     }
                     httpPostedFile.SaveAs(completePath);
                     string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+                    model.OptionalPictureForSuccessPage = OptionalPictureForSuccessPage;
                     OptionalPictureForSuccessPage = baseUrl + optionalPicturePath;
+                    model.OptionalPictureForSuccessPage = OptionalPictureForSuccessPage;
                 }
 
-                objManagePromotion.SiteId = model.SiteId;
-                objManagePromotion.SuccessPageOption = model.SuccessPageOption;
-                objManagePromotion.WebPageURL = model.WebPageURL;
-                objManagePromotion.OptionalPictureForSuccessPage = OptionalPictureForSuccessPage;
-                db.ManagePromotion.Add(objManagePromotion);
-                db.SaveChanges();
+                managePromotionRepo.Create(model);
+
             }
             return RedirectToAction("Index", "Home");
         }
