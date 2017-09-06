@@ -120,6 +120,8 @@ namespace CaptivePortal.API.Controllers
                 //                               SiteName = item.SiteName,
                 //                               DashboardUrl = item.DashboardUrl,
                 //                               RtlsUrl = item.RtlsUrl,
+                //                              
+               //                                MySqlIpAddress = item.MySqlIpAddress,
                 //                               SiteId = item.SiteId
                 //                           }
                 //                         ).ToList();
@@ -140,6 +142,7 @@ namespace CaptivePortal.API.Controllers
                                            DashboardUrl = item.DashboardUrl,
                                            RtlsUrl = item.RtlsUrl,
                                            SiteId = item.SiteId,
+                                           MySqlIpAddress=item.MySqlIpAddress,
                                            CompanyId = item.Company == null ? null : item.Company.CompanyId.ToString()
                                        }
                                      ).ToList();

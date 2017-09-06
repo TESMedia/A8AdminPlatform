@@ -10,8 +10,11 @@ namespace CaptivePortal.API.Repository.CaptivePortal
 {
     public class CompanyRepository
     {
+
         private int RetCode { get; set; }
         private string RetMsg { get; set; }
+        int orgId = 0;
+        int compId = 0;
 
         private A8AdminDbContext db;
 
@@ -19,11 +22,18 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             db = new A8AdminDbContext();
         }
-
-
         public void CreateCompany(FormViewModel model)
         {
-            throw new NotImplementedException();
+            if (model.CompanyName != null)
+            {
+                Company objCompany = new Company();
+                objCompany.CompanyName = model.CompanyName;
+                objCompany.OrganisationId = orgId == 0 ? null : (int?)Convert.ToInt32(orgId);
+                db.Company.Add(objCompany);
+                db.SaveChanges();
+                compId = objCompany.CompanyId;
+            }
+
         }
     }
 }

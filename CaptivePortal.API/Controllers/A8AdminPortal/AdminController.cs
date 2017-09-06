@@ -319,7 +319,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     {
                         log.Info(retStr);
                     }
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Index", "Home");
                 }
                 catch (Exception ex)
                 {
