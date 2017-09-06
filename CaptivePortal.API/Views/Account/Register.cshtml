@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
@@ -13,6 +14,7 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+           
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">
@@ -22,14 +24,24 @@
                     </div>
                     <div class="clearfix"></div>
                     <form></form>
+                    <div class="col-md-12 text-center">
+                        <div class="form-group">
+                            <label class="control-label col-sm-1" for="Site" style="padding-left:60px;">Site:</label>
+                            <div class="col-md-3">
+                                @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, "--Select the Site--", new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = "@ViewBag.SiteName" })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
                     @*@using (Html.BeginForm("Register", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "formid" }))
                         {*@
                     <div class="form-horizontal">
-
+                        <h2><b>Create Wi-Fi User</b></h2>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="UniqueId">UserId:</label>
+                            <label class="control-label col-sm-2" for="Username">Username:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="UniqueId" placeholder="">
+                                <input type="text" class="form-control" id="userName" placeholder="">
                             </div>
                             <label class="control-label col-sm-2" for="FirstName">Address Line 1:</label>
                             <div class="col-md-3">
@@ -38,30 +50,30 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="FirstName">Username:</label>
+                            <label class="control-label col-sm-2" for="Forename">Forename:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="userName" placeholder="">
+                                <input type="text" class="form-control" id="Forename" placeholder="" name="FirstName">
                             </div>
-                            <label class="control-label col-sm-2" for="FirstName">Address Line 2:</label>
+                            <label class="control-label col-sm-2" for="Address2">Address Line 2:</label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="text" placeholder="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="FirstName">Forename:</label>
+                            <label class="control-label col-sm-2" for="Surname">Surname:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="firstName" placeholder="" name="FirstName">
+                                <input type="text" class="form-control" id="Surname" placeholder="">
                             </div>
-                            <label class="control-label col-sm-2" for="FirstName">County:</label>
+                            <label class="control-label col-sm-2" for="County">County:</label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="text" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="FirstName">Surname:</label>
+                            <label class="control-label col-sm-2" for="pwd">Password:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="lastName" placeholder="">
+                                <input type="password" class="form-control" id="pwd" placeholder="" name="Password">
                             </div>
                             <label class="control-label col-sm-2" for="pc">Postcode:</label>
                             <div class="col-md-3">
@@ -71,24 +83,13 @@
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">Password:</label>
-                            <div class="col-md-3">
-                                <input type="password" class="form-control" id="pwd" placeholder="" name="Password">
-                            </div>
-                            <label class="control-label col-sm-2" for="mobileNumber">Country:</label>
-                            <div class="col-md-3">
-                                <input type="text" class="form-control" id="mobileNumber" placeholder="" name="MobileNumber">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
                             <label class="control-label col-sm-2" for="mobileNumber">Mobile Number:</label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="mobileNumber" placeholder="" name="MobileNumber">
                             </div>
-                            <label class="control-label col-sm-2" for="Custom1">Custom field 1 : </label>
+                            <label class="control-label col-sm-2" for="Country">Country:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="text" placeholder="">
+                                <input type="text" class="form-control" id="Country" placeholder="" name="MobileNumber">
                             </div>
                         </div>
 
@@ -97,7 +98,7 @@
                             <div class="col-md-3">
                                 <input type="email" class="form-control" id="email" placeholder="" name="UserName">
                             </div>
-                            <label class="control-label col-sm-2" for="Custom1">Custom field 2 : </label>
+                            <label class="control-label col-sm-2" for="Custom1">Custom field 1 : </label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="text" placeholder="">
                             </div>
@@ -106,13 +107,13 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="gender">Gender:</label>
                             <div class="col-md-3">
-                                <select class="form-control" name="GenderId">
+                                <select class="form-control" name="GenderId" id="GenderId">
                                     <option value="1">Male</option>
                                     <option value="2">Female</option>
                                     <option value="3">Not Answered</option>
                                 </select>
                             </div>
-                            <label class="control-label col-sm-2" for="Custom1">Custom field 3 : </label>
+                            <label class="control-label col-sm-2" for="Custom2">Custom field 2 : </label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="text" placeholder="">
                             </div>
@@ -121,7 +122,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-2" for="ageRange">Age Range:</label>
                             <div class="col-md-3">
-                                <select class="form-control" name="AgeId">
+                                <select class="form-control" name="AgeId" id="AgeId">
                                     <option value="1">0-17</option>
                                     <option value="2">18-24</option>
                                     <option value="3">25-34</option>
@@ -131,7 +132,7 @@
                                     <option value="7">65+</option>
                                 </select>
                             </div>
-                            <label class="control-label col-sm-2" for="Custom1">Custom field 4 : </label>
+                            <label class="control-label col-sm-2" for="Custom3">Custom field 3 : </label>
                             <div class="col-md-3">
                                 <input type="text" class="form-control" id="text" placeholder="">
                             </div>
@@ -142,11 +143,24 @@
                             <div class="col-md-3">
                                 <input type="date" class="form-control" id="birthDate" name="BirthDate">
                             </div>
+                            <label class="control-label col-sm-2" for="Custom4">Custom field 4 : </label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="text" placeholder="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="Group">Group:</label>
+                            <div class="col-md-3">
+                                @*<input type="text" class="form-control" id="Group" name="GroupName">*@
+                                @Html.DropDownList("GroupDdl", ViewBag.groups as IEnumerable<SelectListItem>, "--Select the Group--", new { @class = "form-control", @id = "GroupDdl", @name = "GroupName", @onchange = "selectGroup()" })
+                            </div>
                             <label for="custom-5" class="control-label col-sm-2">Customer Field 5 :  </label>
                             <div class="col-md-3 ">
                                 <input class="form-control col-md-7 col-xs-12" type="checkbox" id="Custom5" name="Custom5" style="width:30px;">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="auto-login" class="control-label col-sm-2">Auto-login users:</label>
                             <div class="col-md-3">
@@ -202,9 +216,9 @@
                             </div>
                         </div>
                     </div>
+                    <br />
+                    <br />
                     @*}*@
-                    <br />
-                    <br />
                 </div>
             </div>
             <!-- /page content -->
@@ -254,8 +268,32 @@
 
 </body>
 </html>
-
 <script type="text/javascript">
+
+    $(document).ready(function()
+        {
+        navigation();
+        })
+</script>
+<script type="text/javascript">
+            var SiteId ;
+
+
+        //store siteId and siteName in localstorage.
+        function saveToLocalStorage() {
+            SiteId = localStorage.getItem("SiteId");
+            localStorage.setItem("SiteId", SiteId)
+            SiteId = document.getElementById("SiteDdl").value;
+            if (SiteId != localStorage.getItem("SiteId")) {
+                SiteId = document.getElementById("SiteDdl").value;
+                localStorage.setItem("SiteId", SiteId)
+                window.localStorage.setItem("SiteId", SiteId);
+                var skillsSelect = document.getElementById("SiteDdl");
+                var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
+                window.localStorage.setItem('SiteName', selectedText);
+            }
+        }
+    var strGroup;
     $(function () {
         $(document).on('click', '.btn-add', function (e) {
             e.preventDefault();
@@ -290,7 +328,11 @@
 
     var siteId = localStorage.getItem("SiteId");
     var siteName = localStorage.getItem("SiteName");
-    document.getElementsByTagName('form')[0].innerHTML = siteName;
+    //document.getElementsByTagName('form')[0].innerHTML = siteName;
+    function selectGroup() {
+        var e = document.getElementById("GroupDdl");
+        strGroup = e.options[e.selectedIndex].value;
+    }
 
     function CreateUser() {
         var data = {
@@ -298,13 +340,18 @@
             UserName: $('#userName').val(),
             Password: $('#pwd').val(),
             FirstName: $('#firstName').val(),
-            LastName:$('#lastName').val(),
+            LastName: $('#lastName').val(),
             AutoLogin: $('#checkbox1').val(),
-            UserId: $('#UniqueId').val(),
-            SiteId: siteId,
-            MacAddress: $('#macAdd').val()
+            BirthDate: $('#birthDate').val(),
+            SiteId: SiteId,
+            GroupName: strGroup,
+            MacAddress: $('#macAdd').val(),
+            GenderId: $('#GenderId').val(),
+            AgeId: $('#AgeId').val()
+
         }
-        $.post("http://localhost:55205/api/a8Captiveportal/V1/CreateUser", data, function (e) {
+        $.post("http://localhost:55205/api/a8Captiveportal/V1/RegisterWifiUser", data, function (e) {
+            window.location = "UserDetails?siteId=" + siteId;
         });
     }
 

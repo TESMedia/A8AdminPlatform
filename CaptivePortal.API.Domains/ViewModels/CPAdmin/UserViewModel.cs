@@ -52,7 +52,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime CreationDate { get; set; }
-        public string Lastlogin { get; set; }
+        public DateTime Lastlogin { get; set; }
         public string SiteAccess { get; set; }
         public string Role { get; set; }
         public string MacAddress { get; set; }

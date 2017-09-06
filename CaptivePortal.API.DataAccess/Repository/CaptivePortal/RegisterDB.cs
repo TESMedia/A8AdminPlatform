@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using log4net;
 using System.Web.Configuration;
+using System.Configuration;
 
 namespace CaptivePortal.API.Repository.CaptivePortal
 {
@@ -14,7 +15,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         //int length;
         public RegisterDB()
         {
-            myConnectionString = WebConfigurationManager.AppSettings["radiusConnectionString"].ToString();
+            myConnectionString = ConfigurationManager.ConnectionStrings["radiusConnectionString"].ToString();
             log.Info(myConnectionString);
 
         }
