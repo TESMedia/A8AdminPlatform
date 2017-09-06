@@ -81,7 +81,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 throw ex;
             }
-            return RedirectToAction("Index", "Group",new { SiteId=2});
+            return RedirectToAction("Index", "Group",new { SiteId=1});
         }
     }
 }
