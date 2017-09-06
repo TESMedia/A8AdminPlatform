@@ -21,9 +21,14 @@ namespace CaptivePortal.API.Repository.CaptivePortal
 
         public bool CreateOrganisation(FormViewModel inputData)
         {
+            int orgId = 0;
             try
             {
-                int orgId = inputData.organisationDdl;
+                if (inputData.organisationDdl != 0)
+                {
+                    orgId = inputData.organisationDdl;
+                }
+               
 
                 if (inputData.OrganisationName != null)
                 {
@@ -34,9 +39,10 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                     db.Organisation.Add(objOrganisation);
                     db.SaveChanges();
                     orgId = Convert.ToInt32(objOrganisation.OrganisationId);
+                    inputData.OrganisationId = orgId;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }

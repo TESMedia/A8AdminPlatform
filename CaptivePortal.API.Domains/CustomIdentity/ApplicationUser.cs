@@ -17,6 +17,13 @@ namespace CaptivePortal.API.Models.CustomIdentity
     [Validator(typeof(UserValidator))]
     public class ApplicationUser : IdentityUser<int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IUser<int>
     {
+
+        public ApplicationUser()
+        {
+            CreationDate = DateTime.Now;
+            UpdateDate = DateTime.Now;
+        }
+
         public async Task<ClaimsIdentity>
             GenerateUserIdentityAsync(UserManager<ApplicationUser, int> manager)
         {
@@ -36,13 +43,10 @@ namespace CaptivePortal.API.Models.CustomIdentity
 
         public string LastName { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime CreationDate { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime  UpdateDate { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public DateTime BirthDate { get; set; }
 
         public int? MobileNumer { get; set; }
@@ -93,6 +97,7 @@ namespace CaptivePortal.API.Models.CustomIdentity
         [ForeignKey("GenderId")]
 
         public virtual Gender Genders { get; set; }
+
         [ForeignKey("GroupId")]
         public virtual Group Group { get; set; }
 

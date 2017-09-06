@@ -37,14 +37,14 @@
                                             <div class="form-group">
                                                 <label for="site-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Site Name:</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="site-name" class="form-control col-md-7 col-xs-12" type="text" name="SiteName" onchange="doesSiteNameExist()" required><label class="message" id="message" style="color:red"/>
+                                                    <input id="site-name" class="form-control col-md-7 col-xs-12" type="text" name="SiteName" onchange="doesSiteNameExist()" required><label class="message" id="message" style="color:red" />
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="company-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Company Name:</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="company-name" class="form-control col-md-7 col-xs-12" type="text" name="CompanyName" style="display:none" >
-                                                    @Html.DropDownList("CompanyDdl", ViewBag.companies as IEnumerable<SelectListItem>, "--Select the Company--", new { @class = "form-control", @id = "CompanyDdl", @name = "CompanyDdl"})
+                                                    <input id="company-name" class="form-control col-md-7 col-xs-12" type="text" name="CompanyName" style="display:none">
+                                                    @Html.DropDownList("CompanyDdl", ViewBag.companies as IEnumerable<SelectListItem>, "--Select the Company--", new { @class = "form-control", @id = "CompanyDdl", @name = "CompanyDdl" })
                                                 </div>
                                                 <div style="margin-top:-15px;">
                                                     Create New Company
@@ -52,79 +52,86 @@
                                                 <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxCompany" onclick="showCompanyTextBox()" name="CreateNewCompany" style="width:30px;float: right;margin-right: 15%;">
                                             </div>
                                             <div class="form-group">
-                                                <label for="organisation-name" class="control-label col-md-3 col-sm-3 col-xs-12">Organisation Name:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="organisation-name" class="form-control col-md-7 col-xs-12" type="text" name="OrganisationName" style="display:none">
-                                                    <select id="organisationDdl" class="form-control" name="organisationDdl">
-                                                        <option value="0">--Select the organisations--</option>
-                                                    </select>
-                                                </div>
-                                                <div style="margin-top:-15px;">
-                                                    Create New Organisation
-                                                </div>
-                                                <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxOrganisation" onclick="showOrganistationTextBox()" name="CreateNewOrganisation" style="width:30px;float: right;margin-right: 15%;">
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="controller-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Controller IP address:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="controller-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="ControllerIpAddress">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="radius-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Radius IP address:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="radius-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="MySqlIpAddress">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="DashboardUrl" class="control-label col-md-3 col-sm-3 col-xs-12">Dashboard URL:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="DashboardUrl" class="form-control col-md-7 col-xs-12" type="text" name="DashboardUrl">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="RtlsUrl" class="control-label col-md-3 col-sm-3 col-xs-12">RTLS URL:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="RtlsUrl" class="form-control col-md-7 col-xs-12" type="text" name="RtlsUrl">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="auto-login" class="control-label col-md-3 col-sm-3 col-xs-12">Auto-login users:</label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkbox1" name="AutoLogin" style="width:30px;">
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="term-condition" class="control-label col-md-3 col-sm-3 col-xs-12">Terms & Conditions:</label>
-                                                <div class="col-md-1">
-                                                    <input id="term-version" class="form-control col-md-1" type="text" name="Term_conditions">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input id="filename" readonly class="form-control col-md-3" type="text" name="TermsAndCondDoc">
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <input id="browse" type="file" name="Term_conditions" style="display:none" onChange="Handlechange();">
-                                                    <input type="button" class="btn btn-success" value="Browse" id="TermsAndCondDoc" name="Term_conditions" onclick="HandleBrowseClick();" />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="middle-name">Login and Registration Page configuration:</label>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <label for="banner-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Banner Icon:</label>
+                                                <label for="company-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Company Icon:</label>
                                                 <div class="col-md-6">
-                                                    <input type="file" name="BannerIcon" id="banner-icon" accept="image/*">
+                                                    <input type="file" name="CompanyIcon" id="company-icon" accept="image/*">
                                                 </div>
                                             </div>
+
+                                                <div class="form-group">
+                                                    <label for="organisation-name" class="control-label col-md-3 col-sm-3 col-xs-12">Organisation Name:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="organisation-name" class="form-control col-md-7 col-xs-12" type="text" name="OrganisationName" style="display:none">
+                                                        <select id="organisationDdl" class="form-control" name="organisationDdl">
+                                                            <option value="0">--Select the organisations--</option>
+                                                        </select>
+                                                    </div>
+                                                    <div style="margin-top:-15px;">
+                                                        Create New Organisation
+                                                    </div>
+                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxOrganisation" onclick="showOrganistationTextBox()" name="CreateNewOrganisation" style="width:30px;float: right;margin-right: 15%;">
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="controller-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Controller IP address:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="controller-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="ControllerIpAddress">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="radius-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Radius IP address:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="radius-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="MySqlIpAddress">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="DashboardUrl" class="control-label col-md-3 col-sm-3 col-xs-12">Dashboard URL:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="DashboardUrl" class="form-control col-md-7 col-xs-12" type="text" name="DashboardUrl">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="RtlsUrl" class="control-label col-md-3 col-sm-3 col-xs-12">RTLS URL:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="RtlsUrl" class="form-control col-md-7 col-xs-12" type="text" name="RtlsUrl">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="auto-login" class="control-label col-md-3 col-sm-3 col-xs-12">Auto-login users:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkbox1" name="AutoLogin" style="width:30px;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="term-condition" class="control-label col-md-3 col-sm-3 col-xs-12">Terms & Conditions:</label>
+                                                    <div class="col-md-1">
+                                                        <input id="term-version" class="form-control col-md-1" type="text" name="Term_conditions">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="filename" readonly class="form-control col-md-3" type="text" name="TermsAndCondDoc">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="browse" type="file" name="Term_conditions" style="display:none" onChange="Handlechange();">
+                                                        <input type="button" class="btn btn-success" value="Browse" id="TermsAndCondDoc" name="Term_conditions" onclick="HandleBrowseClick();" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="middle-name">Login and Registration Page configuration:</label>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="banner-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Banner Icon:</label>
+                                                    <div class="col-md-6">
+                                                        <input type="file" name="BannerIcon" id="banner-icon" accept="image/*">
+                                                    </div>
+                                                </div>
 
 
                                                 <div class="form-group">
@@ -399,7 +406,7 @@
     //    if ($("input[name='optionval']").length > 1) {
     //        $("input[name='optionval']:eq(" + (length - 1) + ")").remove();
     //    }
-        //});
+    //});
 </script>
 <script>
     $(document).ready(function(){

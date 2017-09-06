@@ -46,14 +46,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FluentValidation.WebApi, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.WebApi.7.1.1\lib\net45\FluentValidation.WebApi.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
@@ -216,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiControllers\A8AdminPortal\A8AdminApiController.cs" />
-    <Compile Include="ApiControllers\A8AdminPortal\LeftMenuConfSiteOperationalApiController.cs" />
     <Compile Include="ApiControllers\CaptivePortal\Default\AccountApiController.cs" />
     <Compile Include="ApiControllers\CaptivePortal\Default\DynamicCaptPageApiController.cs" />
     <Compile Include="ApiControllers\CaptivePortal\ReportingGraph\RealTimeDataApiController.cs" />
@@ -265,8 +256,14 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Controllers\A8AdminPortal\AccountController.cs" />
     <Compile Include="Controllers\A8AdminPortal\AdminController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\FormController.cs" />
     <Compile Include="Controllers\A8AdminPortal\GroupController.cs" />
     <Compile Include="Controllers\A8AdminPortal\HomeController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\LogsController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\MacAddressSetByAdminController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\PromotionalController.cs" />
+    <Compile Include="Controllers\A8AdminPortal\UploadFileController.cs" />
+    <Compile Include="Controllers\LocationDashboard\LocationDashBoardController.cs" />
     <Compile Include="Controllers\LocationDashboard\LocationIndicatorsController.cs" />
     <Compile Include="Controllers\RTLS\DatatableController.cs" />
     <Compile Include="Controllers\RTLS\RTLSController.cs" />
@@ -339,7 +336,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <Content Include="Scripts\CustomGraph.js" />
+    <Content Include="Style\sb-admin-2.css" />
     <Content Include="WinSCP.exe" />
     <None Include="Properties\PublishProfiles\CP-api-PB.pubxml" />
     <None Include="Properties\PublishProfiles\Cp-API-Test2.pubxml" />
@@ -4600,6 +4597,13 @@
     <Content Include="Views\ExternalLogin\login.cshtml" />
     <Content Include="Views\Group\Index.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Promotional\Create.cshtml" />
+    <Content Include="Views\LocationDashBoard\CreateLocation.cshtml" />
+    <Content Include="Views\LocationDashBoard\EditLocation.cshtml" />
+    <Content Include="Views\LocationDashBoard\Index.cshtml" />
+    <Content Include="Views\LocationDashBoard\LocationsMapping.cshtml" />
+    <Content Include="Views\LocationDashBoard\UploadFile.cshtml" />
+    <Content Include="Views\Admin\UploadLocationDashBoardFile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4607,6 +4611,10 @@
     <Folder Include="Logs\" />
     <Folder Include="Upload\" />
     <Folder Include="Vendors\google-code-prettify\bin\" />
+    <Folder Include="Views\Form\" />
+    <Folder Include="Views\Logs\" />
+    <Folder Include="Views\MacAddressSetByAdmin\" />
+    <Folder Include="Views\UploadFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

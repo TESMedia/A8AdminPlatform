@@ -1,4 +1,5 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,42 @@ namespace CaptivePortal.API.Repository.CaptivePortal
             {
                 throw ex;
             }
+        }
+
+        public bool Create(ManagePromotion model)
+        {
+            ManagePromotion objManagePromotion = new ManagePromotion();
+            try
+            {
+                objManagePromotion.SiteId = model.SiteId;
+                objManagePromotion.SuccessPageOption = model.SuccessPageOption;
+                objManagePromotion.WebPageURL = model.WebPageURL;
+                objManagePromotion.OptionalPictureForSuccessPage = model.OptionalPictureForSuccessPage;
+                db.ManagePromotion.Add(objManagePromotion);
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return true;
+        }
+        public bool Delete(int SiteId)
+        {
+            try
+            {
+                var pro = db.ManagePromotion.Find(SiteId);
+                if (pro != null)
+                {
+                    db.ManagePromotion.Remove(pro);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return true;
         }
 
     }

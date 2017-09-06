@@ -61,6 +61,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -77,21 +78,23 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryResult.cs" />
+    <Compile Include="Repository\A8AdminPortal\AdminSiteAccessRepository.cs" />
     <Compile Include="Repository\CaptivePortal\ApiAccessUserSessionRepository.cs" />
     <Compile Include="Repository\CaptivePortal\CommunicateRTLS.cs" />
-    <Compile Include="Repository\CaptivePortal\CompanyRepository.cs" />
+    <Compile Include="Repository\A8AdminPortal\CompanyRepository.cs" />
     <Compile Include="Repository\CaptivePortal\Encrypt.cs" />
     <Compile Include="Repository\CaptivePortal\FormControlRepository.cs" />
     <Compile Include="Repository\CaptivePortal\FormRepository.cs" />
     <Compile Include="Repository\CaptivePortal\GenerateUniqueSessionId.cs" />
+    <Compile Include="Repository\CaptivePortal\GroupRepository.cs" />
     <Compile Include="Repository\CaptivePortal\MacAddressRepository.cs" />
     <Compile Include="Repository\CaptivePortal\ManagePromotionRepository.cs" />
-    <Compile Include="Repository\CaptivePortal\OrganisationRepository.cs" />
+    <Compile Include="Repository\A8AdminPortal\OrganisationRepository.cs" />
     <Compile Include="Repository\CaptivePortal\RegisterDB.cs" />
-    <Compile Include="Repository\CaptivePortal\SiteRepository.cs" />
+    <Compile Include="Repository\A8AdminPortal\SiteRepository.cs" />
     <Compile Include="Repository\CaptivePortal\UpdateDb.cs" />
-    <Compile Include="Repository\CaptivePortal\UserAddressRepository.cs" />
-    <Compile Include="Repository\CaptivePortal\UserRepository.cs" />
+    <Compile Include="Repository\A8AdminPortal\UserAddressRepository.cs" />
+    <Compile Include="Repository\A8AdminPortal\UserRepository.cs" />
     <Compile Include="Repository\LocationDashboard\DBObjectWithSqlServer\AreaOfInterestRepository.cs" />
     <Compile Include="Repository\LocationDashboard\DBObjectWithSqlServer\CruisedDiscoveryRepository.cs" />
     <Compile Include="Repository\LocationDashboard\DBObjectWithSqlServer\DataFileImporter.cs" />
@@ -108,7 +111,6 @@
   <ItemGroup>
     <Folder Include="Configurations\" />
     <Folder Include="InterfaceRepository\" />
-    <Folder Include="Repository\A8AdminPortal\" />
     <Folder Include="UnitOfWork\" />
   </ItemGroup>
   <ItemGroup>

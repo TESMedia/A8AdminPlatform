@@ -30,15 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="FluentValidation, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.7.1.1\lib\net45\FluentValidation.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="FluentValidation.WebApi, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
-      <HintPath>..\packages\FluentValidation.WebApi.7.1.1\lib\net45\FluentValidation.WebApi.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
@@ -56,23 +53,11 @@
     <Reference Include="Microsoft.Owin.Security">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Http, Version=5.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.0\lib\net45\System.Web.Http.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
@@ -100,10 +85,7 @@
     <Compile Include="CaptivePortalModel\FormControl.cs" />
     <Compile Include="CaptivePortalModel\MacAddress.cs" />
     <Compile Include="CaptivePortalModel\ManagePromotion.cs" />
-    <Compile Include="CaptivePortalModel\Nas.cs" />
     <Compile Include="CaptivePortalModel\OperatingSystem.cs" />
-    <Compile Include="CaptivePortalModel\Radacct.cs" />
-    <Compile Include="CaptivePortalModel\RadGroupCheck.cs" />
     <Compile Include="CustomIdentity\ApplicationRole.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleManager.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleStore.cs" />
@@ -124,8 +106,26 @@
     <Compile Include="LocationDashBoardModel\NeighBourArea.cs" />
     <Compile Include="LocationDashBoardModel\Parameter.cs" />
     <Compile Include="LocationDashBoardModel\LocationDashBoardDbContext.cs" />
+    <Compile Include="Migrations\201709050457262_Initial.cs" />
+    <Compile Include="Migrations\201709050457262_Initial.Designer.cs">
+      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050511142_New_Changes.cs" />
+    <Compile Include="Migrations\201709050511142_New_Changes.Designer.cs">
+      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.cs" />
+    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.Designer.cs">
+      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.cs" />
+    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.Designer.cs">
+      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTLSModel\AppLog.cs" />
+    <Compile Include="RTLSModel\Enums\Enumes\CutomEnum.cs" />
     <Compile Include="RTLSModel\jQueryDataTableParamModel.cs" />
     <Compile Include="RTLSModel\LocationData.cs" />
     <Compile Include="RTLSModel\MacAddress.cs" />
@@ -177,7 +177,23 @@
     <Compile Include="ViewModels\RTLS\StatusReturn.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <EmbeddedResource Include="Migrations\201709050457262_Initial.resx">
+      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050511142_New_Changes.resx">
+      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050542266_New_Changes_As_Per.resx">
+      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.resx">
+      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

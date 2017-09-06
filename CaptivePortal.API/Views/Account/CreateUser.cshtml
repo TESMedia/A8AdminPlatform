@@ -1,4 +1,4 @@
-﻿@using CaptivePortal.API.ViewModels
+﻿@using CaptivePortal.API.ViewModels.CPAdmin
 @model SitelistViewModel
 @{
     ViewBag.Title = "ManageUser";
@@ -11,33 +11,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>CaptivePortal</title>
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-    <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-wysiwyg -->
-    <link href="../vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
-    <!-- Select2 -->
-    <link href="../vendors/select2/dist/css/select2.min.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
-    <!-- starrr -->
-    <link href="../vendors/starrr/dist/starrr.css" rel="stylesheet">
-    <!-- bootstrap-daterangepicker -->
-    <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/CheckBox.css" rel="stylesheet" />
@@ -48,18 +22,7 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
+           
             <!-- page content -->
             <div class="right_col" role="main">
                 <div class="">
@@ -93,20 +56,14 @@
                                             <div class="form-group">
                                                 <label for="Role" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Role:</label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    @*<input id="Role" class="form-control col-md-7 col-xs-12" type="text" name="Role">*@
-                                                    @*@Html.DropDownList("RoleDdl", ViewBag.Roles as IEnumerable<SelectListItem>, "--Select the Role--", new { @class = "form-control", @id = "RoleDdl", @name = "RoleDdl" })*@
+                                                    
                                                     <select class="form-control" name="RoleId" id="RoleId" required>
                                                         <option value="CompanyAdmin">CompanyAdmin</option>
                                                         <option value="BusinessUser">BusinessUser</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            @*<div class="form-group">
-                                                    <label for="DefaultSite" class="control-label col-md-3 col-sm-3 col-xs-12">Default Site:</label>
-                                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                                        @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, "--Select the Site--", new { @class = "form-control", @id = "SiteDdl", @name = "SiteDdl", @Selected = true, @required = "required" })
-                                                    </div>
-                                                </div>*@
+                                           
 
                                             <div class="form-group">
                                                 <label for="RestrictedSite" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Default Site:</label>
@@ -136,7 +93,7 @@
                                                     <input type="button" id="Cancel" class="btn btn-danger" value="Cancel" onclick="cancel()" />
                                                 </div>
                                             </div>
-                                            @*</form>*@
+                                           
                                         }
                                     </div>
 

@@ -26,13 +26,28 @@ namespace CaptivePortal.API.Repository
             try
             {
                 FormControl objFormControl = new FormControl();
-                objFormControl.ControlType = model.controlType;
                 objFormControl.LabelName = model.fieldlabel;
                 objFormControl.LabelNameToDisplay = model.LabelNameToDisplay;
                 objFormControl.IsMandetory = Convert.ToBoolean(IsMandetory);
                 objFormControl.FormId = model.FormId;
-                objFormControl.HtmlString = sb.ToString();
                 db.FormControl.Add(objFormControl);
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            return true;
+        }
+        public bool DeleteFormControl(int Id)
+        {
+            FormControl objFormControl = null;
+            Form objForm = null;
+            try
+            {
+                objFormControl = db.FormControl.FirstOrDefault(m => m.FormControlId == Id);
+                objForm = db.FormControl.FirstOrDefault(m => m.FormControlId == Id).Forms;
+                db.FormControl.Remove(objFormControl);
                 db.SaveChanges();
             }
             catch(Exception ex)

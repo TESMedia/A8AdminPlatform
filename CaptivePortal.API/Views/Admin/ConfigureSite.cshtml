@@ -1,4 +1,5 @@
-﻿@model CaptivePortal.API.Models.FormViewModel
+﻿@using CaptivePortal.API.ViewModels.CPAdmin
+@model FormViewModel
 @{
 
     Layout = null;
@@ -102,6 +103,20 @@
                                                     Create New Company
                                                 </div>
                                                 <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxCompany" onclick="showCompanyTextBox()" name="CreateNewCompany" style="width:30px;float: right;margin-right: 15%;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="company-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Company Icon:</label>
+
+                                                <div class="col-md-3">
+                                                    @Html.EditorFor(model => model.CompanyIcon, new { htmlAttributes = new { @class = "form-control", @name = "CompanyIcon", @readonly = "readonly", @id = "companyIconPath" } })
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="CompanyIcon" type="file" name="CompanyIcon" style="display:none" onChange="HandlePicchange();">
+                                                    <input type="button" class="btn btn-success" value="Browse" id="CompanyIcon" name="CompanyIcon" onclick="HandlePicBrowseClick();" />
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <img src="" alt="Image" style="height:50px;width:50px;" id="compLogo" />
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="organisation-name" class="control-label col-md-3 col-sm-3 col-xs-12">Organisation Name:</label>
@@ -248,7 +263,7 @@
                                                                     @*<button type="button" class="btn btn-danger" id="btnDelete">
                                                                              <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Delete Field
                                                                         </button>*@
-                                                                    <a href="@Url.Action("DeleteFormControl","Admin",new { Id=item.FormControlId })" class="btn btn-danger">Delete Field</a>
+                                                                    <a href="@Url.Action("Delete","Form",new { Id=item.FormControlId })" class="btn btn-danger">Delete Field</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -498,7 +513,8 @@
         document.getElementById("bgColor").value = "@Model.BackGroundColor";
         document.getElementById("loginColor").value="@Model.LoginWindowColor";
         $("#CompanyDdl").val(@Model.CompanyDdl);
-        $("#imgLogo").attr('src','@Model.BannerIcon')
+        $("#imgLogo").attr('src','@Model.BannerIcon');
+        $("#compLogo").attr('src','@Model.CompanyIcon');
         $('#organisationDdl').val('');
 
         $.getJSON("/Admin/GetOrganisations?companyId=" + @Model.CompanyDdl, function (data) {
@@ -510,35 +526,7 @@
         })
     });
 
-    //$(document).on('click', '.btn-add', function (e) {
-    //    e.preventDefault();
-
-    //    var controlForm = $('.controls'),
-    //        currentEntry = $(this).parents('.voca:first'),
-    //        newEntry = $(currentEntry.clone()).appendTo(controlForm);
-
-    //    newEntry.find('input').val('');
-    //    controlForm.find('.btn-add:not(:last)')
-    //        .removeClass('btn-default').addClass('btn-danger')
-    //        .removeClass('btn-add').addClass('btn-remove')
-
-    //        .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
-    //}).on('click', '.btn-remove', function (e) {
-    //    $(this).parents('.voca:first').remove();
-
-    //    e.preventDefault();
-    //    return false;
-    //});
-
-    //$("#plus").on("click", function () {
-    //    $("#fieldsDiv").append('<div name="blockAppend"><label for="field-label" class="control-label col-md-3 col-sm-3 col-xs-12"></label><div class="controls"><div role="form" autocomplete="off"><div class="row"><div class="voca"><div class="col-md-3"><input class="form-control" placeholder="Add Field" name="fieldLabel" type="text"></div><div class="col-md-2"><select class="form-control" name="dataType"><option value=0>Select Data Type</option><option value=string>VARCHAR </option><option value=int>int</option><option value=date>date</option></select></div> <div class="col-md-2"> <select class="form-control" name="controlType"><option value=0>Select Control Type</option> <option value=text>text</option><option value=password>password</option><option value=radio>radio</option></select> </div>  <button type="button" class="btn btn-success btn-add" id="minus"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Remove Field </button></div></div></div><br></div></div>')
-    //});
-    //$("#minus").on("click", function () {
-
-    //    if ($("input[name='blockAppend']").length > 1) {
-    //        $("input[name='blockAppend']:eq(" + (length - 1) + ")").remove();
-    //    }
-    //});
+    
 
 
     $("#btnSave").on("click", function () {
@@ -556,7 +544,7 @@
             arrData.push($(this).val());
         });
         var data= {arrayValue:arrData,FormId:$("#FormId").val(),LabelNameToDisplay:$("#LabelName").val(),fieldlabel:$("#fieldlabel").val(),chkOptOrMand:checkedValue,IsMandetory:checkedValue}
-        $.post("/Admin/SaveFormControls/",data, function (e) {
+        $.post("/Form/Save/",data, function (e) {
             location.reload();
         });
     });
@@ -569,6 +557,16 @@
         }
     });
 
+    function HandlePicBrowseClick() {
+        var fileinput = document.getElementById("CompanyIcon");
+        fileinput.click();
+    }
+
+    function HandlePicchange() {
+        var fileinput = document.getElementById("CompanyIcon");
+        var textinput = document.getElementById("companyIconPath");
+        textinput.value = fileinput.value;
+    }
 
     function doesSiteNameExist() {
         var siteName = document.getElementById('site-name').value;

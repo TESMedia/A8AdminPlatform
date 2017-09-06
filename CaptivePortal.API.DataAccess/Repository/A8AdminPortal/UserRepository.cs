@@ -272,5 +272,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             return db.MacAddress.FirstOrDefault(m => m.Users.UniqueUserId == UserUniqueId && m.Users.SiteId == SiteId).IsRegisterInRtls;
         }
+
+
     }
 }

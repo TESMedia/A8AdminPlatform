@@ -11,7 +11,7 @@ using CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer;
 
 namespace a8Dashboard.Controllers
 {
-    [RoutePrefix("DashBoard/api/ImportSftpData")]
+    [RoutePrefix("ImportSftpData")]
     public class ManageSftpFileApiController : ApiController
     {
         private static readonly log4net.ILog logger = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

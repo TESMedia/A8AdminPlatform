@@ -18,10 +18,15 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public bool? AutoLogin { get; set; }
         public string ControllerIpAddress { get; set; }
         public string MySqlIpAddress { get; set; }
+        [MaxLength]
         public string Term_conditions { get; set; }
+        [MaxLength]
         public string TermsAndCondDoc { get; set; }
         public string RtlsUrl { get; set; }
         public string DashboardUrl { get; set; }
+        public bool? IsRtls { get; set; }
+        public bool? IsLocationDashboard { get; set; }
+        public bool? IsCaptivePortal { get; set; }
 
         //[ForeignKey("UserId")]
         //public virtual Users Users { get; set; }

@@ -61,7 +61,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 {
                     SiteName = inputData.SiteName,
                     SiteId = inputData.SiteId,
-                    CompanyId = compId == null ? null : (int?)Convert.ToInt32(compId),
+                    CompanyId =Convert.ToInt32(inputData.CompanyDdl),
                     AutoLogin = inputData.AutoLogin,
                     ControllerIpAddress = inputData.ControllerIpAddress,
                     MySqlIpAddress = inputData.MySqlIpAddress,
@@ -91,5 +91,28 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             return db.Site.Any(m => m.SiteId == SiteId);
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public List<Site> GetListOfSiteGroupPerSiteId(int SiteId)
+        {
+            return db.Site.Where(m => m.CompanyId == db.Site.Where(n => n.SiteId == SiteId).FirstOrDefault().CompanyId).ToList();
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public List<Site> GetListOfSiteGroupPerSiteName(string SiteName)
+        {
+            return db.Site.Where(m => m.CompanyId == db.Site.Where(n => n.SiteName == SiteName).FirstOrDefault().CompanyId).ToList();
+        }
+
     }
 }

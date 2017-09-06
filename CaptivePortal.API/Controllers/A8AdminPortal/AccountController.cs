@@ -23,8 +23,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         private static ILog Log { get; set; }
         ILog log = LogManager.GetLogger(typeof(AdminController));
         private ApplicationRoleManager _roleManager;
-
-       A8AdminDbContext db = new A8AdminDbContext();
+        private A8AdminDbContext db = new A8AdminDbContext();
 
 
         public AccountController()
@@ -144,16 +143,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             ResetPasswordViewModel objResetPassword = new ResetPasswordViewModel();
             try
             {
-                using (var db = new A8AdminDbContext())
-                {
                     if (userId != 0)
                     {
-                        objResetPassword.Email = db.Users.Where(m => m.Id == userId).FirstOrDefault().Email;
+                        objResetPassword.Email = UserManager.FindById(userId).Email;
                         var Code = code.Replace(" ", "+");
                         objResetPassword.Code = Code;
                     }
                     return View(objResetPassword);
-                }
             }
             catch (Exception ex)
             {
@@ -238,6 +234,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     Email = model.Email,
                     CreationDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
+                    BirthDate=DateTime.Now,
                     SiteId = model.SiteDdl,
                     Status = Status.Active.ToString(),
                     PhoneNumber = defaultSiteName//Store the SiteName As default Site in Identity Column named PhoneNumber
@@ -251,39 +248,23 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     await UserManager.SendEmailAsync(user.Id, "Welcome to the Captive portal Dashboard", "You are receiving this email as you have been set up as a user of the captive portal Dashboard. To complete the registration process please click <a href=\"" + callbackUrl + "\">here</a>" + " " + "to reset your password and login.If you have any issues with the login process, or were not expecting this email, please email support@airloc8.com.");
                     TempData["Success"] = "An Email has sent to your Inbox.";
 
-                    AdminSiteAccess objAdminSite1 = new AdminSiteAccess();
-                    objAdminSite1.UserId = user.Id;
-                    objAdminSite1.SiteId = model.SiteDdl;
-                    objAdminSite1.SiteName = db.Site.FirstOrDefault(m => m.SiteId == model.SiteDdl).SiteName;
-                    db.AdminSiteAccess.Add(objAdminSite1);
-                    db.SaveChanges();
-
-                    //sites which are selected by admin to give access to company admin ,store in AdminSiteAccessTable
-                    //foreach (var item in RestrictedSites)
-                    //{
-                    //    AdminSiteAccess objAdminSite = new AdminSiteAccess();
-                    //    int x = 0;
-                    //    Int32.TryParse(item, out x);
-                    //    objAdminSite.UserId = user.Id;
-                    //    objAdminSite.SiteId = model.SiteDdl;
-                    //    objAdminSite.SiteName = db.Site.FirstOrDefault(m => m.SiteId == x).SiteName;
-                    //    db.AdminSiteAccess.Add(objAdminSite);
-                    //    db.SaveChanges();
-                    //}
+                    //AdminSiteAccess objAdminSite1 = new AdminSiteAccess();
+                    //objAdminSite1.UserId = user.Id;
+                    //objAdminSite1.SiteId = model.SiteDdl;
+                    //objAdminSite1.Site.SiteName = db.Site.FirstOrDefault(m => m.SiteId == model.SiteDdl).SiteName;
+                    //db.AdminSiteAccess.Add(objAdminSite1);
+                    //db.SaveChanges();
                 }
                 else
                 {
                     TempData["Success"] = "Username" + " " + model.Email + " " + "already taken.";
                 }
-
-
-
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return RedirectToAction("CreateUser", "Admin", new { SiteId = model.SiteDdl });
+            return RedirectToAction("CreateUser", "Account", new { SiteId = model.SiteDdl });
         }
 
 
@@ -508,7 +489,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Index", "Home");
 
                 }
             }
