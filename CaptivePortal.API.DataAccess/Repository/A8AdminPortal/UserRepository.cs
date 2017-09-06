@@ -6,6 +6,7 @@ using log4net;
 using CaptivePortal.API.Models.CustomIdentity;
 using System.Web;
 using CaptivePortal.API.ViewModels.CPAdmin;
+using Microsoft.AspNet.Identity;
 
 namespace CaptivePortal.API.Repository.CaptivePortal
 {
@@ -259,7 +260,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         /// <returns></returns>
         public bool IsMemberApplicationAdmin(string UserName,string Password)
         {
-            return db.Users.Any(m => m.UserName == UserName && m.PasswordHash == Password);
+            return UserManager.FindByName(UserName).PasswordHash == UserManager.PasswordHasher.HashPassword(Password);
         }
 
         /// <summary>
