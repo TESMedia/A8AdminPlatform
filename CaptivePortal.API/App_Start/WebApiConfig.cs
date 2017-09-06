@@ -6,7 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 using System.Web.Http.Cors;
-using FluentValidation.WebApi;
+//using FluentValidation.WebApi;
 
 namespace CaptivePortal.API
 {
@@ -15,7 +15,7 @@ namespace CaptivePortal.API
         public static void Register(HttpConfiguration config)
         {
 
-            FluentValidationModelValidatorProvider.Configure(config);
+           // FluentValidationModelValidatorProvider.Configure(config);
             // Web API configuration and services
             var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);

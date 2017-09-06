@@ -1,6 +1,6 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
-using FluentValidation;
-using FluentValidation.Attributes;
+//using FluentValidation;
+//using FluentValidation.Attributes;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -14,7 +14,7 @@ using System.Web;
 
 namespace CaptivePortal.API.Models.CustomIdentity
 {
-    [Validator(typeof(UserValidator))]
+    //[Validator(typeof(UserValidator))]
     public class ApplicationUser : IdentityUser<int, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>, IUser<int>
     {
 
@@ -109,20 +109,20 @@ namespace CaptivePortal.API.Models.CustomIdentity
 
 
 
-    public class UserValidator : AbstractValidator<ApplicationUser>
-    {
-        public UserValidator()
-        {
-            RuleFor(x => x.FirstName).NotEmpty().WithMessage("The First Name cannot be blank.")
-                                        .Length(0, 100).WithMessage("The First Name cannot be more than 100 characters.");
+    //public class UserValidator : AbstractValidator<ApplicationUser>
+    //{
+    //    public UserValidator()
+    //    {
+    //        RuleFor(x => x.FirstName).NotEmpty().WithMessage("The First Name cannot be blank.")
+    //                                    .Length(0, 100).WithMessage("The First Name cannot be more than 100 characters.");
 
-            RuleFor(x => x.LastName).NotEmpty().WithMessage("The Last Name cannot be blank.");
+    //        RuleFor(x => x.LastName).NotEmpty().WithMessage("The Last Name cannot be blank.");
 
-            RuleFor(x => x.BirthDate).LessThan(DateTime.Today).WithMessage("You cannot enter a birth date in the future.");
+    //        RuleFor(x => x.BirthDate).LessThan(DateTime.Today).WithMessage("You cannot enter a birth date in the future.");
 
-            RuleFor(x => x.UserName).Length(8, 999).WithMessage("The user name must be at least 8 characters long.");
-        }
-    }
+    //        RuleFor(x => x.UserName).Length(8, 999).WithMessage("The user name must be at least 8 characters long.");
+    //    }
+    //}
 
 
 }
