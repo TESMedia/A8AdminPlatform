@@ -308,7 +308,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\LoginPage.css" />
-    <Content Include="DbConfiguration\ScriptLocations.sql" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -338,6 +337,8 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Style\sb-admin-2.css" />
     <Content Include="WinSCP.exe" />
+    <None Include="Properties\PublishProfiles\A8PlatForm.pubxml" />
+    <None Include="Properties\PublishProfiles\A8PlatFormNew.pubxml" />
     <None Include="Properties\PublishProfiles\CP-api-PB.pubxml" />
     <None Include="Properties\PublishProfiles\Cp-API-Test2.pubxml" />
     <None Include="Properties\PublishProfiles\cpapi - FTP %282%29.pubxml" />
