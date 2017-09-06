@@ -54,14 +54,14 @@
                             <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
                         </li>
                         <li>
-                            <a><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
+                            <a id="viewdashboard" class="row margin hide"><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("Index","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">WiFi Summary</a></li>
                                 <li><a href="@Url.Action("LocationDashBoard","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location dashboard</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
+                            <a id="managesite" class="row margin hide"><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("ConfigureSite","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
                                 <li><a href="@Url.Action("ManageUser","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
@@ -70,7 +70,7 @@
                         </li>
 
                         <li>
-                            <a><i class="fa fa-users"></i> Manage Wi-fi User <span class="fa fa-chevron-down"></span></a>
+                            <a id="managewifiuser" class="row margin hide"><i class="fa fa-users"></i> Manage Wi-fi User <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("UserDetails","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">View Wi-fi users</a></li>
                                 <li><a href="@Url.Action("Register","Account")">Register Wi-fi user</a></li>
@@ -78,7 +78,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a><i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
+                            <a id="managedashboard" class="row margin hide"><i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("UploadLocationDashBoardFile","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Upload File</a></li>
                                 <li><a href="@Url.Action("LocationsMapping","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location Mapping</a></li>
@@ -86,7 +86,7 @@
                         </li>
 
                         <li>
-                            <a><img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
+                            <a id="managertls" class="row margin hide"><img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("TestSetUpRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Test Set-up</a></li>
                                 <li><a href="@Url.Action("ViewRtlsData","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View RTLS data</a></li>
@@ -147,5 +147,51 @@
 
     function logOut() {
         window.location.href = "/Account/LogOff"
+    }
+    function navigation() {
+
+        var _managedashboard = localStorage.getItem('ManageDashboard');
+        var _managesite = localStorage.getItem('ManageSite');
+        var _rtls = localStorage.getItem('RTLS');
+        var _viewdashboard = localStorage.getItem('ManageDashboard');
+        var _managewifiuser = localStorage.getItem('ViewDashboard');
+
+        if (_managedashboard != 'null') {
+            document.getElementById('managedashboard').className = "row margin";
+        }
+        else {
+            document.getElementById('managedashboard').className = "row margin hide";
+
+        }
+        if (_managesite != 'null') {
+            document.getElementById('managesite').className = "row margin";
+        }
+        else {
+            document.getElementById('managesite').className = "row margin hide";
+
+        }
+        if (_rtls != 'null') {
+            document.getElementById('managertls').className = "row margin";
+        }
+        else {
+            document.getElementById('managertls').className = "row margin hide";
+
+        }
+        if (_viewdashboard != 'null') {
+            document.getElementById('viewdashboard').className = "row margin";
+        }
+        else {
+            document.getElementById('viewdashboard').className = "row margin hide";
+
+        }
+
+        if (_managewifiuser != 'null') {
+            document.getElementById('managewifiuser').className = "row margin";
+        }
+        else {
+            document.getElementById('managewifiuser').className = "row margin hide";
+
+        }
+
     }
 </script>

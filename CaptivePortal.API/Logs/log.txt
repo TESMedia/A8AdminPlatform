@@ -126,51 +126,51 @@ INFO 2017-08-26 21:54:39,237 System.Web.Http.ApiController - Application started
 ERROR 2017-08-26 21:59:14,618 CaptivePortal.API.Repository.CaptivePortal.UserRepository - Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
 INFO 2017-08-27 13:55:12,831 System.Web.Http.ApiController - Application started successfully.
 INFO 2017-08-31 12:16:12,924 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 09:49:31,146 System.Web.Http.ApiController - Application started successfully.
-ERROR 2017-09-05 09:54:39,349 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
-INFO 2017-09-05 10:34:04,785 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 10:38:40,275 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 10:47:23,546 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 10:50:15,892 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 10:51:36,495 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:10:52,490 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:17:01,534 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:22:22,253 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:23:50,695 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:24:49,838 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:33:45,406 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:41:49,816 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:43:40,322 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:49:05,934 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 11:55:15,675 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 12:54:17,975 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
-ERROR 2017-09-05 12:55:31,393 System.Web.Http.ApiController - An error occurred while updating the entries. See the inner exception for details.
-INFO 2017-09-05 12:55:48,238 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
-ERROR 2017-09-05 12:56:03,272 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 12:56:24,706 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 12:59:37,787 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 13:00:08,760 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 13:02:58,064 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 13:05:22,956 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 13:08:25,920 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-ERROR 2017-09-05 13:09:36,926 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-INFO 2017-09-05 13:12:08,071 System.Web.Http.ApiController - Application started successfully.
-ERROR 2017-09-05 13:13:54,198 System.Web.Http.ApiController - Object reference not set to an instance of an object.
-ERROR 2017-09-05 13:14:52,965 System.Web.Http.ApiController - Object reference not set to an instance of an object.
-INFO 2017-09-05 13:15:25,054 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:15:25,055 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:15:56,079 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:15:56,093 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-ERROR 2017-09-05 13:15:56,723 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Error running Sp_GetAllArea: Object reference not set to an instance of an object.
-ERROR 2017-09-05 13:15:56,730 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Error running sp_GetDate: Object reference not set to an instance of an object.
-INFO 2017-09-05 13:19:10,653 System.Web.Http.ApiController - Application started successfully.
-INFO 2017-09-05 13:21:09,144 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:21:09,144 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:22:35,353 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:22:35,353 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:23:23,923 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
-ERROR 2017-09-05 13:23:29,855 System.Web.Http.ApiController - A public action method 'LocationsMapping' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
-INFO 2017-09-05 13:24:23,744 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
-INFO 2017-09-05 13:25:41,490 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
-INFO 2017-09-05 13:33:17,976 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
-INFO 2017-09-05 13:33:17,998 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-01 17:46:08,571 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-01 17:46:40,025 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-01 17:48:22,553 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-01 17:51:11,340 System.Web.Http.ApiController - The method or operation is not implemented.
+INFO 2017-09-01 17:51:20,133 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-01 17:58:21,152 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-01 17:59:25,299 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-01 18:01:22,566 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-01 18:02:45,695 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-01 18:04:13,688 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-01 18:04:59,606 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-01 18:05:07,945 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-01 18:32:54,418 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+INFO 2017-09-01 18:38:24,358 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-01 18:41:29,922 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-01 18:50:30,292 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-01 18:50:59,601 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+INFO 2017-09-03 20:26:04,881 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-03 21:23:50,207 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+INFO 2017-09-04 09:03:45,494 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-04 09:07:45,864 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-04 09:08:43,956 System.Web.Http.ApiController - C:\Users\planetsbrain\AppData\Local\Temp\Temporary ASP.NET Files\root\3007b4bc\1cc5cb35\App_Web_index.cshtml.a8d08dba.ef8fg_e9.0.cs(37): error CS0246: The type or namespace name 'AdminlistViewModel' could not be found (are you missing a using directive or an assembly reference?)
+ERROR 2017-09-04 09:09:29,701 System.Web.Http.ApiController - C:\Users\planetsbrain\AppData\Local\Temp\Temporary ASP.NET Files\root\3007b4bc\1cc5cb35\App_Web_index.cshtml.a8d08dba.-joospvp.0.cs(37): error CS0246: The type or namespace name 'AdminlistViewModel' could not be found (are you missing a using directive or an assembly reference?)
+INFO 2017-09-04 11:06:19,446 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-04 11:06:54,863 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-04 11:07:03,612 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-04 11:11:42,861 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-04 12:32:50,804 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-04 12:32:52,108 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-04 12:33:12,439 System.Web.Http.ApiController - A public action method 'CreateNewSite' was not found on controller 'CaptivePortal.API.Controllers.HomeController'.
+INFO 2017-09-04 12:33:57,064 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-04 12:34:55,455 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-04 12:34:57,754 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-04 12:35:03,005 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-05 15:05:23,273 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-05 15:08:44,397 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+ERROR 2017-09-05 17:20:45,498 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 11:18:36,272 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-06 13:00:40,919 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-06 13:00:43,597 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-06 13:06:19,462 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 13:06:47,543 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 13:08:59,227 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 13:09:09,441 CaptivePortal.API.ApiControllers.CaptivePortal.Default.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 13:09:14,147 System.Web.Http.ApiController - A public action method 'ConfigureSite' was not found on controller 'CaptivePortal.API.Controllers.HomeController'.
+INFO 2017-09-06 13:17:10,482 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-06 13:17:19,439 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+ERROR 2017-09-06 13:17:45,103 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
