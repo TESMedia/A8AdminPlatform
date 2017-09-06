@@ -1,4 +1,4 @@
-﻿@using CaptivePortal.API.ViewModels
+﻿@using CaptivePortal.API.ViewModels.CPAdmin
 @model GrouplistViewModel
 @{
 
@@ -8,13 +8,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+
 
     <!-- Custom Theme Style -->
     <link href="~/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/DropDown.css" rel="stylesheet" />
     <link href="~/build/css/custom.css" rel="stylesheet" />
-    @*<script src="~/build/js/index.js"></script>*@
     <style>
         td {
             border: 1px #DDD solid;
@@ -46,83 +45,7 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-
-
-                            <li role="presentation" class="dropdown">
-
-                                <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a>
-                                            <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
-                                            <span>
-                                                <span>John Smith</span>
-                                                <span class="time">3 mins ago</span>
-                                            </span>
-                                            <span class="message">
-                                                Film festivals used to be do-or-die moments for movie makers. They were where...
-                                            </span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <div class="text-center">
-                                            <a>
-                                                <strong>See All Alerts</strong>
-                                                <i class="fa fa-angle-right"></i>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <!-- /top navigation -->
+          
             <!-- page content -->
             <div class="right_col" role="main">
                 @if (TempData["SiteIdCheck"] != null)
@@ -180,7 +103,7 @@
                                             </td>
 
                                             <td>
-                                                @Html.DisplayFor(modelItem=>item.NumberOfUser)
+                                                @Html.DisplayFor(modelItem => item.NumberOfUser)
                                             </td>
                                         </tr>
                                     }
@@ -304,7 +227,7 @@
     }
 
     $(document).ready(function () {
-        navigation();
+        //navigation();
         $("#resultTable tr").click(function () {
             $(this).addClass('selected').siblings().removeClass('selected');
             var value = $(this).find('td:first').html();
@@ -331,13 +254,6 @@
                     }
                 });
             //}
-
-
-
         });
     });
-
-
-
-
 </script>

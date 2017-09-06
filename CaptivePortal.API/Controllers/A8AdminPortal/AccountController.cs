@@ -134,6 +134,18 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         //Get:Admin will create user.
         public ActionResult Register()
         {
+            ViewBag.groups = from item in db.Group.ToList()
+                             select new SelectListItem()
+                             {
+                                 Text = item.GroupName,
+                                 Value = item.GroupId.ToString(),
+                             };
+            ViewBag.sites = from item in db.Site.ToList()
+                            select new SelectListItem()
+                            {
+                                Value = item.SiteId.ToString(),
+                                Text = item.SiteName
+                            };
             return View();
         }
 
@@ -272,112 +284,169 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// 
         /// </summary>
         /// <returns></returns>
-        public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines)
+        public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
-            //userId = User.Identity.GetUserId();
             WifiUserlistViewModel list = new WifiUserlistViewModel();
+            ViewBag.groups = from item in db.Group.ToList()
+                             select new SelectListItem()
+                             {
+                                 Text = item.GroupName,
+                                 Value = item.GroupId.ToString(),
+                             };
+            ViewBag.sites = from item in db.Site.ToList()
+                            select new SelectListItem()
+                            {
+                                Value = item.SiteId.ToString(),
+                                Text = item.SiteName
+                            };
+
+            if (siteId == null)
+            {
+                siteId = 1;
+                ViewBag.SiteName = db.Site.FirstOrDefault(m => m.SiteId == siteId).SiteName;
+
+            }
+
+            //userId = User.Identity.GetUserId();
             list.WifiUserViewlist = new List<WifiUserViewModel>();
             int currentPageIndex = page.HasValue ? page.Value : 1;
             int PageSize = Convert.ToInt32(NumberOfLines);
 
             var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
-            if (NumberOfLines != null)
-            {
-                PageSize = Convert.ToInt32(NumberOfLines);
-                ViewBag.selectedNumber = NumberOfLines;
-            }
-            else
-            {
-                PageSize = 20;
-            }
 
-            var TotalPages = (int)Math.Ceiling((decimal)userList.Count / (decimal)PageSize);
-
-            var startPage = currentPageIndex - 5;
-            int endPage = currentPageIndex + 4;
-            if (startPage <= 0)
+            if (userList.Count != 0)
             {
-                endPage -= (startPage - 1);
-                startPage = 1;
-            }
-            if (endPage > TotalPages)
-            {
-                endPage = TotalPages;
-                if (endPage > 10)
+                if (GroupName != null)
                 {
-                    startPage = endPage - 9;
+                    int roleId = 4;
+                    userList = db.Users
+            .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
+            .ToList();
                 }
-            }
-            //var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
-            //If Searching on the basis of the single parameter
-            if (!string.IsNullOrEmpty(userName) || !string.IsNullOrEmpty(foreName) || !string.IsNullOrEmpty(surName))
-            {
-                if (!string.IsNullOrEmpty(foreName))
+                else
                 {
-                    //For the parameter contain only foreName  for searching or filter
-                    if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(surName))
+                    int roleId = 4;
+                    userList = db.Users
+            .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
+            .ToList();
+                }
+
+                if (NumberOfLines != null)
+                {
+                    PageSize = Convert.ToInt32(NumberOfLines);
+                    ViewBag.selectedNumber = NumberOfLines;
+                }
+                else
+                {
+                    PageSize = 20;
+                }
+
+                var TotalPages = (int)Math.Ceiling((decimal)userList.Count / (decimal)PageSize);
+
+                var startPage = currentPageIndex - 5;
+                int endPage = currentPageIndex + 4;
+                if (startPage <= 0)
+                {
+                    endPage -= (startPage - 1);
+                    startPage = 1;
+                }
+                if (endPage > TotalPages)
+                {
+                    endPage = TotalPages;
+                    if (endPage > 10)
                     {
-                        userList = db.Users.Where(p => p.FirstName.ToLower().Contains(foreName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
-                        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.FirstName.ToLower() == foreName.ToLower()).Count() / PageSize);
+                        startPage = endPage - 9;
                     }
                 }
-
-                if (!string.IsNullOrEmpty(surName))
+                //Search user according to Group
+                if (GroupName != 0 & GroupName != null)
                 {
-                    //For the parameter contain only surName  for searching or filter
-                    if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(foreName))
-                    {
-                        userList = db.Users.Where(p => p.LastName.ToLower().Contains(surName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
-                        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.LastName.ToLower() == surName.ToLower()).Count() / PageSize);
-                    }
+                    userList = db.Users.Where(m => m.GroupId == GroupName).ToList();
                 }
-
-                if (!string.IsNullOrEmpty(userName))
+                //var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
+                //If Searching on the basis of the single parameter
+                if (!string.IsNullOrEmpty(userName) || !string.IsNullOrEmpty(foreName) || !string.IsNullOrEmpty(surName))
                 {
-                    //For the parameter contain only username  for searching or filter
-                    if (string.IsNullOrEmpty(foreName) && string.IsNullOrEmpty(surName))
-                    {
-                        userList = db.Users.Where(p => p.UserName.ToLower().Contains(userName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
-                        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.UserName.ToLower() == userName.ToLower()).Count() / PageSize);
-                    }
+                    //if (!string.IsNullOrEmpty(foreName))
+                    //{
+                    //    //For the parameter contain only foreName  for searching or filter
+                    //    if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(surName))
+                    //    {
+                    //        userList = db.Users.Where(p => p.FirstName.ToLower().Contains(foreName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
+                    //        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.FirstName.ToLower() == foreName.ToLower()).Count() / PageSize);
+                    //    }
+                    //}
+
+                    //if (!string.IsNullOrEmpty(surName))
+                    //{
+                    //    //For the parameter contain only surName  for searching or filter
+                    //    if (string.IsNullOrEmpty(userName) && string.IsNullOrEmpty(foreName))
+                    //    {
+                    //        userList = db.Users.Where(p => p.LastName.ToLower().Contains(surName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
+                    //        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.LastName.ToLower() == surName.ToLower()).Count() / PageSize);
+                    //    }
+                    //}
+
+                    //if (!string.IsNullOrEmpty(userName))
+                    //{
+                    //    //For the parameter contain only username  for searching or filter
+                    //    if (string.IsNullOrEmpty(foreName) && string.IsNullOrEmpty(surName))
+                    //    {
+                    //        userList = db.Users.Where(p => p.UserName.ToLower().Contains(userName.ToLower())).ToList().Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
+                    //        TotalPages = (int)Math.Ceiling((double)db.Users.Where(p => p.UserName.ToLower() == userName.ToLower()).Count() / PageSize);
+                    //    }
+                    //}
                 }
-            }
-            //If the Searching contain no parameter
-            else
-            {
+                //If the Searching contain no parameter
+                //else
+                //{
                 userList = userList.Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
                 //TotalPages = (int)Math.Ceiling((decimal)db.Users.Count() / PageSize);
-            }
-            var userViewModelList = (from item in userList
-                                     select new WifiUserViewModel()
-                                     {
-                                         SiteId = siteId.Value,
-                                         UserId = item.Id,
-                                         UserName = item.UserName,
-                                         FirstName = item.FirstName,
-                                         LastName = item.LastName,
-                                         CreationDate = item.CreationDate,
-                                         //SiteName= SiteName
-                                         // Password = item.Password,
-                                         // MacAddress = db.MacAddress.Where(x => x.UserId == item.UserId).OrderByDescending(x => x.MacId).Take(1).Select(x => x.MacAddressValue).ToList().FirstOrDefault()
+                //}
+                //if (userList.Count != 1)
+                //{
+                var userViewModelList = (from item in userList
+                                         select new WifiUserViewModel()
+                                         {
+                                             SiteId = Convert.ToInt32(item.SiteId),
+                                             UserId = item.Id,
+                                             UserName = item.UserName,
+                                             FirstName = item.FirstName,
+                                             LastName = item.LastName,
+                                             CreationDate = item.CreationDate,
+                                             Lastlogin = item.UpdateDate,
+                                             //SiteName= SiteName
+                                             // Password = item.Password,
+                                             MacAddress = db.MacAddress.Where(x => x.UserId == item.Id).OrderByDescending(x => x.MacId).Take(1).Select(x => x.MacAddressValue).ToList().FirstOrDefault()
 
-                                     }).ToList();
-            list.WifiUserViewlist.AddRange(userViewModelList);
+                                         }).ToList();
+                list.WifiUserViewlist.AddRange(userViewModelList);
+                //}
+                //else
+                //{
+                //    TempData["userSuc"] = "No data found";
+                //}
 
-            if (userId != null)
-            {
-                list.WifiUserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
+                if (userId != null)
+                {
+                    list.WifiUserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
+                }
+                else
+                {
+                    list.WifiUserView = userViewModelList.FirstOrDefault();
+                }
+                ViewBag.CurrentPage = currentPageIndex;
+                ViewBag.PageSize = PageSize;
+                ViewBag.TotalPages = TotalPages;
+                ViewBag.foreName = foreName;
+                ViewBag.surName = surName;
+                ViewBag.userName = userName;
             }
             else
             {
-                list.WifiUserView = userViewModelList.FirstOrDefault();
+
             }
-            ViewBag.CurrentPage = currentPageIndex;
-            ViewBag.PageSize = PageSize;
-            ViewBag.TotalPages = TotalPages;
-            ViewBag.foreName = foreName;
-            ViewBag.surName = surName;
-            ViewBag.userName = userName;
+
             return View(list);
 
         }

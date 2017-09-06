@@ -137,6 +137,7 @@
     <Compile Include="ViewModels\CPAdmin\AccountViewModels.cs" />
     <Compile Include="ViewModels\CPAdmin\AdminViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\AutoLoginStatus.cs" />
+    <Compile Include="ViewModels\CPAdmin\CreateUserViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\CreateUserWithRoleViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\FormControlViewModel.cs" />
     <Compile Include="ViewModels\CPAdmin\FormData.cs" />

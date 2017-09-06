@@ -1,4 +1,5 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
+//using FluentValidation.WebApi;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace CaptivePortal.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            
             //Database.SetInitializer<A8AdminDbContext>(new CreateDatabaseIfNotExists<A8AdminDbContext>());
             //AdminManagementDbOperation objAdminManagementDbOperation = new AdminManagementDbOperation();
             //objAdminManagementDbOperation.PerformDatabaseOperations();

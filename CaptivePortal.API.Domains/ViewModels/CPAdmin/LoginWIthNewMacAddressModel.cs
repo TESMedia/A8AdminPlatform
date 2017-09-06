@@ -19,6 +19,11 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string OperatingSystem { get; set; }
 
         public bool IsMobile { get; set; }
+        public string PingReply { get; set; }
+        public string MySqlIpAddress { get; set; }
+        public string ControllerIpAddress { get; set; }
+        public string RtlsUrl { get; set; }
+
 
     }
 }
