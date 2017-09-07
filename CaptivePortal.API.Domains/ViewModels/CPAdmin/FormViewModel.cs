@@ -40,7 +40,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string CompanyIcon { get; set; }
         public string[] dataType { get; }
         public string[] controlType { get; }
-        public List<string> fieldlabel { get; set; }
+        public List<string> Fieldlabel { get; set; }
 
         public List<FormControl> FormControls { get; set; }
     }

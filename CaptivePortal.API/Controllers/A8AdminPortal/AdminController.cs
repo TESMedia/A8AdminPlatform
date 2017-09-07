@@ -295,7 +295,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     objViewModel.RtlsUrl = db.Site.FirstOrDefault(m => m.SiteId == SiteId).RtlsUrl;
 
                     objViewModel.TermsAndCondDoc = db.Site.FirstOrDefault(m => m.SiteId == SiteId).TermsAndCondDoc;
-                    objViewModel.fieldlabel = columnsList;
+                    objViewModel.Fieldlabel = columnsList;
                     if (db.Site.Any(m => m.SiteId == SiteId))
                     {
                         objViewModel.CompanyDdl = db.Site.FirstOrDefault(m => m.SiteId == SiteId).CompanyId.ToString();
@@ -310,7 +310,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     TempData["SiteIdCheck"] = "Please select any of the site you want to cofigure if site is not available please create new site and configure";
-                    return RedirectToAction("Home", "Admin");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             catch (Exception ex)
@@ -333,7 +333,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <returns></returns> 
         /// POST:update site/org/comp, icon
         [HttpPost]
-        public ActionResult UpdateSiteAndLoginRegisterConf(FormViewModel inputData, FormCollection fc, FormControlViewModel model, string[] fieldLabel)
+        public ActionResult UpdateSiteAndLoginRegisterConf(FormViewModel inputData, FormCollection fc, FormControlViewModel model, string[] FieldLabel)
         {
             using (var dbContextTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.ReadUncommitted))
             {

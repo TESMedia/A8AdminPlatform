@@ -63,9 +63,16 @@
                         <li>
                             <a id="managesite" class="row margin hide"><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="@Url.Action("ConfigureSite","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
-                                <li><a href="@Url.Action("ManageUser","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
-                                <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                @if (ViewBag.roleOfUser == "CompanyAdmin")
+                                {
+                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("ConfigureSite", "Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
+                                    <li><a href="@Url.Action("ManageUser", "Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
+                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                }
                             </ul>
                         </li>
 

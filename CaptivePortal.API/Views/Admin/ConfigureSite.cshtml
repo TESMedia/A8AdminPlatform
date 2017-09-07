@@ -249,7 +249,7 @@
                                                                             @Html.HiddenFor(model=>item.FormControlId)
                                                                         </div>*@
                                                                     <div class="col-md-3">
-                                                                        @*<input class="form-control" placeholder="Add Field" name="fieldLabel" type="text">*@
+                                                                        @*<input class="form-control" placeholder="Add Field" name="FieldLabel" type="text">*@
                                                                         @Html.EditorFor(model => item.LabelName, new { htmlAttributes = new { @class = "form-control", @name = "fieldLabel" } })
                                                                     </div>
                                                                     <div class="col-md-2">
@@ -291,10 +291,10 @@
                                                                         <div class="row">
                                                                             <div class="voca">
                                                                                 <div class="col-md-3">
-                                                                                   @* @Html.DropDownListFor(x => x.fieldlabel, new SelectList(Model.fieldlabel), "Select Filed Name", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "fieldlabel" })*@
+                                                                                   @* @Html.DropDownListFor(x => x.Fieldlabel, new SelectList(Model.Fieldlabel), "Select Filed Name", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "fieldlabel" })*@
 
-                                                                                    @Html.DropDownListFor(x => x.fieldlabel, new SelectList(lableNames as IEnumerable<SelectListItem>, "Value", "Text")
-                                                                            , "Select Control Type", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "fieldlabel"})
+                                                                                    @Html.DropDownListFor(x => x.Fieldlabel, new SelectList(lableNames as IEnumerable<SelectListItem>, "Value", "Text")
+                                                                            , "Select Control Type", new { @style = "width:180px", @class = "form-control", @name = "controlType", @id = "Fieldlabel"})
                                                                                 </div>
                                                                                 <div class="col-md-2">
                                                                                     <input id="LabelName" class="form-control col-md-7 col-xs-12" type="text" name="LabelNameToDisplay">
@@ -495,7 +495,7 @@
 
     $(function () {
 
-        $("#fieldlabel").change(function () {
+        $("#Fieldlabel").change(function () {
             //var selectedText = $(this).find("option:selected").text();
             var selectedValue = $(this).val();
             //alert("Selected Text: " + selectedText + " Value: " + selectedValue);
@@ -543,7 +543,7 @@
         $.each($("input[name='optionval']"), function () {
             arrData.push($(this).val());
         });
-        var data= {arrayValue:arrData,FormId:$("#FormId").val(),LabelNameToDisplay:$("#LabelName").val(),fieldlabel:$("#fieldlabel").val(),chkOptOrMand:checkedValue,IsMandetory:checkedValue}
+        var data= {arrayValue:arrData,FormId:$("#FormId").val(),LabelNameToDisplay:$("#LabelName").val(),Fieldlabel:$("#Fieldlabel").val(),chkOptOrMand:checkedValue,IsMandetory:checkedValue}
         $.post("/Form/Save/",data, function (e) {
             location.reload();
         });
