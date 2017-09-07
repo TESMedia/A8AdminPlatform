@@ -287,12 +287,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
-            ViewBag.groups = from item in db.Group.ToList()
-                             select new SelectListItem()
-                             {
-                                 Text = item.GroupName,
-                                 Value = item.GroupId.ToString(),
-                             };
+            list._menu = db.Group.ToList();
+            list.GroupDdl = Convert.ToInt32(GroupName);
             ViewBag.sites = from item in db.Site.ToList()
                             select new SelectListItem()
                             {
@@ -469,8 +465,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 objUserViewModel.Password = userDetail.PasswordHash;
                 objUserViewModel.UserName = userDetail.UserName;
-                objUserViewModel.Gender = db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId).Value;
-                objUserViewModel.AgeRange = db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId).Value;
+                objUserViewModel.Gender = db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId) == null ? null : db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId).Value;
+                objUserViewModel.AgeRange = db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId) == null ? null : db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId).Value;
                 objUserViewModel.AutoLogin = Convert.ToBoolean(userDetail.AutoLogin);
                 objUserViewModel.Term_conditions = termConditionVersion;
                 objUserViewModel.PromotionEmailOptIn = Convert.ToBoolean(userDetail.promotional_email);
@@ -578,25 +574,31 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             var UserNameBefore = fc["UserName"];
             int userId = Convert.ToInt16(fc["UserId"]);
 
-
-            //Updating the Users table
-            if (db.Users.Any(m => m.UserName == UserNameBefore))
+            try
             {
-                //userId = db.Users.Where(m => m.UserName == UserNameBefore).FirstOrDefault().UserId;
-                var objUser = db.Users.Find(userId);
+                //Updating the Users table
+                if (db.Users.Any(m => m.UserName == UserNameBefore))
                 {
-                    objUser.UserName = fc["UserName"];
-                    objUser.GenderId = Convert.ToInt32(fc["GenderId"]);
-                    objUser.AgeId = Convert.ToInt32(fc["AgeId"]);
+                    //userId = db.Users.Where(m => m.UserName == UserNameBefore).FirstOrDefault().UserId;
+                    var objUser = db.Users.Find(userId);
+                    {
+                        //objUser.UserName = fc["UserName"];
+                        objUser.GenderId = Convert.ToInt32(fc["GenderId"]);
+                        objUser.AgeId = Convert.ToInt32(fc["AgeId"]);
 
-                    //objUser.MobileNumber = fc["MobileNumber"];
-                    //objUser.IntStatus = Convert.ToString(fc["Status"]);
-                    objUser.Status = fc["Status"].ToString();
+                        objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
+                        objUser.Status = Convert.ToString(fc["Status"]);
+                        objUser.Status = fc["Status"].ToString();
 
-                    objUser.Email = fc["UserName"];
-                    db.Entry(objUser).State = EntityState.Modified;
-                    db.SaveChanges();
+                       // objUser.Email = fc["UserName"];
+                        db.Entry(objUser).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
             return RedirectToAction("UserDetails", "Account");
         }

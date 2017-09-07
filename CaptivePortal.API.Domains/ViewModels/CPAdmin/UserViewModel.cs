@@ -1,4 +1,5 @@
-﻿using CaptivePortal.API.Models.CaptivePortalModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,6 +125,9 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public List<WifiUserViewModel> WifiUserViewlist { get; set; }
         public WifiUserViewModel WifiUserView { get; set; }
         public SelectList WifiUserLabelModalViewList { get; set; }
+
+        public IEnumerable<Group> _menu { get; set; }
+        public long GroupDdl { get; set; } //Property to hold dropdown selection
     }
 
 

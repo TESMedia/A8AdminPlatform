@@ -53,7 +53,7 @@
                     <p class="alert alert-success" id="successMessage">@TempData["SiteIdCheck"]</p>
                 }
                 <h1>Overall Estate</h1>
-                @if (ViewBag.roleOfUser == "GlobalAdmin")
+                @if (this.User.IsInRole("GlobalAdmin"))
                 {
                     <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='@Url.Action("CreateNewSite", "Admin")'">Create New Site</button>
                 }

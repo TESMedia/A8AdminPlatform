@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label for="Group">Group:</label>
-                                                @Html.DropDownList("GroupDdl", ViewBag.groups as IEnumerable<SelectListItem>, "--Select the Group--", new { @class = "form-control", @id = "GroupDdl", @name = "GroupName", @onchange = "FilterUserUnderGropu()", @Selected = true })
+                                                @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "GroupDdl", @name = "GroupName", @onchange = "FilterUserUnderGropu()", @Selected = true })
                                             </div>
 
 
@@ -213,7 +213,7 @@
                                     <div class="form-group" id="AddGroup" style="display:none">
                                         <label for="Group" class="control-label col-md-3" style="padding-left:20%">Group:</label>
                                         <div class="col-md-3">
-                                            @Html.DropDownList("GroupDdl", ViewBag.groups as IEnumerable<SelectListItem>, "--Select the Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl", @onchange = "alocateSelectedGroup()" })
+                                            @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl", @onchange = "alocateSelectedGroup()" })
                                         </div>
                                         <input type="button" id="btnAdd" class="btn btn-success" value="Add" onclick="addUserToGroup()" />
                                     </div>
