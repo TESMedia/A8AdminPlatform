@@ -287,13 +287,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
-            ViewBag.groups = from item in db.Groups.ToList()
-                             select new SelectListItem()
-                             {
-                                 Text = item.GroupName,
-                                 Value = item.GroupId.ToString(),
-                             };
-            list._menu = db.Group.ToList();
+            list._menu = db.Groups.ToList();
             list.GroupDdl = Convert.ToInt32(GroupName);
             ViewBag.sites = from item in db.Site.ToList()
                             select new SelectListItem()
@@ -436,7 +430,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     list.WifiUserView = userViewModelList.FirstOrDefault();
-                    list.WifiUserView._menu = db.Group.ToList();
+                    list.WifiUserView._menu = db.Groups.ToList();
                     list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
                 }
                 ViewBag.CurrentPage = currentPageIndex;
@@ -470,7 +464,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             var siteName = db.Site.FirstOrDefault(m => m.SiteId == SiteId).SiteName;
             var model = new MacAddressViewModel();
             WifiUserViewModel objUserViewModel = new WifiUserViewModel();
-            objUserViewModel._menu = db.Group.ToList();
+            objUserViewModel._menu = db.Groups.ToList();
             //objUserViewModel._menu = db.Group.ToList();
             
             

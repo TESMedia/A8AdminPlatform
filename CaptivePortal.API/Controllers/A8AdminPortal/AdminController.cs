@@ -555,35 +555,5 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             }
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult TestSetUpRtls()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult ViewRtlsData()
-        {
-            return View();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet]
-        public ActionResult ViewErrorLogsRtls()
-        {
-            return View();
-        }
-
     }
 }
