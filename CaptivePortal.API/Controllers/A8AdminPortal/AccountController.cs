@@ -24,7 +24,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         ILog log = LogManager.GetLogger(typeof(AdminController));
         private ApplicationRoleManager _roleManager;
         private A8AdminDbContext db = new A8AdminDbContext();
-
+       
 
         public AccountController()
         {
@@ -135,7 +135,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         //Get:Admin will create user.
         public ActionResult Register()
         {
-            ViewBag.groups = from item in db.Group.ToList()
+            ViewBag.groups = from item in db.Groups.ToList()
                              select new SelectListItem()
                              {
                                  Text = item.GroupName,
@@ -287,6 +287,12 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
+            ViewBag.groups = from item in db.Groups.ToList()
+                             select new SelectListItem()
+                             {
+                                 Text = item.GroupName,
+                                 Value = item.GroupId.ToString(),
+                             };
             list._menu = db.Group.ToList();
             list.GroupDdl = Convert.ToInt32(GroupName);
             ViewBag.sites = from item in db.Site.ToList()

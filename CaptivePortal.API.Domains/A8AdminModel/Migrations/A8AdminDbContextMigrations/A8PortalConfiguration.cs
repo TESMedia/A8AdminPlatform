@@ -1,18 +1,22 @@
-namespace CaptivePortal.API.Models.Migrations
+namespace CaptivePortal.API.Models.A8AdminModel.Migrations.A8AdminDbContextMigrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CaptivePortal.API.Models.A8AdminModel.A8AdminDbContext>
+    public sealed class A8PortalConfiguration : DbMigrationsConfiguration<A8AdminDbContext>
     {
-        public Configuration()
+        public A8PortalConfiguration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            MigrationsDirectory = @"A8AdminModel\Migrations\A8AdminDbContextMigrations";
+            AutomaticMigrationDataLossAllowed = false;
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySql.Data.Entity.MySqlMigrationSqlGenerator());
+            SetHistoryContextFactory("MySql.Data.MySqlClient", (conn, schema) => new MySqlHistoryContext(conn, schema));
         }
 
-        protected override void Seed(CaptivePortal.API.Models.A8AdminModel.A8AdminDbContext context)
+        protected override void Seed(A8AdminDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

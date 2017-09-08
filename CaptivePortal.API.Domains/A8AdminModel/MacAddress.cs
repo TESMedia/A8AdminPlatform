@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using CaptivePortal.API.Models.CustomIdentity;
 
-namespace CaptivePortal.API.Models.CaptivePortalModel
+namespace CaptivePortal.API.Models.A8AdminModel
 {
     public class MacAddress
     {

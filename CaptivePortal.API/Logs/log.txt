@@ -174,3 +174,277 @@ ERROR 2017-09-06 13:09:14,147 System.Web.Http.ApiController - A public action me
 INFO 2017-09-06 13:17:10,482 System.Web.Http.ApiController - Application started successfully.
 ERROR 2017-09-06 13:17:19,439 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
 ERROR 2017-09-06 13:17:45,103 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:17:22,220 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-06 20:18:35,259 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-06 20:21:08,697 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-06 20:21:56,813 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-06 20:27:06,332 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-06 20:27:36,424 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-06 20:29:27,707 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-06 20:29:55,015 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+ERROR 2017-09-06 20:30:12,687 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:30:16,564 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+ERROR 2017-09-06 20:31:20,722 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:31:23,918 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-06 20:31:34,800 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+ERROR 2017-09-06 20:31:37,744 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:32:15,766 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-06 20:32:22,767 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:32:30,647 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-06 20:32:41,354 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+ERROR 2017-09-06 20:32:45,006 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:33:17,017 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+ERROR 2017-09-06 20:33:22,209 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:34:34,811 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-06 20:34:44,581 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+ERROR 2017-09-06 20:34:47,707 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-06 20:35:06,530 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-06 20:35:16,650 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+ERROR 2017-09-06 20:35:20,702 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 20:38:56,751 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 20:38:59,324 System.Web.Http.ApiController - A public action method 'TestSetUpRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-06 20:43:58,682 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-06 20:44:23,772 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 20:44:46,515 RTLS.Controllers.RTLSController - System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreatedDateTime'.
+Invalid column name 'IsAdminSelected'.
+Invalid column name 'IsRegisterInRtls'.
+Invalid column name 'IsTracking'.
+Invalid column name 'IsDisplay'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+ClientConnectionId:dfa1d18d-71f7-40ed-8d43-6c57d7e08662
+Error Number:207,State:1,Class:16
+ERROR 2017-09-06 20:54:03,125 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+INFO 2017-09-06 20:54:22,778 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-06 20:55:11,785 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 20:55:29,500 RTLS.Controllers.RTLSController - System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'CreatedDateTime'.
+Invalid column name 'IsAdminSelected'.
+Invalid column name 'IsRegisterInRtls'.
+Invalid column name 'IsTracking'.
+Invalid column name 'IsDisplay'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+ClientConnectionId:3e749df1-10be-415b-b187-342274f588dc
+Error Number:207,State:1,Class:16
+ERROR 2017-09-06 20:55:45,293 System.Web.Http.ApiController - A public action method 'ViewErrorLogsRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-06 21:00:13,172 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-06 21:01:37,293 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 21:01:41,460 System.Web.Http.ApiController - A public action method 'ViewErrorLogsRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-06 21:02:41,229 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-06 21:02:46,218 System.Web.Http.ApiController - A public action method 'ViewErrorLogsRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-06 21:03:06,968 System.Web.Http.ApiController - A public action method 'ViewErrorLogsRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-06 21:03:08,468 System.Web.Http.ApiController - A public action method 'ViewErrorLogsRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-07 12:44:18,537 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 12:48:16,711 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-07 12:50:16,764 System.Web.Http.ApiController - An error occurred while updating the entries. See the inner exception for details.
+INFO 2017-09-07 12:51:28,379 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 12:52:27,607 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 12:52:45,299 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 12:53:37,223 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-07 13:05:59,540 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+INFO 2017-09-07 13:16:08,131 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 13:17:04,595 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-07 13:37:41,236 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 13:41:07,641 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 13:58:21,043 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 14:04:35,365 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 14:56:59,608 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 14:57:48,804 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 14:58:48,734 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-07 15:04:23,825 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 16:09:23,791 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 16:11:53,382 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 16:13:22,704 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 16:14:35,304 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+ERROR 2017-09-07 16:15:03,721 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 16:15:13,203 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 16:15:34,202 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-07 16:21:57,986 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-07 17:01:00,771 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 17:02:53,202 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 17:04:40,160 System.Web.Http.ApiController - The controller for path '/TestSetUp/Admin' was not found or does not implement IController.
+ERROR 2017-09-07 18:04:02,169 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 18:04:43,362 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-07 18:04:47,979 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 18:04:50,190 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-07 18:05:08,485 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-07 18:05:22,201 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 18:06:12,204 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 18:06:44,704 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-07 18:07:06,950 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-07 19:47:50,286 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-07 19:48:36,271 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 19:48:55,407 RTLS.Controllers.RTLSController - MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'Extent1.SiteId' in 'where clause'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.Entity.EFMySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+ERROR 2017-09-07 19:51:20,772 RTLS.Controllers.RTLSController - 
+ERROR 2017-09-07 19:51:35,526 RTLS.Controllers.RTLSController - MySql.Data.MySqlClient.MySqlException (0x80004005): Unknown column 'Extent1.SiteId' in 'where clause'
+   at MySql.Data.MySqlClient.MySqlStream.ReadPacket()
+   at MySql.Data.MySqlClient.NativeDriver.GetResult(Int32& affectedRow, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.GetResult(Int32 statementId, Int32& affectedRows, Int64& insertedId)
+   at MySql.Data.MySqlClient.Driver.NextResult(Int32 statementId, Boolean force)
+   at MySql.Data.MySqlClient.MySqlDataReader.NextResult()
+   at MySql.Data.MySqlClient.MySqlCommand.ExecuteReader(CommandBehavior behavior)
+   at MySql.Data.Entity.EFMySqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+INFO 2017-09-07 19:58:43,732 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-07 20:02:50,124 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-07 20:03:22,759 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 20:07:10,646 RTLS.Controllers.RTLSController - 
+ERROR 2017-09-07 20:09:15,324 RTLS.Controllers.RTLSController - 
+INFO 2017-09-07 20:11:37,995 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-07 20:19:56,766 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 20:30:37,230 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:00:56,701 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:02:09,211 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:15:05,445 System.Web.Http.ApiController - The controller for path '/TestSetUp/Admin' was not found or does not implement IController.
+INFO 2017-09-07 21:18:11,420 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-07 21:22:36,778 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:22:54,202 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:23:57,212 System.Web.Http.ApiController - A public action method 'DeleteMacAddress' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-07 21:24:00,521 System.Web.Http.ApiController - A public action method 'DeleteMacAddress' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-07 21:24:01,207 System.Web.Http.ApiController - A public action method 'DeleteMacAddress' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-07 21:24:17,720 System.Web.Http.ApiController - A public action method 'DeleteMacAddress' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-07 21:24:43,205 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:24:55,708 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-07 21:25:23,366 RTLS.Controllers.RTLSController - Store update, insert, or delete statement affected an unexpected number of rows (0). Entities may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=472540 for information on understanding and handling optimistic concurrency exceptions.
+ERROR 2017-09-07 21:25:23,412 System.Web.Http.ApiController - The controller for path '/TestSetUp/Admin' was not found or does not implement IController.
+INFO 2017-09-08 01:55:11,883 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 01:58:56,682 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-08 02:00:18,941 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-08 02:00:48,776 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-08 02:00:55,442 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+ERROR 2017-09-08 02:02:40,707 System.Web.Http.ApiController - An error occurred while updating the entries. See the inner exception for details.
+ERROR 2017-09-08 02:03:32,723 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+INFO 2017-09-08 02:04:49,461 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 02:14:22,463 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+ERROR 2017-09-08 02:15:34,336 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+INFO 2017-09-08 02:16:36,888 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 02:16:37,000 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-08 02:17:08,887 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 02:17:15,835 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-08 02:17:30,375 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 02:17:37,886 System.Web.Http.ApiController - A public action method 'LocationsMapping' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 02:17:46,533 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-08 02:22:45,208 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 08:47:47,649 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 08:51:25,786 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+ERROR 2017-09-08 08:55:14,742 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+ERROR 2017-09-08 08:55:49,503 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 08:57:30,831 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 08:58:05,856 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 08:59:01,814 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 09:00:21,441 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 09:06:14,317 System.Web.Http.ApiController - A public action method 'Home' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-08 09:18:11,447 System.Web.Http.ApiController - The controller for path '/Index/Home' was not found or does not implement IController.
+ERROR 2017-09-08 09:35:29,636 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+ERROR 2017-09-08 09:36:37,059 System.Web.Http.ApiController - Object reference not set to an instance of an object.
+INFO 2017-09-08 09:47:58,476 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 10:16:36,059 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 10:16:36,608 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-08 10:17:08,343 System.Web.Http.ApiController - A public action method 'LocationsMapping' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-08 10:17:23,623 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 10:17:23,625 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 11:11:16,035 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 11:14:51,127 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 11:23:59,922 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 11:26:12,555 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 11:26:12,739 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 11:41:15,609 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 11:45:34,172 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 11:53:29,903 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 12:15:42,003 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 12:17:52,742 System.Web.Http.ApiController - The provider did not return a ProviderManifestToken string.
+INFO 2017-09-08 12:18:26,580 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 12:18:27,037 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 12:20:56,298 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 12:29:45,429 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 12:34:31,832 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 12:53:24,305 System.Web.Http.ApiController - The provider did not return a ProviderManifestToken string.
+ERROR 2017-09-08 12:54:34,948 System.Web.Http.ApiController - The provider did not return a ProviderManifestToken string.
+INFO 2017-09-08 12:55:32,097 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 13:11:52,389 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 13:13:41,172 System.Web.Http.ApiController - A public action method 'LocationsMapping' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-08 13:27:13,454 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 13:57:53,531 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-08 13:58:33,306 System.Web.Http.ApiController - An error occurred while executing the command definition. See the inner exception for details.
+INFO 2017-09-08 14:00:27,591 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 14:04:26,886 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 14:04:26,891 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 14:09:36,094 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 14:22:15,831 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 14:33:40,276 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 14:49:51,901 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 15:57:32,141 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 16:17:22,594 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 16:19:03,640 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 16:26:40,053 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 16:29:41,629 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 16:49:26,627 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 17:12:08,146 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 17:16:21,943 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 17:19:27,410 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 17:21:15,087 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-08 17:22:34,846 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-08 17:23:00,935 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-08 17:24:13,970 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+INFO 2017-09-08 17:25:11,601 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 17:25:13,123 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 17:32:43,378 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 17:37:17,709 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 17:37:19,377 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-08 17:44:28,746 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 18:03:53,672 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-08 19:58:55,320 System.Web.Http.ApiController - Application started successfully.

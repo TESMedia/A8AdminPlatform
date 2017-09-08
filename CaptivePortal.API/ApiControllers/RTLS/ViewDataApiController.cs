@@ -1,4 +1,5 @@
-﻿using CaptivePortal.API.Models.RTLSModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.RTLSModel;
 using CaptivePortal.API.ViewModels.RTLS;
 using log4net;
 using Newtonsoft.Json;
@@ -19,7 +20,7 @@ namespace RTLS.API
     {
         private static log4net.ILog Log { get; set; }
         ILog log = log4net.LogManager.GetLogger(typeof(ViewDataApiController));
-        private RTLSDbContext db = new RTLSDbContext();
+        private A8AdminDbContext db = new A8AdminDbContext();
 
         [Route("ListOfMacAddress")]
         [HttpGet]
@@ -30,7 +31,7 @@ namespace RTLS.API
 
             try
             {
-                var Maclist = db.MacAddress.ToList();
+                var Maclist = db.Device.ToList();
                 objPagedResults.PageSize = Maclist.Count();
                 objPagedResults.TotalPages= (int)Math.Ceiling((decimal)Maclist.Count / (decimal)objPagedResults.PageSize);
                 objPagedResults.lstMacAddress.AddRange(Maclist);

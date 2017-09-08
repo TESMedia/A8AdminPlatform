@@ -1,23 +1,23 @@
-﻿@model IEnumerable<CaptivePortal.API.Models.RTLSModel.MacAddress>
+﻿@model RTLS.ViewModel.RequestLocationDataVM
 @{
     ViewBag.Title = "Index";
     Layout = null;
 }
 <div class="navbar-collapse">
     <div class="row col-lg-12 col-sm-12 col-md-12">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4>Real Time Location Services-API administrator</h4>
-        </div>
+        <h4>Real Time Location Services-API administrator @ViewBag.SiteName</h4>
     </div>
 </div>
+
 <br /><br />
 <div class="col-sm-12 col-lg-12 col-md-12">
-    @using (Html.BeginForm("Index", "RTLSAdmin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Index", "RTLS", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         <div class="container row col-md-5 col-lg-5 col-sm-5">
             <div class="form-group left">
                 <label class="control-label col-md-5">Enter the Devices</label>
                 <div class="btn pull-left form-horizontal" id="txtDiv">
+                    <input type="text" value="@ViewBag.SiteName" class="hide" name="SiteName"/>
                     <input type="text" id="txtMacDevices" name="MacAddresses" class="form-control">
                 </div>
             </div>
@@ -49,7 +49,7 @@
                     <input type="checkbox" name="chkMacDevices" id="chkMacDevices" />
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Mac)
+                    MacAdress
                 </th>
                 <th>
                     Status
@@ -61,7 +61,7 @@
                     IsTracking
                 </th>
             </tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Devices)
             {
                 <tr>
                     <td>

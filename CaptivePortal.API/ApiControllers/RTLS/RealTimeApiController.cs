@@ -18,6 +18,7 @@ using CaptivePortal.API.Enums.RTLSEnums;
 using CaptivePortal.API.ViewModels.RTLS;
 using CaptivePortal.API.DataAccess.Repository.RTLS;
 using CaptivePortal.API.ViewModels.CPAdmin;
+using CaptivePortal.API.Models.A8AdminModel;
 
 namespace CaptivePortal.API.ApiControllers.RTLS
 { 
@@ -65,7 +66,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
                     objNotifications = JsonConvert.DeserializeObject<Notification>(resultContent);
                     if (objNotifications.result.returncode == Convert.ToInt32(FatiApiResult.Success))
                     {
-                        using (MacAddressRepository objMacRepository = new MacAddressRepository())
+                        using (DeviceRepository objMacRepository = new DeviceRepository())
                         {
                             objMacRepository.RegisterListOfMacAddresses(model.MacAddresses, model.IscreatedByAdmin);
                         }
@@ -157,7 +158,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
                         objNotifications = JsonConvert.DeserializeObject<Notification>(resultContent);
                         if (objNotifications.result.returncode == Convert.ToInt32(FatiApiResult.Success))
                         {
-                            using (MacAddressRepository objMacRepository = new MacAddressRepository())
+                            using (DeviceRepository objMacRepository = new DeviceRepository())
                             {
                                 objMacRepository.DeRegisterListOfMacs(model.MacAddresses);
                             }
@@ -198,7 +199,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
             try
             {
                 //RecieveDateTime
-                using (RTLSDbContext db = new RTLSDbContext())
+                using (A8AdminDbContext db = new A8AdminDbContext())
                 {
                     TrackMember objCheckMemeber = new TrackMember();
                     objCheckMemeber.MacAddress = objLocationData.mac;

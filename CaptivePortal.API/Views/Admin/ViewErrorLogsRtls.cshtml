@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Newtonsoft.Json.Linq;
+@{
+
     Layout = null;
 }
 
@@ -18,13 +20,12 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- page content -->
+           
             <div class="right_col" role="main" style="left:30%">
                 <div style="width:80%">
-                    @Html.Action("RTLSRegisteredData", "RTLS")
+                    @Html.Action("GetRTLSLogs", "RTLS")
                 </div>
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer></footer>
@@ -72,7 +73,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <!-- Google Analytics -->
 
 </body>
 </html>

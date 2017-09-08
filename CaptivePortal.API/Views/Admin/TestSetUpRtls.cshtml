@@ -1,7 +1,6 @@
 ﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,29 +17,16 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- top navigation -->
-            <div class="top_nav">
-                <div class="nav_menu">
-                    <nav>
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-                        <ul class="nav navbar-nav navbar-right"></ul>
-                    </nav>
-                </div>
-            </div>
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main" style="left:30%">
                 <div style="width:80%">
-                    @Html.Action("Index", "RTLSAdmin")
+                    @Html.Action("Index", "RTLS")
                 </div>
             </div>
+            <footer>
 
-            <!-- /page content -->
-            <!-- footer content -->
-            <footer></footer>
-            <!-- /footer content -->
+            </footer>
         </div>
     </div>
 

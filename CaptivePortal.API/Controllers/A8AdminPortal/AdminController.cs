@@ -518,11 +518,29 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             return View();
         }
 
-        public ActionResult Locationdashboard()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteName"></param>
+        /// <returns></returns>
+        public ActionResult Locationdashboard(string SiteName)
         {
-            return View();
+            if (!String.IsNullOrEmpty(SiteName))
+            {
+                return View();
+            }
+            else
+            {
+                TempData["SiteIdCheck"] = "Please select any of the site and then upload";
+                return RedirectToAction("Index", "Home");
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="SiteName"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult UploadLocationDashBoardFile(string SiteName)
         {
@@ -533,8 +551,38 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             else
             {
                 TempData["SiteIdCheck"] = "Please select any of the site and then upload";
-                return RedirectToAction("Home", "Admin");
+                return RedirectToAction("Index", "Home");
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult TestSetUpRtls()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ViewRtlsData()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ViewErrorLogsRtls()
+        {
+            return View();
         }
 
     }

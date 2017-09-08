@@ -18,8 +18,10 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public bool? AutoLogin { get; set; }
         public string ControllerIpAddress { get; set; }
         public string MySqlIpAddress { get; set; }
+
         [MaxLength]
         public string Term_conditions { get; set; }
+
         [MaxLength]
         public string TermsAndCondDoc { get; set; }
         public string RtlsUrl { get; set; }

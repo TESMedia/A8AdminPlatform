@@ -383,6 +383,416 @@
     //    }
     //});
 </script>
+@using CaptivePortal.API.ViewModels.CPAdmin
+@model FormViewModel
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/CheckBox.css" rel="stylesheet" />
+    <link href="~/Style/RequiredField.css" rel="stylesheet" />
+</head>
+
+<body class="nav-md" onload="onload()">
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <br />
+                                    <div id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                                        @using (Html.BeginForm("CreateSiteAndLoginRegisterConf", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return validateForm()" }))
+                                        {
+                                            <div class="form-group">
+                                                <label for="site-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Site Name:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="site-name" class="form-control col-md-7 col-xs-12" type="text" name="SiteName" onchange="doesSiteNameExist()" required><label class="message" id="message" style="color:red" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="company-name" class="control-label col-md-3 col-sm-3 col-xs-12 required-field">Company Name:</label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="company-name" class="form-control col-md-7 col-xs-12" type="text" name="CompanyName" style="display:none">
+                                                    @Html.DropDownList("CompanyDdl", ViewBag.companies as IEnumerable<SelectListItem>, "--Select the Company--", new { @class = "form-control", @id = "CompanyDdl", @name = "CompanyDdl" })
+                                                </div>
+                                                <div style="margin-top:-15px;">
+                                                    Create New Company
+                                                </div>
+                                                <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxCompany" onclick="showCompanyTextBox()" name="CreateNewCompany" style="width:30px;float: right;margin-right: 15%;">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="company-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Company Icon:</label>
+                                                <div class="col-md-6">
+                                                    <input type="file" name="CompanyIcon" id="company-icon" accept="image/*">
+                                                </div>
+                                            </div>
+
+                                                <div class="form-group">
+                                                    <label for="organisation-name" class="control-label col-md-3 col-sm-3 col-xs-12">Organisation Name:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="organisation-name" class="form-control col-md-7 col-xs-12" type="text" name="OrganisationName" style="display:none">
+                                                        <select id="organisationDdl" class="form-control" name="organisationDdl">
+                                                            <option value="0">--Select the organisations--</option>
+                                                        </select>
+                                                    </div>
+                                                    <div style="margin-top:-15px;">
+                                                        Create New Organisation
+                                                    </div>
+                                                    <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkboxOrganisation" onclick="showOrganistationTextBox()" name="CreateNewOrganisation" style="width:30px;float: right;margin-right: 15%;">
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="controller-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Controller IP address:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="controller-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="ControllerIpAddress">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="radius-IpAddress" class="control-label col-md-3 col-sm-3 col-xs-12">Radius IP address:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="radius-IpAddress" class="form-control col-md-7 col-xs-12" type="text" name="MySqlIpAddress">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="DashboardUrl" class="control-label col-md-3 col-sm-3 col-xs-12">Dashboard URL:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="DashboardUrl" class="form-control col-md-7 col-xs-12" type="text" name="DashboardUrl">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="RtlsUrl" class="control-label col-md-3 col-sm-3 col-xs-12">RTLS URL:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="RtlsUrl" class="form-control col-md-7 col-xs-12" type="text" name="RtlsUrl">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="auto-login" class="control-label col-md-3 col-sm-3 col-xs-12">Auto-login users:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input class="form-control col-md-7 col-xs-12" type="checkbox" id="checkbox1" name="AutoLogin" style="width:30px;">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="term-condition" class="control-label col-md-3 col-sm-3 col-xs-12">Terms & Conditions:</label>
+                                                    <div class="col-md-1">
+                                                        <input id="term-version" class="form-control col-md-1" type="text" name="Term_conditions">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="filename" readonly class="form-control col-md-3" type="text" name="TermsAndCondDoc">
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <input id="browse" type="file" name="Term_conditions" style="display:none" onChange="Handlechange();">
+                                                        <input type="button" class="btn btn-success" value="Browse" id="TermsAndCondDoc" name="Term_conditions" onclick="HandleBrowseClick();" />
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="middle-name">Login and Registration Page configuration:</label>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="banner-icon" class="control-label col-md-3 col-sm-3 col-xs-12">Banner Icon:</label>
+                                                    <div class="col-md-6">
+                                                        <input type="file" name="BannerIcon" id="banner-icon" accept="image/*">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="background-colour" class="control-label col-md-3 col-sm-3 col-xs-12">Background colour:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="background-colour" class="form-control col-md-7 col-xs-12" type="color" name="BackGroundColor" style="width:70px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="loginwindow-colour" class="control-label col-md-3 col-sm-3 col-xs-12">Login window colour:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="loginwindow-colour" class="form-control col-md-7 col-xs-12" type="color" name="LoginWindowColor" style="width:70px;">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="require-password" class="control-label col-md-3 col-sm-3 col-xs-12">Require Password:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input class="form-control col-md-7 col-xs-12" type="checkbox" id="IsPasswordRequire" name="IsPasswordRequire" style="width:30px;">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <label for="login-title" class="control-label col-md-3 col-sm-3 col-xs-12">Login Page Title:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="login-title" class="form-control col-md-7 col-xs-12" type="text" name="LoginPageTitle">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="registration-title" class="control-label col-md-3 col-sm-3 col-xs-12">Registration Page Title:</label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <input id="registration-title" class="form-control col-md-7 col-xs-12" type="text" name="RegistrationPageTitle">
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="ln_solid"></div>
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                        <input type="submit" id="createSiteOrLoginRegisterConf" class="btn btn-success" value="Create" />
+                                                    </div>
+                                                </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../vendors/moment/min/moment.min.js"></script>
+    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="../vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="../vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="../vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="../vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="../vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="../vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="../vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="../vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="../vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="../vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+    function HandleBrowseClick() {
+        var fileinput = document.getElementById("browse");
+        fileinput.click();
+    }
+
+    function Handlechange() {
+        var fileinput = document.getElementById("browse");
+        var textinput = document.getElementById("filename");
+        textinput.value = fileinput.value;
+    }
+
+    function showCompanyTextBox() {
+        if ($('#checkboxCompany').is(':checked')) {
+            $('#CompanyDdl').hide();
+            $('#company-name').show();
+            $('#CompanyDdl').prop('required', false);
+            $('#company-name').prop('required', false);
+        } else {
+            $('#CompanyDdl').show();
+            $('#company-name').hide();
+            //$('#company-name').prop('required', true);
+        }
+    }
+
+    function validateForm() {
+        if ($('#checkboxCompany').is(':checked')) {
+            var isCompanyName = $("#company-name").val();
+            if (isCompanyName == "") {
+                $('#company-name').prop('required', true);
+            }
+            else {
+                $('#CompanyDdl').prop('required', false);
+            }
+        }
+        else {
+            var isCompanyDdl = $("#CompanyDdl").val();
+            if (isCompanyDdl == "") {
+                $('#CompanyDdl').prop('required', true);
+            }
+        }
+    }
+
+    //function onload() {
+    //    if ($('#checkboxCompany').is(':checked')) {
+    //        $('#CompanyDdl').hide();
+    //        $('#company-name').show();
+    //    } else {
+    //        $('#CompanyDdl').show();
+    //        $('#company-name').hide();
+    //        $('#CompanyDdl').prop('required', true);
+    //    }
+    //}
+
+    function showOrganistationTextBox() {
+        if ($('#checkboxOrganisation').is(':checked')) {
+            $('#organisationDdl').hide();
+            $('#organisation-name').show();
+        } else {
+            $('#organisationDdl').show();
+            $('#organisation-name').hide();
+        }
+    }
+
+
+    $(function () {
+
+
+        $("#CompanyDdl").change(function () {
+            if ($(this).val() != "") {
+                $('#organisationDdl').val('');
+                var id = $(this).val();
+                $.getJSON("/Admin/GetOrganisations?companyId=" + id, function (data) {
+                    var items = [];
+                    $.each(data, function (key, value) {
+                        items.push("<option value=" + this.value + ">" + this.text + "</option>");
+                    });
+                    $("#organisationDdl").html(items.join(' '));
+                });
+            }
+        });
+
+        $(document).on('click', '.btn-add', function (e) {
+            e.preventDefault();
+
+            var controlForm = $('.controls'),
+                currentEntry = $(this).parents('.voca:first'),
+                newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+            newEntry.find('input').val('');
+            controlForm.find('.btn-add:not(:last)')
+                .removeClass('btn-default').addClass('btn-danger')
+                .removeClass('btn-add').addClass('btn-remove')
+
+                .html('<span class="glyphicon glyphicon-minus" aria-hidden="true"></span> Remove   ');
+        }).on('click', '.btn-remove', function (e) {
+            $(this).parents('.voca:first').remove();
+
+            e.preventDefault();
+            return false;
+        });
+    });
+
+    var loadFile = function (event) {
+        var output = document.getElementById('output');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+
+    $('#checkbox-value').text($('#checkbox1').val());
+    $("#checkbox1").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+
+    });
+
+    $('#checkbox-value').text($('#IsPasswordRequire').val());
+    $("#IsPasswordRequire").on('change', function () {
+        if ($(this).is(':checked')) {
+            $(this).attr('value', 'true');
+        } else {
+            $(this).attr('value', 'false');
+        }
+
+    });
+
+
+    function doesSiteNameExist() {
+        var siteName = document.getElementById('site-name').value;
+        var uri = '@Html.Raw(Url.Action("doesSiteNameExist", "Admin"))';
+        $.ajax({
+            url: uri,
+            type: 'POST',
+            traditional: true,
+            dataType: "HTML",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify({ 'SiteName': siteName }),
+            success: function (result) {
+                if (result == "true") {
+                    document.getElementById('message').style.display = "block";
+                    document.getElementById('message').innerHTML = "Site Name already taken";
+                }
+                else {
+                    document.getElementById('message').style.display = "none";
+                }
+            },
+            error: function (objAjaxRequest, strError) {
+                var respText = objAjaxRequest.responseText;
+                console.log(respText);
+            }
+        });
+    }
+
+
+    //$("#plus").on("click", function () {
+    //    $("#txtDiv").append('<div class="col-md-2 col-sm-2 col-lg-2"> <input class="form-control text-box single-line" id="optionval" name="optionval" type="text"><span class="field-validation-valid text-danger" data-valmsg-for="optionval" data-valmsg-replace="true"></span></div>');
+    //});
+
+    //$("#minus").on("click", function () {
+
+    //    if ($("input[name='optionval']").length > 1) {
+    //        $("input[name='optionval']:eq(" + (length - 1) + ")").remove();
+    //    }
+    //});
+</script>
 <script>
     $(document).ready(function(){
 

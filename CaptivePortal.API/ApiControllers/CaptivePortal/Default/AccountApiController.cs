@@ -12,6 +12,7 @@ using CaptivePortal.API.Common;
 using CaptivePortal.API.ViewModels;
 using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.ViewModels.CPAdmin;
+using CaptivePortal.API.Models.A8AdminModel;
 
 namespace CaptivePortal.API.Controllers
 {
@@ -203,7 +204,7 @@ namespace CaptivePortal.API.Controllers
                 if (MacAddressRepository.IsMacAddressExistInParticularSite(model.MacAddress, model.SiteId))
                 {
                     log.Info("inside Is Any MacAddressExist For Particular Site");
-                    var User = UserRepository.GetUserPerDeviceMacAddress(model.MacAddress, model.SiteId);
+                    var User = MacAddressRepository.GetUserPerDeviceMacAddress(model.MacAddress, model.SiteId);
                     if (User.AutoLogin == true)
                     {
                         log.Info("Check the AutoLogin of Site or User");         

@@ -13,6 +13,7 @@ using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.Enums.CPEnums;
 using CaptivePortal.API.Common;
 using CaptivePortal.API.ViewModels.CPAdmin;
+using CaptivePortal.API.Models.A8AdminModel;
 
 namespace CaptivePortal.API.ApiControls
 {
@@ -289,7 +290,7 @@ namespace CaptivePortal.API.ApiControls
             {
                 if (ApiUserSessionRepository.IsAuthorize(model.SessionId))
                 {
-                    if (UserRepository.IsMemberRegisterInRTLS(model.UserId, model.SiteId))
+                    if (MacAddressRepository.IsMemberRegisterInRTLS(model.UserId, model.SiteId))
                     {
                         using (CommunicateRTLS objCommunicateRtls = new CommunicateRTLS())
                         {

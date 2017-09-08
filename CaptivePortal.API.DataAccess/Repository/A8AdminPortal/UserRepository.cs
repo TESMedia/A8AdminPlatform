@@ -200,17 +200,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
             return db.Users.FirstOrDefault(m => m.UserName == UserName && m.SiteId == SiteId);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="MacAddress"></param>
-        /// <param name="SiteId"></param>
-        /// <returns></returns>
-        public ApplicationUser GetUserPerDeviceMacAddress(string MacAddress, int SiteId)
-        {
-            return db.MacAddress.FirstOrDefault(m => m.MacAddressValue == MacAddress && m.Users.SiteId == SiteId).Users;
-        }
-
+       
         /// <summary>
         /// 
         /// </summary>
@@ -262,18 +252,6 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             return UserManager.FindByName(UserName).PasswordHash == UserManager.PasswordHasher.HashPassword(Password);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="UserUniqueId"></param>
-        /// <param name="SiteId"></param>
-        /// <returns></returns>
-        public bool IsMemberRegisterInRTLS(string UserUniqueId, int SiteId)
-        {
-            return db.MacAddress.FirstOrDefault(m => m.Users.UniqueUserId == UserUniqueId && m.Users.SiteId == SiteId).IsRegisterInRtls;
-        }
-
 
     }
 }

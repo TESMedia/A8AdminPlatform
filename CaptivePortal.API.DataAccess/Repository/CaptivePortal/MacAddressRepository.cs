@@ -5,6 +5,7 @@ using System.Data.Entity;
 using log4net;
 using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.ViewModels.CPAdmin;
+using CaptivePortal.API.Models.CustomIdentity;
 
 namespace CaptivePortal.API.Repository.CaptivePortal
 {
@@ -123,6 +124,30 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 db.SaveChanges();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="MacAddress"></param>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public ApplicationUser GetUserPerDeviceMacAddress(string MacAddress, int SiteId)
+        {
+            return db.MacAddress.FirstOrDefault(m => m.MacAddressValue == MacAddress && m.Users.SiteId == SiteId).Users;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="UserUniqueId"></param>
+        /// <param name="SiteId"></param>
+        /// <returns></returns>
+        public bool IsMemberRegisterInRTLS(string UserUniqueId, int SiteId)
+        {
+            return db.MacAddress.FirstOrDefault(m => m.Users.UniqueUserId == UserUniqueId && m.Users.SiteId == SiteId).IsRegisterInRtls;
+        }
+
+
 
     }
 }
