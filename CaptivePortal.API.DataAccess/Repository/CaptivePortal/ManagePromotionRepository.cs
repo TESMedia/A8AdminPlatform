@@ -16,7 +16,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             db = new A8AdminDbContext();
         }
-
+        
         public void Dispose()
         {
             db.Dispose();

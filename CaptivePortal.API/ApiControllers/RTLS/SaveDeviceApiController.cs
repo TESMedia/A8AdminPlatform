@@ -11,6 +11,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using CaptivePortal.API.DataAccess.Repository.RTLS;
+using CaptivePortal.API.Models.A8AdminModel;
 
 namespace CaptivePortal.API.ApiControllers.RTLS
 {
@@ -20,7 +21,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
     {
         private static log4net.ILog Log { get; set; }
         ILog log = log4net.LogManager.GetLogger(typeof(SaveDeviceApiController));
-        private RTLSDbContext db = new RTLSDbContext();
+        private A8AdminDbContext db = new A8AdminDbContext();
 
 
         [Route("Save")]
@@ -29,7 +30,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
         {
             try
             {
-                using (MacAddressRepository objMacRepository = new MacAddressRepository())
+                using (DeviceRepository objMacRepository = new DeviceRepository())
                 {
                     if (objMacRepository.CheckListExistOrNot(model.MacAddresses))
                     {
@@ -53,9 +54,9 @@ namespace CaptivePortal.API.ApiControllers.RTLS
             try
             {
                
-                if(db.MacAddress.Any(m=>m.Mac==model.Mac))
+                if(db.Device.Any(m=>m.Mac==model.Mac))
                 {
-                    var ObjMac = db.MacAddress.First(m => m.Mac == model.Mac);
+                    var ObjMac = db.Device.First(m => m.Mac == model.Mac);
                     ObjMac.IsDisplay = model.IsDisplay;
                     db.Entry(ObjMac).State = EntityState.Modified;
                     db.SaveChanges();

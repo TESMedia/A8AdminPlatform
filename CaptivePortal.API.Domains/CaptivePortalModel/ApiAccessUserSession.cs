@@ -10,7 +10,6 @@ namespace CaptivePortal.API.Models.CaptivePortalModel
 {
     public class ApiAccessUserSession
     {
-
         [Key]
         public int UserSessionId { get; set; }
         public int UserId { get; set; }

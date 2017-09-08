@@ -53,6 +53,14 @@
     <Reference Include="Microsoft.Owin.Security">
       <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entity.6.9.9\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -75,17 +83,21 @@
     <Compile Include="A8AdminModel\Age.cs" />
     <Compile Include="A8AdminModel\Company.cs" />
     <Compile Include="A8AdminModel\Gender.cs" />
+    <Compile Include="A8AdminModel\Migrations\201709081123215_Initial.cs" />
+    <Compile Include="A8AdminModel\Migrations\201709081123215_Initial.Designer.cs">
+      <DependentUpon>201709081123215_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="A8AdminModel\Migrations\Configuration.cs" />
+    <Compile Include="CaptivePortalModel\CaptivePortalDbContext.cs" />
     <Compile Include="A8AdminModel\Group.cs" />
     <Compile Include="A8AdminModel\Organisation.cs" />
     <Compile Include="A8AdminModel\Site.cs" />
     <Compile Include="A8AdminModel\UsersAddress.cs" />
     <Compile Include="CaptivePortalModel\ApiAccessUserSession.cs" />
-    <Compile Include="CaptivePortalModel\Browser.cs" />
     <Compile Include="CaptivePortalModel\Form.cs" />
     <Compile Include="CaptivePortalModel\FormControl.cs" />
-    <Compile Include="CaptivePortalModel\MacAddress.cs" />
+    <Compile Include="A8AdminModel\MacAddress.cs" />
     <Compile Include="CaptivePortalModel\ManagePromotion.cs" />
-    <Compile Include="CaptivePortalModel\OperatingSystem.cs" />
     <Compile Include="CustomIdentity\ApplicationRole.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleManager.cs" />
     <Compile Include="CustomIdentity\ApplicationRoleStore.cs" />
@@ -103,32 +115,18 @@
     <Compile Include="LocationDashBoardModel\DataFile.cs" />
     <Compile Include="LocationDashBoardModel\InterestLocation.cs" />
     <Compile Include="LocationDashBoardModel\LocationIndicator.cs" />
+    <Compile Include="LocationDashBoardModel\Migrations\MSSqlConfiguration.cs" />
     <Compile Include="LocationDashBoardModel\NeighBourArea.cs" />
     <Compile Include="LocationDashBoardModel\Parameter.cs" />
     <Compile Include="LocationDashBoardModel\LocationDashBoardDbContext.cs" />
-    <Compile Include="Migrations\201709050457262_Initial.cs" />
-    <Compile Include="Migrations\201709050457262_Initial.Designer.cs">
-      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709050511142_New_Changes.cs" />
-    <Compile Include="Migrations\201709050511142_New_Changes.Designer.cs">
-      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.cs" />
-    <Compile Include="Migrations\201709050542266_New_Changes_As_Per.Designer.cs">
-      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.cs" />
-    <Compile Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.Designer.cs">
-      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MySqlHistoryContext.cs" />
+    <Compile Include="MySqlInitializer .cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTLSModel\AppLog.cs" />
     <Compile Include="RTLSModel\Enums\Enumes\CutomEnum.cs" />
     <Compile Include="RTLSModel\jQueryDataTableParamModel.cs" />
     <Compile Include="RTLSModel\LocationData.cs" />
-    <Compile Include="RTLSModel\MacAddress.cs" />
+    <Compile Include="RTLSModel\Device.cs" />
     <Compile Include="RTLSModel\Record.cs" />
     <Compile Include="RTLSModel\RtlsConfiguration.cs" />
     <Compile Include="RTLSModel\RTLSDbContext.cs" />
@@ -178,25 +176,18 @@
     <Compile Include="ViewModels\RTLS\StatusReturn.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201709050457262_Initial.resx">
-      <DependentUpon>201709050457262_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709050511142_New_Changes.resx">
-      <DependentUpon>201709050511142_New_Changes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709050542266_New_Changes_As_Per.resx">
-      <DependentUpon>201709050542266_New_Changes_As_Per.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201709050604339_New_Changes_As_Per_BrithDate.resx">
-      <DependentUpon>201709050604339_New_Changes_As_Per_BrithDate.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="LocationDashBoardModel\DbConfiguration\ScriptLocations.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="A8AdminModel\Migrations\201709081123215_Initial.resx">
+      <DependentUpon>201709081123215_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

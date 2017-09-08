@@ -3,7 +3,6 @@
     ViewBag.Title = "GetRTLSLogs";
     Layout = null;
 }
-
 <head>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/r/ju-1.11.4/jqc-1.11.3,dt-1.10.8/datatables.min.css">
@@ -38,7 +37,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))/Base/AjaxHandlerToGetLogs",
+                "url": "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))/Datatable/AjaxHandlerToGetLogs",
                 "type": "POST"
             },
             "columns": [

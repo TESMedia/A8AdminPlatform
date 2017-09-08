@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CaptivePortal.API.Models.LocationDashBoardModel.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,29 +7,26 @@ using System.Web;
 
 namespace CaptivePortal.API.Models.LocationDashBoardModel
 {
-    public class LocationDashBoardDbContext:DbContext
+    [DbConfigurationType(typeof(MSSqlConfiguration))]
+    public class LocationDashBoardDbContext : DbContext
     {
-        public LocationDashBoardDbContext()
+        public LocationDashBoardDbContext() : base("Discovery1")
         {
-            Database.SetInitializer<LocationDashBoardDbContext>(null);
+            //Database.SetInitializer<LocationDashBoardDbContext>(null);
         }
 
         public LocationDashBoardDbContext(string connectionstringName)
             : base(connectionstringName)
         {
-            Database.SetInitializer<LocationDashBoardDbContext>(null);
+            //Database.SetInitializer<LocationDashBoardDbContext>(null);
         }
 
         public DbSet<LocationIndicator> LocationIndicator { get; set; }
         public DbSet<InterestLocation> InterestLocation { get; set; }
         public DbSet<DataFile> DataFiles { get; set; }
-
         public DbSet<CruisedDiscovery> CruisedDiscovery { get; set; }
-
         public DbSet<Parameter> Parameters { get; set; }
-
         public DbSet<NeighBourArea> NeighBourAreas { get; set; }
-
         private static String GetConnectionString()
         {
             return "Discovery1";

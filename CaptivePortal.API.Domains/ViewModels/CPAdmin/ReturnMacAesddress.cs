@@ -1,4 +1,5 @@
-﻿using CaptivePortal.API.Models.CaptivePortalModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

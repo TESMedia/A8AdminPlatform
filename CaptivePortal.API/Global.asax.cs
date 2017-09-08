@@ -1,6 +1,8 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.LocationDashBoardModel;
 //using FluentValidation.WebApi;
 using log4net;
+using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,14 +25,17 @@ namespace CaptivePortal.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
             //Database.SetInitializer<A8AdminDbContext>(new CreateDatabaseIfNotExists<A8AdminDbContext>());
             //AdminManagementDbOperation objAdminManagementDbOperation = new AdminManagementDbOperation();
             //objAdminManagementDbOperation.PerformDatabaseOperations();
+            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<A8AdminDbContext, CaptivePortal.API.Models.A8AdminModel.Migrations.Configuration>());
+            A8AdminDbContext context = new A8AdminDbContext();
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
             ILog logger = LogManager.GetLogger(typeof(ApiController));
             logger.Info("Application started successfully.");
-            
+
+
         }
 
         protected void Application_Error(object sender, EventArgs e)

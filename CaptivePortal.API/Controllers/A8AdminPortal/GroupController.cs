@@ -1,5 +1,6 @@
 ﻿using CaptivePortal.API.DataAccess.Repository.CaptivePortal;
 using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
             GrouplistViewModel list = new GrouplistViewModel();
             list.GroupViewlist = new List<GroupViewModel>();
-            var result = db.Group.ToList();
+            var result = db.Groups.ToList();
 
             var groupDetails = (from item in result
                                 select new GroupViewModel()

@@ -1,4 +1,5 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 //using FluentValidation;
 //using FluentValidation.Attributes;
 using Microsoft.AspNet.Identity;

@@ -1,4 +1,5 @@
-﻿using CaptivePortal.API.Models.RTLSModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.RTLSModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace CaptivePortal.API.DataAccess.Repository.RTLS
 {
-    public class MacAddressRepository : IDisposable
+    public class DeviceRepository : IDisposable
     {
-        private RTLSDbContext db = null;
+        private A8AdminDbContext db = null;
 
-        public MacAddressRepository()
+        public DeviceRepository()
         {
-            db = new RTLSDbContext();
+            db = new A8AdminDbContext();
         }
 
         /// <summary>
@@ -28,14 +29,14 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
             {
                 foreach (var Item in lstMac)
                 {
-                    if (!(db.MacAddress.Any(m => m.Mac == Item)))
+                    if (!(db.Device.Any(m => m.Mac == Item)))
                     {
-                        MacAddress objMac = new MacAddress();
+                        Device objMac = new Device();
                         objMac.Mac = Item;
                         objMac.Intstatus = Convert.ToInt32(DeviceStatus.None);
                         objMac.IsCreatedByAdmin = IsCreateFromAdmin;
                         objMac.CreatedDateTime = DateTime.Now;
-                        db.MacAddress.Add(objMac);
+                        db.Device.Add(objMac);
                         db.SaveChanges();
                     }
                 }
@@ -61,19 +62,19 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
                 {
                     int intStatus = Convert.ToInt32(DeviceStatus.None);
                     //If MacAddress already exist with None status then 
-                    if (db.MacAddress.Any(m => m.Mac == mac && m.Intstatus == intStatus))
+                    if (db.Device.Any(m => m.Mac == mac && m.Intstatus == intStatus))
                     {
-                        var objMac = db.MacAddress.FirstOrDefault(m => m.Mac == mac);
+                        var objMac = db.Device.FirstOrDefault(m => m.Mac == mac);
                         objMac.Intstatus = Convert.ToInt32(DeviceStatus.Registered);
                         db.Entry(objMac).State = System.Data.Entity.EntityState.Modified;
                     }
                     else
                     {
-                        MacAddress objMac = new MacAddress();
+                        Device objMac = new Device();
                         objMac.Mac = mac;
                         objMac.Intstatus = Convert.ToInt32(DeviceStatus.Registered);
                         objMac.IsCreatedByAdmin = IsCreatedByAdmin;
-                        db.MacAddress.Add(objMac);
+                        db.Device.Add(objMac);
 
                     }
                     db.SaveChanges();
@@ -97,7 +98,7 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
         {
             try
             {
-                var ObjDevice = db.MacAddress.FirstOrDefault(m => m.Id == MacId);
+                var ObjDevice = db.Device.FirstOrDefault(m => m.Id == MacId);
                 ObjDevice.Intstatus = Convert.ToInt32(DeviceStatus.Registered);
                 db.Entry(ObjDevice).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
@@ -114,13 +115,13 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
         /// 
         /// </summary>
         /// <param name="Mac"></param>
-        public void DeleteMacAddress(MacAddress objDevice)
+        public void DeleteMacAddress(Device objDevice)
         {
-            db.MacAddress.Remove(objDevice);
+            db.Device.Remove(objDevice);
             db.SaveChanges();
         }
 
-        public void UpdateMacAddres(MacAddress objDevice)
+        public void UpdateMacAddres(Device objDevice)
         {
             db.Entry(objDevice).State = System.Data.Entity.EntityState.Modified;
             db.SaveChanges();
@@ -137,7 +138,7 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
             {
                 foreach (var item in MacAddresses)
                 {
-                    var ObjDevice = db.MacAddress.FirstOrDefault(m => m.Mac == item);
+                    var ObjDevice = db.Device.FirstOrDefault(m => m.Mac == item);
                     ObjDevice.Intstatus = Convert.ToInt32(DeviceStatus.DeRegistered);
                     db.Entry(ObjDevice).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
@@ -153,7 +154,7 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
 
         public bool CheckMacAddressExitOrNot(int MacId, int IntStatus)
         {
-            if (db.MacAddress.FirstOrDefault(m => m.Id == MacId).Intstatus != IntStatus)
+            if (db.Device.FirstOrDefault(m => m.Id == MacId).Intstatus != IntStatus)
             {
                 return true;
             }
@@ -165,7 +166,7 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
 
         public bool CheckListExistOrNot(string[] lstMac)
         {
-            var difference = lstMac.Except(db.MacAddress.Select(m => m.Mac));
+            var difference = lstMac.Except(db.Device.Select(m => m.Mac));
             if (difference.Count() > 0)
             {
                 return true;
@@ -176,19 +177,19 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
             }
         }
 
-        public List<MacAddress> GetListOfMacAddress()
+        public List<Device> GetListOfMacAddress()
         {
-            return db.MacAddress.ToList();
+            return db.Device.ToList();
         }
 
         public string[] GetMacAdressFromId(int MacId)
         {
-            return new[] { db.MacAddress.FirstOrDefault(m => m.Id == MacId).Mac };
+            return new[] { db.Device.FirstOrDefault(m => m.Id == MacId).Mac };
         }
 
-        public MacAddress GetDeviceFromMac(string macDevice)
+        public Device GetDeviceFromMac(string macDevice)
         {
-            return db.MacAddress.FirstOrDefault(m => m.Mac == macDevice);
+            return db.Device.FirstOrDefault(m => m.Mac == macDevice);
         }
 
         public void Dispose()

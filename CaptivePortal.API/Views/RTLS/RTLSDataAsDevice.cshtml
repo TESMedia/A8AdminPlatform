@@ -44,7 +44,7 @@
             "processing": true,
             "serverSide": true,
             "ajax": {
-                "url": "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))/Base/AjaxHandlerGetDeviceData?DeviceId=@Request.QueryString["DeviceId"]",
+                "url": "@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))/Datatable/AjaxHandlerGetDeviceData?DeviceId=@Request.QueryString["DeviceId"]",
                 "type": "POST"
             },
             buttons: [

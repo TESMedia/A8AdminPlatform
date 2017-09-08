@@ -13,6 +13,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using CaptivePortal.API.Models.RTLSModel;
 using RTLS.ViewModel;
+using CaptivePortal.API.Models.A8AdminModel;
 
 namespace CaptivePortal.API.ApiControllers.RTLS
 {
@@ -22,7 +23,7 @@ namespace CaptivePortal.API.ApiControllers.RTLS
     {
         private static log4net.ILog Log { get; set; }
         ILog log = log4net.LogManager.GetLogger(typeof(DeleteDeviceApiController));
-        private RTLSDbContext db = new RTLSDbContext();
+        private A8AdminDbContext db = new A8AdminDbContext();
 
         [Route("Delete")]
         [HttpPost]
@@ -35,10 +36,10 @@ namespace CaptivePortal.API.ApiControllers.RTLS
                 this.log.Debug("Enter into the DeleteMacAddress Action Method");
                 foreach (var item in model.MacAddresses)
                 {
-                    var deviceObject = db.MacAddress.FirstOrDefault(m => m.Mac == item);
+                    var deviceObject = db.Device.FirstOrDefault(m => m.Mac == item);
                     if (deviceObject.Intstatus != Convert.ToInt32(DeviceStatus.Registered))
                     {
-                        db.MacAddress.Remove(deviceObject);
+                        db.Device.Remove(deviceObject);
                         db.SaveChanges();
                         retResult = string.Format("{0} Successfully Deleted from server", item);
                     }

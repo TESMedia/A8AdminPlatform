@@ -21,21 +21,27 @@ namespace RTLS.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int SiteId)
         {
-            List<MacAddress> lstMacAddress = new List<MacAddress>();
+            RequestLocationDataVM objRequestLocationDataVM = new RequestLocationDataVM();
             try
             {
-                using (MacAddressRepository objMacAddressRepository = new MacAddressRepository())
+                using (DeviceRepository objMacAddressRepository = new DeviceRepository())
                 {
-                    lstMacAddress = objMacAddressRepository.GetListOfMacAddress();
+                    objRequestLocationDataVM.Devices.AddRange(objMacAddressRepository.GetListOfMacAddress());
+                    using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
+                    {
+                        objRequestLocationDataVM.RtlsConfiguration = objRtlsConfigurationRepository.GetRtlsConfigurationAsPerSite(SiteId);
+                        objRequestLocationDataVM.RtlsConfiguration.SiteId = SiteId;
+                        ViewBag.SiteName = objRtlsConfigurationRepository.GetSiteName(SiteId);
+                    }
                 }
             }
             catch (Exception ex)
             {
                 log.Error(ex.InnerException);
             }
-            return View(lstMacAddress);
+            return View(objRequestLocationDataVM);
         }
 
         /// <summary>
@@ -50,11 +56,15 @@ namespace RTLS.Controllers
         {
             try
             {
-                using (MacAddressRepository objMacRepository = new MacAddressRepository())
+                using (DeviceRepository objMacRepository = new DeviceRepository())
                 {
                     if (objMacRepository.CheckListExistOrNot(model.MacAddresses))
                     {
                         objMacRepository.SaveMacAddress(model.MacAddresses, true);
+                        using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
+                        {
+                            objRtlsConfigurationRepository.AddUpdateRtlsConfiguration(model.RtlsConfiguration);
+                        }
                     }
                 }
             }
@@ -62,7 +72,7 @@ namespace RTLS.Controllers
             {
                 log.Error(ex.Message);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Admin","TestSetUp",new {SiteId=model.RtlsConfiguration.SiteId});
         }
 
         /// <summary>
@@ -136,7 +146,7 @@ namespace RTLS.Controllers
                 this.log.Debug("Enter into the DeleteMacAddress Action Method");
                 foreach (var item in model.MacAddresses)
                 {
-                    using (MacAddressRepository objMacAddressRepository = new MacAddressRepository())
+                    using (DeviceRepository objMacAddressRepository = new DeviceRepository())
                     {
                         var deviceObject = objMacAddressRepository.GetDeviceFromMac(item);
                         if (deviceObject.Intstatus != Convert.ToInt32(DeviceStatus.Registered))
@@ -169,9 +179,9 @@ namespace RTLS.Controllers
         /// </summary>
         /// <param name="objMacAddress"></param>
         [HttpPost]
-        public void UpdateIsTracking(MacAddress objMacAddress)
+        public void UpdateIsTracking(Device objMacAddress)
         {
-            using (MacAddressRepository objMacAddressRepository = new MacAddressRepository())
+            using (DeviceRepository objMacAddressRepository = new DeviceRepository())
             {
                 var objMac = objMacAddressRepository.GetDeviceFromMac(objMacAddress.Mac);
                 objMac.IsTracking = objMacAddress.IsTracking;

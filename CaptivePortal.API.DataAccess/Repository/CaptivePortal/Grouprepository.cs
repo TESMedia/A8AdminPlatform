@@ -1,4 +1,5 @@
 ﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.CaptivePortalModel;
 using CaptivePortal.API.Models.CustomIdentity;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using System;
@@ -24,7 +25,7 @@ namespace CaptivePortal.API.DataAccess.Repository.CaptivePortal
                 Group objGroup = new Group();
                 objGroup.GroupName = model.GroupName;
                 objGroup.Rule = model.Rule;
-                db.Group.Add(objGroup);
+                db.Groups.Add(objGroup);
                 db.SaveChanges();
             }
             catch(Exception ex)
@@ -40,8 +41,8 @@ namespace CaptivePortal.API.DataAccess.Repository.CaptivePortal
         {
             try
             {
-                var group = db.Group.Find(GroupId);
-                db.Group.Remove(group);
+                var group = db.Groups.Find(GroupId);
+                db.Groups.Remove(group);
                 db.SaveChanges();
             }
             catch(Exception ex)

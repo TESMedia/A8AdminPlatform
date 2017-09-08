@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CaptivePortal.API.Models.RTLSModel
 {
-    public class MacAddress
+    public class Device
     {
         public int Id { get; set; }
 

@@ -35,7 +35,6 @@ namespace CaptivePortal.API
            
             using (A8AdminDbContext context = new A8AdminDbContext())
             {
-
                 var UserManager = new ApplicationUserManager(new ApplicationUserStore(context));
                 var roleManager = new ApplicationRoleManager(new ApplicationRoleStore(context));
                 // In Startup iam creating first Admin Role and creating a default Admin User    

@@ -63,7 +63,7 @@ namespace CaptivePortal.API.Controllers.LocationDashboard
         [Authorize(Roles = "GlobalAdmin")]
         public ActionResult UploadFile(string SiteName)
         {
-            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(SiteName))
+            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext())
             {
                 ViewBag.DeltaTime = db.Parameters.FirstOrDefault(m => m.Name == "DeltaTime").Value;
                 ViewBag.RemotePath = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value;

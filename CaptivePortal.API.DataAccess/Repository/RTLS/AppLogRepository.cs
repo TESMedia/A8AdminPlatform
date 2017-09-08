@@ -1,4 +1,5 @@
-﻿using CaptivePortal.API.Models.RTLSModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
+using CaptivePortal.API.Models.RTLSModel;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace CaptivePortal.API.DataAccess.Repository.RTLS
     public class AppLogRepository : IDisposable
     {
 
-        private RTLSDbContext db;
+        private A8AdminDbContext db;
         public AppLogRepository()
         {
-            db = new RTLSDbContext();
+            db = new A8AdminDbContext();
         }
 
         /// <summary>
