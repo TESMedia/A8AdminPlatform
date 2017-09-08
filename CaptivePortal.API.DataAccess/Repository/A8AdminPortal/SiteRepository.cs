@@ -45,6 +45,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 };
                 db.Site.Add(objSite);
                 db.SaveChanges();
+                inputData.SiteId = objSite.SiteId;
             }
             catch (Exception ex)
             {

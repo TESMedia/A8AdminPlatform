@@ -1,26 +1,20 @@
-﻿
-@using Newtonsoft.Json.Linq;
-@{
+﻿@model CaptivePortal.API.ViewModels.LocationDashBoard.LocationIndicatorViewModel
 
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
     
 </head>
 
 
 <body class="nav-md">
-
-            <!-- /top navigation -->
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            <!-- top navigation -->
+            
             <!-- page content -->
             <div class="right_col" role="main">
 
@@ -32,26 +26,32 @@
                     <h4> Create LocationIndicator</h4>
                     <hr />
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.AreaOfInterestId)
                     <input type="hidden" value="" name="SiteName" id="siteName" />
                     <div class="form-group">
-                        <label class = "control-label col-md-2">Name</label>
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <input type="text" class = "form-control" id = "name" />
 
+
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "name" ,@style="width:30%"} })
+
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class = "control-label col-md-2">LoctionIndicator</label>
+                        @Html.LabelFor(model => model.LoctionIndicator, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
-                            <input type="text" class = "form-control" id = "locationIndicator"/>
+                            @Html.EditorFor(model => model.LoctionIndicator, new { htmlAttributes = new { @class = "form-control", @id = "locationIndicator" , @style = "width:30%" } })
+                            @Html.ValidationMessageFor(model => model.LoctionIndicator, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class = "control-label col-md-2">NeighBourName</label>
+                        @Html.LabelFor(model => model.NeighBourName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
-                            <input type="text" class = "form-control" id = "neighBourName" />
+                            @Html.EditorFor(model => model.NeighBourName, new { htmlAttributes = new { @class = "form-control", @id = "neighBourName" ,@style = "width:30%" } })
+                            @Html.ValidationMessageFor(model => model.NeighBourName, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
@@ -63,9 +63,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="button" value="Save" class="btn btn-success" id="btnsubmit" onclick="create()" />
-                            <a href="Locations" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
-
-
+                            <a href="@Url.Action("LocationsMapping","LocationIndicators")" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
                         </div>
                     </div>
                 </div>
@@ -78,56 +76,29 @@
             <!-- footer content -->
             <footer></footer>
             <!-- /footer content -->
-     
+        </div>
+    </div>
 
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="../vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="../vendors/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="../vendors/Flot/jquery.flot.js"></script>
-    <script src="../vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../vendors/flot.curvedlines/curvedLines.js"></script>
     <!-- DateJS -->
     <script src="../vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="../vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
-    <script src="~/a8Dashboard_Angular/Controllers/LocationController.js"></script>
-    <script src="~/a8Dashboard_Angular/Services/LocationService.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <!-- Google Analytics -->
 
 
 </body>
 </html>
+<script type="text/javascript">
+
+    $(document).ready(function()
+        {
+        navigation();
+        })
+</script>
 
 <script type="text/javascript">
 
@@ -157,7 +128,6 @@
 
 
 </script>
-
 
 
 

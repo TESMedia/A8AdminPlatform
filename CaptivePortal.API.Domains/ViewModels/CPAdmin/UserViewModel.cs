@@ -68,6 +68,10 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string Password { get; set; }
         public Status Status { get; set; }
         public List<MacAddress> MacAddressList { get; set; }
+        
+
+        public IEnumerable<Group> _menu { get; set; }
+        public long GroupDdl { get; set; } //Property to hold dropdown selection
 
 
     }

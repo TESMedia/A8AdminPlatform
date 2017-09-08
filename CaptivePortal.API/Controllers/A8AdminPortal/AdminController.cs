@@ -184,8 +184,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     if (Request.Files["BannerIcon"].ContentLength > 0)
                     {
                         var httpPostedFile = Request.Files["BannerIcon"];
-                        string savedPath = HostingEnvironment.MapPath("/Images/" + objSite.SiteId);
-                        imagepath = "/Images/" + objSite.SiteId + "/" + httpPostedFile.FileName;
+                        string savedPath = HostingEnvironment.MapPath("/Images/" + inputData.SiteId);
+                        imagepath = "/Images/" + inputData.SiteId + "/" + httpPostedFile.FileName;
                         string completePath = System.IO.Path.Combine(savedPath, httpPostedFile.FileName);
 
                         if (!System.IO.Directory.Exists(savedPath))
@@ -196,6 +196,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                         string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
                         bannerPath = baseUrl + imagepath;
                     }
+                    inputData.BannerIcon = bannerPath;
                     //horm
                     FormRepository formRepo = new FormRepository();
                     formRepo.CreateForm(inputData);

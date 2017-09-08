@@ -1,33 +1,31 @@
-﻿@{
+﻿
 
-    Layout = null;
-}
 
 <!DOCTYPE html>
 <html lang="en" ng-app="a8DashboardModule">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-   
+
+    <!-- Custom Theme Style -->
+    <link href="~/build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/DropDown.css" rel="stylesheet" />
+    <link href="~/build/css/custom.css" rel="stylesheet" />
+    <script src="~/build/js/index.js"></script>
 </head>
 
 
 <body class="nav-md" ng-controller="LocationIndicatorController">
- 
-          
-            <!-- top navigation -->
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
             
-            <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main" id="content" ng-init="getIndex()">
+                <form></form>
                 <p style="text-align: right; width: 100%;">
                     @*<input type="button" class="btn btn-info" value="Back" onclick="location.href='@Url.Action("UploadFileName", "DashBoard")'" />
                         <input type="button" class="btn btn-info" value="Add New" onclick="location.href='@Url.Action("Create", "LocationIndicators",new {SiteName=Request.QueryString["SiteName"].ToString()})'" />*@
-                    <input type="button" class="btn btn-success" value="Add new" onclick="location.href='@Url.Action("CreateLocation", "Admin")'">
+                    <input type="button" class="btn btn-success" value="Add new" onclick="location.href='@Url.Action("CreateLocation", "LocationIndicators")'">
                 </p>
                 <table class="table">
                     <tr>
@@ -73,7 +71,7 @@
                         <td>
                             <input type="button" class="btn btn-success" value="Edit" ng-click="edit(item.AreaOfInterestId)">
 
-                            <input type="button" class="btn btn-danger" value="Delete" />
+                            <input type="button" class="btn btn-danger" value="Delete" ng-click="delete(item.AreaOfInterestId)" />
                             @* @Html.ActionLink("Edit", "Edit", new { id = item.AreaOfInterestId, SiteName = Request.QueryString["SiteName"].ToString() }, new { @class = "btn btn-primary", @style = "color:white" })*@
 
                             @*@Html.ActionLink("Delete", "Delete", new { id = item.AreaOfInterestId, SiteName = Request.QueryString["SiteName"].ToString() }, new { @class = "btn btn-primary", @style = "color:white" })*@
@@ -93,17 +91,22 @@
 
             </div>
 
-       
-    <script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
-    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
-    <script src="~/Scripts/Spin.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
-    <link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
-    <script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer></footer>
+            <!-- /footer content -->
+        </div>
+    </div>
 
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
     <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
     <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
     <script type="text/javascript">
@@ -114,5 +117,15 @@
 </body>
 </html>
 
+<script>
+    $(document).ready(function(){
 
+        navigation();
 
+    })
+
+    var siteId = localStorage.getItem("SiteId");
+    var siteName = localStorage.getItem("SiteName");
+    document.getElementsByTagName('form')[0].innerHTML = siteName;
+
+</script>
