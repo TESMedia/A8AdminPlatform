@@ -76,61 +76,61 @@ namespace CaptivePortal.API.Controllers
             AdminlistViewModel list = new AdminlistViewModel();
             list.AdminViewlist = new List<AdminViewModel>();
 
-            //int userId = User.Identity.GetUserId<int>();
-            //string role = UserManager.GetRoles(userId).FirstOrDefault();
-            //ViewBag.roleOfUser = role;
-            //int siteId = Convert.ToInt32(db.Users.FirstOrDefault(m => m.Id == userId).SiteId);
+            int userId = User.Identity.GetUserId<int>();
+            string role = UserManager.GetRoles(userId).FirstOrDefault();
+            ViewBag.roleOfUser = role;
+            int siteId = Convert.ToInt32(db.Users.FirstOrDefault(m => m.Id == userId).SiteId);
 
             retStr = "entered in home to view overall estate";
-            //int compId = 0;
+            int compId = 0;
             //int orgId = Convert.ToInt32(db.Company.FirstOrDefault(m => m.CompanyId == compId).Organisation.OrganisationId) == 0 ? 0 : Convert.ToInt32(db.Company.FirstOrDefault(m => m.CompanyId == compId).Organisation.OrganisationId);
             try
             {
-                //if (siteId != 0)
-                //{
-                //    if (role == "CompanyAdmin")
-                //    {
-                //        compId = db.Site.FirstOrDefault(m => m.SiteId == siteId).Company.CompanyId;
+                if (siteId != 0)
+                {
+                    if (role == "CompanyAdmin")
+                    {
+                        compId = db.Site.FirstOrDefault(m => m.SiteId == siteId).Company.CompanyId;
 
-                //        var accessSite = db.AdminSiteAccess.Where(m => m.UserId == userId).ToList();
-                //        var accessSiteDetails = (from site in accessSite
-                //                                 select new AdminViewModel()
-                //                                 {
-                //                                     // OrganisationName = db.Organisation.FirstOrDefault(m=>m.OrganisationId==orgId).OrganisationName,
-                //                                     CompanyName = db.Company.FirstOrDefault(m => m.CompanyId == compId).CompanyName,
-                //                                     SiteName = site.SiteName,
-                //                                     DashboardUrl = db.Site.FirstOrDefault(m => m.SiteId == site.SiteId).DashboardUrl,
-                //                                     RtlsUrl = db.Site.FirstOrDefault(m => m.SiteId == site.SiteId).RtlsUrl,
-                //                                     DefaultSite = db.Users.FirstOrDefault(m => m.Id == userId).PhoneNumber,//default site to access
-                //                                     SiteId = site.SiteId
-                //                                 }).ToList();
-                //        list.AdminViewlist.AddRange(accessSiteDetails);
-                //    }
-                //    else
-                //    {
+                        var accessSite = db.AdminSiteAccess.Where(m => m.UserId == userId).ToList();
+                        var accessSiteDetails = (from site in accessSite
+                                                 select new AdminViewModel()
+                                                 {
+                                                     // OrganisationName = db.Organisation.FirstOrDefault(m=>m.OrganisationId==orgId).OrganisationName,
+                                                     CompanyName = db.Company.FirstOrDefault(m => m.CompanyId == compId).CompanyName,
+                                                     SiteName = db.Site.FirstOrDefault(m=>m.SiteId==site.SiteId).SiteName,
+                                                     DashboardUrl = db.Site.FirstOrDefault(m => m.SiteId == site.SiteId).DashboardUrl,
+                                                     RtlsUrl = db.Site.FirstOrDefault(m => m.SiteId == site.SiteId).RtlsUrl,
+                                                     DefaultSite = db.Users.FirstOrDefault(m => m.Id == userId).PhoneNumber,//default site to access
+                                                     SiteId = site.SiteId
+                                                 }).ToList();
+                        list.AdminViewlist.AddRange(accessSiteDetails);
+                    }
+                    else
+                    {
 
-                //        compId = db.Site.FirstOrDefault(m => m.SiteId == siteId).Company.CompanyId;
-                //        var result = db.Site.Where(m => m.CompanyId == compId).ToList();
-                //        var siteDetails = (from item in result
-                //                           select new AdminViewModel()
-                //                           {
-                //                               OrganisationName = item.Company.Organisation == null ? null : item.Company.Organisation.OrganisationName,
+                        compId = db.Site.FirstOrDefault(m => m.SiteId == siteId).Company.CompanyId;
+                        var result = db.Site.Where(m => m.CompanyId == compId).ToList();
+                        var siteDetails = (from item in result
+                                           select new AdminViewModel()
+                                           {
+                                               OrganisationName = item.Company.Organisation == null ? null : item.Company.Organisation.OrganisationName,
 
-                //                               CompanyName = item.Company.CompanyName,
-                //                               SiteName = item.SiteName,
-                //                               DashboardUrl = item.DashboardUrl,
-                //                               RtlsUrl = item.RtlsUrl,
-                //                              
-               //                                MySqlIpAddress = item.MySqlIpAddress,
-                //                               SiteId = item.SiteId
-                //                           }
-                //                         ).ToList();
-                //        list.AdminViewlist.AddRange(siteDetails);
-                       
-                //    }
-                //}
-                //else
-                //{
+                                               CompanyName = item.Company.CompanyName,
+                                               SiteName = item.SiteName,
+                                               DashboardUrl = item.DashboardUrl,
+                                               RtlsUrl = item.RtlsUrl,
+
+                                               MySqlIpAddress = item.MySqlIpAddress,
+                                               SiteId = item.SiteId
+                                           }
+                                         ).ToList();
+                        list.AdminViewlist.AddRange(siteDetails);
+
+                    }
+                }
+                else
+                {
                     var result = db.Site.ToList();
 
                     var siteDetails = (from item in result
@@ -148,7 +148,7 @@ namespace CaptivePortal.API.Controllers
                                      ).ToList();
                     list.AdminViewlist.AddRange(siteDetails);
                 }
-            //}
+            }
 
             catch (Exception ex)
             {

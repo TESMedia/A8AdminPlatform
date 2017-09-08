@@ -63,7 +63,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 var objCompany = db.Company.Find(compId);
                 objCompany.CompanyName = db.Company.FirstOrDefault(m => m.CompanyId == compId).CompanyName;
                 objCompany.CompanyIcon = model.CompanyIcon;
-                objCompany.OrganisationId = orgId;
+                objCompany.OrganisationId = model.OrganisationId == 0 ? null : (int?)Convert.ToInt32(model.OrganisationId); 
                 db.Entry(objCompany).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }

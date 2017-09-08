@@ -63,9 +63,16 @@
                         <li>
                             <a id="managesite" class="row margin hide"><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="@Url.Action("ConfigureSite","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
-                                <li><a href="@Url.Action("ManageUser","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
-                                <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" id="promotion_tab" class="hide">Manage promotion</a></li>
+                                @if (this.User.IsInRole("CompanyAdmin"))
+                                {
+                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("ConfigureSite", "Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
+                                    <li><a href="@Url.Action("ManageUser", "Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
+                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                }
                             </ul>
                         </li>
 
@@ -88,7 +95,7 @@
                         <li>
                             <a id="managertls" class="row margin hide"><img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="@Url.Action("TestSetUpRtls","Admin")" onclick="location.href = this.href + '?SiteId=' +  localStorage.getItem('SiteId'); return false;">Test Set-up</a></li>
+                                <li><a href="@Url.Action("TestSetUpRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Test Set-up</a></li>
                                 <li><a href="@Url.Action("ViewRtlsData","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View RTLS data</a></li>
                                 <li><a href="@Url.Action("ViewErrorLogsRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View Error log</a></li>
                             </ul>
