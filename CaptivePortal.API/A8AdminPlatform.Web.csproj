@@ -346,6 +346,9 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Scripts\CustomGraph.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\Spin.js" />
     <Content Include="Style\sb-admin-2.css" />
     <Content Include="WinSCP.exe" />
     <None Include="Properties\PublishProfiles\CP-api-PB.pubxml" />
@@ -895,6 +898,7 @@
     <Content Include="Views\LocationDashBoard\LocationsMapping.cshtml" />
     <Content Include="Views\LocationDashBoard\UploadFile.cshtml" />
     <Content Include="Views\Admin\UploadLocationDashBoardFile.cshtml" />
+    <Content Include="Views\Admin\ViewErrorLogRtls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
