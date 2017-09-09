@@ -1,5 +1,6 @@
-﻿
-@model CaptivePortal.API.ViewModels.CPAdmin.WifiUserViewModel
+﻿@model CaptivePortal.API.ViewModels.CPAdmin.WifiUserViewModel
+    
+
 
 
 <br />
@@ -72,6 +73,10 @@
                     <option value="Active">Active</option>
                     <option value="Locked" disabled>Locked</option>
                 </select>
+            </div>
+            <label for="Group" class="control-label col-md-3">Group:</label>
+            <div class="col-md-3">
+                @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl" })
             </div>
         </div>
 

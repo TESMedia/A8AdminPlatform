@@ -1,23 +1,24 @@
 ﻿
-@{
-    Layout = null;
-}
+@model CaptivePortal.API.ViewModels.LocationDashBoard.LocationIndicatorViewModel
+
+
 
 <!DOCTYPE html>
 <html lang="en" ng-app="a8DashboardModule">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 
+    <!-- Custom Theme Style -->
+    
+    
 </head>
 
 
 <body class="nav-md" ng-controller="LocationIndicatorController">
-    
-            <!-- /top navigation -->
+    <div class="container body">
+        <div class="main_container">
+            @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
+            
             <!-- page content -->
             <div class="right_col" role="main" ng-init="editDetails()">
 
@@ -28,11 +29,12 @@
 
                 <div class="form-horizontal">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.AreaOfInterestId)
                     <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
                     <div class="form-group">
-                        <label class = "control-label col-md-2">Name</label>
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-                            <input class="form-control" type="text" name="Name" id="Name" ng-model="editInfo.Name" />
+                            <input class="form-control" style="width:25%;" type="text" name="Name" id="Name" ng-model="editInfo.Name" />
                             @* @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })*@
                             @*@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
                             <input type="text" ng-model="editInfo.LoctionIndicator" hidden />
@@ -42,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class = "control-label col-md-2">LoctionIndicator</label>
+                        @Html.LabelFor(model => Model.LoctionIndicator, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
                             <div ng-if="editInfo.lstMapLocations.length > 0">
 
@@ -50,14 +52,14 @@
                                 <div ng-repeat="item in editInfo.lstMapLocations">
                                     <input type="text" ng-model="item.AreaOfInterestId" hidden />
                                     <input type="text" ng-model="item.LoctionIndicatorId" hidden />
-                                    <input class="form-control" type="text" ng-model="item.LoctionIndicator" name="LoctionIndicator" />
+                                    <input class="form-control" style="width:25%;" type="text" ng-model="item.LoctionIndicator" name="LoctionIndicator" />
                                     <input type="button" ng-show="item.LoctionIndicatorId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteLocationIndicator(item.AreaOfInterestId,item.LoctionIndicatorId)" />
                                 </div>
 
                             </div>
 
                             <div ng-if="editInfo.lstMapLocations.length===0">
-                                <input class="form-control" type="text" value="{{item.LoctionIndicator}}" />
+                                <input class="form-control"  style="width:25%;" type="text" value="{{item.LoctionIndicator}}" />
                                 <input type="text" value="{{item.LoctionIndicator}}" hidden />
 
                             </div>
@@ -92,7 +94,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class ="control-label col-md-2">NeighBourName</label>
+                        @Html.LabelFor(model => Model.NeighBourName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv1">
 
                             <div ng-if="editInfo.lstNeighBourMaps.length > 0">
@@ -101,14 +103,14 @@
                                 <div ng-repeat="item in editInfo.lstNeighBourMaps">
                                     <input type="text" ng-model="item.AreaOfInterestId" hidden />
                                     <input type="text" ng-model="item.NeighBourId" hidden />
-                                    <input class="form-control" type="text" ng-model="item.NeighBourName" name="NeighBourName" />
+                                    <input class="form-control" style="width:25%;" type="text" ng-model="item.NeighBourName" name="NeighBourName" />
                                     <input type="button" ng-show="item.NeighBourId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteNeighBourArea(item.AreaOfInterestId,item.NeighBourId)" />
                                 </div>
 
                             </div>
 
                             <div ng-if="editInfo.lstNeighBourMaps.length===0">
-                                <input class="form-control" name="NeighBourName" type="text" ng-model="item.NeighBourName" />
+                                <input class="form-control" style="width:25%;" name="NeighBourName" type="text" ng-model="item.NeighBourName" />
                                 <input type="text" ng-model="item.NeighBourName" name="NeighBourName" hidden />
 
 
@@ -147,7 +149,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="button" value="Save" class="btn btn-success" id="btnsubmit" ng-click="editPost()" />
-                            <a href="Locations" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
+                            <a href="@Url.Action("LocationsMapping","LocationIndicators")" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
                             @*<input type="button" value="Back" class="btn btn-default" onclick="location.href='@Url.Action("Index", "LocationIndicators")'" />*@
                         </div>
                     </div>
@@ -164,21 +166,18 @@
             <!-- footer content -->
             <footer></footer>
             <!-- /footer content -->
-     
+        </div>
+    </div>
 
-    <script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
-    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    <script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
-    <script src="~/Scripts/Spin.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
-    <link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
-    <script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
-    <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
-    <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- DateJS -->
+    <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
-    <!-- Google Analytics -->
+    <script src="../build/js/custom.min.js"></script>
 
 
 </body>

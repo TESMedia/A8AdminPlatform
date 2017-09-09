@@ -430,6 +430,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     list.WifiUserView = userViewModelList.FirstOrDefault();
+                    list.WifiUserView._menu = db.Groups.ToList();
+                    list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
                 }
                 ViewBag.CurrentPage = currentPageIndex;
                 ViewBag.PageSize = PageSize;
@@ -453,14 +455,19 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <param name="UserId"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult UserWithProfile(int SiteId, string userId)
+        public ActionResult UserWithProfile(int SiteId, int userId)
         {
-            //var userid = User.Identity.GetUserId();
-            var userDetail = db.Users.FirstOrDefault(m => m.SiteId == SiteId);
+           
+           // var userid = User.Identity.GetUserId();
+            var userDetail = db.Users.FirstOrDefault(m => m.Id== userId);
             var termConditionVersion = db.Site.FirstOrDefault(m => m.SiteId == SiteId).Term_conditions;
             var siteName = db.Site.FirstOrDefault(m => m.SiteId == SiteId).SiteName;
             var model = new MacAddressViewModel();
             WifiUserViewModel objUserViewModel = new WifiUserViewModel();
+            objUserViewModel._menu = db.Groups.ToList();
+            //objUserViewModel._menu = db.Group.ToList();
+            
+            
             if (userDetail != null)
             {
                 objUserViewModel.Password = userDetail.PasswordHash;

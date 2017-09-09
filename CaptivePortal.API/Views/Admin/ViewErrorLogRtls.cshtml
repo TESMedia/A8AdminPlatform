@@ -1,9 +1,13 @@
-﻿@{
+﻿@using Newtonsoft.Json.Linq;
+@{
+
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <!-- Custom Theme Style -->
     <link href="~/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/DropDown.css" rel="stylesheet" />
@@ -16,12 +20,10 @@
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            
+           
             <!-- page content -->
-            <div class="right_col" role="main" id="content">
-
-                <iframe id="FrameLocations" height="1000" width="1150" src="#"></iframe>
-
+            <div class="right_col" role="main">
+                <iframe id="viewErrorLog" src="#" style="display:block;height:1000px;width:1200px;"></iframe>
             </div>
 
             <!-- /page content -->
@@ -30,6 +32,7 @@
             <!-- /footer content -->
         </div>
     </div>
+
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -40,8 +43,8 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
     <script type="text/javascript">
-        var completeUrl = "@System.Configuration.ConfigurationManager.AppSettings["LocationDashBoardUrl"].ToString()" + "/LocationIndicators/Index?SiteName=" + localStorage.getItem("SiteName");
-        $('#FrameLocations').attr('src', completeUrl)
+        var completeUrl = "@System.Configuration.ConfigurationManager.AppSettings["RTLSUrl"].ToString()" + "Admin/GetRTLSLogs";
+       $('#viewErrorLog').attr('src', completeUrl)
     </script>
 
 </body>
