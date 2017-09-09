@@ -1,5 +1,4 @@
-﻿using CaptivePortal.API.Models.LocationDashBoardModel.Migrations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +6,6 @@ using System.Web;
 
 namespace CaptivePortal.API.Models.LocationDashBoardModel
 {
-    [DbConfigurationType(typeof(MSSqlConfiguration))]
     public class LocationDashBoardDbContext : DbContext
     {
         public LocationDashBoardDbContext() : base("Discovery1")

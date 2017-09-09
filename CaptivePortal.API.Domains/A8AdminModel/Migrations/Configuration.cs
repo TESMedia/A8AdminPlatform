@@ -5,7 +5,7 @@ namespace CaptivePortal.API.Models.A8AdminModel.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CaptivePortal.API.Models.A8AdminModel.A8AdminDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<CaptivePortal.API.Models.A8AdminModel.A8AdminDbContext>
     {
         public Configuration()
         {

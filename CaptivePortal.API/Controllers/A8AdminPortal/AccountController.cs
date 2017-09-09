@@ -287,13 +287,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
-            ViewBag.groups = from item in db.Groups.ToList()
-                             select new SelectListItem()
-                             {
-                                 Text = item.GroupName,
-                                 Value = item.GroupId.ToString(),
-                             };
-            list._menu = db.Group.ToList();
+            list._menu = db.Groups.ToList();
             list.GroupDdl = Convert.ToInt32(GroupName);
             ViewBag.sites = from item in db.Site.ToList()
                             select new SelectListItem()

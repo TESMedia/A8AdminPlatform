@@ -115,7 +115,6 @@
     <Compile Include="LocationDashBoardModel\DataFile.cs" />
     <Compile Include="LocationDashBoardModel\InterestLocation.cs" />
     <Compile Include="LocationDashBoardModel\LocationIndicator.cs" />
-    <Compile Include="LocationDashBoardModel\Migrations\MSSqlConfiguration.cs" />
     <Compile Include="LocationDashBoardModel\NeighBourArea.cs" />
     <Compile Include="LocationDashBoardModel\Parameter.cs" />
     <Compile Include="LocationDashBoardModel\LocationDashBoardDbContext.cs" />

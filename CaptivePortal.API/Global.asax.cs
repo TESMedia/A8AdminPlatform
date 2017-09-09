@@ -25,16 +25,14 @@ namespace CaptivePortal.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            LocationDashBoardDbContext db = new LocationDashBoardDbContext();
             //Database.SetInitializer<A8AdminDbContext>(new CreateDatabaseIfNotExists<A8AdminDbContext>());
             //AdminManagementDbOperation objAdminManagementDbOperation = new AdminManagementDbOperation();
             //objAdminManagementDbOperation.PerformDatabaseOperations();
-            DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
-            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<A8AdminDbContext, CaptivePortal.API.Models.A8AdminModel.Migrations.Configuration>());
-            A8AdminDbContext context = new A8AdminDbContext();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<A8AdminDbContext, CaptivePortal.API.Models.A8AdminModel.Migrations.Configuration>());
             log4net.Config.XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/Web.config")));
             ILog logger = LogManager.GetLogger(typeof(ApiController));
             logger.Info("Application started successfully.");
-
 
         }
 
