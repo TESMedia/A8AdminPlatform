@@ -40,17 +40,21 @@ namespace CaptivePortal.API.Controllers.LocationDashboard
         /// <returns></returns>
 
         [Authorize(Roles = "GlobalAdmin,BusinessUser,User")]
-        public ActionResult Index(string SiteName)
+        public ActionResult Index(int SiteId)
         {
             var userManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            var objSite=objSiteRepository.GetSiteAsPerId(SiteId);
+           
             if (userManager.IsInRole(User.Identity.GetUserId<int>(), "GlobalAdmin"))
             {
-                ViewData["SiteList"] =new SelectList(objSiteRepository.GetListOfSiteGroupPerSiteName(SiteName.Trim()).Select(m=>new {SiteName=m.SiteName,SiteId=m.SiteName}),"SiteId","SiteName",SiteName.Trim()) ;
+                ViewData["SiteList"] =new SelectList(objSiteRepository.GetListOfSiteGroupPerSiteId(objSite.SiteId).Select(m=>new {SiteName=m.SiteName,SiteId=m.SiteName}),"SiteId","SiteName", objSite.SiteName.Trim()) ;
             }
             else
             {
-                ViewData["SiteList"] = new SelectList(objAdminSiteAccessRepository.GetListOfAdminSiteAccess(User.Identity.GetUserId<int>()).Select(m => new { SiteName = m.Site.SiteName, SiteId = m.Site.SiteName }), "SiteId", "SiteName", SiteName.Trim());
+                ViewData["SiteList"] = new SelectList(objAdminSiteAccessRepository.GetListOfAdminSiteAccess(User.Identity.GetUserId<int>()).Select(m => new { SiteName = m.Site.SiteName, SiteId = m.Site.SiteName }), "SiteId", "SiteName", objSite.SiteName.Trim());
             }
+            ViewData["SiteImage"] = objSite.SiteIconPath;
+            ViewData["SiteName"] = objSite.SiteName;
             return View();
         }
 
@@ -63,7 +67,7 @@ namespace CaptivePortal.API.Controllers.LocationDashboard
         [Authorize(Roles = "GlobalAdmin")]
         public ActionResult UploadFile(string SiteName)
         {
-            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext())
+            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(SiteName.ToString().Trim()))
             {
                 ViewBag.DeltaTime = db.Parameters.FirstOrDefault(m => m.Name == "DeltaTime").Value;
                 ViewBag.RemotePath = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value;

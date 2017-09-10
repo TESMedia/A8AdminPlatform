@@ -3,8 +3,6 @@
     $scope.getIndex = function () {
         LocationIndicatorService.Index().success(function (d) {
             $scope.locationIndiCatorDetails = d;
-            //$scope.LabelDiscovery = GetSiteNameFromQueryString();
-            //$scope.selectdiscovery = GetSiteNameFromQueryString();
         }, function (error) { });
     };
 
@@ -35,9 +33,7 @@
         $scope.editInfo.lstNeighBourMaps.splice(-1, 1);
     }
     $scope.edit = function (id) {
-        LocationIndicatorService.editPop(id).success(function (d) {
-            location.href = "EditLocation?id=" + id;
-        }, function (error) { });
+        location.href = "EditLocation?id=" + id;
     };
 
      $scope.delete = function (id) {
@@ -65,10 +61,14 @@
                 var itemNeghBourList = { NeighBourName: $scope.editInfo.NeighBourName, NeighBourId: 0, AreaOfInterestId: $scope.editInfo.AreaOfInterestId, Name: null }
                 $scope.editInfo.lstNeighBourMaps.push(itemNeghBourList);
                 LocationIndicatorService.editLocAndNegh($scope.editInfo).success(function (d) {
-                }, function (error) { });
+                    alert(d);
+                }, function (error) {
 
+                });
+               
             }
         }, function (error) { });
+        window.location.href = "/LocationIndicators/LocationsMapping?SiteName=" + localStorage.getItem('SiteName').toString().trim();
     };
 
 }]);

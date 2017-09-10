@@ -13,24 +13,18 @@ using System.Web.Http.Cors;
 namespace a8Dashboard.APIControllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    [RoutePrefix("api/locationIndicators")]
+    [RoutePrefix("locationIndicators/api")]
     public class LocationIndicatorsApiController : ApiController
     {
         [HttpGet]
         [Route("Index")]
         public List<LocationIndicatorViewModel> Index(string SiteName)
         {
-            //Assign the Default Site 
-
-            if (!string.IsNullOrEmpty(SiteName) || SiteName == null)
-            {
-                SiteName = "Discovery1";
-            }
             List<LocationIndicatorViewModel> lstLocationIndicatorViewModel = new List<LocationIndicatorViewModel>();
             try
             {
 
-                using (var db = new LocationDashBoardDbContext(SiteName))
+                using (var db = new LocationDashBoardDbContext(SiteName.Trim()))
                 {
                     var interLocationsData = db.InterestLocation.ToList();
 
@@ -87,7 +81,6 @@ namespace a8Dashboard.APIControllers
         {
 
             InterestLocation locationModel = new InterestLocation();
-            objlocationIndicator.SiteName = "Discovery1";
 
             using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(objlocationIndicator.SiteName))
             {
@@ -130,10 +123,9 @@ namespace a8Dashboard.APIControllers
             LocationIndicatorViewModel objLocationIndicatorViewModel = new LocationIndicatorViewModel();
             objLocationIndicatorViewModel.SiteName = SiteName;
             objLocationIndicatorViewModel.AreaOfInterestId = id;
-            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(SiteName))
+            using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(SiteName.Trim()))
             {
                 objLocationIndicatorViewModel.Name = db.InterestLocation.First(m => m.AreaOfInterestId == id).Name;
-                objLocationIndicatorViewModel.LoctionIndicatorId = db.LocationIndicator.First(m => m.AreaOfInterestId == id).LoctionIndicatorId;
                 foreach (var item in db.LocationIndicator.Where(m => m.AreaOfInterestId == id))
                 {
                     MapLocation objMapLocation = new MapLocation();
@@ -164,34 +156,11 @@ namespace a8Dashboard.APIControllers
         {
             try
             {
-                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(locationIndicator.SiteName))
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(locationIndicator.SiteName.Trim()))
                 {
                     var objInterestLoction = db.InterestLocation.Where(p => p.AreaOfInterestId == locationIndicator.AreaOfInterestId).FirstOrDefault();
                     objInterestLoction.Name = locationIndicator.Name;
                     db.Entry(objInterestLoction).State = EntityState.Modified;
-                    //var ab = fc["LoctionIndicator"].ToString();
-                    //foreach (var item in fc["LoctionIndicator"].Split(','))
-                    //{
-                    //    if (!string.IsNullOrEmpty(item))
-                    //    {
-                    //        LocationIndicator indicatorModel = new LocationIndicator();
-                    //        indicatorModel.LoctionIndicator = item.ToString();
-                    //        indicatorModel.AreaOfInterestId = objInterestLoction.AreaOfInterestId;
-                    //        db.LocationIndicator.Add(indicatorModel);
-                    //    }
-                    //}
-
-                    //foreach (var item in fc["NeighBourName"].Split(','))
-                    //{
-                    //    if (!string.IsNullOrEmpty(item))
-                    //    {
-                    //        NeighBourArea objNeighBourArea = new NeighBourArea();
-                    //        objNeighBourArea.AreaCode = item;
-                    //        objNeighBourArea.AreaId = locationIndicator.AreaOfInterestId;
-                    //        db.NeighBourAreas.Add(objNeighBourArea);
-                    //    }
-                    //}
-
                     foreach (var Item in locationIndicator.lstMapLocations)
                     {
                         var objlocationIndicator = new LocationIndicator();
@@ -267,6 +236,26 @@ namespace a8Dashboard.APIControllers
                 {
                     LocationIndicator objLocationIndicator = db.LocationIndicator.Where(b => b.LoctionIndicatorId == objLocation.LoctionIndicatorId).FirstOrDefault();
                     db.LocationIndicator.Remove(objLocationIndicator);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        [Route("DeleteNeighBourArea")]
+        public HttpResponseMessage DeleteNeighBourArea(LocationIndicatorViewModel objLocation)
+        {
+            try
+            {
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(objLocation.SiteName))
+                {
+                    NeighBourArea objNeighBours = db.NeighBourAreas.Where(b => b.NeighbourAreaId == objLocation.NeighBourId).FirstOrDefault();
+                    db.NeighBourAreas.Remove(objNeighBours);
                     db.SaveChanges();
                 }
             }

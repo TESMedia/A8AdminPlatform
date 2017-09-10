@@ -37,6 +37,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string RtlsUrl { get; set; }
         public string DashboardUrl { get; set; }
 
+        public string SiteImagePath { get; set; }
         public string CompanyIcon { get; set; }
         public string[] dataType { get; }
         public string[] controlType { get; }

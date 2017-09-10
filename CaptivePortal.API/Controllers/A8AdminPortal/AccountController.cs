@@ -99,11 +99,19 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        //return RedirectToAction("Home", "Admin", new { SiteId = existUser.SiteId, UserName = existUser.UserName });
-                        //return Json("success", JsonRequestBehavior.AllowGet);
-                        ViewBag.roleOfUser = UserManager.GetRoles(existUser.Id).FirstOrDefault();
-                        return RedirectToAction("Index", "Home");
 
+                        if (UserManager.IsInRole(existUser.Id, "BusinessUser"))
+                        {
+                            if (!string.IsNullOrEmpty(existUser.Sites.DashboardUrl))
+                            {
+                                return RedirectToAction("Index", "LocationDashBoard", new { SiteId = existUser.SiteId });
+                            }
+                            else if (!string.IsNullOrEmpty(existUser.Sites.RtlsUrl))
+                            {
+                                return RedirectToAction("Index", "RTLS", new { SiteId = existUser.SiteId });
+                            }
+                        }
+                        return RedirectToAction("Index", "Home");
                     case SignInStatus.Failure:
                     default:
                         // ModelState.AddModelError("", "Invalid login attempt.");
@@ -189,14 +197,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             if (result.Succeeded)
             {
                 string roleName = UserManager.GetRoles(user.Id).FirstOrDefault();
-                if (roleName == "BusinessUser" && !(String.IsNullOrEmpty(user.Sites.DashboardUrl)))
-                {
-                    return RedirectPermanent(user.Sites.DashboardUrl);
-                }
-                else
-                {
-                    return RedirectToAction("Login", "Account");
-                }
+                return RedirectToAction("Login", "Account");
             }
             return View();
         }
@@ -237,7 +238,6 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         [HttpPost]
         public async System.Threading.Tasks.Task<ActionResult> CreateUserWithRole(CreateUserWithRoleViewModel model, FormCollection fc, string[] RestrictedSites)
         {
-            string defaultSiteName = db.Site.FirstOrDefault(m => m.SiteId == model.SiteDdl).SiteName;
             try
             {
 
@@ -250,7 +250,6 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     BirthDate=DateTime.Now,
                     SiteId = model.SiteDdl,
                     Status = Status.Active.ToString(),
-                    PhoneNumber = defaultSiteName//Store the SiteName As default Site in Identity Column named PhoneNumber
                 };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)

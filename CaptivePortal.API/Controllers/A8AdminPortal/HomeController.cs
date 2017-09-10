@@ -18,11 +18,13 @@ namespace CaptivePortal.API.Controllers
     public class HomeController : Controller
     {
 
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
         A8AdminDbContext db = new A8AdminDbContext();
         private static ILog Log { get; set; }
         ILog log = LogManager.GetLogger(typeof(HomeController));
         private string retStr = "";
-        private ApplicationUserManager _userManager;
+
         public HomeController()
         {
 
@@ -30,7 +32,22 @@ namespace CaptivePortal.API.Controllers
         public HomeController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
+            SignInManager = signInManager;
+
         }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
         public ApplicationUserManager UserManager
         {
             get
@@ -42,35 +59,33 @@ namespace CaptivePortal.API.Controllers
                 _userManager = value;
             }
         }
-     
-       [HttpGet]
+
+        [HttpGet]
         public ActionResult LogsDownload()
         {
             try
             {
-                
-                    string path = Server.MapPath("~/Logs/log.txt");
-                    System.IO.FileInfo file = new System.IO.FileInfo(path);
-                    if (file.Exists)
-                    {
-                        byte[] fileBytes = System.IO.File.ReadAllBytes(path);
-                        return File(fileBytes, MediaTypeNames.Application.Octet, "log.txt");
-                    }
-               
-
-
+                string path = Server.MapPath("~/Logs/log.txt");
+                System.IO.FileInfo file = new System.IO.FileInfo(path);
+                if (file.Exists)
+                {
+                    byte[] fileBytes = System.IO.File.ReadAllBytes(path);
+                    return File(fileBytes, MediaTypeNames.Application.Octet, "log.txt");
+                }
             }
             catch (Exception ex)
             {
                 Response.Write(ex.Message);
             }
-
             return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-
-
         }
 
-        //[Authorize(Roles = "GlobalAdmin,CompanyAdmin")]
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [Authorize(Roles = "GlobalAdmin,CompanyAdmin")]
         public ActionResult Index()
         {
             AdminlistViewModel list = new AdminlistViewModel();

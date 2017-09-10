@@ -1,30 +1,25 @@
-﻿
-@model CaptivePortal.API.ViewModels.LocationDashBoard.LocationIndicatorViewModel
-
-
-
+﻿@model CaptivePortal.API.ViewModels.LocationDashBoard.LocationIndicatorViewModel
 <!DOCTYPE html>
 <html lang="en" ng-app="a8DashboardModule">
 <head>
-    
-
-    <!-- Custom Theme Style -->
-    
-    
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
+    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
+    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/Scripts/Spin.js"></script>
+    <link href="~/Bootstrap 3.3.7/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
+    <link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
+    <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
+    <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
 </head>
-
-
-<body class="nav-md" ng-controller="LocationIndicatorController">
-    <div class="container body">
+<body class="nav-md">
+    <div class="container body" ng-controller="LocationIndicatorController">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            
-            <!-- page content -->
+
             <div class="right_col" role="main" ng-init="editDetails()">
-
-
-                @*@using (Html.BeginForm())
-                    {*@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
@@ -35,57 +30,25 @@
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
                             <input class="form-control" style="width:25%;" type="text" name="Name" id="Name" ng-model="editInfo.Name" />
-                            @* @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })*@
-                            @*@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })*@
                             <input type="text" ng-model="editInfo.LoctionIndicator" hidden />
                             <input type="text" ng-model="editInfo.NeighBourName" hidden />
-                            @*@Html.HiddenFor(model => model.LoctionIndicator)
-                                @Html.HiddenFor(model => model.NeighBourName)*@
                         </div>
                     </div>
                     <div class="form-group">
                         @Html.LabelFor(model => Model.LoctionIndicator, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
                             <div ng-if="editInfo.lstMapLocations.length > 0">
-
-
                                 <div ng-repeat="item in editInfo.lstMapLocations">
                                     <input type="text" ng-model="item.AreaOfInterestId" hidden />
                                     <input type="text" ng-model="item.LoctionIndicatorId" hidden />
                                     <input class="form-control" style="width:25%;" type="text" ng-model="item.LoctionIndicator" name="LoctionIndicator" />
                                     <input type="button" ng-show="item.LoctionIndicatorId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteLocationIndicator(item.AreaOfInterestId,item.LoctionIndicatorId)" />
                                 </div>
-
                             </div>
-
                             <div ng-if="editInfo.lstMapLocations.length===0">
-                                <input class="form-control"  style="width:25%;" type="text" value="{{item.LoctionIndicator}}" />
+                                <input class="form-control" style="width:25%;" type="text" value="{{item.LoctionIndicator}}" />
                                 <input type="text" value="{{item.LoctionIndicator}}" hidden />
-
                             </div>
-
-                            @*@if (Model.lstMapLocations.Count > 0)
-                                {
-                                    for (var i = 0; i < Model.lstMapLocations.Count; i++)
-                                    {
-                                        @Html.HiddenFor(model => Model.lstMapLocations[i].AreaOfInterestId)
-                                        @Html.HiddenFor(model => Model.lstMapLocations[i].LoctionIndicatorId)
-                                        @Html.TextBoxFor(model => Model.lstMapLocations[i].LoctionIndicator, new { @class = "form-control" })
-
-                                        <form action="/LocationIndicators/DeleteLocationIndicator" method="post">
-                                            <input type="hidden" value="@Model.lstMapLocations[i].LoctionIndicatorId" name="LoctionIndicatorId" />
-                                            <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
-                                            <input type="submit" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" />
-                                        </form>
-                                        @Html.ValidationMessageFor(model => Model.lstMapLocations[i].LoctionIndicator, "", new { @class = "text-danger" })
-                                    }
-                                }
-                                else
-                                {
-                                    @Html.EditorFor(model => model.LoctionIndicator, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.LoctionIndicator, "", new { @class = "text-danger" })
-                                    @Html.HiddenFor(model => model.LoctionIndicator)
-                                }*@
                         </div>
                     </div>
                     <div class="form-group">
@@ -97,47 +60,18 @@
                         @Html.LabelFor(model => Model.NeighBourName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv1">
 
-                            <div ng-if="editInfo.lstNeighBourMaps.length > 0">
-
-
+                            <div ng-if="editInfo.lstNeighBourMaps.length">
                                 <div ng-repeat="item in editInfo.lstNeighBourMaps">
                                     <input type="text" ng-model="item.AreaOfInterestId" hidden />
                                     <input type="text" ng-model="item.NeighBourId" hidden />
                                     <input class="form-control" style="width:25%;" type="text" ng-model="item.NeighBourName" name="NeighBourName" />
                                     <input type="button" ng-show="item.NeighBourId>0" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" ng-click="deleteNeighBourArea(item.AreaOfInterestId,item.NeighBourId)" />
                                 </div>
-
                             </div>
-
                             <div ng-if="editInfo.lstNeighBourMaps.length===0">
                                 <input class="form-control" style="width:25%;" name="NeighBourName" type="text" ng-model="item.NeighBourName" />
                                 <input type="text" ng-model="item.NeighBourName" name="NeighBourName" hidden />
-
-
                             </div>
-                            @*@if (Model.lstNeighBourMaps.Count > 0)
-                                {
-                                    for (var i = 0; i < Model.lstNeighBourMaps.Count; i++)
-                                    {
-                                                        @Html.HiddenFor(model => Model.lstNeighBourMaps[i].AreaOfInterestId)
-                                                        @Html.HiddenFor(model => Model.lstNeighBourMaps[i].NeighBourId)
-                                                        @Html.TextBoxFor(model => Model.lstNeighBourMaps[i].NeighBourName, new { @class = "form-control", @name = "NeighBourName" })
-
-                                                        <form action="/LocationIndicators/DeleteNeighBourArea" method="post">
-                                                            @Html.AntiForgeryToken()
-                                                            <input type="hidden" value="@Model.lstNeighBourMaps[i].NeighBourId" name="NeighBourId" />
-                                                            <input type="hidden" value="@Request.QueryString["SiteName"]" name="SiteName" />
-                                                            <input type="submit" value="Delete" class="btn btn-primary" style="color:white;color:white;padding-top: 6px;margin-top: -54px;margin-left: 289px;" />
-                                                        </form>
-                                                        @Html.ValidationMessageFor(model => Model.lstNeighBourMaps[i].NeighBourName, "", new { @class = "text-danger" })
-                                                    }
-                                                }
-                                                else
-                                                {
-                                                    @Html.EditorFor(model => model.NeighBourName, new { htmlAttributes = new { @class = "form-control" } })
-                                                    @Html.ValidationMessageFor(model => model.NeighBourName, "", new { @class = "text-danger" })
-                                                    @Html.HiddenFor(model => model.NeighBourName)
-                                                }*@
                         </div>
                     </div>
                     <div class="form-group">
@@ -150,25 +84,16 @@
                         <div class="col-md-offset-2 col-md-10">
                             <input type="button" value="Save" class="btn btn-success" id="btnsubmit" ng-click="editPost()" />
                             <a href="@Url.Action("LocationsMapping","LocationIndicators")" class="btn btn-success" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" role="button" style="cursor:pointer">Back</a>
-                            @*<input type="button" value="Back" class="btn btn-default" onclick="location.href='@Url.Action("Index", "LocationIndicators")'" />*@
                         </div>
                     </div>
                 </div>
-                @*}*@
-
-
-
-
-
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer></footer>
             <!-- /footer content -->
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -178,22 +103,12 @@
     <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-
+    <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
+    <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
+    <script>
+    $(document).ready(function(){
+        navigation();
+    })
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

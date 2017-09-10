@@ -58,7 +58,7 @@
                             <a id="viewdashboard" class="row margin hide"><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("Index","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">WiFi Summary</a></li>
-                                <li><a href="@Url.Action("Index","LocationDashBoard")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location dashboard</a></li>
+                                <li><a href="@Url.Action("LocationDashBoard","Admin")" onclick="location.href = this.href + '?SiteId=' + localStorage.getItem('SiteId'); return false;">Location dashboard</a></li>
                             </ul>
                         </li>
                         <li>
@@ -88,7 +88,7 @@
                         <li>
                             <a id="managedashboard" class="row margin hide"><i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="@Url.Action("UploadFile","LocationIndicators")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Upload File</a></li>
+                                <li><a href="@Url.Action("UploadLocationDashBoardFile","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Upload File</a></li>
                                 <li><a href="@Url.Action("LocationsMapping","LocationIndicators")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location Mapping</a></li>
                             </ul>
                         </li>
@@ -98,7 +98,7 @@
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("TestSetUpRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Test Set-up</a></li>
                                 <li><a href="@Url.Action("ViewRtlsData","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View RTLS data</a></li>
-                                <li><a href="@Url.Action("ViewErrorLogsRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View Error log</a></li>
+                                <li><a href="@Url.Action("ViewErrorLogRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View Error log</a></li>
                             </ul>
                         </li>
 

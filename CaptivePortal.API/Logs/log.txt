@@ -459,3 +459,226 @@ ERROR 2017-09-09 11:00:57,179 System.Web.Http.ApiController - The provider did n
 INFO 2017-09-09 11:07:09,924 System.Web.Http.ApiController - Application started successfully.
 ERROR 2017-09-09 11:10:24,656 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
 INFO 2017-09-09 11:12:49,333 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 12:15:10,679 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 12:22:01,189 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 12:47:16,721 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-09 12:47:32,075 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 13:00:27,500 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 13:02:39,646 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 13:03:26,824 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 14:13:52,380 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 14:13:52,403 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-09 14:16:36,080 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 14:23:17,871 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 14:23:17,881 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 14:24:24,133 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+ERROR 2017-09-09 14:24:38,141 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 14:24:49,208 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-09 14:25:50,706 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+INFO 2017-09-09 15:38:20,737 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 15:46:49,511 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 15:49:10,521 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-09 15:53:51,359 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+INFO 2017-09-09 16:06:42,250 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 16:17:44,907 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 16:17:44,944 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-09 16:17:45,318 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Error running sp_GetDate: Object reference not set to an instance of an object.
+ERROR 2017-09-09 16:17:45,437 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Error running Sp_GetAllArea: Object reference not set to an instance of an object.
+INFO 2017-09-09 16:30:38,448 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 16:31:57,814 System.Web.Http.ApiController - The controller for path '/__browserLink/requestData/cd5ce9ff5fff44d79e27bd4db77ab52d' was not found or does not implement IController.
+ERROR 2017-09-09 16:32:00,144 System.Web.Http.ApiController - The controller for path '/__browserLink/requestData/38e24d4f51bd451dacaaaa510fc47709' was not found or does not implement IController.
+INFO 2017-09-09 16:33:14,146 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 16:50:03,665 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 17:02:53,289 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 17:09:55,608 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 17:13:27,722 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:13:27,722 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-09 17:14:04,142 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 17:14:22,949 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:14:22,951 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:25:54,529 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 17:29:51,841 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-09 17:30:28,084 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 17:31:21,351 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:31:21,878 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:37:54,284 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 17:45:04,186 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-09 17:45:04,198 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-09 17:52:54,364 System.Web.Http.ApiController - UserId not found.
+ERROR 2017-09-09 17:53:32,079 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 17:58:38,981 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 18:10:42,713 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 18:13:06,190 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 18:21:09,239 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 18:57:28,189 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 19:02:42,779 System.Web.Http.ApiController - C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\Views\LocationIndicators\EditLocation.cshtml(2): error CS1002: ; expected
+INFO 2017-09-09 19:16:41,308 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 19:18:29,695 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 19:31:53,787 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 19:55:16,755 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 20:04:35,060 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-09 20:09:55,061 System.Web.Http.ApiController - A public action method 'TestSetUpRtls' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-09 20:24:15,058 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 20:25:23,599 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 21:12:55,833 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 21:43:33,857 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-09 21:45:56,458 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 21:46:14,774 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-09 21:55:30,285 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 21:57:39,692 System.Web.Http.ApiController - The argument 'nameOrConnectionString' cannot be null, empty or contain only white space.
+INFO 2017-09-09 22:01:15,758 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 22:08:02,008 System.Web.Http.ApiController - The argument 'nameOrConnectionString' cannot be null, empty or contain only white space.
+ERROR 2017-09-09 22:08:40,241 System.Web.Http.ApiController - The argument 'nameOrConnectionString' cannot be null, empty or contain only white space.
+ERROR 2017-09-09 22:09:20,009 System.Web.Http.ApiController - The argument 'nameOrConnectionString' cannot be null, empty or contain only white space.
+INFO 2017-09-09 22:09:32,303 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 22:09:42,328 System.Web.Http.ApiController - The controller for path '/__browserLink/requestData/2db63fb821e44774b23c1c8cb74355f0' was not found or does not implement IController.
+ERROR 2017-09-09 22:09:57,402 System.Web.Http.ApiController - The argument 'nameOrConnectionString' cannot be null, empty or contain only white space.
+INFO 2017-09-09 22:16:28,711 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-09 22:22:06,552 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-09 22:22:16,731 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-09 22:22:40,069 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-09 22:22:48,161 System.Web.Http.ApiController - The controller for path '/ImportSftpData/api/GetFileNames' was not found or does not implement IController.
+INFO 2017-09-09 22:24:59,169 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-09 22:28:03,716 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-09 22:29:30,842 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-09 22:30:02,166 a8Dashboard.Controllers.ImportSftpDataController - Object reference not set to an instance of an object.
+ERROR 2017-09-09 22:30:53,543 a8Dashboard.Controllers.ImportSftpDataController - Non-static field requires a target.
+INFO 2017-09-09 22:31:16,230 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-09 22:36:30,794 System.Web.Http.ApiController - The controller for path '/ImportSftpData/api/LoadSftpData' was not found or does not implement IController.
+INFO 2017-09-09 22:38:55,528 a8Dashboard.Controllers.ManageSftpFileApiController - Enter into the SaveCruisePlaceDiscovery()
+ERROR 2017-09-09 22:38:55,897 a8Dashboard.Controllers.ManageSftpFileApiController - Could not find a part of the path 'C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\CSV\TUI Discovery1 Itineraries v1(1).xlsx'.
+INFO 2017-09-09 22:57:05,186 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 07:19:29,632 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 07:23:07,727 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 07:29:44,752 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 07:31:53,857 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-10 07:33:10,733 System.Web.Http.ApiController - The controller for path '/DashBoard/uploadfilename' was not found or does not implement IController.
+INFO 2017-09-10 07:34:10,921 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 07:47:55,731 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 07:52:21,465 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 07:53:56,684 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+ERROR 2017-09-10 07:55:47,075 System.Web.Http.ApiController - The controller for path '/DashBoard/uploadfilename' was not found or does not implement IController.
+INFO 2017-09-10 07:56:14,450 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 07:58:15,028 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 08:02:31,841 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_06-05-2017.csv.gz)
+INFO 2017-09-10 08:02:36,093 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:02:38,694 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:03:06,390 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 08:06:58,805 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 08:16:58,632 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 08:17:28,517 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_06-05-2017.csv.gz)
+INFO 2017-09-10 08:17:28,611 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:17:59,496 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Start FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:18:16,577 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Finished FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:18:16,597 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:18:16,617 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to unzip file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 08:18:20,974 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Unzipped file: C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\ZipCsvs\TUI_D2_location_data_06-05-2017.csv
+INFO 2017-09-10 08:18:21,042 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+ERROR 2017-09-10 08:18:21,265 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Object reference not set to an instance of an object.
+INFO 2017-09-10 08:18:21,290 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Executed stored proc sp_Importfile
+INFO 2017-09-10 08:18:21,414 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Leaving ImportDataFile(TUI_D2_location_data_06-05-2017.csv.gz)
+ERROR 2017-09-10 08:18:28,987 System.Web.Http.ApiController - The controller for path '/DashBoard/uploadfilename' was not found or does not implement IController.
+INFO 2017-09-10 08:20:01,710 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 09:12:23,606 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_06-05-2017.csv.gz)
+INFO 2017-09-10 09:12:23,706 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 09:12:45,772 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Start FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 09:13:17,483 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Finished FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 09:13:17,551 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 09:13:17,580 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to unzip file: TUI_D2_location_data_06-05-2017.csv.gz
+INFO 2017-09-10 09:13:23,960 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Unzipped file: C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\ZipCsvs\TUI_D2_location_data_06-05-2017.csv
+INFO 2017-09-10 09:13:24,021 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+ERROR 2017-09-10 09:13:24,352 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Object reference not set to an instance of an object.
+INFO 2017-09-10 09:13:24,388 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Executed stored proc sp_Importfile
+INFO 2017-09-10 09:13:24,859 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Leaving ImportDataFile(TUI_D2_location_data_06-05-2017.csv.gz)
+ERROR 2017-09-10 09:17:45,773 System.Web.Http.ApiController - The controller for path '/DashBoard/uploadfilename' was not found or does not implement IController.
+ERROR 2017-09-10 09:17:53,958 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-10 09:18:09,410 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+INFO 2017-09-10 09:18:27,510 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 09:21:14,513 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_08-30-2017.csv.gz)
+INFO 2017-09-10 09:21:14,593 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_08-30-2017.csv.gz
+INFO 2017-09-10 09:21:24,710 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Start FTP of /home/airloc8user/sftp/discovery2//1708/cleaned/TUI_D2_location_data_08-30-2017.csv.gz
+INFO 2017-09-10 09:21:53,068 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Finished FTP of /home/airloc8user/sftp/discovery2//1708/cleaned/TUI_D2_location_data_08-30-2017.csv.gz
+INFO 2017-09-10 09:21:56,973 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_08-30-2017.csv.gz
+INFO 2017-09-10 09:22:09,139 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to unzip file: TUI_D2_location_data_08-30-2017.csv.gz
+INFO 2017-09-10 09:22:25,693 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Unzipped file: C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\ZipCsvs\TUI_D2_location_data_08-30-2017.csv
+INFO 2017-09-10 09:22:27,855 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+INFO 2017-09-10 09:22:44,859 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+INFO 2017-09-10 09:23:35,163 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Executed stored proc sp_Importfile
+INFO 2017-09-10 09:23:48,855 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Leaving ImportDataFile(TUI_D2_location_data_08-30-2017.csv.gz)
+INFO 2017-09-10 09:23:50,484 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 09:55:48,271 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 09:56:39,198 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_08-29-2017.csv.gz)
+INFO 2017-09-10 09:56:39,297 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_08-29-2017.csv.gz
+INFO 2017-09-10 09:56:52,412 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Start FTP of /home/airloc8user/sftp/discovery2//1708/cleaned/TUI_D2_location_data_08-29-2017.csv.gz
+INFO 2017-09-10 09:57:11,939 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Finished FTP of /home/airloc8user/sftp/discovery2//1708/cleaned/TUI_D2_location_data_08-29-2017.csv.gz
+INFO 2017-09-10 09:57:15,598 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_08-29-2017.csv.gz
+INFO 2017-09-10 09:57:15,686 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to unzip file: TUI_D2_location_data_08-29-2017.csv.gz
+INFO 2017-09-10 09:57:34,772 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Unzipped file: C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\ZipCsvs\TUI_D2_location_data_08-29-2017.csv
+INFO 2017-09-10 09:57:34,845 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+INFO 2017-09-10 09:59:24,242 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Executed stored proc sp_Importfile
+INFO 2017-09-10 09:59:25,419 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Leaving ImportDataFile(TUI_D2_location_data_08-29-2017.csv.gz)
+INFO 2017-09-10 09:59:50,561 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 10:11:28,953 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 10:17:24,516 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 10:19:18,318 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Entered ImportDataFile(TUI_D2_location_data_06-06-2017.csv.gz)
+INFO 2017-09-10 10:19:18,399 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to FTP file: TUI_D2_location_data_06-06-2017.csv.gz
+INFO 2017-09-10 10:19:29,435 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Start FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-06-2017.csv.gz
+INFO 2017-09-10 10:20:41,592 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Finished FTP of /home/airloc8user/sftp/discovery2//1706/cleaned/TUI_D2_location_data_06-06-2017.csv.gz
+INFO 2017-09-10 10:20:45,066 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - FTP'ed file: TUI_D2_location_data_06-06-2017.csv.gz
+INFO 2017-09-10 10:20:45,553 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to unzip file: TUI_D2_location_data_06-06-2017.csv.gz
+INFO 2017-09-10 10:21:08,499 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Unzipped file: C:\Users\Dell\Desktop\Backup\A8AdminPlatform09.05.2017\CaptivePortal.API\ZipCsvs\TUI_D2_location_data_06-06-2017.csv
+INFO 2017-09-10 10:21:08,564 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - About to execute stored proc sp_Importfile
+INFO 2017-09-10 10:25:24,403 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Executed stored proc sp_Importfile
+INFO 2017-09-10 10:25:31,435 CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer.DBObject - Leaving ImportDataFile(TUI_D2_location_data_06-06-2017.csv.gz)
+INFO 2017-09-10 10:26:03,309 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 10:57:40,775 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 11:33:18,305 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-10 11:33:18,313 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+ERROR 2017-09-10 11:45:19,559 System.Web.Http.ApiController - A public action method 'Login' was not found on controller 'CaptivePortal.API.Controllers.CPAdmin.AdminController'.
+ERROR 2017-09-10 12:57:37,807 System.Web.Http.ApiController - The controller for path '/ LocationIndicators/LocationsMapping' was not found or does not implement IController.
+ERROR 2017-09-10 12:58:20,281 System.Web.Http.ApiController - The controller for path '/ LocationIndicators/LocationsMapping' was not found or does not implement IController.
+ERROR 2017-09-10 12:58:52,673 System.Web.Http.ApiController - A public action method 'LocationIndicators' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 13:00:38,422 System.Web.Http.ApiController - A public action method 'LocationIndicators' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+INFO 2017-09-10 13:01:53,594 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-10 13:02:06,089 System.Web.Http.ApiController - The controller for path '/__browserLink/requestData/1810e753467d49f7baac24a8ab32b9eb' was not found or does not implement IController.
+INFO 2017-09-10 14:55:40,269 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 15:00:14,621 a8Dashboard.Controllers.ManageSftpFileApiController - Entered GetReport()
+INFO 2017-09-10 15:31:05,686 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 15:32:35,292 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 15:48:58,481 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-10 15:48:58,488 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-10 15:55:36,568 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-10 17:42:06,196 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 17:43:09,639 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 17:47:40,274 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 17:48:59,961 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 17:51:59,064 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 17:57:53,975 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+ERROR 2017-09-10 18:00:27,261 System.Web.Http.ApiController - A public action method 'api' was not found on controller 'CaptivePortal.API.Controllers.LocationDashboard.LocationIndicatorsController'.
+INFO 2017-09-10 18:03:38,965 System.Web.Http.ApiController - Application started successfully.
+INFO 2017-09-10 18:33:52,345 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-10 18:36:31,774 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-10 18:38:56,581 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-10 18:39:45,590 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+INFO 2017-09-10 18:39:56,025 CaptivePortal.API.Controllers.CPAdmin.AdminController - populated selected site details to configure
+INFO 2017-09-10 18:40:49,372 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to configure site
+INFO 2017-09-10 18:40:56,726 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-10 18:51:12,798 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-10 18:51:12,800 a8Dashboard.Controllers.DashboardApiController - Entered GetReport()
+INFO 2017-09-10 18:54:06,902 CaptivePortal.API.Controllers.CPAdmin.AdminController - view company details
+INFO 2017-09-10 18:56:54,977 CaptivePortal.API.Controllers.CPAdmin.AdminController - entered to create new site
+ERROR 2017-09-10 18:57:07,427 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-10 19:00:36,886 System.Web.Http.ApiController - Error executing child request for handler 'System.Web.Mvc.HttpHandlerUtil+ServerExecuteHttpHandlerAsyncWrapper'.
+INFO 2017-09-10 19:18:27,558 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-10 19:24:37,896 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.
+ERROR 2017-09-10 19:28:12,837 System.Web.Http.ApiController - The view 'ViewRtlsData' or its master was not found or no view engine supports the searched locations. The following locations were searched:
+~/Views/Admin/ViewRtlsData.aspx
+~/Views/Admin/ViewRtlsData.ascx
+~/Views/Shared/ViewRtlsData.aspx
+~/Views/Shared/ViewRtlsData.ascx
+~/Views/Admin/ViewRtlsData.cshtml
+~/Views/Admin/ViewRtlsData.vbhtml
+~/Views/Shared/ViewRtlsData.cshtml
+~/Views/Shared/ViewRtlsData.vbhtml
+INFO 2017-09-10 19:45:16,148 System.Web.Http.ApiController - Application started successfully.
+ERROR 2017-09-10 19:48:05,119 CaptivePortal.API.ApiControllers.A8AdminPortal.LeftMenuConfSiteOperationalApiController - An exception occurred during a Ping request.

@@ -40,10 +40,12 @@
                     <h4 id="FontHeader">Location Dashboard</h4>
                 </li>
                 <li class="pull-right" style="text-align:center;top:10px;left:100px;">
-                    <h4 id="lblSiteName">@Request.QueryString["SiteName"].ToString()</h4>
+                    <div id="lblDiv">
+                        <h4 id="lblSiteName">@ViewData["SiteName"].ToString()</h4>
+                    </div>
                 </li>
                 <li class="pull-right" style="left:680px;top:10px;">
-                    <img src="~/Images/Thomson Logo.png" style="height:30px;width:120px;" />
+                    <img src="@ViewData["SiteImage"]" style="height:30px;width:120px;" />
                 </li>
             </ul>
 

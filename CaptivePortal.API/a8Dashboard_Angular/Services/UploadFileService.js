@@ -11,7 +11,7 @@ function GetSiteNameFromQueryString() {
 
 
 this.filedownload = function (object) {
-    var URL ="/ImportSftpData/LoadSftpData?strDateFormat=" + object + "&&ConnectionString=" + GetSiteNameFromQueryString();
+    var URL ="/ImportSftpData/api/LoadSftpData?strDateFormat=" + object + "&&ConnectionString=" + GetSiteNameFromQueryString();
     return $http.get(URL);
 };
 
@@ -19,24 +19,24 @@ this.filedownload = function (object) {
 this.GetFileNames = function () {
     return $http({
         method: "GET",
-        url: "/ImportSftpData/GetFileNames?ConnectionString=" + GetSiteNameFromQueryString(),
+        url: "/ImportSftpData/api/GetFileNames?ConnectionString=" + GetSiteNameFromQueryString(),
         dataType: JSON
     });
 }
 
 this.ImportSftpFile = function (data) {
-    var URL = "/ImportSftpData/ImportCSVFile?lstDataFileIds=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString();
+    var URL = "/ImportSftpData/api/ImportCSVFile?lstDataFileIds=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString();
     return $http.get(URL);
 }
 
 this.ClearSftpFile = function (data) {
-    var URL = "/ImportSftpData/ClearFile?lstDataFileIds=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString();
+    var URL = "/ImportSftpData/api/ClearFile?lstDataFileIds=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString();
     return $http.get(URL);
 }
 this.DeleteFile = function (data) {
     return $http({
         method: "GET",
-        url: "/ImportSftpData/DeleteFileData?Id=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString(),
+        url: "/ImportSftpData/api/DeleteFileData?Id=" + data + "&&ConnectionString=" + GetSiteNameFromQueryString(),
         dataType: JSON
     });
 }
@@ -44,14 +44,14 @@ this.DeleteFile = function (data) {
 this.SaveSftpPath = function (sftpfilePath) {
     return $http({
         method: "GET",
-        url: "/ImportSftpData/SaveSftpRemotePath?sftpRemotePath=" + sftpfilePath + "&&ConnectionString=" + GetSiteNameFromQueryString(),
+        url: "/ImportSftpData/api/SaveSftpRemotePath?sftpRemotePath=" + sftpfilePath + "&&ConnectionString=" + GetSiteNameFromQueryString(),
         dataType: JSON
     });
 }
 
 this.ImportTUIDisCovery = function (data) {
     data.append("ConnectionString", GetSiteNameFromQueryString())
-    return $http.post("api/ImportSftpData/SaveCruisePlaceDiscovery", data, {
+    return $http.post("/ImportSftpData/api/SaveCruisePlaceDiscovery", data, {
         withCredentials: true,
         headers: { 'Content-Type': undefined },
         transformRequest: angular.identity
@@ -59,6 +59,6 @@ this.ImportTUIDisCovery = function (data) {
 }
 
 this.UpdateParameters = function (data, value) {
-        return $http.get("api/ImportSftpData/UpdateParameters?key=" + data + "&&value=" + value + "&&ConnectionString=" + GetSiteNameFromQueryString());
+        return $http.get("/ImportSftpData/api/UpdateParameters?key=" + data + "&&value=" + value + "&&ConnectionString=" + GetSiteNameFromQueryString());
     }
 }]);

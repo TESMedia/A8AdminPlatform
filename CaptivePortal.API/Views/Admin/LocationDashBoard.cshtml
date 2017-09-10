@@ -15,7 +15,7 @@
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
             <div class="right_col" role="main">  
-                <iframe src='@Url.Action("Index","LocationDashBoard",new {SiteName=Request.QueryString["SiteName"].ToString().Trim()})' width="100%" height="1000" frameBorder="0">
+                <iframe src='@Url.Action("Index","LocationDashBoard",new {SiteId=Request.QueryString["SiteId"].ToString().Trim()})' width="100%" height="1000" frameBorder="0">
 
                 </iframe>
             </div>

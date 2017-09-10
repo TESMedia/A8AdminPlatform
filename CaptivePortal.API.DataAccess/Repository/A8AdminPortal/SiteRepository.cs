@@ -17,6 +17,11 @@ namespace CaptivePortal.API.Repository.CaptivePortal
             db = new A8AdminDbContext();
         }
 
+        public Site GetSiteAsPerId(int SiteId)
+        {
+            return db.Site.FirstOrDefault(m => m.SiteId == SiteId);
+        }
+
         public bool CreateSite(FormViewModel inputData)
         {
             try
@@ -40,8 +45,8 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                     Term_conditions = inputData.Term_conditions,
                     TermsAndCondDoc = inputData.TermsAndCondDoc,
                     DashboardUrl = inputData.DashboardUrl,
-                    RtlsUrl = inputData.RtlsUrl
-
+                    RtlsUrl = inputData.RtlsUrl,
+                    SiteIconPath=inputData.SiteImagePath
                 };
                 db.Site.Add(objSite);
                 db.SaveChanges();

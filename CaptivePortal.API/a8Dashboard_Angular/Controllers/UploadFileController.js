@@ -24,7 +24,7 @@
             console.log($scope.myMonthData);
             UploadFileService.filedownload(strYearMonth).success(function (d) {
                 alert(d);
-                window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString();
+                window.location.href = "/Admin/UploadLocationDashBoardFile?SiteName=" + GetSiteNameFromQueryString();
             }, function (error) { });
         }
 
@@ -55,7 +55,7 @@
         });
 
         UploadFileService.ImportSftpFile(selected).success(function (d) {
-            window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString()
+            window.location.href = "/LocationDashBoard/UploadFile?SiteName=" + GetSiteNameFromQueryString();
         }, function (error) { });
     }
 
@@ -66,7 +66,7 @@
         });
 
         UploadFileService.ClearSftpFile(selected).success(function (d) {
-            window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString()
+            window.location.href = "/LocationDashBoard/UploadFile?SiteName=" + GetSiteNameFromQueryString();
         }, function (error) { });
 
     }
@@ -74,7 +74,7 @@
     $scope.DeleteAll = function (fileName) {
         UploadFileService.DeleteFile(fileName).success(function (d) {
             if (d == 1) {
-                window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString();
+                window.location.href = "/LocationDashBoard/UploadFile?SiteName=" + GetSiteNameFromQueryString();
             }
             else {
                 Notification.error("Some Error has Occured");
@@ -87,7 +87,7 @@
         var sftpFilePath = document.querySelector('#sftpPath').value;
         UploadFileService.SaveSftpPath(sftpFilePath).success(function (d) {
             alert("SFTP Rempote Path Saved SuccessFully");
-            window.location.href = "/DashBoard/uploadfilename?SiteName=" + GetSiteNameFromQueryString();
+            window.location.href = "/LocationDashBoard/UploadFile?SiteName=" + GetSiteNameFromQueryString();
         }, function (error) { alert("error") });
     }
 

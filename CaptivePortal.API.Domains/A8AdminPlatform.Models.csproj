@@ -87,6 +87,10 @@
     <Compile Include="A8AdminModel\Migrations\201709081123215_Initial.Designer.cs">
       <DependentUpon>201709081123215_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="A8AdminModel\Migrations\201709090915092_Added_SiteIcon_in_Site_tbl.cs" />
+    <Compile Include="A8AdminModel\Migrations\201709090915092_Added_SiteIcon_in_Site_tbl.Designer.cs">
+      <DependentUpon>201709090915092_Added_SiteIcon_in_Site_tbl.cs</DependentUpon>
+    </Compile>
     <Compile Include="A8AdminModel\Migrations\Configuration.cs" />
     <Compile Include="CaptivePortalModel\CaptivePortalDbContext.cs" />
     <Compile Include="A8AdminModel\Group.cs" />
@@ -184,6 +188,9 @@
   <ItemGroup>
     <EmbeddedResource Include="A8AdminModel\Migrations\201709081123215_Initial.resx">
       <DependentUpon>201709081123215_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="A8AdminModel\Migrations\201709090915092_Added_SiteIcon_in_Site_tbl.resx">
+      <DependentUpon>201709090915092_Added_SiteIcon_in_Site_tbl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

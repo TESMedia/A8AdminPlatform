@@ -176,11 +176,6 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     }
                     inputData.TermsAndCondDoc = TandD;
 
-                    //site
-                    SiteRepository siteRepo = new SiteRepository();
-                    var result = siteRepo.CreateSite(inputData);
-
-                    //image path
                     if (Request.Files["BannerIcon"].ContentLength > 0)
                     {
                         var httpPostedFile = Request.Files["BannerIcon"];
@@ -196,6 +191,14 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                         string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
                         bannerPath = baseUrl + imagepath;
                     }
+
+                    //site
+                    inputData.SiteImagePath = imagepath;
+                    SiteRepository siteRepo = new SiteRepository();
+                    var result = siteRepo.CreateSite(inputData);
+
+                    //image path
+                 
                     inputData.BannerIcon = bannerPath;
                     //horm
                     FormRepository formRepo = new FormRepository();
@@ -523,9 +526,9 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// </summary>
         /// <param name="SiteName"></param>
         /// <returns></returns>
-        public ActionResult Locationdashboard(string SiteName)
+        public ActionResult Locationdashboard(int SiteId)
         {
-            if (!String.IsNullOrEmpty(SiteName))
+            if (SiteId!=0)
             {
                 return View();
             }
@@ -542,9 +545,9 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <param name="SiteName"></param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult UploadLocationDashBoardFile(string SiteName)
+        public ActionResult UploadLocationDashBoardFile(String SiteName)
         {
-            if (!String.IsNullOrEmpty(SiteName))
+            if (!string.IsNullOrEmpty(SiteName))
             {
                 return View();
             }
@@ -555,5 +558,34 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult TestSetUpRtls()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ViewRtlsData()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public ActionResult ViewErrorLogRtls()
+        {
+            return View();
+        }
     }
 }
