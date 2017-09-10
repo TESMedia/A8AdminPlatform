@@ -2,7 +2,6 @@
 using CaptivePortal.API.Models.LocationDashBoardModel;
 //using FluentValidation.WebApi;
 using log4net;
-using MySql.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -25,7 +24,8 @@ namespace CaptivePortal.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            LocationDashBoardDbContext db = new LocationDashBoardDbContext();
+
+            A8AdminDbContext db = new A8AdminDbContext();
             //Database.SetInitializer<A8AdminDbContext>(new CreateDatabaseIfNotExists<A8AdminDbContext>());
             //AdminManagementDbOperation objAdminManagementDbOperation = new AdminManagementDbOperation();
             //objAdminManagementDbOperation.PerformDatabaseOperations();

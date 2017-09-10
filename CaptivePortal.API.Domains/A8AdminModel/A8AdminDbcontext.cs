@@ -10,7 +10,7 @@ using CaptivePortal.API.Models.RTLSModel;
 
 namespace CaptivePortal.API.Models.A8AdminModel
 {
-    [DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
+    //[DbConfigurationType(typeof(MySql.Data.Entity.MySqlEFConfiguration))]
     public class A8AdminDbContext
         : IdentityDbContext<ApplicationUser, ApplicationRole, int,
         ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>
@@ -18,7 +18,6 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public A8AdminDbContext()
         : base("A8PlatFormDefaultConnection")
         {
-            Database.SetInitializer(new MySqlInitializer());
             this.Configuration.ValidateOnSaveEnabled = false;
             Database.SetInitializer<A8AdminDbContext>(null);
             Database.CreateIfNotExists();
