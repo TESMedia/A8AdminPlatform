@@ -20,14 +20,7 @@
         $.post("/RealTimeDataApi/GetAnalysisData", dataObj, function (resultJSON)
         {
            
-            //for (i = 0; i <= 23; i++)
-            
-            //{
-               
-            //    arr.push(resultJSON[i].Name);
-            //    arrData.push(resultJSON[i].Value);
-		    // }
-                
+   
             for (key in resultJSON.ResultAreaGraph)
             {
                 var result = resultJSON.ResultAreaGraph[key];
