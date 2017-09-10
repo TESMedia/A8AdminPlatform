@@ -25,7 +25,8 @@
     <link href="~/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/DropDown.css" rel="stylesheet" />
     <link href="~/build/css/custom.css" rel="stylesheet" />
-   
+
+    <script src="~/Scripts/navigationJS.js"></script>
 </head>
 <body class="nav-md">
 
@@ -57,7 +58,7 @@
                         <li>
                             <a id="viewdashboard" class="row margin hide"><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
-                                <li><a href="@Url.Action("Index","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">WiFi Summary</a></li>
+                                <li><a id="wifisummary" class="hide" href="@Url.Action("Index","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">WiFi Summary</a></li>
                                 <li><a href="@Url.Action("Index","LocationDashBoard")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location dashboard</a></li>
                             </ul>
                         </li>
@@ -156,50 +157,51 @@
     function logOut() {
         window.location.href = "/Account/LogOff"
     }
-    function navigation() {
+   
+    //function navigation() {
 
-        var _managedashboard = localStorage.getItem('ManageDashboard');
-        var _managesite = localStorage.getItem('ManageSite');
-        var _rtls = localStorage.getItem('RTLS');
-        var _viewdashboard = localStorage.getItem('ManageDashboard');
-        var _managewifiuser = localStorage.getItem('ViewDashboard');
+    //    var _managedashboard = localStorage.getItem('ManageDashboard');
+    //    var _managesite = localStorage.getItem('ManageSite');
+    //    var _rtls = localStorage.getItem('RTLS');
+    //    var _viewdashboard = localStorage.getItem('ManageDashboard');
+    //    var _managewifiuser = localStorage.getItem('ViewDashboard');
 
-        if (_managedashboard != 'null') {
-            document.getElementById('managedashboard').className = "row margin";
-        }
-        else {
-            document.getElementById('managedashboard').className = "row margin hide";
+    //    if (_managedashboard != 'null') {
+    //        document.getElementById('managedashboard').className = "row margin";
+    //    }
+    //    else {
+    //        document.getElementById('managedashboard').className = "row margin hide";
 
-        }
-        if (_managesite != 'null') {
-            document.getElementById('managesite').className = "row margin";
-        }
-        else {
-            document.getElementById('managesite').className = "row margin hide";
+    //    }
+    //    if (_managesite != 'null') {
+    //        document.getElementById('managesite').className = "row margin";
+    //    }
+    //    else {
+    //        document.getElementById('managesite').className = "row margin hide";
 
-        }
-        if (_rtls != 'null') {
-            document.getElementById('managertls').className = "row margin";
-        }
-        else {
-            document.getElementById('managertls').className = "row margin hide";
+    //    }
+    //    if (_rtls != 'null') {
+    //        document.getElementById('managertls').className = "row margin";
+    //    }
+    //    else {
+    //        document.getElementById('managertls').className = "row margin hide";
 
-        }
-        if (_viewdashboard != 'null') {
-            document.getElementById('viewdashboard').className = "row margin";
-        }
-        else {
-            document.getElementById('viewdashboard').className = "row margin hide";
+    //    }
+    //    if (_viewdashboard != 'null') {
+    //        document.getElementById('viewdashboard').className = "row margin";
+    //    }
+    //    else {
+    //        document.getElementById('viewdashboard').className = "row margin hide";
 
-        }
+    //    }
 
-        if (_managewifiuser != 'null') {
-            document.getElementById('managewifiuser').className = "row margin";
-        }
-        else {
-            document.getElementById('managewifiuser').className = "row margin hide";
+    //    if (_managewifiuser != 'null') {
+    //        document.getElementById('managewifiuser').className = "row margin";
+    //    }
+    //    else {
+    //        document.getElementById('managewifiuser').className = "row margin hide";
 
-        }
+    //    }
 
-    }
+    //}
 </script>

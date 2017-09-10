@@ -14,6 +14,7 @@
     <link href="~/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/DropDown.css" rel="stylesheet" />
     <link href="~/build/css/custom.css" rel="stylesheet" />
+    <script src="~/Scripts/navigationJS.js"></script>
     <style>
         td {
             border: 1px #DDD solid;
@@ -196,7 +197,7 @@
     }
 
     $(document).ready(function () {
-        //navigation();
+       navigation();
         $("#resultTable tr").click(function () {
             $(this).addClass('selected').siblings().removeClass('selected');
             var value = $(this).find('td:first').html();
