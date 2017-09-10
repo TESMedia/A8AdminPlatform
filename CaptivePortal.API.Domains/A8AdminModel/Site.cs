@@ -30,11 +30,15 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public bool? IsLocationDashboard { get; set; }
         public bool? IsCaptivePortal { get; set; }
 
+        [MaxLength(50)]
+        public string SiteIconPath { get; set; }
+
         //[ForeignKey("UserId")]
         //public virtual Users Users { get; set; }
         [ForeignKey("CompanyId")]
         public virtual Company Company { get; set; }
 
+      
 
     }
 }

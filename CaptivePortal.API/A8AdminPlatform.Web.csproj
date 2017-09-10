@@ -167,6 +167,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="WinSCPnet">
+      <HintPath>..\packages\WinSCP.5.9.2\lib\WinSCPnet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -324,6 +327,8 @@
     <Content Include="Global.asax" />
     <Content Include="Images\geo.png" />
     <Content Include="Images\images.png" />
+    <Content Include="Images\Thomson Logo.png" />
+    <Content Include="Images\thomson_logo.png" />
     <Content Include="Images\wifi-297697_1280.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1025,9 +1030,12 @@
     <Content Include="Vendors\Chart.js\Chart.js\LICENSE.md" />
     <Content Include="Vendors\Chart.js\Chart.js\package.json" />
     <Content Include="Vendors\Chart.js\Chart.js\README.md" />
+    <Content Include="Views\Admin\ViewRtlsData.cshtml" />
+    <Content Include="Views\Admin\ViewErrorLogRtls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CSV\" />
     <Folder Include="DbContext\" />
     <Folder Include="Logs\" />
     <Folder Include="Upload\" />
@@ -1036,6 +1044,7 @@
     <Folder Include="Views\Logs\" />
     <Folder Include="Views\MacAddressSetByAdmin\" />
     <Folder Include="Views\UploadFile\" />
+    <Folder Include="ZipCsvs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -1,27 +1,14 @@
 ﻿@model CaptivePortal.API.ViewModels.LocationDashBoard.LocationIndicatorViewModel
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     
 </head>
-
-
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
-            <!-- top navigation -->
-            
-            <!-- page content -->
             <div class="right_col" role="main">
-
-                @*@using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()*@
-
                 <div class="form-horizontal">
                     <h4> Create LocationIndicator</h4>
                     <hr />
@@ -31,14 +18,10 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
-
-
                             @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "name" ,@style="width:30%"} })
-
                             @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         @Html.LabelFor(model => model.LoctionIndicator, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
@@ -46,7 +29,6 @@
                             @Html.ValidationMessageFor(model => model.LoctionIndicator, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
                     <div class="form-group">
                         @Html.LabelFor(model => model.NeighBourName, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-10" id="txtDiv">
@@ -54,12 +36,6 @@
                             @Html.ValidationMessageFor(model => model.NeighBourName, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-                    @*<div class="form-group">
-                            <div class="col-md-10 col-sm-10 pull-right">
-                                <input type="button" class="btn btn-success" name="plus" id="plus" value="+"> <input type="button" class="btn btn-danger" name="minus" id="minus" value="-">
-                            </div>
-                        </div>*@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <input type="button" value="Save" class="btn btn-success" id="btnsubmit" onclick="create()" />
@@ -67,18 +43,13 @@
                         </div>
                     </div>
                 </div>
-                @*}*@
-
-
             </div>
-
             <!-- /page content -->
             <!-- footer content -->
             <footer></footer>
             <!-- /footer content -->
         </div>
     </div>
-
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -88,33 +59,28 @@
     <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
-
+    <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
+    <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
 </body>
 </html>
 <script type="text/javascript">
-
     $(document).ready(function()
         {
         navigation();
         })
 </script>
-
 <script type="text/javascript">
-
-    var siteName=localStorage.getItem('SiteName');
-
+    var siteName=localStorage.getItem('SiteName').toString().trim();
     function create()
     {
         var objlocationIndicator = { SiteName: siteName, Name: document.getElementById('name').value, LoctionIndicator: document.getElementById('locationIndicator').value, NeighBourName: document.getElementById('neighBourName').value }
-
         $.ajax({
             type: "POST",
             data: JSON.stringify(objlocationIndicator),
             contentType: "application/json",
-            url: "http://localhost:62527/api/locationIndicators/Create",
+            url: "/locationIndicators/api/Create",
             success: function (data) {
-                alert(data);
+                window.location.href = "/LocationIndicators/LocationsMapping?SiteName=" + siteName;
             },
             failure: function (response) {
                 alert(response);
@@ -124,9 +90,6 @@
             }
         })
     }
-
-
-
 </script>
 
 

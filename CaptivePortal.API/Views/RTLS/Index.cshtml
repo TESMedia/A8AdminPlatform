@@ -1,4 +1,4 @@
-﻿@model RTLS.ViewModel.RequestLocationDataVM
+﻿@model  IEnumerable<CaptivePortal.API.Models.RTLSModel.Device>
 @{
     ViewBag.Title = "Index";
     Layout = null;
@@ -8,7 +8,6 @@
         <h4>Real Time Location Services-API administrator @ViewBag.SiteName</h4>
     </div>
 </div>
-
 <br /><br />
 <div class="col-sm-12 col-lg-12 col-md-12">
     @using (Html.BeginForm("Index", "RTLS", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -61,7 +60,7 @@
                     IsTracking
                 </th>
             </tr>
-            @foreach (var item in Model.Devices)
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>

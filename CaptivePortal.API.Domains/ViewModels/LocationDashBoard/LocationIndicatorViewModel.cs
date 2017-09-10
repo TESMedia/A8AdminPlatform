@@ -12,6 +12,7 @@ namespace CaptivePortal.API.ViewModels.LocationDashBoard
             lstNeighBourMaps = new List<NeighBourAreaMap>();
         }
         public int AreaOfInterestId { get; set; }
+
         [Required(ErrorMessage ="Enter the Area Name")]
         public string Name { get; set; }
 

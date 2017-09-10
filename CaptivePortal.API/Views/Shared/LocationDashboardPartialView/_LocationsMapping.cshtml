@@ -1,18 +1,12 @@
-﻿
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" ng-app="a8DashboardModule">
 <head>
-
-
     <!-- Custom Theme Style -->
     <link href="~/build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/DropDown.css" rel="stylesheet" />
     <link href="~/build/css/custom.css" rel="stylesheet" />
     <script src="~/build/js/index.js"></script>
 </head>
-
 
 <body class="nav-md" ng-controller="LocationIndicatorController">
     <div class="container body">
@@ -109,11 +103,6 @@
     <script src="../build/js/custom.min.js"></script>
     <script src="~/a8Dashboard_Angular/Controllers/LocationIndicatorController.js"></script>
     <script src="~/a8Dashboard_Angular/Services/LocationIndicatorService.js"></script>
-    <script type="text/javascript">
-        @*var completeUrl = "@System.Configuration.ConfigurationManager.AppSettings["LocationDashBoardUrl"].ToString()" + "/LocationIndicators/Index?SiteName=" + localStorage.getItem("SiteName");
-        $('#FrameLocations').attr('src', completeUrl)*@
-    </script>
-
 </body>
 </html>
 
@@ -121,11 +110,8 @@
     $(document).ready(function(){
 
         navigation();
-
     })
-
     var siteId = localStorage.getItem("SiteId");
     var siteName = localStorage.getItem("SiteName");
     document.getElementsByTagName('form')[0].innerHTML = siteName;
-
 </script>

@@ -12,6 +12,7 @@ using System.IO.Compression;
 using System.Globalization;
 using System.Web.Configuration;
 using Excel;
+using WinSCP;
 
 namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
 {
@@ -53,7 +54,7 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
                     logger.Info("Unzipped file: " + FullUnzippedFilename);
 
                     logger.Info("About to execute stored proc sp_Importfile");
-                    retCode = this.ExecuteNonQueryStoredProc("sp_Importfile", connectionName);
+                    retCode = this.ExecuteNonQueryStoredProc("sp_Importfile", connectionName.Trim());
                     logger.Info("Executed stored proc sp_Importfile");
                 }
             }
@@ -109,37 +110,37 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
         private string FTPFile(string remoteFileName, string fileName)
         {
             string localFilename = "";
-            //Session session = new Session();
+            Session session = new Session();
             try
             {
                 // FTP File to local server
-                //SessionOptions sessionOptions = new SessionOptions
-                //{
-                //    Protocol = Protocol.Sftp,
-                //    HostName = ConfigurationManager.AppSettings["HostName"],
-                //    UserName = ConfigurationManager.AppSettings["UserName"],
-                //    Password = ConfigurationManager.AppSettings["Password"],
-                //};
-                //sessionOptions.GiveUpSecurityAndAcceptAnySshHostKey = true;
+                SessionOptions sessionOptions = new SessionOptions
+                {
+                    Protocol = Protocol.Sftp,
+                    HostName = ConfigurationManager.AppSettings["HostName"],
+                    UserName = ConfigurationManager.AppSettings["UserName"],
+                    Password = ConfigurationManager.AppSettings["Password"],
+                };
+                sessionOptions.GiveUpSecurityAndAcceptAnySshHostKey = true;
 
-                //session.Open(sessionOptions);
+                session.Open(sessionOptions);
 
-                ////string fullRemoteFilename = db.Parameters.FirstOrDefault(m=>m.Name=="RemotePath").Value + "/" + targetFolder+"/"+"cleaned"+"/"+remoteFileName;
-                //if (session.FileExists(remoteFileName))
-                //{
-                //    string localFolder = System.Web.Hosting.HostingEnvironment.MapPath("~/ZipCsvs");
-                //    if (!Directory.Exists(localFolder))
-                //    {
-                //        Directory.CreateDirectory(localFolder);
-                //    }
-                //    localFilename = Path.Combine(localFolder, fileName);
+                //string fullRemoteFilename = db.Parameters.FirstOrDefault(m=>m.Name=="RemotePath").Value + "/" + targetFolder+"/"+"cleaned"+"/"+remoteFileName;
+                if (session.FileExists(remoteFileName))
+                {
+                    string localFolder = System.Web.Hosting.HostingEnvironment.MapPath("~/ZipCsvs");
+                    if (!Directory.Exists(localFolder))
+                    {
+                        Directory.CreateDirectory(localFolder);
+                    }
+                    localFilename = Path.Combine(localFolder, fileName);
 
-                //    logger.Info("Start FTP of " + remoteFileName);
-                //    session.GetFiles(remoteFileName, localFilename).Check();
-                //    logger.Info("Finished FTP of " + remoteFileName);
-                //}
-                //else
-                //    throw new Exception(remoteFileName + " doesn't exist");
+                    logger.Info("Start FTP of " + remoteFileName);
+                    session.GetFiles(remoteFileName, localFilename).Check();
+                    logger.Info("Finished FTP of " + remoteFileName);
+                }
+                else
+                    throw new Exception(remoteFileName + " doesn't exist");
             }
             catch (Exception ex)
             {
@@ -264,17 +265,17 @@ namespace CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer
         public string GetDateFromString(string fileName)
         {
             string dateString = null;
-            if (fileName.Contains(WebConfigurationManager.AppSettings["csvFileNameFormat1"].ToString()))
+            if (fileName.Contains(ConfigurationManager.AppSettings["csvFileNameFormat1"].ToString()))
             {
-                dateString = fileName.Replace(WebConfigurationManager.AppSettings["csvFileNameFormat1"], "").Replace(WebConfigurationManager.AppSettings["Extension"], "");
+                dateString = fileName.Replace(ConfigurationManager.AppSettings["csvFileNameFormat1"], "").Replace(ConfigurationManager.AppSettings["Extension"], "");
             }
-            else if(fileName.Contains(WebConfigurationManager.AppSettings["csvFileNameFormat2"].ToString()))
+            else if(fileName.Contains(ConfigurationManager.AppSettings["csvFileNameFormat2"].ToString()))
             {
-                dateString = fileName.Replace(WebConfigurationManager.AppSettings["csvFileNameFormat2"], "").Replace(WebConfigurationManager.AppSettings["Extension"], "");
+                dateString = fileName.Replace(ConfigurationManager.AppSettings["csvFileNameFormat2"], "").Replace(ConfigurationManager.AppSettings["Extension"], "");
             }
-            else if (fileName.Contains(WebConfigurationManager.AppSettings["csvFileNameFormat3"].ToString()))
+            else if (fileName.Contains(ConfigurationManager.AppSettings["csvFileNameFormat3"].ToString()))
             {
-                dateString = fileName.Replace(WebConfigurationManager.AppSettings["csvFileNameFormat3"], "").Replace(WebConfigurationManager.AppSettings["Extension"], "");
+                dateString = fileName.Replace(ConfigurationManager.AppSettings["csvFileNameFormat3"], "").Replace(ConfigurationManager.AppSettings["Extension"], "");
             }
             DateTime dtTime = DateTime.ParseExact(dateString, "MM-dd-yyyy", CultureInfo.InvariantCulture);
             string strDate = dtTime.ToString("yyyy-MM-dd");

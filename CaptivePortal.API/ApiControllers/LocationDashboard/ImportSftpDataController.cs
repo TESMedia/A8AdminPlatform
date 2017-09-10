@@ -10,13 +10,14 @@ using log4net;
 using System.Text.RegularExpressions;
 using CaptivePortal.API.Models.LocationDashBoardModel;
 using CaptivePortal.API.Repository.LocationDashBoard.DBObjectWithSqlServer;
+using WinSCP;
 
 namespace a8Dashboard.Controllers
 {
     /// <summary>
     /// 
     /// </summary>
-    [RoutePrefix("Dashboard/api/ImportSftpData")]
+    [RoutePrefix("ImportSftpData/api")]
     public class ImportSftpDataController : ApiController
     {
         private static readonly ILog Log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -37,7 +38,7 @@ namespace a8Dashboard.Controllers
             try
             {
                 string connectionstring = Regex.Replace(ConnectionString.Trim(), @"\t|\n|\r", "");
-                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString))
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString.Trim()))
                 {
                     foreach (var item in lstDataFileIds.Split(','))
                     {
@@ -74,7 +75,7 @@ namespace a8Dashboard.Controllers
             try
             {
                 string connectionstring = Regex.Replace(ConnectionString.Trim(), @"\t|\n|\r", "");
-                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString))
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString.Trim()))
                 {
                     foreach (var item in lstDataFileIds.Split(','))
                     {
@@ -99,74 +100,74 @@ namespace a8Dashboard.Controllers
             };
         }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <param name="strDateFormat"></param>
-        ///// <param name="ConnectionString"></param>
-        ///// <returns></returns>
-        //[HttpGet]
-        //[Route("LoadSftpData")]
-        //public HttpResponseMessage LoadSftpData(string strDateFormat, string ConnectionString)
-        //{
-        //    try
-        //    {
-        //        DataFileImporter objDataFileImporter = new DataFileImporter();
-        //        List<DataFile> lstDataFile = new List<DataFile>();
-        //        ConnectionString = Regex.Replace(ConnectionString.Trim(), @"\t|\n|\r", "");
-        //        using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString))
-        //        {
-        //            Session session = new Session();
-        //            string path = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value;
-        //            string localFolder = System.Web.Hosting.HostingEnvironment.MapPath("~/ZipCsvs");
-        //            SessionOptions sessionOptions = new SessionOptions
-        //            {
-        //                Protocol = Protocol.Sftp,
-        //                HostName = ConfigurationManager.AppSettings["HostName"],
-        //                UserName = ConfigurationManager.AppSettings["UserName"],
-        //                Password = ConfigurationManager.AppSettings["Password"],
-        //            };
-        //            sessionOptions.GiveUpSecurityAndAcceptAnySshHostKey = true;
-        //            session.Open(sessionOptions);
-        //            string remoteFilePath = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value + "/" + strDateFormat + "/" + "cleaned";
-        //            if (session.FileExists(remoteFilePath))
-        //            {
-        //                //Fetch all the Files from SFTP as per configuration structure setting in Config
-        //                var SftpFiles = session.EnumerateRemoteFiles(remoteFilePath, "", EnumerationOptions.None).Where(m => m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat1"].ToString()) || m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat2"].ToString()) || m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat3"].ToString()));
-        //                foreach (var item1 in SftpFiles)
-        //                {
-        //                    //Check the DataFile exist or not in database for duplicate
-        //                    if (!db.DataFiles.Any(m => (m.FileName == item1.FullName) || (m.FileName == item1.Name)))
-        //                    {
-        //                        DataFile objDataFile = new DataFile();
-        //                        objDataFile.FileName = item1.FullName;
-        //                        objDataFile.DateOfFile = Convert.ToDateTime(objDataFileImporter.GetDateFromString(item1.Name));
-        //                        objDataFile.IsInSftp = true;
-        //                        lstDataFile.Add(objDataFile);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="strDateFormat"></param>
+        /// <param name="ConnectionString"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("LoadSftpData")]
+        public HttpResponseMessage LoadSftpData(string strDateFormat, string ConnectionString)
+        {
+            try
+            {
+                DataFileImporter objDataFileImporter = new DataFileImporter();
+                List<DataFile> lstDataFile = new List<DataFile>();
+                ConnectionString = Regex.Replace(ConnectionString.Trim(), @"\t|\n|\r", "");
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString))
+                {
+                    Session session = new Session();
+                    string path = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value;
+                    string localFolder = System.Web.Hosting.HostingEnvironment.MapPath("~/ZipCsvs");
+                    SessionOptions sessionOptions = new SessionOptions
+                    {
+                        Protocol = Protocol.Sftp,
+                        HostName = ConfigurationManager.AppSettings["HostName"],
+                        UserName = ConfigurationManager.AppSettings["UserName"],
+                        Password = ConfigurationManager.AppSettings["Password"],
+                    };
+                    sessionOptions.GiveUpSecurityAndAcceptAnySshHostKey = true;
+                    session.Open(sessionOptions);
+                    string remoteFilePath = db.Parameters.FirstOrDefault(m => m.Name == "RemotePath").Value + "/" + strDateFormat + "/" + "cleaned";
+                    if (session.FileExists(remoteFilePath))
+                    {
+                        //Fetch all the Files from SFTP as per configuration structure setting in Config
+                        var SftpFiles = session.EnumerateRemoteFiles(remoteFilePath, "", EnumerationOptions.None).Where(m => m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat1"].ToString()) || m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat2"].ToString()) || m.Name.Contains(ConfigurationManager.AppSettings["csvFileNameFormat3"].ToString()));
+                        foreach (var item1 in SftpFiles)
+                        {
+                            //Check the DataFile exist or not in database for duplicate
+                            if (!db.DataFiles.Any(m => (m.FileName == item1.FullName) || (m.FileName == item1.Name)))
+                            {
+                                DataFile objDataFile = new DataFile();
+                                objDataFile.FileName = item1.FullName;
+                                objDataFile.DateOfFile = Convert.ToDateTime(objDataFileImporter.GetDateFromString(item1.Name));
+                                objDataFile.IsInSftp = true;
+                                lstDataFile.Add(objDataFile);
 
-        //                    }
+                            }
 
-        //                }
-        //            }
-        //            if (lstDataFile.Count > 0)
-        //            {
-        //                //Save the changes for the new collection of DataFiles
-        //                db.DataFiles.AddRange(lstDataFile);
-        //                db.SaveChanges();
-        //            }
-        //            retMessage = "Sucessfully Imported";
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        retMessage = ex.Message;
-        //        throw ex;
-        //    }
-        //    return new HttpResponseMessage()
-        //    {
-        //        Content = new StringContent(retMessage)
-        //    };
-        //}
+                        }
+                    }
+                    if (lstDataFile.Count > 0)
+                    {
+                        //Save the changes for the new collection of DataFiles
+                        db.DataFiles.AddRange(lstDataFile);
+                        db.SaveChanges();
+                    }
+                    retMessage = "Sucessfully Imported";
+                }
+            }
+            catch (Exception ex)
+            {
+                retMessage = ex.Message;
+                throw ex;
+            }
+            return new HttpResponseMessage()
+            {
+                Content = new StringContent(retMessage)
+            };
+        }
 
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace a8Dashboard.Controllers
         {
             try
             {
-                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString))
+                using (LocationDashBoardDbContext db = new LocationDashBoardDbContext(ConnectionString.Trim()))
                 {
                     Parameter objParameter = db.Parameters.FirstOrDefault(m => m.Name == key);
                     objParameter.Value = value;

@@ -21,27 +21,27 @@ namespace RTLS.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Index(int SiteId)
+        public ActionResult Index()
         {
-            RequestLocationDataVM objRequestLocationDataVM = new RequestLocationDataVM();
+            List<Device> ListOfDevices = null;
             try
             {
                 using (DeviceRepository objMacAddressRepository = new DeviceRepository())
                 {
-                    objRequestLocationDataVM.Devices.AddRange(objMacAddressRepository.GetListOfMacAddress());
-                    using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
-                    {
-                        objRequestLocationDataVM.RtlsConfiguration = objRtlsConfigurationRepository.GetRtlsConfigurationAsPerSite(SiteId);
-                        objRequestLocationDataVM.RtlsConfiguration.SiteId = SiteId;
-                        ViewBag.SiteName = objRtlsConfigurationRepository.GetSiteName(SiteId);
-                    }
+                    ListOfDevices = objMacAddressRepository.GetListOfMacAddress();
+                    //using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
+                    //{
+                    //    objRequestLocationDataVM.RtlsConfiguration = objRtlsConfigurationRepository.GetRtlsConfigurationAsPerSite(SiteId);
+                    //    objRequestLocationDataVM.RtlsConfiguration.SiteId = SiteId;
+                    //    ViewBag.SiteName = objRtlsConfigurationRepository.GetSiteName(SiteId);
+                    //}
                 }
             }
             catch (Exception ex)
             {
                 log.Error(ex.InnerException);
             }
-            return View(objRequestLocationDataVM);
+            return View(ListOfDevices);
         }
 
         /// <summary>
@@ -61,10 +61,10 @@ namespace RTLS.Controllers
                     if (objMacRepository.CheckListExistOrNot(model.MacAddresses))
                     {
                         objMacRepository.SaveMacAddress(model.MacAddresses, true);
-                        using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
-                        {
-                            objRtlsConfigurationRepository.AddUpdateRtlsConfiguration(model.RtlsConfiguration);
-                        }
+                        //using (RtlsConfigurationRepository objRtlsConfigurationRepository = new RtlsConfigurationRepository())
+                        //{
+                        //    objRtlsConfigurationRepository.AddUpdateRtlsConfiguration(model.RtlsConfiguration);
+                        //}
                     }
                 }
             }
