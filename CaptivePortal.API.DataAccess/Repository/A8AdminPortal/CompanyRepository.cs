@@ -30,6 +30,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 {
                     Company objCompany = new Company();
                     objCompany.CompanyName = model.CompanyName;
+                    objCompany.CompanyIcon = model.CompanyIcon;
                     objCompany.OrganisationId = model.OrganisationId==0  ? null : (int?)Convert.ToInt32(model.OrganisationId);
                     db.Company.Add(objCompany);
                     db.SaveChanges();

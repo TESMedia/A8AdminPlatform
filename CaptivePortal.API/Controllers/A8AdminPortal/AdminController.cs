@@ -119,16 +119,39 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     string compId = inputData.CompanyDdl;
                     string fileName = null;
                     string TandD = null;
+                    string companyIconPath = null;
 
                     //organisation
                     OrganisationRepository organisationRepo = new OrganisationRepository();
                     organisationRepo.CreateOrganisation(inputData);
 
-                    //orgId=db.
-
                     //company
                     CompanyRepository companyRepo = new CompanyRepository();
                     companyRepo.CreateCompany(inputData);
+
+                    if (Request.Files["CompanyIcon"].ContentLength > 0)
+                    {
+                        var httpPostedFile = Request.Files["CompanyIcon"];
+                        string savedPath = HostingEnvironment.MapPath("/Images/" + inputData.CompanyId);
+                        imagepath = "/Images/" + inputData.CompanyId + "/" + httpPostedFile.FileName;
+                        string completePath = System.IO.Path.Combine(savedPath, httpPostedFile.FileName);
+
+                        if (!System.IO.Directory.Exists(savedPath))
+                        {
+                            Directory.CreateDirectory(savedPath);
+                        }
+                        httpPostedFile.SaveAs(completePath);
+                        string baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+                        companyIconPath = baseUrl + imagepath;
+                    }
+                    else
+                    {
+                        companyIconPath = inputData.CompanyIcon;
+                    }
+                    inputData.CompanyIcon = companyIconPath;
+                    companyRepo.UpdateCompany(inputData);
+
+                    
 
                     //Term and condition
                     if (Request.Files["Term_conditions"].ContentLength > 0)
@@ -175,6 +198,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
                     }
                     inputData.TermsAndCondDoc = TandD;
+                    SiteRepository siteRepo = new SiteRepository();
+                    siteRepo.CreateSite(inputData);
 
                     if (Request.Files["BannerIcon"].ContentLength > 0)
                     {
@@ -194,12 +219,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
                     //site
                     inputData.SiteImagePath = imagepath;
-                    SiteRepository siteRepo = new SiteRepository();
-                    var result = siteRepo.CreateSite(inputData);
+                    
 
                     //image path
                  
                     inputData.BannerIcon = bannerPath;
+                    siteRepo.UpdateSite(inputData);
+
                     //horm
                     FormRepository formRepo = new FormRepository();
                     formRepo.CreateForm(inputData);
@@ -281,11 +307,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     List<string> columnsList = db.Database.SqlQuery<string>("select column_name from information_schema.columns where table_name = 'users'").ToList();
 
                     Form objForm = db.Form.FirstOrDefault(m => m.SiteId == SiteId);
+                    int compId = Convert.ToInt32(db.Site.FirstOrDefault(m => m.SiteId == SiteId).CompanyId);
                     objForm.SiteId = Convert.ToInt32(SiteId);
                     objViewModel.SiteId = Convert.ToInt32(SiteId);
                     objViewModel.FormId = objForm.FormId;
                     objViewModel.SiteName = db.Site.FirstOrDefault(m => m.SiteId == SiteId).SiteName;
                     objViewModel.BannerIcon = objForm.BannerIcon;
+                    objViewModel.CompanyIcon = db.Company.FirstOrDefault(m => m.CompanyId == compId).CompanyIcon;
                     objViewModel.BackGroundColor = objForm.BackGroundColor;
                     objViewModel.LoginWindowColor = objForm.LoginWindowColor;
                     objViewModel.IsPasswordRequire = objForm.IsPasswordRequire;

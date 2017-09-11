@@ -25,7 +25,6 @@ namespace CaptivePortal.API
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            A8AdminDbContext db = new A8AdminDbContext();
             //Database.SetInitializer<A8AdminDbContext>(new CreateDatabaseIfNotExists<A8AdminDbContext>());
             //AdminManagementDbOperation objAdminManagementDbOperation = new AdminManagementDbOperation();
             //objAdminManagementDbOperation.PerformDatabaseOperations();
