@@ -1,52 +1,62 @@
-﻿function navigation() {
+﻿function navigation()
+{
 
-    var _managedashboard = localStorage.getItem('ManageDashboard');
+    var _dashboardUrl = localStorage.getItem('dashboardUrl');
     var _managesite = localStorage.getItem('ManageSite');
-    var _rtls = localStorage.getItem('RTLS');
-    var _viewdashboard = localStorage.getItem('ManageDashboard');
-    var _managewifiuser = localStorage.getItem('ViewDashboard');
+    var _rtls = localStorage.getItem('rtlsUrl');
+    var _cpt = localStorage.getItem('cptUrl');
 
-    if (_managewifiuser != 'null') {
-        document.getElementById('wifisummary').className = "unhide";
-    }
-    else {
-        document.getElementById('wifisummary').className = "hide";
+    
 
-    }
-    if (_managedashboard != 'null') {
-        document.getElementById('managedashboard').className = "row margin";
-    }
-    else {
-        document.getElementById('managedashboard').className = "row margin hide";
 
-    }
-    if (_managesite != 'null') {
+    if (_managesite != 'null')
+    {
         document.getElementById('managesite').className = "row margin";
     }
-    else {
+    else
+    {
         document.getElementById('managesite').className = "row margin hide";
 
     }
-    if (_rtls != 'null') {
+
+
+    if (_rtls != 'null')
+    {
         document.getElementById('managertls').className = "row margin";
     }
-    else {
+    else
+    {
         document.getElementById('managertls').className = "row margin hide";
 
     }
-    if (_viewdashboard != 'null') {
-        document.getElementById('viewdashboard').className = "row margin";
+
+    if (_cpt != 'null')
+    {
+            document.getElementById('managewifiuser').className = "row margin";
+            document.getElementById('viewdashboard').className = "row margin";
+            document.getElementById('wifisummary').className = "unhide";
+            document.getElementById('locationdashboard').className = "hide";
+            document.getElementById('managedashboard').className = "row margin hide";
     }
-    else {
-        document.getElementById('viewdashboard').className = "row margin hide";
+       
+
+    if (_dashboardUrl != 'null')
+    {
+            document.getElementById('viewdashboard').className = "row margin";
+            document.getElementById('managedashboard').className = "row margin";
+            document.getElementById('locationdashboard').className = "unhide";
+            document.getElementById('wifisummary').className = "hide";
 
     }
+    if (_cpt != 'null' && _dashboardUrl != 'null')
 
-    if (_managewifiuser != 'null') {
+    {
         document.getElementById('managewifiuser').className = "row margin";
+        document.getElementById('viewdashboard').className = "row margin";
+        document.getElementById('wifisummary').className = "unhide";
+        document.getElementById('locationdashboard').className = "unhide";
     }
-    else {
-        document.getElementById('managewifiuser').className = "row margin hide";
+        
 
-    }
+   
 }
