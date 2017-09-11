@@ -63,18 +63,18 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             try
             {
-                Site objSite = new Site
-                {
-                    SiteName = inputData.SiteName,
-                    SiteId = inputData.SiteId,
-                    CompanyId =Convert.ToInt32(inputData.CompanyDdl),
-                    AutoLogin = inputData.AutoLogin,
-                    ControllerIpAddress = inputData.ControllerIpAddress,
-                    MySqlIpAddress = inputData.MySqlIpAddress,
-                    Term_conditions = inputData.Term_conditions,
-                    DashboardUrl = inputData.DashboardUrl,
-                    RtlsUrl = inputData.RtlsUrl
-                };
+                var objSite = db.Site.Find(inputData.SiteId);
+
+                objSite.SiteName = inputData.SiteName;
+                objSite.CompanyId = Convert.ToInt32(inputData.CompanyDdl);
+                objSite.AutoLogin = inputData.AutoLogin;
+                objSite.ControllerIpAddress = inputData.ControllerIpAddress;
+                objSite.MySqlIpAddress = inputData.MySqlIpAddress;
+                objSite.Term_conditions = inputData.Term_conditions;
+                objSite.DashboardUrl = inputData.DashboardUrl;
+                objSite.SiteIconPath = inputData.SiteImagePath;
+                objSite.RtlsUrl = inputData.RtlsUrl;
+               
 
                 db.Entry(objSite).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

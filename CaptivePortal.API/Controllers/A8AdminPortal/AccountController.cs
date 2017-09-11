@@ -75,7 +75,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
 
         // GET: Global Admin
-        public ActionResult Login()
+        public ActionResult Login(int? Id)
         {
             return View();
         }
@@ -197,7 +197,16 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             if (result.Succeeded)
             {
                 string roleName = UserManager.GetRoles(user.Id).FirstOrDefault();
-                return RedirectToAction("Login", "Account");
+                int siteId = Convert.ToInt32(db.Users.FirstOrDefault(m => m.Id == user.Id).SiteId);
+                int companyId = Convert.ToInt32(db.Site.FirstOrDefault(m => m.SiteId == siteId).CompanyId);
+                if (roleName == "BusinessUser")
+                {
+                    return RedirectToAction("Login", "Account", new { Id = companyId });
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account");
+                }
             }
             return View();
         }
