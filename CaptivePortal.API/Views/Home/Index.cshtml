@@ -258,12 +258,12 @@
                  var Radiusdata = data[1];
                  var RtlsApidata = data[2];
                  var wifiApidata = data[3];
-                 var sessionData = data[4];
-                 //var LoggederrorsCount = data[5];
+                 var LoggederrorsCount = data[4];
+                 //var sessionData = data[5];
                  localStorage.setItem("ManageSite", "True");
-                 localStorage.setItem("RTLS", data[5]);
-                 localStorage.setItem("ManageDashboard", data[6]);
-                 localStorage.setItem("ViewDashboard", data[7]);
+                 localStorage.setItem("rtlsUrl", data[5]);
+                 localStorage.setItem("dashboardUrl", data[6]);
+                 localStorage.setItem("cptUrl", data[7]);
                  navigation();
                  if (data[0] == "TimedOut")
                  {
@@ -305,8 +305,9 @@
                      $('#WIFIAPI').css('background-color', 'Green');
                      $('#WIFIAPI').val('Operational');
                  }
-                 if (sessionData != null) {
-                     $('#Sessions').val(data[4]);
+                 if (LoggederrorsCount != null) 
+                 {
+                     $('#Loggederrors').val(data[4]);
                  }
 
                 
