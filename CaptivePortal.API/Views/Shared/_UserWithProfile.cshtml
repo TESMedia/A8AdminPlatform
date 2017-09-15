@@ -76,7 +76,10 @@
             </div>
             <label for="Group" class="control-label col-md-3">Group:</label>
             <div class="col-md-3">
+                @if (Model._menu != null)
+                {
                 @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl" })
+                }
             </div>
         </div>
 
@@ -104,7 +107,7 @@
 
     function deleteUser() {
         var id = document.getElementById("userIdHidden").value;
-        var uri = '@Html.Raw(Url.Action("DeleteUser", "Admin"))';
+        var uri = '@Html.Raw(Url.Action("DeleteUser", "Account"))';
         $.ajax({
             url: uri,
             type: 'POST',

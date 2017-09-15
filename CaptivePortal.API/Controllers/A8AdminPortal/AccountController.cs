@@ -323,14 +323,14 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 if (GroupName != null)
                 {
                     int roleId = 4;
-                    userList = db.Users
+                    userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
                 }
                 else
                 {
                     int roleId = 4;
-                    userList = db.Users
+                    userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
                 }
@@ -365,7 +365,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 //Search user according to Group
                 if (GroupName != 0 & GroupName != null)
                 {
-                    userList = db.Users.Where(m => m.GroupId == GroupName).ToList();
+                    userList = userList.Where(m => m.GroupId == GroupName).ToList();
                 }
                 //var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
                 //If Searching on the basis of the single parameter
@@ -438,8 +438,18 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     list.WifiUserView = userViewModelList.FirstOrDefault();
-                    list.WifiUserView._menu = db.Groups.ToList();
-                    list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
+                    if (userViewModelList.Count != 0)
+                    {
+                        if (db.Groups.ToList().Count != 0)
+                        {
+                            list.WifiUserView._menu = db.Groups.ToList();
+                            list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
+                        }
+                    }
+                    else
+                    {
+                        TempData["UserSuc"] = "There is no user in this group";
+                    }
                 }
                 ViewBag.CurrentPage = currentPageIndex;
                 ViewBag.PageSize = PageSize;
@@ -480,6 +490,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 objUserViewModel.Password = userDetail.PasswordHash;
                 objUserViewModel.UserName = userDetail.UserName;
+                objUserViewModel.MobileNumber = Convert.ToInt32(userDetail.MobileNumer);
                 objUserViewModel.Gender = db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId) == null ? null : db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId).Value;
                 objUserViewModel.AgeRange = db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId) == null ? null : db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId).Value;
                 objUserViewModel.AutoLogin = Convert.ToBoolean(userDetail.AutoLogin);
@@ -499,7 +510,8 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult ManageUser(int? siteId, int? page, string userName, int? NumberOfLines)
         {
             UserlistViewModel list = new UserlistViewModel();
-            var userList = db.Users.Where(u => !u.Roles.Any(r => r.RoleId == 4)).ToList();
+            var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
+             userList = userList.Where(u => !u.Roles.Any(r => r.RoleId == 4)).ToList();
             
             int PageSize = Convert.ToInt32(NumberOfLines);
             if (NumberOfLines != null)
@@ -598,14 +610,17 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     var objUser = db.Users.Find(userId);
                     {
                         //objUser.UserName = fc["UserName"];
-                        objUser.GenderId = Convert.ToInt32(fc["GenderId"]);
-                        objUser.AgeId = Convert.ToInt32(fc["AgeId"]);
+                        string gender = fc["GenderId"];
+                        string age = fc["AgeId"];
+                        objUser.GenderId = db.Gender.FirstOrDefault(m => m.Value== gender).GenderId;
+                        objUser.AgeId = db.Age.FirstOrDefault(m => m.Value == age).AgeId;
 
-                        objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
+                        //objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
                         objUser.Status = Convert.ToString(fc["Status"]);
                         objUser.Status = fc["Status"].ToString();
+                        objUser.GroupId = Convert.ToInt32(fc["GroupDdl"]);
 
-                       // objUser.Email = fc["UserName"];
+                        // objUser.Email = fc["UserName"];
                         db.Entry(objUser).State = EntityState.Modified;
                         db.SaveChanges();
                     }

@@ -57,7 +57,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public string SiteAccess { get; set; }
         public string Role { get; set; }
         public string MacAddress { get; set; }
-        public string MobileNumber { get; set; }
+        public int MobileNumber { get; set; }
         public string Gender { get; set; }
         public bool AutoLogin { get; set; }
         public string AgeRange { get; set; }
