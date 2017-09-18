@@ -295,6 +295,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
+            int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id; 
             list._menu = db.Groups.ToList();
             list.GroupDdl = Convert.ToInt32(GroupName);
             ViewBag.sites = from item in db.Site.ToList()
@@ -322,14 +323,12 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 if (GroupName != null)
                 {
-                    int roleId = 4;
                     userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
                 }
                 else
                 {
-                    int roleId = 4;
                     userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
@@ -509,10 +508,10 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
         public ActionResult ManageUser(int? siteId, int? page, string userName, int? NumberOfLines)
         {
+            int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id;
             UserlistViewModel list = new UserlistViewModel();
             var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
-             userList = userList.Where(u => !u.Roles.Any(r => r.RoleId == 4)).ToList();
-            
+            userList = userList.Where(u => !u.Roles.Any(r => r.RoleId == roleId)).ToList();
             int PageSize = Convert.ToInt32(NumberOfLines);
             if (NumberOfLines != null)
             {
@@ -633,12 +632,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             return RedirectToAction("UserDetails", "Account");
         }
 
-        [HttpPost]
-        public void DeleteUser(int UserId)
+        [AcceptVerbs(HttpVerbs.Post | HttpVerbs.Get)]
+        public ActionResult DeleteUser(int UserId,int ? SiteId)
         {
             ApplicationUser user = db.Users.Find(UserId);
             db.Users.Remove(user);
             db.SaveChanges();
+            return RedirectToAction("ManageUser", "Account",new { siteId = SiteId });
         }
 
         public ActionResult UpdatePassword(int UserId)
