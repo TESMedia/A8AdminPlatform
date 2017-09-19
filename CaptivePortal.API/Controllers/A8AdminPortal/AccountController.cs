@@ -511,8 +511,9 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id;
             UserlistViewModel list = new UserlistViewModel();
             var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
+            string SIteName = null;
             userList = userList.Where(u => !u.Roles.Any(r => r.RoleId == roleId)).ToList();
-            int PageSize = Convert.ToInt32(NumberOfLines);
+            int PageSize = 0;
             if (NumberOfLines != null)
             {
                 PageSize = Convert.ToInt32(NumberOfLines);
@@ -526,63 +527,81 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             var TotalPages = (int)Math.Ceiling((decimal)userList.Count / (decimal)PageSize);
             try
             {
-                if (siteId != null)
+                if (userList.Count != 0)
                 {
-                    var userId = User.Identity.GetUserId();
-                    list.UserViewlist = new List<UserViewModel>();
-                    int currentPageIndex = page.HasValue ? page.Value : 1;
-                    var startPage = currentPageIndex - 5;
-                    int endPage = currentPageIndex + 4;
-                    if (startPage <= 0)
+                    PageSize = Convert.ToInt32(NumberOfLines);
+                    if (NumberOfLines != null)
                     {
-                        endPage -= (startPage - 1);
-                        startPage = 1;
+                        PageSize = Convert.ToInt32(NumberOfLines);
+                        ViewBag.selectedNumber = NumberOfLines;
                     }
-                    if (endPage > TotalPages)
+                    else
                     {
-                        endPage = TotalPages;
-                        if (endPage > 10)
+                        PageSize = 20;
+                    }
+                    if (siteId != null)
+                    {
+                        SIteName= db.Site.FirstOrDefault(m => m.SiteId == siteId).SiteName;
+                        var userId = User.Identity.GetUserId();
+                        list.UserViewlist = new List<UserViewModel>();
+                        int currentPageIndex = page.HasValue ? page.Value : 1;
+                        var startPage = currentPageIndex - 5;
+                        int endPage = currentPageIndex + 4;
+                        if (startPage <= 0)
                         {
-                            startPage = endPage - 9;
+                            endPage -= (startPage - 1);
+                            startPage = 1;
                         }
+                        if (endPage > TotalPages)
+                        {
+                            endPage = TotalPages;
+                            if (endPage > 10)
+                            {
+                                startPage = endPage - 9;
+                            }
+                        }
+
+                        userList = userList.Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
+                        // TotalPages = (int)Math.Ceiling((decimal)userList.Count / PageSize);
+
+                        var userViewModelList = (from item in userList
+                                                 select new UserViewModel()
+                                                 {
+                                                     SiteId = siteId.Value,
+                                                     UserId = item.Id.ToString(),
+                                                     UserName = item.UserName,
+                                                     CreationDate = item.CreationDate,
+                                                     Lastlogin = item.UpdateDate,
+                                                     //Status = item.Status
+                                                     Role = UserManager.GetRoles(item.Id).FirstOrDefault()
+
+
+                                                 }).ToList();
+                        list.UserViewlist.AddRange(userViewModelList);
+
+                        //if (userId != null)
+                        //{
+                        //    list.UserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
+                        //}
+                        //else
+                        //{
+                        //list.UserView = userViewModelList.FirstOrDefault();
+                        //}
+                        ViewBag.CurrentPage = currentPageIndex;
+                        ViewBag.PageSize = PageSize;
+                        ViewBag.TotalPages = TotalPages;
+                        ViewBag.userName = userName;
                     }
+                    else
+                    {
+                        TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
+                        return RedirectToAction("Index", "Home");
 
-                    userList = userList.Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
-                    // TotalPages = (int)Math.Ceiling((decimal)userList.Count / PageSize);
-
-                    var userViewModelList = (from item in userList
-                                             select new UserViewModel()
-                                             {
-                                                 SiteId = siteId.Value,
-                                                 UserId = item.Id.ToString(),
-                                                 UserName = item.UserName,
-                                                 CreationDate = item.CreationDate,
-                                                 Lastlogin = item.UpdateDate,
-                                                 //Status = item.Status
-                                                 Role = UserManager.GetRoles(item.Id).FirstOrDefault()
-
-
-                                             }).ToList();
-                    list.UserViewlist.AddRange(userViewModelList);
-
-                    //if (userId != null)
-                    //{
-                    //    list.UserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
-                    //}
-                    //else
-                    //{
-                    //list.UserView = userViewModelList.FirstOrDefault();
-                    //}
-                    ViewBag.CurrentPage = currentPageIndex;
-                    ViewBag.PageSize = PageSize;
-                    ViewBag.TotalPages = TotalPages;
-                    ViewBag.userName = userName;
+                    }
                 }
                 else
                 {
-                    TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
-                    return RedirectToAction("Index", "Home");
-
+                    TempData["ManageUserSuc"] = "There is no user in the site"+ " "+ SIteName;
                 }
             }
             catch (Exception ex)

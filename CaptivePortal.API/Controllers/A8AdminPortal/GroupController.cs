@@ -20,7 +20,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <param name="SiteId"></param>
         /// <returns></returns>
         // GET: Group
-        public ActionResult Index(string SiteId)
+        public ActionResult Index()
         {
             ViewBag.sites = from item in db.Site.ToList()
                             select new SelectListItem()
@@ -72,7 +72,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <param name="groupModel"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult UpdateUserGroup(UserGroup groupModel)
+        public void UpdateUserGroup(UserGroup groupModel)
         {
             try
             {
@@ -82,7 +82,6 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 throw ex;
             }
-            return RedirectToAction("Index", "Group",new { SiteId=1});
         }
     }
 }

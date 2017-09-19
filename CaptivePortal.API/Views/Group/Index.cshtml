@@ -202,12 +202,15 @@
             $(this).addClass('selected').siblings().removeClass('selected');
             var value = $(this).find('td:first').html();
         });
+        });
+</script>
+<script type="text/javascript">
 
         $('.delete').on('click', function (e) {
             //alert($("#resultTable tr.selected td:first").html());
             //function deleteGroup() {
             var id = $("#resultTable tr.selected td:first").html();
-                var uri = '@Html.Raw(Url.Action("DeleteGroup", "Group"))';
+                var uri = 'DeleteGroup/Group';
                 $.ajax({
                     url: uri,
                     type: 'POST',
@@ -225,5 +228,4 @@
                 });
             //}
         });
-    });
-</script>
+</script>  
