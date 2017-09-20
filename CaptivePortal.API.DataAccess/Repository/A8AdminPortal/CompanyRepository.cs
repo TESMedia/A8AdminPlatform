@@ -51,7 +51,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
         {
             try
             {
-                if(model.CompanyId!=0 && model.OrganisationId!=0)
+                if(model.CompanyId!=0 || model.OrganisationId!=0)
                 {
                     compId = model.CompanyId;
                     orgId = model.OrganisationId;

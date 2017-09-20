@@ -9,7 +9,7 @@
     
 
 
-    if (_managesite != 'null')
+    if (_managesite != 'null' )
     {
         document.getElementById('managesite').className = "row margin";
     }
@@ -48,6 +48,11 @@
             document.getElementById('wifisummary').className = "hide";
 
     }
+    else {
+        document.getElementById('viewdashboard').className = "row margin hide";
+        document.getElementById('managedashboard').className = "row margin hide";
+
+    }
     if (_cpt != 'null' && _dashboardUrl != 'null')
 
     {
@@ -56,6 +61,7 @@
         document.getElementById('wifisummary').className = "unhide";
         document.getElementById('locationdashboard').className = "unhide";
     }
+    
         
 
    

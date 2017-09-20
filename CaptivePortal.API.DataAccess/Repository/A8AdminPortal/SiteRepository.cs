@@ -61,12 +61,21 @@ namespace CaptivePortal.API.Repository.CaptivePortal
 
         public bool UpdateSite(FormViewModel inputData)
         {
+            int compId = 0;
             try
             {
+                if (inputData.CompanyId != 0)
+                {
+                    compId = inputData.CompanyId;
+                }
+                else
+                {
+                    compId = Convert.ToInt32(inputData.CompanyDdl);
+                }
                 var objSite = db.Site.Find(inputData.SiteId);
 
                 objSite.SiteName = inputData.SiteName;
-                objSite.CompanyId = Convert.ToInt32(inputData.CompanyDdl);
+                objSite.CompanyId = compId;
                 objSite.AutoLogin = inputData.AutoLogin;
                 objSite.ControllerIpAddress = inputData.ControllerIpAddress;
                 objSite.MySqlIpAddress = inputData.MySqlIpAddress;
@@ -74,7 +83,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 objSite.DashboardUrl = inputData.DashboardUrl;
                 objSite.SiteIconPath = inputData.SiteImagePath;
                 objSite.RtlsUrl = inputData.RtlsUrl;
-               
+
 
                 db.Entry(objSite).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
