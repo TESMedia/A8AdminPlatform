@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-1" for="Site" style="padding-left:60px;">Site:</label>
                             <div class="col-md-3">
-                                @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, "--Select the Site--", new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = "@ViewBag.SiteName" })
+                                @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, "--Select the Site--", new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true})
                             </div>
                         </div>
                     </div>
@@ -237,7 +237,7 @@
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- DateJS -->
-    <script src="../vendors/DateJS/build/date.js"></script>
+    @*<script src="../vendors/DateJS/build/date.js"></script>*@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
 
@@ -248,6 +248,7 @@
     $(document).ready(function()
         {
         navigation();
+        $("#SiteDdl").val(parseInt(localStorage.getItem("SiteId")));
         })
 </script>
 <script type="text/javascript">
@@ -318,7 +319,7 @@
             LastName: $('#Surname').val(),
             AutoLogin: $('#checkbox1').val(),
             BirthDate: $('#birthDate').val(),
-            SiteId: SiteId,
+            SiteId: siteId,
             GroupName: strGroup,
             MacAddress: $('#macAdd').val(),
             GenderId: $('#GenderId').val(),

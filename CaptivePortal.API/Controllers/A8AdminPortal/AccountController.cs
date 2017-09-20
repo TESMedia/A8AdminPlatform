@@ -615,10 +615,10 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     var objUser = db.Users.Find(userId);
                     {
                         //objUser.UserName = fc["UserName"];
-                        string gender = fc["GenderId"];
-                        string age = fc["AgeId"];
-                        objUser.GenderId = db.Gender.FirstOrDefault(m => m.Value== gender).GenderId;
-                        objUser.AgeId = db.Age.FirstOrDefault(m => m.Value == age).AgeId;
+                        //string gender = fc["GenderId"];
+                        //string age = fc["AgeId"];
+                        objUser.GenderId = Convert.ToInt32(fc["GenderId"]);
+                        objUser.AgeId = Convert.ToInt32(fc["AgeId"]);
 
                         //objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
                         objUser.Status = Convert.ToString(fc["Status"]);
@@ -635,7 +635,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 throw ex;
             }
-            return RedirectToAction("UserDetails", "Account");
+            return RedirectToAction("UserDetails", "Account" ,new { siteId=fc["SiteId"]});
         }
 
         [AcceptVerbs(HttpVerbs.Post | HttpVerbs.Get)]
@@ -666,7 +666,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     db.SaveChanges();
                 }
             }
-            return RedirectToAction("UserDetails", "Account");
+            return RedirectToAction("UserDetails", "Account",new { siteId=fc["SiteId"]});
         }
 
     }
