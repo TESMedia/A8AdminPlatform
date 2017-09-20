@@ -118,7 +118,7 @@ namespace CaptivePortal.API.ApiControllers.A8AdminPortal
                         objUsers.SiteId = objUser.SiteId;
                         objUsers.AgeId = objUser.AgeId;
                         objUsers.GenderId = objUser.GenderId;
-                        objUsers.MobileNumer = objUser.MobileNumber;
+                        objUsers.MobileNumer = objUser.MobileNumer;
                         objUsers.GroupId = objUser.GroupName == 0 ? null : (int?)Convert.ToInt32(objUser.GroupName);
 
 

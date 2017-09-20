@@ -9,6 +9,7 @@
     
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <link href="~/Style/RequiredField.css" rel="stylesheet" />
 </head>
 <body class="nav-md">
     <div class="container body">
@@ -39,9 +40,9 @@
                     <div class="form-horizontal">
                         <h2><b>Create Wi-Fi User</b></h2>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="Username">Username:</label>
+                            <label class="control-label col-sm-2 required-field" for="Username">Username:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="userName" placeholder="">
+                                <input type="text" class="form-control" id="userName" placeholder="" required>
                             </div>
                             <label class="control-label col-sm-2" for="FirstName">Address Line 1:</label>
                             <div class="col-md-3">
@@ -71,9 +72,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="pwd">Password:</label>
+                            <label class="control-label col-sm-2 required-field" for="pwd">Password:</label>
                             <div class="col-md-3">
-                                <input type="password" class="form-control" id="pwd" placeholder="" name="Password">
+                                <input type="password" class="form-control" id="pwd" placeholder="" name="Password" required>
                             </div>
                             <label class="control-label col-sm-2" for="pc">Postcode:</label>
                             <div class="col-md-3">
@@ -83,20 +84,20 @@
 
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="mobileNumber">Mobile Number:</label>
+                            <label class="control-label col-sm-2 " for="mobileNumber">Mobile Number:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="mobileNumber" placeholder="" name="MobileNumber">
+                                <input type="number" class="form-control" id="mobileNumber" placeholder="" name="MobileNumer">
                             </div>
                             <label class="control-label col-sm-2" for="Country">Country:</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" id="Country" placeholder="" name="MobileNumber">
+                                <input type="text" class="form-control" id="Country" placeholder="" name="Country">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="email">Email Address:</label>
+                            <label class="control-label col-sm-2 required-field" for="email">Email Address:</label>
                             <div class="col-md-3">
-                                <input type="email" class="form-control" id="email" placeholder="" name="UserName">
+                                <input type="email" class="form-control" id="email" placeholder="" name="Email" required>
                             </div>
                             <label class="control-label col-sm-2" for="Custom1">Custom field 1 : </label>
                             <div class="col-md-3">
@@ -313,15 +314,16 @@
             Email: $('#email').val(),
             UserName: $('#userName').val(),
             Password: $('#pwd').val(),
-            FirstName: $('#firstName').val(),
-            LastName: $('#lastName').val(),
+            FirstName: $('#Forename').val(),
+            LastName: $('#Surname').val(),
             AutoLogin: $('#checkbox1').val(),
             BirthDate: $('#birthDate').val(),
             SiteId: SiteId,
             GroupName: strGroup,
             MacAddress: $('#macAdd').val(),
             GenderId: $('#GenderId').val(),
-            AgeId: $('#AgeId').val()
+            AgeId: $('#AgeId').val(),
+            MobileNumer: $('#mobileNumber').val()
 
         }
         $.post("http://localhost:55205/api/a8Captiveportal/V1/RegisterWifiUser", data, function (e) {

@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-1" for="Site" style="padding-left:60px;">Site:</label>
                                             <div class="col-md-3">
-                                                @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = "ViewBag.SiteName" })
+                                                @Html.DropDownList("SiteDdl", Model._siteMenu.Select(menu => new SelectListItem { Text = menu.SiteName, Value = menu.SiteId.ToString() }), "--Select Site--", new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true })
                                             </div>
                                         </div>
                                     </div>
@@ -213,7 +213,7 @@
                                     <div class="form-group" id="AddGroup" style="display:none">
                                         <label for="Group" class="control-label col-md-3" style="padding-left:20%">Group:</label>
                                         <div class="col-md-3">
-                                            @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl", @onchange = "alocateSelectedGroup()" })
+                                            @Html.DropDownList("GroupDdl", Model._menu.Select(menu => new SelectListItem { Text = menu.GroupName, Value = menu.GroupId.ToString() }), "--Select Group--", new { @class = "form-control", @id = "selectedGroupDdl", @name = "GroupDdl", @onchange = "alocateSelectedGroup(this)" })
                                         </div>
                                         <input type="button" id="btnAdd" class="btn btn-success" value="Add" onclick="addUserToGroup()" />
                                     </div>
@@ -303,9 +303,8 @@
         $(location).attr('href', '/Account/UserDetails?siteId=' + siteId + '&page=' + $(this).text() + '&userName=' + $("#txtUserName").val() + '&NumberOfLines=' + lineNumber + '&GroupName=' + strGroup);
     };
 
-    function alocateSelectedGroup() {
-        var e = document.getElementById("selectedGroupDdl");
-        selectedGroup = e.options[e.selectedIndex].value;
+    function alocateSelectedGroup(selectedGroupDdl) {
+        selectedGroup = selectedGroupDdl.value;
     };
 
 
@@ -384,7 +383,7 @@
             contentType: "application/json; charset=utf-8",
             data: JSON.stringify({ UserIdList: checkBoxValueItme, GroupId: selectedGroup }),
             success: function (result) {
-                window.location = "Account/UserDetails?siteId=" + siteId;
+                window.location.href = "@Url.Action("Index","Group")";
             },
             error: function (objAjaxRequest, strError) {
                 var respText = objAjaxRequest.responseText;

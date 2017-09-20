@@ -96,11 +96,18 @@
                                                         <th>
                                                             Role
                                                         </th>
+                                                        <th>
+
+                                                        </th>
                                                     </tr>
                                                 </thead>
                                                 @if (Model.UserViewlist != null)
                                                 {
                                                     <tbody class="pointer" id="UserDetails">
+                                                        @if (TempData["ManageUserSuc"] != null)
+                                                        {
+                                                            <p class="alert alert-success" id="successMessage">@TempData["ManageUserSuc"]</p>
+                                                        }
                                                         @foreach (var item in Model.UserViewlist)
                                                         {
                                                             <tr>
@@ -126,6 +133,9 @@
                                                                 </td>
                                                                 <td>
                                                                     @Html.DisplayFor(modelItem => item.Role)
+                                                                </td>
+                                                                <td>
+                                                                    <input type="button" id="btnDelete" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("DeleteUser", "Account",new { UserId = item.UserId,SiteId=item.SiteId })'" />
                                                                 </td>
 
                                                             </tr>

@@ -1,10 +1,9 @@
-﻿using CaptivePortal.API.Models;
-using CaptivePortal.API.Models.A8AdminModel;
+﻿using CaptivePortal.API.Models.A8AdminModel;
 using CaptivePortal.API.ViewModels.CPAdmin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+
 
 namespace CaptivePortal.API.Repository.CaptivePortal
 {
@@ -83,7 +82,7 @@ namespace CaptivePortal.API.Repository.CaptivePortal
                 objSite.DashboardUrl = inputData.DashboardUrl;
                 objSite.SiteIconPath = inputData.SiteImagePath;
                 objSite.RtlsUrl = inputData.RtlsUrl;
-
+               
 
                 db.Entry(objSite).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();

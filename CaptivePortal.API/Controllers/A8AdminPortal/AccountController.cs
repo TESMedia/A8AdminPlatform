@@ -295,23 +295,11 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult UserDetails(int? siteId, int? userId, int? page, string userName, string foreName, string surName, int? NumberOfLines, int? GroupName)
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
-            list._menu = db.Groups.ToList();
+            int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id; 
+            list._menu = db.Groups.ToList();//GroupMenu
             list.GroupDdl = Convert.ToInt32(GroupName);
-            ViewBag.sites = from item in db.Site.ToList()
-                            select new SelectListItem()
-                            {
-                                Value = item.SiteId.ToString(),
-                                Text = item.SiteName
-                            };
-
-            if (siteId == null)
-            {
-                siteId = 1;
-                ViewBag.SiteName = db.Site.FirstOrDefault(m => m.SiteId == siteId).SiteName;
-
-            }
-
-            //userId = User.Identity.GetUserId();
+            list._siteMenu = db.Site.ToList();
+            list.SiteDdl = Convert.ToInt32(siteId);
             list.WifiUserViewlist = new List<WifiUserViewModel>();
             int currentPageIndex = page.HasValue ? page.Value : 1;
             int PageSize = Convert.ToInt32(NumberOfLines);
@@ -322,15 +310,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 if (GroupName != null)
                 {
-                    int roleId = 4;
-                    userList = db.Users
+                    userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
                 }
                 else
                 {
-                    int roleId = 4;
-                    userList = db.Users
+                    userList = userList
             .Where(x => x.Roles.Select(y => y.RoleId).Contains(roleId))
             .ToList();
                 }
@@ -365,7 +351,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 //Search user according to Group
                 if (GroupName != 0 & GroupName != null)
                 {
-                    userList = db.Users.Where(m => m.GroupId == GroupName).ToList();
+                    userList = userList.Where(m => m.GroupId == GroupName).ToList();
                 }
                 //var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
                 //If Searching on the basis of the single parameter
@@ -438,8 +424,18 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 else
                 {
                     list.WifiUserView = userViewModelList.FirstOrDefault();
-                    list.WifiUserView._menu = db.Groups.ToList();
-                    list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
+                    if (userViewModelList.Count != 0)
+                    {
+                        if (db.Groups.ToList().Count != 0)
+                        {
+                            list.WifiUserView._menu = db.Groups.ToList();
+                            list.WifiUserView.GroupDdl = Convert.ToInt32(GroupName);
+                        }
+                    }
+                    else
+                    {
+                        TempData["UserSuc"] = "There is no user in this group";
+                    }
                 }
                 ViewBag.CurrentPage = currentPageIndex;
                 ViewBag.PageSize = PageSize;
@@ -480,6 +476,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             {
                 objUserViewModel.Password = userDetail.PasswordHash;
                 objUserViewModel.UserName = userDetail.UserName;
+                objUserViewModel.MobileNumber = Convert.ToInt32(userDetail.MobileNumer);
                 objUserViewModel.Gender = db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId) == null ? null : db.Gender.FirstOrDefault(m => m.GenderId == userDetail.GenderId).Value;
                 objUserViewModel.AgeRange = db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId) == null ? null : db.Age.FirstOrDefault(m => m.AgeId == userDetail.AgeId).Value;
                 objUserViewModel.AutoLogin = Convert.ToBoolean(userDetail.AutoLogin);
@@ -498,10 +495,12 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
         public ActionResult ManageUser(int? siteId, int? page, string userName, int? NumberOfLines)
         {
+            int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id;
             UserlistViewModel list = new UserlistViewModel();
-            var userList = db.Users.Where(u => !u.Roles.Any(r => r.RoleId == 4)).ToList();
-            
-            int PageSize = Convert.ToInt32(NumberOfLines);
+            var userList = db.Users.Where(m => m.SiteId == siteId).ToList();
+            string SIteName = null;
+            userList = userList.Where(u => !u.Roles.Any(r => r.RoleId == roleId)).ToList();
+            int PageSize = 0;
             if (NumberOfLines != null)
             {
                 PageSize = Convert.ToInt32(NumberOfLines);
@@ -515,63 +514,81 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             var TotalPages = (int)Math.Ceiling((decimal)userList.Count / (decimal)PageSize);
             try
             {
-                if (siteId != null)
+                if (userList.Count != 0)
                 {
-                    var userId = User.Identity.GetUserId();
-                    list.UserViewlist = new List<UserViewModel>();
-                    int currentPageIndex = page.HasValue ? page.Value : 1;
-                    var startPage = currentPageIndex - 5;
-                    int endPage = currentPageIndex + 4;
-                    if (startPage <= 0)
+                    PageSize = Convert.ToInt32(NumberOfLines);
+                    if (NumberOfLines != null)
                     {
-                        endPage -= (startPage - 1);
-                        startPage = 1;
+                        PageSize = Convert.ToInt32(NumberOfLines);
+                        ViewBag.selectedNumber = NumberOfLines;
                     }
-                    if (endPage > TotalPages)
+                    else
                     {
-                        endPage = TotalPages;
-                        if (endPage > 10)
+                        PageSize = 20;
+                    }
+                    if (siteId != null)
+                    {
+                        SIteName= db.Site.FirstOrDefault(m => m.SiteId == siteId).SiteName;
+                        var userId = User.Identity.GetUserId();
+                        list.UserViewlist = new List<UserViewModel>();
+                        int currentPageIndex = page.HasValue ? page.Value : 1;
+                        var startPage = currentPageIndex - 5;
+                        int endPage = currentPageIndex + 4;
+                        if (startPage <= 0)
                         {
-                            startPage = endPage - 9;
+                            endPage -= (startPage - 1);
+                            startPage = 1;
                         }
+                        if (endPage > TotalPages)
+                        {
+                            endPage = TotalPages;
+                            if (endPage > 10)
+                            {
+                                startPage = endPage - 9;
+                            }
+                        }
+
+                        userList = userList.Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
+                        // TotalPages = (int)Math.Ceiling((decimal)userList.Count / PageSize);
+
+                        var userViewModelList = (from item in userList
+                                                 select new UserViewModel()
+                                                 {
+                                                     SiteId = siteId.Value,
+                                                     UserId = item.Id.ToString(),
+                                                     UserName = item.UserName,
+                                                     CreationDate = item.CreationDate,
+                                                     Lastlogin = item.UpdateDate,
+                                                     //Status = item.Status
+                                                     Role = UserManager.GetRoles(item.Id).FirstOrDefault()
+
+
+                                                 }).ToList();
+                        list.UserViewlist.AddRange(userViewModelList);
+
+                        //if (userId != null)
+                        //{
+                        //    list.UserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
+                        //}
+                        //else
+                        //{
+                        //list.UserView = userViewModelList.FirstOrDefault();
+                        //}
+                        ViewBag.CurrentPage = currentPageIndex;
+                        ViewBag.PageSize = PageSize;
+                        ViewBag.TotalPages = TotalPages;
+                        ViewBag.userName = userName;
                     }
+                    else
+                    {
+                        TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
+                        return RedirectToAction("Index", "Home");
 
-                    userList = userList.Skip(((int)currentPageIndex - 1) * PageSize).Take(PageSize).ToList();
-                    // TotalPages = (int)Math.Ceiling((decimal)userList.Count / PageSize);
-
-                    var userViewModelList = (from item in userList
-                                             select new UserViewModel()
-                                             {
-                                                 SiteId = siteId.Value,
-                                                 UserId = item.Id.ToString(),
-                                                 UserName = item.UserName,
-                                                 CreationDate = item.CreationDate,
-                                                 Lastlogin = item.UpdateDate,
-                                                 //Status = item.Status
-                                                 Role = UserManager.GetRoles(item.Id).FirstOrDefault()
-
-
-                                             }).ToList();
-                    list.UserViewlist.AddRange(userViewModelList);
-
-                    //if (userId != null)
-                    //{
-                    //    list.UserView = userViewModelList.FirstOrDefault(m => m.UserId == userId);
-                    //}
-                    //else
-                    //{
-                    //list.UserView = userViewModelList.FirstOrDefault();
-                    //}
-                    ViewBag.CurrentPage = currentPageIndex;
-                    ViewBag.PageSize = PageSize;
-                    ViewBag.TotalPages = TotalPages;
-                    ViewBag.userName = userName;
+                    }
                 }
                 else
                 {
-                    TempData["SiteIdCheck"] = "Please select any of the site and then manage user or If site is not there create new site";
-                    return RedirectToAction("Index", "Home");
-
+                    TempData["ManageUserSuc"] = "There is no user in the site"+ " "+ SIteName;
                 }
             }
             catch (Exception ex)
@@ -598,14 +615,17 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                     var objUser = db.Users.Find(userId);
                     {
                         //objUser.UserName = fc["UserName"];
-                        objUser.GenderId = Convert.ToInt32(fc["GenderId"]);
-                        objUser.AgeId = Convert.ToInt32(fc["AgeId"]);
+                        string gender = fc["GenderId"];
+                        string age = fc["AgeId"];
+                        objUser.GenderId = db.Gender.FirstOrDefault(m => m.Value== gender).GenderId;
+                        objUser.AgeId = db.Age.FirstOrDefault(m => m.Value == age).AgeId;
 
-                        objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
+                        //objUser.MobileNumer = Convert.ToInt32(fc["MobileNumber"]);
                         objUser.Status = Convert.ToString(fc["Status"]);
                         objUser.Status = fc["Status"].ToString();
+                        objUser.GroupId = Convert.ToInt32(fc["GroupDdl"]);
 
-                       // objUser.Email = fc["UserName"];
+                        // objUser.Email = fc["UserName"];
                         db.Entry(objUser).State = EntityState.Modified;
                         db.SaveChanges();
                     }
@@ -618,12 +638,13 @@ namespace CaptivePortal.API.Controllers.CPAdmin
             return RedirectToAction("UserDetails", "Account");
         }
 
-        [HttpPost]
-        public void DeleteUser(int UserId)
+        [AcceptVerbs(HttpVerbs.Post | HttpVerbs.Get)]
+        public ActionResult DeleteUser(int UserId,int ? SiteId)
         {
             ApplicationUser user = db.Users.Find(UserId);
             db.Users.Remove(user);
             db.SaveChanges();
+            return RedirectToAction("ManageUser", "Account",new { siteId = SiteId });
         }
 
         public ActionResult UpdatePassword(int UserId)

@@ -23,7 +23,7 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
 
         public bool AutoLogin { get; set; }
 
-        public int MobileNumber { get; set; }
+        public int MobileNumer { get; set; }
 
         public int? GenderId { get; set; }
 
