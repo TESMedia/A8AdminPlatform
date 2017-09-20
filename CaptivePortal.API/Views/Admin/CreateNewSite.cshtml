@@ -13,9 +13,10 @@
     <link href="../build/css/custom.min.css" rel="stylesheet">
     <link href="~/Style/CheckBox.css" rel="stylesheet" />
     <link href="~/Style/RequiredField.css" rel="stylesheet" />
+    
 </head>
 
-<body class="nav-md" onload="onload()">
+<body class="nav-md">
     <div class="container body">
         <div class="main_container">
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
@@ -210,6 +211,7 @@
     <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <script src="~/Scripts/navigationJS.js"></script>
 </body>
 </html>
 
@@ -383,8 +385,9 @@
     //    }
     //});
 </script>
-<script>
-    $(document).ready(function(){
+<script type="text/javascript">
+    $(document).ready(function ()
+    {
 
         navigation();
 
