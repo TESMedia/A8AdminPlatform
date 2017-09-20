@@ -39,7 +39,7 @@
                                         <div class="form-group">
                                             <label class="control-label col-sm-1" for="Site" style="padding-left:60px;">Site:</label>
                                             <div class="col-md-3">
-                                                @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = "ViewBag.SiteName" })
+                                                @Html.DropDownList("SiteDdl", Model._siteMenu.Select(menu => new SelectListItem { Text = menu.SiteName, Value = menu.SiteId.ToString() }), "--Select Site--", new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true })
                                             </div>
                                         </div>
                                     </div>

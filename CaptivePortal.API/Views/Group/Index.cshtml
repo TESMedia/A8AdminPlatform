@@ -125,6 +125,12 @@
                     @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="form-horizontal form-label-right" style="margin-left:70%">
+                            @*<div class="form-group" style="display:none;">
+                                <label class="control-label col-sm-2">SiteId:</label>
+                                <div class="col-md-10">
+                                    <input type="text" class="form-control" id="siteId" placeholder="" name="SiteId" value="">
+                                </div>
+                            </div>*@
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Name:</label>
                                 <div class="col-md-10">

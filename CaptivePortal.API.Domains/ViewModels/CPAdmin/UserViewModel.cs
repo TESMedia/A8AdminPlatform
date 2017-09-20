@@ -130,8 +130,11 @@ namespace CaptivePortal.API.ViewModels.CPAdmin
         public WifiUserViewModel WifiUserView { get; set; }
         public SelectList WifiUserLabelModalViewList { get; set; }
 
-        public IEnumerable<Group> _menu { get; set; }
+        public IEnumerable<Group> _menu { get; set; }//group menu.
         public long GroupDdl { get; set; } //Property to hold dropdown selection
+
+        public IEnumerable<Site> _siteMenu { get; set; }
+        public long SiteDdl { get; set; }
     }
 
 

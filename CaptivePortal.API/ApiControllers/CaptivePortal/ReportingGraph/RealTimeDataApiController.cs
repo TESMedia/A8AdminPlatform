@@ -24,9 +24,9 @@ namespace CaptivePortal.API.Controllers
         /// </summary>
         /// <param name="SitedId"></param>
         /// <returns></returns>
-       [HttpPost]
-       [Route("GetAnalysisData")]
-       public HttpResponseMessage GetAnalysisDataForDashboard(RequestModel model)
+        [HttpPost]
+        [Route("GetAnalysisData")]
+        public HttpResponseMessage GetAnalysisDataForDashboard(RequestModel model)
         {
             ReturnContainer objContainer = new ReturnContainer();
             JavaScriptSerializer objSerializer = new JavaScriptSerializer();
@@ -71,7 +71,7 @@ namespace CaptivePortal.API.Controllers
                 cmd.Connection = sql_conn;
                 cmd.CommandText = "CalculateAverageSession";
                 cmd.CommandType = CommandType.StoredProcedure;
-               
+
                 //input parameters
                 cmd.Parameters.AddWithValue("@SearchCategory", model.searchCategory);
                 cmd.Parameters["@SearchCategory"].Direction = ParameterDirection.Input;
@@ -128,7 +128,7 @@ namespace CaptivePortal.API.Controllers
 
         public Int64 NoOfAndriodUsers { get; set; }
 
-        public Int64 NoOfWindowUsers { get; set;}
+        public Int64 NoOfWindowUsers { get; set; }
         public Int64 NoOfIosUsers { get; set; }
 
         public Int64 NoOfOthersUsers { get; set; }
@@ -158,16 +158,16 @@ namespace CaptivePortal.API.Controllers
     }
     public class RequestModel
     {
-      public  int SitedId { get; set; }
-       public string SiteName { get; set; }
-      public  int searchCategory { get; set;}
+        public int SitedId { get; set; }
+        public string SiteName { get; set; }
+        public int searchCategory { get; set; }
     }
 
     public enum Searchcriteria
     {
-        CurrentPeriod=0,
-        CurrentWeek=1,
-        CurrentMonth=2,
-        CurrentYear=3
+        CurrentPeriod = 0,
+        CurrentWeek = 1,
+        CurrentMonth = 2,
+        CurrentYear = 3
     }
 }

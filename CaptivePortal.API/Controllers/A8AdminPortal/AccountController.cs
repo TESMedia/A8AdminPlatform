@@ -296,23 +296,10 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         {
             WifiUserlistViewModel list = new WifiUserlistViewModel();
             int roleId = db.Roles.FirstOrDefault(m => m.Name == "WiFiUser").Id; 
-            list._menu = db.Groups.ToList();
+            list._menu = db.Groups.ToList();//GroupMenu
             list.GroupDdl = Convert.ToInt32(GroupName);
-            ViewBag.sites = from item in db.Site.ToList()
-                            select new SelectListItem()
-                            {
-                                Value = item.SiteId.ToString(),
-                                Text = item.SiteName
-                            };
-
-            if (siteId == null)
-            {
-                siteId = 1;
-                ViewBag.SiteName = db.Site.FirstOrDefault(m => m.SiteId == siteId).SiteName;
-
-            }
-
-            //userId = User.Identity.GetUserId();
+            list._siteMenu = db.Site.ToList();
+            list.SiteDdl = Convert.ToInt32(siteId);
             list.WifiUserViewlist = new List<WifiUserViewModel>();
             int currentPageIndex = page.HasValue ? page.Value : 1;
             int PageSize = Convert.ToInt32(NumberOfLines);
