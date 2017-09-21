@@ -57,7 +57,7 @@
                     <div class="form-group">
                         <label class="control-label col-sm-1" for="Site" style="padding-left:60px;">Site:</label>
                         <div class="col-md-3">
-                            @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true, @value = ViewBag.SiteName })
+                            @Html.DropDownList("siteDdl", ViewBag.sites as IEnumerable<SelectListItem>, new { @class = "form-control col-md-7 col-xs-12", @id = "SiteDdl", @name = "SiteDdl", @onchange = "saveToLocalStorage()", @Selected = true })
                         </div>
                     </div>
                 </div>
@@ -68,6 +68,10 @@
                     <div class="col-lg-12">
 
                         <div style="top:35px;width:700px; height:250px; overflow:auto;">
+                            @if (TempData["GroupSuc"] != null)
+                            {
+                                <p class="alert alert-success" id="successMessage">@TempData["GroupSuc"]</p>
+                            }
                             <table class="table table-hover table-responsive" id="resultTable">
                                 <thead>
                                     <tr style="background-color:#ccc;color:black">
@@ -125,12 +129,12 @@
                     @using (Html.BeginForm("CreateGroup", "Group", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         <div class="form-horizontal form-label-right" style="margin-left:70%">
-                            @*<div class="form-group" style="display:none;">
+                            <div class="form-group" style="display:none" >
                                 <label class="control-label col-sm-2">SiteId:</label>
                                 <div class="col-md-10">
                                     <input type="text" class="form-control" id="siteId" placeholder="" name="SiteId" value="">
                                 </div>
-                            </div>*@
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-2">Name:</label>
                                 <div class="col-md-10">
@@ -198,7 +202,8 @@
             window.localStorage.setItem("SiteId", SiteId);
             var skillsSelect = document.getElementById("SiteDdl");
             var selectedText = skillsSelect.options[skillsSelect.selectedIndex].text;
-            window.localStorage.setItem('SiteName', selectedText);
+            window.localStorage.setItem('SiteName', selectedText);  
+            $(location).attr('href', '/Group/Index?siteId=' +SiteId);
         }
     }
 
@@ -208,6 +213,8 @@
             $(this).addClass('selected').siblings().removeClass('selected');
             var value = $(this).find('td:first').html();
         });
+        document.getElementById("siteId").value = localStorage.getItem("SiteId");
+        $("#SiteDdl").val(parseInt(localStorage.getItem("SiteId")));
         });
 </script>
 <script type="text/javascript">

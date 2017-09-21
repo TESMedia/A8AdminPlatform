@@ -73,7 +73,7 @@
                                 {
                                     <li><a href="@Url.Action("ConfigureSite", "Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Configure site</a></li>
                                     <li><a href="@Url.Action("ManageUser", "Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage User</a></li>
-                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">Manage promotion</a></li>
+                                    <li><a href="@Url.Action("Create","Promotional")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;" class="hide" id="NavPromotional">Manage promotion</a></li>
                                 }
                             </ul>
                         </li>
@@ -125,9 +125,7 @@
                 </div>
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation" class="dropdown">
-                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-
-                        </ul>
+                        <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu"></ul>
                     </li>
                 </ul>
             </nav>
@@ -135,16 +133,16 @@
     </div>
     <!-- top navigation -->
 </body>
-    <script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
-    <script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
-    <script src="~/Scripts/jquery-3.1.1.min.js"></script>
-    @*<link href="~/Bootstrap 3.3.7/bootstrap.min.css" rel="stylesheet" />*@
-    <script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
-    <script src="~/Scripts/Spin.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
-    <script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
-    <link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
-    <script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
+<script src="~/a8Dashboard_Angular/Scripts/angular.js"></script>
+<script src="~/a8Dashboard_Angular/A8DashBoardApp.js"></script>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+@*<link href="~/Bootstrap 3.3.7/bootstrap.min.css" rel="stylesheet" />*@
+<script src="~/Bootstrap 3.3.7/bootstrap.tpls.js"></script>
+<script src="~/Scripts/Spin.js"></script>
+<script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-loading-spinner.js"></script>
+<script src="~/a8Dashboard_Angular/Scripts/Spinner/angular-spinner.min.js"></script>
+<link href="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.css" rel="stylesheet" />
+<script src="~/a8Dashboard_Angular/Scripts/Angular_Notification/angular-ui-notification.js"></script>
 <script>
     function uploadFile() {
         window.location.href = "/Admin/UploadFile"
@@ -155,53 +153,8 @@
     }
 
     function logOut() {
+        localStorage.clear();
         window.location.href = "/Account/LogOff"
     }
-   
-    //function navigation() {
 
-    //    var _managedashboard = localStorage.getItem('ManageDashboard');
-    //    var _managesite = localStorage.getItem('ManageSite');
-    //    var _rtls = localStorage.getItem('RTLS');
-    //    var _viewdashboard = localStorage.getItem('ManageDashboard');
-    //    var _managewifiuser = localStorage.getItem('ViewDashboard');
-
-    //    if (_managedashboard != 'null') {
-    //        document.getElementById('managedashboard').className = "row margin";
-    //    }
-    //    else {
-    //        document.getElementById('managedashboard').className = "row margin hide";
-
-    //    }
-    //    if (_managesite != 'null') {
-    //        document.getElementById('managesite').className = "row margin";
-    //    }
-    //    else {
-    //        document.getElementById('managesite').className = "row margin hide";
-
-    //    }
-    //    if (_rtls != 'null') {
-    //        document.getElementById('managertls').className = "row margin";
-    //    }
-    //    else {
-    //        document.getElementById('managertls').className = "row margin hide";
-
-    //    }
-    //    if (_viewdashboard != 'null') {
-    //        document.getElementById('viewdashboard').className = "row margin";
-    //    }
-    //    else {
-    //        document.getElementById('viewdashboard').className = "row margin hide";
-
-    //    }
-
-    //    if (_managewifiuser != 'null') {
-    //        document.getElementById('managewifiuser').className = "row margin";
-    //    }
-    //    else {
-    //        document.getElementById('managewifiuser').className = "row margin hide";
-
-    //    }
-
-    //}
 </script>

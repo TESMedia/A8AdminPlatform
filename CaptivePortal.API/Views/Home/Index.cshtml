@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
+
     <title>Captive Portal Admin | </title>
     <style>
         td {
@@ -36,7 +36,7 @@
             float: left;
         }
     </style>
-    
+
 </head>
 
 
@@ -46,7 +46,6 @@
             <!--Left side menu and toggle menu -->
             @Html.Partial("~/Views/Shared/_LeftMenu.cshtml")
             <!--Left side menu and toggle menu -->
-
             <!-- page content -->
             <div class="right_col" role="main">
                 @if (TempData["SiteIdCheck"] != null)
@@ -59,7 +58,7 @@
                     <button type="button" style="float:right" class="btn btn-success" onclick="window.location.href='@Url.Action("CreateNewSite", "Admin")'">Create New Site</button>
                 }
                 @*<div class="row container-fluid">
-            <div style="top:35px;width:1000px; height:250px; overflow-x:auto;">*@
+                    <div style="top:35px;width:1000px; height:250px; overflow-x:auto;">*@
                 <div style="overflow-y:auto;overflow-x:auto; height:250px;">
                     <table class="table table-hover table-responsive" id="table">
                         <thead>
@@ -119,17 +118,17 @@
                         </tbody>
                     </table>
                 </div>
-            
 
-                    <br /><br /><br /><br />
-                    <div>
-                       <h4>Site:<label id="site_name"></label></h4> 
-                    </div>
+
+                <br /><br /><br /><br />
+                <div>
+                    <h4>Site:<label id="site_name"></label></h4>
+                </div>
                 <div style="width:100%; height: 200px;">
                     <form class="form-horizontal">
                         <div class="cellContainer">
                             <div style="margin: 5px; background-color: white;">
-                                <center><h3><u>Site Stats</u></h3></center>
+                                <center><h3><u>Site Status</u></h3></center>
                                 <div class="form-group">
                                     <label class="control-label col-sm-5" for="Controller">Controller:</label>
                                     <div class="col-sm-6">
@@ -159,7 +158,7 @@
 
                         <div class="cellContainer">
                             <div style="margin: 5px; background-color: white;">
-                                <center><h3><u>Site Status(last hour)</u></h3></center>
+                                <center><h3><u>Site Stats(last hour)</u></h3></center>
                                 <div class="form-group">
                                     <label class="control-label col-sm-5" for="Sessions">Sessions:</label>
                                     <div class="col-sm-6">
@@ -185,12 +184,12 @@
                                 <div class="form-group" style="margin-top:10px;">
                                     <label class="control-label col-sm-5" for="debugStatus">Debug:</label>
                                     <div class="col-sm-6">
-                                        <input id="debugStatus" class="form-control" type="text" readonly value="On">
+                                        <input id="debugStatus" class="form-control" type="text" readonly value="on">
                                     </div>
                                     <br />
                                     <br />
                                     <br />
-                                    <input type="button" id="debuggingAndTracing" class="btn btn-success" value="Turn debug on/off" style="margin-left:45%" />
+                                    <input type="button" id="debuggingAndTracing" class="btn btn-success" value="Turn debug on/off" onclick="setValue()" style="margin-left:45%" />
                                     <br />
                                     <br />
 
@@ -202,9 +201,9 @@
                         </div>
                     </form>
                     @*</div>
-            </div>*@
+                        </div>*@
                 </div>
-                       
+
                 <br />
                 <br />
                 <br />
@@ -225,7 +224,7 @@
     <script src="../vendors/DateJS/build/date.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-   
+
 
 </body>
 </html>
@@ -254,85 +253,82 @@
 
         }
 
-        
-        var sitedata = { SiteId : SiteId };
-            $.ajax(
-          {
-             type: "POST",
-             data: sitedata,
-             url: "/MenuConfSite/a8Captiveportal/V1/SiteOperationalStatus",
-            
-             success: function (data)
-             {
-                 var controllerdata = data[0];
-                 var Radiusdata = data[1];
-                 var RtlsApidata = data[2];
-                 var wifiApidata = data[3];
-                 var LoggederrorsCount = data[4];
-                 //var sessionData = data[5];
-                 localStorage.setItem("ManageSite", "True");
-                 localStorage.setItem("rtlsUrl", data[5]);
-                 localStorage.setItem("dashboardUrl", data[6]);
-                 localStorage.setItem("cptUrl", data[7]);
-                 navigation();
-                 if (data[0] == "TimedOut")
-                 {
-                     $('#Controller').css('background-color', 'Red');
-                     $('#Controller').val('Failed');
-                 }
-                 if (data[0] == "Success")
-                 {
-                     $('#Controller').css('background-color', 'Green');
-                     $('#Controller').val('Operational');
-                 }
-                 if (data[1] == "TimedOut")
-                 {
-                     $('#Radius').css('background-color', 'Red');
-                     $('#Radius').val('Failed');
-                 }
-                 if (data[1] == "Success")
-                 {
-                     $('#Radius').css('background-color', 'Green');
-                     $('#Radius').val('Operational');
-                 }
-                 if (data[2] == "TimedOut")
-                 {
-                     $('#RTLSAPI').css('background-color', 'Red');
-                     $('#RTLSAPI').val('Failed');
-                 }
-                 if (data[2] == "Success")
-                 {
-                     $('#RTLSAPI').css('background-color', 'Green');
-                     $('#RTLSAPI').val('Operational');
-                 }
-                 if (data[3] == "TimedOut")
-                 {
-                     $('#WIFIAPI').css('background-color', 'Red');
-                     $('#WIFIAPI').val('Failed');
-                 }
-                 if (data[3] == "Success")
-                 {
-                     $('#WIFIAPI').css('background-color', 'Green');
-                     $('#WIFIAPI').val('Operational');
-                 }
-                 if (LoggederrorsCount != null) 
-                 {
-                     $('#Loggederrors').val(data[4]);
-                 }
 
-                
-             },
-             failure: function (response)
-             {
-                 alert(response);
-             },
-             error: function (xhr, textStatus, errorThrown)
-             {
-                 alert(textStatus);
-             }
-         })
+        var sitedata = { SiteId: SiteId };
+        $.ajax(
+      {
+          type: "POST",
+          data: sitedata,
+          url: "/MenuConfSite/a8Captiveportal/V1/SiteOperationalStatus",
+
+          success: function (data) {
+              var controllerdata = data[0];
+              var Radiusdata = data[1];
+              var RtlsApidata = data[2];
+              var wifiApidata = data[3];
+              var LoggederrorsCount = data[4];
+              //var sessionData = data[5];
+              localStorage.setItem("ManageSite", "True");
+              localStorage.setItem("rtlsUrl", data[5]);
+              localStorage.setItem("dashboardUrl", data[6]);
+              localStorage.setItem("cptUrl", data[7]);
+              navigation();
+              if (data[0] == "TimedOut") {
+                  $('#Controller').css('background-color', 'Red');
+                  $('#Controller').val('Failed');
+              }
+              if (data[0] == "Success") {
+                  $('#Controller').css('background-color', 'Green');
+                  $('#Controller').val('Operational');
+              }
+              if (data[1] == "TimedOut") {
+                  $('#Radius').css('background-color', 'Red');
+                  $('#Radius').val('Failed');
+              }
+              if (data[1] == "Success") {
+                  $('#Radius').css('background-color', 'Green');
+                  $('#Radius').val('Operational');
+              }
+              if (data[2] == "TimedOut") {
+                  $('#RTLSAPI').css('background-color', 'Red');
+                  $('#RTLSAPI').val('Failed');
+              }
+              if (data[2] == "Success") {
+                  $('#RTLSAPI').css('background-color', 'Green');
+                  $('#RTLSAPI').val('Operational');
+              }
+              if (data[3] == "TimedOut") {
+                  $('#WIFIAPI').css('background-color', 'Red');
+                  $('#WIFIAPI').val('Failed');
+              }
+              if (data[3] == "Success") {
+                  $('#WIFIAPI').css('background-color', 'Green');
+                  $('#WIFIAPI').val('Operational');
+              }
+              if (LoggederrorsCount != null) {
+                  $('#Loggederrors').val(data[4]);
+              }
+
+
+          },
+          failure: function (response) {
+              alert(response);
+          },
+          error: function (xhr, textStatus, errorThrown) {
+              alert(textStatus);
+          }
+      })
     });
 
+    function setValue() {
+        var debugValue = document.getElementById('debugStatus').value;
+        if (debugValue == "on") {
+            document.getElementById('debugStatus').value = "off";
+        }
+        else {
+            document.getElementById('debugStatus').value = "on";
 
+        }
+    }
 
 </script>

@@ -14,10 +14,10 @@ namespace CaptivePortal.API.Models.A8AdminModel
         public string GroupName { get; set; }
         public string Rule { get; set; }
 
-        //public int ? SiteId { get; set; }
+        public int? SiteId { get; set; }
 
-        //[ForeignKey("SiteId")]
-        //public virtual Site Site { get; set; }
+        [ForeignKey("SiteId")]
+        public virtual Site Site { get; set; }
 
     }
 }

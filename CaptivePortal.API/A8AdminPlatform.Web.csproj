@@ -306,6 +306,9 @@
     <Content Include="a8Dashboard_Angular\Services\LocationService.js" />
     <Content Include="a8Dashboard_Angular\Services\UploadFileService.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="Bootstrap 3.3.7\bootstrap.min.css" />
+    <Content Include="Bootstrap 3.3.7\bootstrap.min.js" />
+    <Content Include="Bootstrap 3.3.7\bootstrap.tpls.js" />
     <Content Include="build\css\custom.css" />
     <Content Include="build\css\custom.min.css" />
     <Content Include="build\images\back_disabled.png" />

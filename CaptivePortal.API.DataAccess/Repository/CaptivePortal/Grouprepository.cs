@@ -25,7 +25,7 @@ namespace CaptivePortal.API.DataAccess.Repository.CaptivePortal
                 Group objGroup = new Group();
                 objGroup.GroupName = model.GroupName;
                 objGroup.Rule = model.Rule;
-                //objGroup.SiteId = model.SiteId;
+                objGroup.SiteId = model.SiteId;
                 db.Groups.Add(objGroup);
                 db.SaveChanges();
             }

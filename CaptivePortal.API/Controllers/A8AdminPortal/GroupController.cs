@@ -20,7 +20,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         /// <param name="SiteId"></param>
         /// <returns></returns>
         // GET: Group
-        public ActionResult Index()
+        public ActionResult Index(int? siteId)
         {
             ViewBag.sites = from item in db.Site.ToList()
                             select new SelectListItem()
@@ -31,18 +31,25 @@ namespace CaptivePortal.API.Controllers.CPAdmin
 
             GrouplistViewModel list = new GrouplistViewModel();
             list.GroupViewlist = new List<GroupViewModel>();
-            var result = db.Groups.ToList();
+            var groupResult = db.Groups.Where(m => m.SiteId == siteId).ToList();
+            if (groupResult.Count != 0)
+            {
 
-            var groupDetails = (from item in result
-                                select new GroupViewModel()
-                                {
-                                    GroupName = item.GroupName,
-                                    Rule = item.Rule,
-                                    GroupId = item.GroupId,
-                                    NumberOfUser= db.Users.Where(m => m.GroupId == item.GroupId).ToList().Count
-                                }
-                             ).ToList();
-            list.GroupViewlist.AddRange(groupDetails);
+                var groupDetails = (from item in groupResult
+                                    select new GroupViewModel()
+                                    {
+                                        GroupName = item.GroupName,
+                                        Rule = item.Rule,
+                                        GroupId = item.GroupId,
+                                        NumberOfUser = db.Users.Where(m => m.GroupId == item.GroupId).ToList().Count
+                                    }
+                                 ).ToList();
+                list.GroupViewlist.AddRange(groupDetails);
+            }
+            else
+            {
+                TempData["GroupSuc"] = "There is no group under selected site";
+            }
             return View(list);
         }
         /// <summary>
@@ -53,7 +60,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
         public ActionResult CreateGroup(Group model)
         {
             groupRepo.Create(model);
-            return RedirectToAction("Index", "Group");
+            return RedirectToAction("Index", "Group", new { siteId = model.SiteId });
         }
         /// <summary>
         /// 
