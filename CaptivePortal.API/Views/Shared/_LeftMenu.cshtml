@@ -39,7 +39,7 @@
                     <img src="~/Images/images.png" alt="..." class="img-circle profile_img">
                 </div>
                 <div class="profile_info">
-                    <span>Welcome,</span>
+                    <span>Welcome !</span>
                     <h2>Admin</h2>
                 </div>
             </div>
@@ -50,20 +50,20 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                 <div class="menu_section">
-                    <h3>General</h3>
+                    
                     <ul class="nav side-menu">
-                        <li>
-                            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i> Home </a>
+                        <li style="border-right:black;background:#2A3F54">
+                            <a href="@Url.Action("Index","Home")"><i class="fa fa-home"></i>Home </a>
                         </li>
                         <li>
-                            <a id="viewdashboard" class="row margin hide"><i class="fa fa-desktop"></i>View Dashboard <span class="fa fa-chevron-down"></span></a>
+                            <a id="viewdashboard" class="row margin hide">&nbsp;&nbsp;<i class="fa fa-desktop"></i>&nbsp;View Dashboard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a id="wifisummary" class="hide" href="@Url.Action("Index","Admin")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">WiFi Summary</a></li>
                                 <li><a id="locationdashboard" class="hide" href="@Url.Action("LocationDashBoard","Admin")" onclick="location.href = this.href + '?SiteId=' + localStorage.getItem('SiteId'); return false;">Location dashboard</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a id="managesite" class="row margin hide"><i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
+                            <a id="managesite" class="row margin hide">&nbsp;<i class="fa fa-cog fa-fw"></i> Manage Site <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 @if (this.User.IsInRole("CompanyAdmin"))
                                 {
@@ -79,7 +79,7 @@
                         </li>
 
                         <li>
-                            <a id="managewifiuser" class="row margin hide"><i class="fa fa-users"></i> Manage Wi-fi User <span class="fa fa-chevron-down"></span></a>
+                            <a id="managewifiuser" class="row margin hide">&nbsp;&nbsp;<i class="fa fa-users"></i>Manage Wi-fi User <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("UserDetails","Account")" onclick="location.href = this.href + '?siteId=' + localStorage.getItem('SiteId'); return false;">View Wi-fi users</a></li>
                                 <li><a href="@Url.Action("Register","Account")">Register Wi-fi user</a></li>
@@ -87,7 +87,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a id="managedashboard" class="row margin hide"><i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
+                            <a id="managedashboard" class="row margin hide">&nbsp;&nbsp;<i class="fa fa-desktop"></i>Manage DashBoard <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("UploadLocationDashBoardFile","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Upload File</a></li>
                                 <li><a href="@Url.Action("LocationsMapping","LocationIndicators")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Location Mapping</a></li>
@@ -95,7 +95,7 @@
                         </li>
 
                         <li>
-                            <a id="managertls" class="row margin hide"><img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
+                            <a id="managertls" class="row margin hide">&nbsp;&nbsp;<img src="~/Images/geo.png" style="height:20px;width:20px" />&nbsp;&nbsp;Manage RTLS <span class="fa fa-chevron-down"></span></a>
                             <ul class="nav child_menu">
                                 <li><a href="@Url.Action("TestSetUpRtls","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">Test Set-up</a></li>
                                 <li><a href="@Url.Action("ViewRtlsData","Admin")" onclick="location.href = this.href + '?SiteName=' + localStorage.getItem('SiteName'); return false;">View RTLS data</a></li>
@@ -103,7 +103,7 @@
                             </ul>
                         </li>
 
-                        <li><a onclick="logOut()"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
+                        <li><a onclick="logOut()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Logout</a></li>
 
                     </ul>
                 </div>

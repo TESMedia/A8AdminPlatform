@@ -7,7 +7,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-md-4">
-                    <input id="macAddress" class="form-control col-md-2" type="text" name="MacAddress">
+                    <input id="macAddress" class="form-control col-md-2" type="text" name="MacAddress" maxlength="17">
                     @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control", @Id = "userIdHidden", @name = "UserId", @style = "display:none" } })
                     @Html.EditorFor(model => model.SiteId, new { htmlAttributes = new { @class = "form-control", @Id = "userIdHidden", @name = "SiteId", @style = "display:none" } })
                 </div>
@@ -112,9 +112,8 @@
 
     function deleteMac(macId) {
         var id = macId;
-        alert(macId);
-
-        var uri = '@Html.Raw(Url.Action("DeleteMacAddress", "Admin"))';
+       
+        var uri = '@Html.Raw(Url.Action("DeleteMacAddress", "MacAddressSetByAdmin"))';
         $.ajax({
             url: uri,
             type: 'POST',

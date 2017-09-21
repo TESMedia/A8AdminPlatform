@@ -22,7 +22,7 @@ namespace CaptivePortal.API.Controllers.A8AdminPortal
             {
                 throw ex;
             }
-            return RedirectToAction("UserDetails", "Admin");
+            return RedirectToAction("UserDetails", "Account",new { siteId = fc["SiteId"] });
         }
         /// <summary>
         /// 

@@ -358,6 +358,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\navigationJS.js" />
     <Content Include="Scripts\Spin.js" />
+    <Content Include="Style\LabelNameColor.css" />
     <Content Include="Style\sb-admin-2.css" />
     <Content Include="Vendors\Chart.js\dist\Chart.bundle.js" />
     <Content Include="Vendors\Chart.js\dist\Chart.bundle.min.js" />

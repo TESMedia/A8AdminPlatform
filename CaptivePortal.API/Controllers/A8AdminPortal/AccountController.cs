@@ -406,7 +406,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                                              CreationDate = item.CreationDate,
                                              Lastlogin = item.UpdateDate,
                                              //SiteName= SiteName
-                                             // Password = item.Password,
+                                             Password = item.PasswordHash,
                                              MacAddress = db.MacAddress.Where(x => x.UserId == item.Id).OrderByDescending(x => x.MacId).Take(1).Select(x => x.MacAddressValue).ToList().FirstOrDefault()
 
                                          }).ToList();
@@ -485,7 +485,7 @@ namespace CaptivePortal.API.Controllers.CPAdmin
                 objUserViewModel.ThirdPartyOptIn = Convert.ToBoolean(userDetail.ThirdPartyOptIn);
                 objUserViewModel.UserOfDataOptIn = Convert.ToBoolean(userDetail.UserOfDataOptIn);
                 //objUserViewModel.Status = (Status)Enum.Parse(typeof(Status), userDetail.Status);
-                var mac = db.MacAddress.Where(m => m.Users.SiteId == SiteId).ToList();
+                var mac = db.MacAddress.Where(m => m.Users.Id == userId).ToList();
                 //var lastEntry = db.MacAddress.LastOrDefault(m => m.UserId == UserId).MacAddressValue;
                 //objUserViewModel.MacAddress = lastEntry;
                 objUserViewModel.MacAddressList = mac;

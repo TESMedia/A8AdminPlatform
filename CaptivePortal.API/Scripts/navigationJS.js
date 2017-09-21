@@ -26,6 +26,7 @@
         document.getElementById('wifisummary').className = "unhide";
         document.getElementById('locationdashboard').className = "unhide";
         document.getElementById('NavPromotional').className = 'unhide';
+        document.getElementById('managedashboard').className = "row margin";
     }
     else if (_cpt != 'null') {
         document.getElementById('managewifiuser').className = "row margin";
@@ -36,7 +37,6 @@
         document.getElementById('NavPromotional').className = 'unhide';
     }
     else if (_dashboardUrl != 'null') {
-        alert("dashboardUrl");
         document.getElementById('viewdashboard').className = "row margin";
         document.getElementById('managedashboard').className = "row margin";
         document.getElementById('locationdashboard').className = "unhide";
