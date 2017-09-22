@@ -24,7 +24,7 @@
             console.log($scope.myMonthData);
             UploadFileService.filedownload(strYearMonth).success(function (d) {
                 alert(d);
-                window.location.href = "/Admin/UploadLocationDashBoardFile?SiteName=" + GetSiteNameFromQueryString();
+                window.location.href = "/LocationDashBoard/UploadFile?SiteName=" + GetSiteNameFromQueryString();
             }, function (error) { });
         }
 

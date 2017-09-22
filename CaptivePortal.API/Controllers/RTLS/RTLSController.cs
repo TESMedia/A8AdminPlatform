@@ -72,7 +72,7 @@ namespace RTLS.Controllers
             {
                 log.Error(ex.Message);
             }
-            return RedirectToAction("Admin","TestSetUp",new {SiteId=model.RtlsConfiguration.SiteId});
+            return RedirectToAction("TestSetUp", "Admin");
         }
 
         /// <summary>

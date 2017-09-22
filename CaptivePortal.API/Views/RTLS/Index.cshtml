@@ -12,18 +12,12 @@
 <div class="col-sm-12 col-lg-12 col-md-12">
     @using (Html.BeginForm("Index", "RTLS", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
-        <div class="container row col-md-5 col-lg-5 col-sm-5">
-            <div class="form-group left">
-                <label class="control-label col-md-5">Enter the Devices</label>
-                <div class="btn pull-left form-horizontal" id="txtDiv">
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Enter the Devices:</label>
                     <input type="text" value="@ViewBag.SiteName" class="hide" name="SiteName"/>
                     <input type="text" id="txtMacDevices" name="MacAddresses" class="form-control">
-                </div>
-            </div>
-        </div>
-        <div class="container row  col-md-1 col-lg-1 col-sm-1" style="left:200px;">
-            <div class="form-group right">
-                <input type="submit" class="btn btn-info" value="Save" name="Command" title="Save" id="btnSave">
+                    <input type="submit" class="btn btn-info" value="Save" name="Command" title="Save" id="btnSave"> 
             </div>
         </div>
     }

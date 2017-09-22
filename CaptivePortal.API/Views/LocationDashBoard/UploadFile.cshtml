@@ -11,78 +11,79 @@
 </head>
 <body ng-controller="UploadFileController">
     <br />
-    <div class="row">
-        <div class="panel-group" id="accordion">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Set the Parameters</a>
-                    </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Import Itinerary</div>
                     <div class="panel-body">
-                        <div class="panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                            <label>Update Window Dwelll Time</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="file" class="form-control" type="text" multiple ng-files="getTheFiles($files)">
+                        </div>
+                        <input id="browse" type="file" style="display:none" onChange="Handlechange();">
+                        <input type="button" class="btn btn-success" value="Browse" onclick="HandleBrowseClick();" />
+                        <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="Submit()">Save</button>
+
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">SFTP File Path</div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="width:70%">
+                            <input type="text" class="form-control" id="txtSftpPath" value="@ViewBag.RemotePath" />
+                        </div>
+                        <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('RemotePath')">Save</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Update Delta Time</div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" id="txtDeltaTime" value="@ViewBag.DeltaTime" />
+                        </div>
+                        <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-left: 30px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('DeltaTime')">Save</button>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Fetch SFTP Files</div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="width:70%">
+                            <input type="month" class="form-control " ng-model="myMonthData" />
+                        </div>
+                        <button type="submit" class="ui-spinner-button" ng-disabled="exporting" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="getFileUpload()" required ng-init="button=true">Fetch</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Update Window Start Time</div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
                             <input type="text" class="form-control" id="txtWindowDwellTime" value="@ViewBag.WindowCovCalcDwellTime" />
-                            <button type="submit" class="ui-spinner-button" ng-disabled="exporting" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" required ng-init="button=true" id="btnSave" ng-click="UpdateParameters('WindowConvDwellTime')">Save</button>
                         </div>
-                        <div class="panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                            <label>SFTP File Path</label>
-                            <div>
-                                <input type="text" class="form-control" id="txtSftpPath" value="@ViewBag.RemotePath" />
-                                <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('RemotePath')">Save</button>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                            <label>Update DeltaTime</label>
-                            <div>
-                                <input type="text" class="form-control" id="txtDeltaTime" value="@ViewBag.DeltaTime" />
-                                <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('DeltaTime')">Save</button>
-                            </div>
-                        </div>
-                        <div class="panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                            <label>Update Window Length Time</label>
-                            <div>
-                                <input type="text" class="form-control" id="txtWindowLength" value="@ViewBag.WindowConvLengthTime" />
-                                <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('WindowConvLengthTime')">Save</button>
-                            </div>
-                        </div>
+                        <button type="submit" class="ui-spinner-button" ng-disabled="exporting" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" required ng-init="button=true" id="btnSave" ng-click="UpdateParameters('WindowConvDwellTime')">Save</button>
                     </div>
                 </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Import TUI Discovery</a>
-                    </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                        <label>Import TUI Discovery Itineraries</label>
-                        <div>
-                            <input id="file" type="file" class="form-control" multiple ng-files="getTheFiles($files)" />
-                            <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="Submit()">Save</button>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">Update Window Length</div>
+                    <div class="panel-body">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" class="form-control" id="txtWindowLength" value="@ViewBag.WindowConvLengthTime" />
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h4 class="panel-title">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Import SFTP File</a>
-                    </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse in">
-                    <div class="panel-body panel panel-primary col-md-4 col-lg-4 col-sm-4">
-                        <div class="form-group">
-                            <input type="month" ng-model="myMonthData" />
-                        </div>
-                        <button type="submit" class="ui-spinner-button" ng-disabled="exporting" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 81px;margin-top: 18px;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-right: 21px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="getFileUpload()" required ng-init="button=true">Fetch SFTP FILES</button>
+                        <button type="submit" style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-left: 0px;padding-top: 4px;padding-bottom: 8px;padding-left: 22px;border-right-width: 1px;border-right-style: solid;border-left-width: 2px;border-left-style: solid;" ng-click="UpdateParameters('WindowConvLengthTime')">Save</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+   
     <div>
         <span us-spinner="{radius:30, width:8, length: 16}"></span>
     </div>
